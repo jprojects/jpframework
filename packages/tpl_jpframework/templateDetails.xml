@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
+<extension version="3.0" type="template" client="site" method="upgrade">
+  <name>JPFramework</name>
+  <version>2.0</version>
+  <creationDate>05/12/2014</creationDate>
+  <author>Kim</author>
+  <authorEmail>kim@afi.cat</authorEmail>
+  <authorUrl>http://www.afi.cat</authorUrl>
+  <copyright>Afi</copyright>
+  <license>GNU/GPL</license>
+  <description>JP_FRAMEWORK_TMPL_DESCRIPTION</description>
+  <files>
+        <filename>index.php</filename>
+    	<filename>index.html</filename>
+    	<filename>humans.txt</filename>
+    	<filename>jp_framework.class.php</filename>
+        <filename>component.php</filename>
+        <filename>template_thumbnail.png</filename>
+        <filename>template_preview.png</filename>
+        <filename>error.php</filename>
+        <filename>icon.png</filename>
+        <filename>raw.php</filename>
+        <filename>offline.php</filename>
+	<folder>images/</folder>
+    	<folder>css/</folder>
+	<folder>elements/</folder>
+	<folder>html/</folder>
+        <folder>layouts/</folder>
+        <folder>less/</folder>
+        <folder>scripts/</folder>
+  </files>
+  <positions>
+  	<position>jpf-menu</position>
+        <position>jpf-top-1</position>
+        <position>jpf-top-2</position>
+        <position>jpf-top-3</position>
+	<position>jpf-top-4</position>
+        <position>jpf-main-1</position>
+        <position>jpf-main-2</position>
+        <position>jpf-main-3</position>
+        <position>jpf-main-4</position>
+        <position>jpf-left</position>
+        <position>jpf-right</position>
+    	<position>jpf-showcase-1</position>
+    	<position>jpf-showcase-2</position>
+        <position>jpf-showcase-3</position>
+        <position>jpf-showcase-4</position>
+    	<position>jpf-bottom-1</position>
+        <position>jpf-bottom-2</position>
+        <position>jpf-bottom-3</position>
+        <position>jpf-bottom-4</position>
+        <position>jpf-footer-1</position>
+        <position>jpf-footer-2</position>
+        <position>jpf-footer-3</position>
+        <position>jpf-footer-4</position>
+  </positions>
+  <languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.tpl_jpframework.ini</language>               
+  </languages>
+  <config>
+        <fields name="params" addfieldpath="/templates/jpframework/elements">
+      
+        </fields>
+    </config>
+</extension>

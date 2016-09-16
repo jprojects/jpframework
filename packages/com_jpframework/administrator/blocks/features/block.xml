@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+
+	<fieldset name="block">
+		<field 
+			name="title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="Block title" 
+		/>
+		<field 
+			name="block_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Background" 
+			description="Background color" 
+		/>
+		<field 
+			name="uniqid" 
+			type="text" 
+			default="" 
+			label="Uniqid" 
+			description="Uniqid is used as the block section id" 
+		/>
+		<field 
+			name="feature_heading" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="Heading title" 
+		/>
+		<field 
+			name="feature_subheading" 
+			type="textarea" 
+			default="" 
+			label="Subtitle" 
+			description="Subheading text" 
+			rows="10" 
+			cols="5" 
+			filter="raw"
+		/>
+		<field 
+        	name="feature_title1" 
+        	type="text" 
+        	default="" 
+        	label="Title 1" 
+        	description="feature title 1" 
+        />
+		<field 
+			name="feature_text1" 
+			type="textarea" 
+			default="" 
+			label="Text 1" 
+			description="Feature text 1" 
+			rows="10" 
+			cols="5" 
+			filter="raw"
+		/>
+		<field 
+			name="feature_twitter1" 
+			type="text" 
+			default="" 
+			label="Twitter 1" 
+			description="Feature twitter 1" 
+		/>
+		<field 
+			name="feature_img1" 
+			type="media" 
+			directory="" 
+			label="Image 1" 
+		/>
+		<field 
+        	name="feature_title2" 
+        	type="text" 
+        	default="" 
+        	label="Title 2" 
+        	description="feature title 2" 
+        />
+		<field 
+			name="feature_text2" 
+			type="textarea" 
+			default="" 
+			label="Text 2" 
+			description="Feature text 2" 
+			rows="10" 
+			cols="5" 
+			filter="raw"
+		/>
+		<field 
+			name="feature_twitter2" 
+			type="text" 
+			default="" 
+			label="Twitter 1" 
+			description="Feature twitter 2" 
+		/>
+		<field 
+			name="feature_img2" 
+			type="media" 
+			directory="" 
+			label="Image 2" 
+		/>
+		<field 
+        	name="feature_title3" 
+        	type="text" 
+        	default="" 
+        	label="Title 3" 
+        	description="feature title 3" 
+        />
+		<field 
+			name="feature_text3" 
+			type="textarea" 
+			default="" 
+			label="Text 3" 
+			description="Feature text 3" 
+			rows="10" 
+			cols="5" 
+			filter="raw"
+		/>
+		<field 
+			name="feature_twitter3" 
+			type="text" 
+			default="" 
+			label="Twitter 1" 
+			description="Feature twitter 3" 
+		/>
+		<field 
+			name="feature_img3" 
+			type="media" 
+			directory="" 
+			label="Image 3" 
+		/>
+	</fieldset>
+
+</form>

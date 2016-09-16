@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+
+	<fieldset name="block">
+		<field 
+			name="title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="Block title" 
+		/>
+		<field 
+			name="block_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Background" 
+			description="Background color" 
+		/>
+		<field 
+			name="uniqid" 
+			type="text" 
+			default="" 
+			label="Uniqid" 
+			description="Uniqid is used as the block section id" 
+		/>
+		<field 
+			name="header_lead" 
+			type="text" 
+			default="" 
+			label="Text" 
+			description="Heading text" 
+		/>
+		<field 
+			name="header_logo" 
+			type="media" 
+			directory="" 
+			label="Logo" 
+		/>
+		<field 
+			name="header_button_txt" 
+			type="text" 
+			default="" 
+			label="Button text" 
+			description="Heading button text" 
+		/>
+		<field 
+			name="header_button_link" 
+			type="text" 
+			default="" 
+			label="Button link" 
+			description="Heading button link" 
+		/>
+	</fieldset>
+
+</form>

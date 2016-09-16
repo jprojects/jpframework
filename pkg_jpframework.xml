@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <extension type="package" version="3.0">
+ <name>JPFramework Package</name>
+ <author>Afi informatica Team</author>
+ <creationDate>January 2014</creationDate>
+ <packagename>jpframework</packagename>
+ <version>1.0.0</version>
+ <url>http://www.afi.cat/</url>
+ <packager>Afi informatica Team</packager>
+ <packagerurl>http://www.afi.cat/</packagerurl>
+ <description>JPFramework template and component files</description>
+ <update>http://www.afi.cat/jpframework/update</update>
+ <files folder="packages">
+   <file type="component" id="com_jpframework" >com_jpframework.zip</file>
+   <file type="template" id="jpframework" client="site">tpl_jpframework.zip</file>
+ </files>
+ </extension>

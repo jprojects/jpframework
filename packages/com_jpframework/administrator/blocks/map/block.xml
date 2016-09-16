@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+
+	<fieldset name="block">
+		<field
+			name="title"
+			type="text"
+			default=""
+			label="Title"
+			description="Block title"
+		/>
+		<field
+			name="block_color"
+			type="color"
+			default="#ffffff"
+			label="Background"
+			description="Background color"
+		/>
+		<field
+			name="uniqid"
+			type="text"
+			default=""
+			label="Uniqid"
+			description="Uniqid is used as the block section id"
+		/>
+		<field
+			name="apikey"
+			type="text"
+			default=""
+			label="API Key"
+			description="Google API Key"
+		/>
+		<field
+			name="height"
+			type="text"
+			default="300px"
+			label="Map Height"
+			description="Map height"
+		/>
+		<field
+			name="zoom"
+			type="text"
+			default="9"
+			label="Map zoom"
+			description="Map zoom"
+		/>
+		<field
+			name="lat"
+			type="text"
+			default=""
+			label="latitude"
+			description="Map latitude"
+		/>
+		<field
+			name="long"
+			type="text"
+			default=""
+			label="longitude"
+			description="Map longitude"
+		/>
+	</fieldset>
+
+</form>

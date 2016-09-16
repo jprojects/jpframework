@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="block">
+		<field 
+			name="title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="Block title" 
+		/>
+		<field 
+			name="block_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Background" 
+			description="Background color" 
+		/>
+		<field 
+			name="uniqid" 
+			type="text" 
+			default="" 
+			label="Uniqid" 
+			description="Uniqid is used as the block section id" 
+		/>
+		<field type="list" name="effect" default="icon-rotate" label="Animation" description="Choose a css3 animation">
+                  <option value="wow ">None</option>
+        <optgroup label="Attention Seekers">
+          <option value="wow wow bounce">bounce</option>
+          <option value="wow flash">flash</option>
+          <option value="wow pulse">pulse</option>
+          <option value="wow rubberBand">rubberBand</option>
+          <option value="wow shake">shake</option>
+          <option value="wow swing">swing</option>
+          <option value="wow tada">tada</option>
+          <option value="wow wobble">wobble</option>
+          <option value="wow jello">jello</option>
+        </optgroup>
+
+        <optgroup label="Bouncing Entrances">
+          <option value="wow bounceIn">bounceIn</option>
+          <option value="wow bounceInDown">bounceInDown</option>
+          <option value="wow bounceInLeft">bounceInLeft</option>
+          <option value="wow bounceInRight">bounceInRight</option>
+          <option value="wow bounceInUp">bounceInUp</option>
+        </optgroup>
+
+        <optgroup label="Bouncing Exits">
+          <option value="wow bounceOut">bounceOut</option>
+          <option value="wow bounceOutDown">bounceOutDown</option>
+          <option value="wow bounceOutLeft">bounceOutLeft</option>
+          <option value="wow bounceOutRight">bounceOutRight</option>
+          <option value="wow bounceOutUp">bounceOutUp</option>
+        </optgroup>
+
+        <optgroup label="Fading Entrances">
+          <option value="wow fadeIn">fadeIn</option>
+          <option value="wow fadeInDown">fadeInDown</option>
+          <option value="wow fadeInDownBig">fadeInDownBig</option>
+          <option value="wow fadeInLeft">fadeInLeft</option>
+          <option value="wow fadeInLeftBig">fadeInLeftBig</option>
+          <option value="wow fadeInRight">fadeInRight</option>
+          <option value="wow fadeInRightBig">fadeInRightBig</option>
+          <option value="wow fadeInUp">fadeInUp</option>
+          <option value="wow fadeInUpBig">fadeInUpBig</option>
+        </optgroup>
+
+        <optgroup label="Fading Exits">
+          <option value="wow fadeOut">fadeOut</option>
+          <option value="wow fadeOutDown">fadeOutDown</option>
+          <option value="wow fadeOutDownBig">fadeOutDownBig</option>
+          <option value="wow fadeOutLeft">fadeOutLeft</option>
+          <option value="wow fadeOutLeftBig">fadeOutLeftBig</option>
+          <option value="wow fadeOutRight">fadeOutRight</option>
+          <option value="wow fadeOutRightBig">fadeOutRightBig</option>
+          <option value="wow fadeOutUp">fadeOutUp</option>
+          <option value="wow fadeOutUpBig">fadeOutUpBig</option>
+        </optgroup>
+
+        <optgroup label="Flippers">
+          <option value="wow flip">flip</option>
+          <option value="wow flipInX">flipInX</option>
+          <option value="wow flipInY">flipInY</option>
+          <option value="wow flipOutX">flipOutX</option>
+          <option value="wow flipOutY">flipOutY</option>
+        </optgroup>
+
+        <optgroup label="Lightspeed">
+          <option value="wow lightSpeedIn">lightSpeedIn</option>
+          <option value="wow lightSpeedOut">lightSpeedOut</option>
+        </optgroup>
+
+        <optgroup label="Rotating Entrances">
+          <option value="wow rotateIn">rotateIn</option>
+          <option value="wow rotateInDownLeft">rotateInDownLeft</option>
+          <option value="wow rotateInDownRight">rotateInDownRight</option>
+          <option value="wow rotateInUpLeft">rotateInUpLeft</option>
+          <option value="wow rotateInUpRight">rotateInUpRight</option>
+        </optgroup>
+
+        <optgroup label="Rotating Exits">
+          <option value="wow rotateOut">rotateOut</option>
+          <option value="wow rotateOutDownLeft">rotateOutDownLeft</option>
+          <option value="wow rotateOutDownRight">rotateOutDownRight</option>
+          <option value="wow rotateOutUpLeft">rotateOutUpLeft</option>
+          <option value="wow rotateOutUpRight">rotateOutUpRight</option>
+        </optgroup>
+
+        <optgroup label="Sliding Entrances">
+          <option value="wow slideInUp">slideInUp</option>
+          <option value="wow slideInDown">slideInDown</option>
+          <option value="wow slideInLeft">slideInLeft</option>
+          <option value="wow slideInRight">slideInRight</option>
+
+        </optgroup>
+        <optgroup label="Sliding Exits">
+          <option value="wow slideOutUp">slideOutUp</option>
+          <option value="wow slideOutDown">slideOutDown</option>
+          <option value="wow slideOutLeft">slideOutLeft</option>
+          <option value="wow slideOutRight">slideOutRight</option>
+          
+        </optgroup>
+        
+        <optgroup label="Zoom Entrances">
+          <option value="wow zoomIn">zoomIn</option>
+          <option value="wow zoomInDown">zoomInDown</option>
+          <option value="wow zoomInLeft">zoomInLeft</option>
+          <option value="wow zoomInRight">zoomInRight</option>
+          <option value="wow zoomInUp">zoomInUp</option>
+        </optgroup>
+        
+        <optgroup label="Zoom Exits">
+          <option value="wow zoomOut">zoomOut</option>
+          <option value="wow zoomOutDown">zoomOutDown</option>
+          <option value="wow zoomOutLeft">zoomOutLeft</option>
+          <option value="wow zoomOutRight">zoomOutRight</option>
+          <option value="wow zoomOutUp">zoomOutUp</option>
+        </optgroup>
+
+        <optgroup label="Specials">
+          <option value="wow hinge">hinge</option>
+          <option value="wow rollIn">rollIn</option>
+          <option value="wow rollOut">rollOut</option>
+        </optgroup>
+
+        </field>
+		<field 
+			name="facebook" 
+			type="text" 
+			default="" 
+			label="Facebook link" 
+			description="Facebook link" 
+		/>
+		<field 
+			name="flickr" 
+			type="text" 
+			default="" 
+			label="Flickr link" 
+			description="Flickr link" 
+		/>
+		<field 
+			name="foursquare" 
+			type="text" 
+			default="" 
+			label="Foursquare link" 
+			description="Foursquare link" 
+		/>
+		<field 
+			name="github" 
+			type="text" 
+			default="" 
+			label="Github link" 
+			description="Github link" 
+		/>
+		<field 
+			name="gplus" 
+			type="text" 
+			default="" 
+			label="Google plus link" 
+			description="Google plus link" 
+		/>
+		<field 
+			name="instagram" 
+			type="text" 
+			default="" 
+			label="Instagram link" 
+			description="Instagram link" 
+		/>
+		<field 
+			name="linkedin" 
+			type="text" 
+			default="" 
+			label="Linkedin link" 
+			description="Linkedin link" 
+		/>
+		<field 
+			name="pinterest" 
+			type="text" 
+			default="" 
+			label="Pinterest link" 
+			description="Pinterest link" 
+		/>
+		<field 
+			name="twitter" 
+			type="text" 
+			default="" 
+			label="Twitter link" 
+			description="Twitter link" 
+		/>
+		<field 
+			name="youtube" 
+			type="text" 
+			default="" 
+			label="Youtube link" 
+			description="Youtube link" 
+		/>
+	</fieldset>
+
+</form>

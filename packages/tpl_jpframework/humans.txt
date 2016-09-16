@@ -1,0 +1,29 @@
+
+
+	           __   _     _            __                                      _     _                
+          / _| (_)   (_)          / _|                                    | |   (_)               
+   __ _  | |_   _     _   _ __   | |_    ___    _ __   _ __ ___     __ _  | |_   _    ___    __ _ 
+  / _` | |  _| | |   | | | '_ \  |  _|  / _ \  | '__| | '_ ` _ \   / _` | | __| | |  / __|  / _` |
+ | (_| | | |   | |   | | | | | | | |   | (_) | | |    | | | | | | | (_| | | |_  | | | (__  | (_| |
+  \__,_| |_|   |_|   |_| |_| |_| |_|    \___/  |_|    |_| |_| |_|  \__,_|  \__| |_|  \___|  \__,_|
+                                                                                                  
+                                                                                                
+
+
+/* TEAM */
+
+	Chef: Carles Serra
+	Contact: carles@aficat.com
+	From: Barcelona, Catalonia
+
+	UI developer: Joaquim Buñuel
+	Contact: kim@aficat.com
+	Twitter: @kim_afi
+	From: Barcelona, Catalonia
+		
+
+/* SITE */
+	Last update:2015/07/04
+	Language: Català / English / Castellano 
+	Doctype: HTML5
+	

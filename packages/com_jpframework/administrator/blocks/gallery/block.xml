@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+
+	<fieldset name="block">
+		<field 
+			name="title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="Block title" 
+		/>
+		<field 
+			name="block_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Background" 
+			description="Background color" 
+		/>
+		<field 
+			name="uniqid" 
+			type="text" 
+			default="" 
+			label="Uniqid" 
+			description="Uniqid is used as the block section id" 
+		/>
+		<field 
+			name="gallery_tags" 
+			type="text" 
+			default="" 
+			label="Tags" 
+			description="Gallery tags comma separated" 
+		/>
+		<field 
+			name="gallery_title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="Gallery block title" 
+		/>
+		<field 
+			name="gallery_text" 
+			label ="Text" 
+			type="editor" 
+			width="300" 
+			filter="safehtml" 
+		/>
+		<field 
+			name="gallery_folder" 
+			type="folderlist" 
+			hide_none="true"
+            directory="images"
+			label="Images" 
+			description="Select an images folder, add one of the above tags to the image filename like tag-filename" 
+		/>
+	</fieldset>
+
+</form>

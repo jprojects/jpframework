@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="block">
+	<field 
+			name="title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="Block title" 
+		/>
+		<field 
+			name="block_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Background" 
+			description="Background color" 
+		/>
+		<field 
+			name="uniqid" 
+			type="text" 
+			default="" 
+			label="Uniqid" 
+			description="Uniqid is used as the block section id" 
+		/>
+		<field 
+			name="carousel_id" 
+			type="text" 
+			default="" 
+			label="Carousel id" 
+			description="Carousel allow two or more instances in the same page" 
+		/>
+		<field 
+			name="carousel_height" 
+			type="text" 
+			default="300" 
+			label="Carousel height" 
+			description="Carousel height in pixels" 
+		/>
+		<field 
+			name="carousel_play" 
+			type="text" 
+			default="0" 
+			label="Carousel autoplay" 
+			description="Carousel autoplay control 0 to deactivate or miliseconds to activate" 
+		/>
+        <field 
+        	name="carousel_title1" 
+        	type="text" 
+        	default="" 
+        	label="Title 1" 
+        	description="Carousel title 1" 
+        />
+		<field 
+			name="carousel_text1" 
+			type="textarea" 
+			default="" 
+			label="Text 1" 
+			description="Carousel text 1" 
+			rows="10" 
+			cols="5" 
+			filter="raw"
+		/>
+		<field 
+			name="carousel_img1" 
+			type="media" 
+			directory="" 
+			label="Image 1" 
+		/>
+		<field 
+			name="carousel_title2" 
+			type="text" 
+			default="" 
+			label="Title 2" 
+			description="Carousel title 2" 
+		/>
+		<field 
+			name="carousel_text2" 
+			type="textarea" 
+			default="" 
+			label="Text 2" 
+			description="Carousel text 2" 
+			rows="10" 
+			cols="5" 
+			filter="raw"
+		/>
+		<field 
+			name="carousel_img2" 
+			type="media" 
+			directory="" 
+			label="Image 2" 
+		/>
+		<field 
+			name="carousel_title3" 
+			type="text" 
+			default="" 
+			label="Title 3" 
+			description="Carousel title 3" 
+		/>
+		<field 
+			name="carousel_text3" 
+			type="textarea" 
+			default="" 
+			label="Text 3" 
+			description="Carousel text 3" 
+			rows="10" 
+			cols="5" 
+			filter="raw"
+		/>
+		<field 
+			name="carousel_img3" 
+			type="media" 
+			directory="" 
+			label="Image 3" 
+		/>
+	</fieldset>
+
+</form>
