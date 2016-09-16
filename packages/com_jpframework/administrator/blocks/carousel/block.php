@@ -12,7 +12,7 @@ defined('_JEXEC') or die('Restricted access');
 
 $blockid = JRequest::getVar('blockid');
 blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blocks/carousel/assets/css/carousel.css');
-blocksHelper::getBlockParameter($blockid,'carousel_play') == 0 ? $play = "false" : $play = blocksHelper::getBlockParameter($blockid,'carousel_height');
+blocksHelper::getBlockParameter($blockid,'carousel_play') == 0 ? $play = "false" : $play = blocksHelper::getBlockParameter($blockid,'carousel_play');
 $cid = blocksHelper::getBlockParameter($blockid,'carousel_id');
 ?>
 
