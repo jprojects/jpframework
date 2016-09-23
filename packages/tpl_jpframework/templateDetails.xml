@@ -32,6 +32,7 @@
   </files>
   <positions>
   	<position>jpf-menu</position>
+	<position>jpf-inside-menu</position>
         <position>jpf-top-1</position>
         <position>jpf-top-2</position>
         <position>jpf-top-3</position>

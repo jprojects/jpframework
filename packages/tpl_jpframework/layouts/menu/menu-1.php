@@ -21,7 +21,6 @@
 
                     <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#navigation"></button>
 
-                    <!-- Logo goes here - replace the image with your -->
                     <a href="index.php" class="navbar-brand">
                     <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
                     <img class="logo-img" src="<?php echo jpf::getparameter('topmenu-logo'); ?>" alt="<?php echo jpf::getSitename(); ?>">
@@ -32,6 +31,28 @@
                     <div class="collapse navbar-collapse main-nav" id="navigation">
 
                         <jdoc:include type="modules" name="jpf-menu" />
+
+			<ul class="nav navbar-nav  pull-right">
+				<?php
+				$modules = JModuleHelper::getModules('jpf-inside-menu');
+				if (count($modules)) {
+				    $i = 1;
+				    foreach ($modules as $module) {
+				        echo '<li class="dropdown"><a href="#">'.$module->title.' <span class="caret"></span></a>';
+				        echo '<ul class="dropdown-menu">
+				        	<li>
+				              <div class="container-cart">
+				                    <h4 class="modal-title" id="mod-'.$module->id.'">'.$module->title.'</h4>
+				                    <hr>
+				                    '.JModuleHelper::renderModule($module).'
+				              </div>
+				            </li>
+				        </ul></li>';
+				        $i++;
+				    }
+				}
+				?>
+			</ul>
 
                     </div><!-- /nav-collapse -->
                 </div><!-- /container -->
