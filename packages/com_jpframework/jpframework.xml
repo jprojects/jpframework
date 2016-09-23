@@ -9,9 +9,7 @@
     <authorUrl>http://www.afi.cat</authorUrl>
     <version>1.0.0</version>
     <description>JPFramework component</description>
-    
-    
-    
+      
     <install> <!-- Runs on install -->
         <sql>
             <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
@@ -23,28 +21,12 @@
         </sql>
     </uninstall>
 
-    <files folder="site">
-        <filename>index.html</filename>
-        <filename>jpframework.php</filename>
-        <filename>controller.php</filename>
-        <filename>router.php</filename>
-        <folder>views</folder>
-        <folder>models</folder>
-        <folder>controllers</folder>
-        <folder>helpers</folder>
-        <folder>assets</folder>
-    </files>
-    <languages folder="languages/site">
-        
-			<language tag="en-GB">en-GB/en-GB.com_jpframework.ini</language>
-    </languages>
     <administration>
         <menu img="components/com_jpframework/assets/images/s_com_jpframework.png" >COM_JPFRAMEWORK</menu>
         <submenu>
             
-			<menu link="option=com_jpframework&amp;view=blocks" view="blocks" img="components/com_jpframework/assets/images/s_blockss.png" alt="Jpframework/Blocks">COM_JPFRAMEWORK_TITLE_BLOCKS</menu>
-
-			<menu link="option=com_jpframework&amp;view=store" view="store" img="components/com_jpframework/assets/images/s_blocks.png" alt="Jpframework/Store">COM_JPFRAMEWORK_TITLE_STORE</menu>
+		<menu link="option=com_jpframework&amp;view=blocks" view="blocks" img="components/com_jpframework/assets/images/s_blockss.png" alt="Jpframework/Blocks">COM_JPFRAMEWORK_TITLE_BLOCKS</menu>
+		<menu link="option=com_jpframework&amp;view=store" view="store" img="components/com_jpframework/assets/images/s_blocks.png" alt="Jpframework/Store">COM_JPFRAMEWORK_TITLE_STORE</menu>
 
         </submenu>
         <files folder="administrator">
@@ -67,11 +49,6 @@
 			<language tag="en-GB">en-GB/en-GB.com_jpframework.ini</language>
 			<language tag="en-GB">en-GB/en-GB.com_jpframework.sys.ini</language>
         </languages>
-    </administration>
-    <plugins>
-        <plugin group="search" plugin="jpframework"/>
-    </plugins>
-    
+    </administration>  
 </extension>
-<!-- Component built by the Joomla Component Creator -->
-<!-- http://www.component-creator.com/ -->
+
