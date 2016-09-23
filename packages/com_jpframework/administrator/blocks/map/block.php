@@ -15,26 +15,33 @@ $zoom     = blocksHelper::getBlockParameter($blockid, 'zoom', '9');
 $lat      = blocksHelper::getBlockParameter($blockid, 'lat', '28.9285745');
 $long     = blocksHelper::getBlockParameter($blockid, 'long', '77.09149350000007');
 $key      = blocksHelper::getBlockParameter($blockid, 'apikey');
+$styles   = blocksHelper::getBlockParameter($blockid, 'styles');
+$styles   = str_replace(' ', '', $styles);
+$styles   = str_replace('"',"'", $styles);
+
+blocksHelper::getBlockParameter($blockid, 'draggable') == 0 ? $draggable = false : $draggable = true;
+blocksHelper::getBlockParameter($blockid, 'scrollable') == 0 ? $scrollable = false : $scrollable = true;
 
 blocksHelper::loadJs('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key='.$key);
 $script = "function initialize() {
         var mapOptions = {
                 zoom: ".$zoom.",
-                scrollwheel: false,
-    navigationControl: false,
-    mapTypeControl: false,
-    scaleControl: false,
-    draggable: true,
+                scrollwheel: ".$scrollable.",
+    		navigationControl: false,
+    		mapTypeControl: false,
+    		scaleControl: false,
+    		draggable: ".$draggable.",
                 center: new google.maps.LatLng(".$lat.", ".$long."),
-                styles: [ { 'featureType':'water', 'elementType':'geometry', 'stylers':[ { 'color':'#e9e9e9' }, { 'lightness':17 } ] }, { 'featureType':'landscape', 'elementType':'geometry', 'stylers':[ { 'color':'#f5f5f5' }, { 'lightness':20 } ] }, { 'featureType':'road.highway', 'elementType':'geometry.fill', 'stylers':[ { 'color':'#ffffff' }, { 'lightness':17 } ] }, { 'featureType':'road.highway', 'elementType':'geometry.stroke', 'stylers':[ { 'color':'#ffffff' }, { 'lightness':29 }, { 'weight':0.2 } ] }, { 'featureType':'road.arterial', 'elementType':'geometry', 'stylers':[ { 'color':'#ffffff' }, { 'lightness':18 } ] }, { 'featureType':'road.local', 'elementType':'geometry', 'stylers':[ { 'color':'#ffffff' }, { 'lightness':16 } ] }, { 'featureType':'poi', 'elementType':'geometry', 'stylers':[ { 'color':'#f5f5f5' }, { 'lightness':21 } ] }, { 'featureType':'poi.park', 'elementType':'geometry', 'stylers':[ { 'color':'#dedede' }, { 'lightness':21 } ] }, { 'elementType':'labels.text.stroke', 'stylers':[ { 'visibility':'on' }, { 'color':'#ffffff' }, { 'lightness':16 } ] }, { 'elementType':'labels.text.fill', 'stylers':[ { 'saturation':36 }, { 'color':'#333333' }, { 'lightness':40 } ] }, { 'elementType':'labels.icon', 'stylers':[ { 'visibility':'off' } ] }, { 'featureType':'transit', 'elementType':'geometry', 'stylers':[ { 'color':'#f2f2f2' }, { 'lightness':19 } ] }, { 'featureType':'administrative', 'elementType':'geometry.fill', 'stylers':[ { 'color':'#fefefe' }, { 'lightness':20 } ] }, { 'featureType':'administrative', 'elementType':'geometry.stroke', 'stylers':[ { 'color':'#fefefe' }, { 'lightness':17 }, { 'weight':1.2 } ] } ]};
+                styles: ".$styles."
+	};
 
-        var map = new google.maps.Map(document.getElementById('location-canvas'),
-                                        mapOptions);
+        var map = new google.maps.Map(document.getElementById('location-canvas'), mapOptions);
 
         var marker = new google.maps.Marker({
                         map: map,
                         draggable: false,
-                        position: new google.maps.LatLng(".$lat.", ".$long.")
+                        position: new google.maps.LatLng(".$lat.", ".$long."),
+			icon: 'templates/jpframework/images/loc.png'
             });
      }
 

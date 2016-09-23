@@ -2,6 +2,7 @@
 <form>
 
 	<fieldset name="block">
+		<field type="spacer" name="block" label="Block parameters" />
 		<field
 			name="title"
 			type="text"
@@ -23,6 +24,7 @@
 			label="Uniqid"
 			description="Uniqid is used as the block section id"
 		/>
+		<field type="spacer" name="map" label="Map parameters" />
 		<field
 			name="apikey"
 			type="text"
@@ -30,6 +32,17 @@
 			label="API Key"
 			description="Google API Key"
 		/>
+		<field
+			name="draggable"
+			type="radio"
+			default="0"
+			label="Draggable"
+			description="Set if map is draggable or not"
+			class="btn-group"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
 		<field
 			name="height"
 			type="text"
@@ -39,10 +52,13 @@
 		/>
 		<field
 			name="zoom"
-			type="text"
-			default="9"
+			type="number"
+			default="15"
 			label="Map zoom"
 			description="Map zoom"
+			min="0" 
+			max="19" 
+			step="1"
 		/>
 		<field
 			name="lat"
@@ -57,6 +73,17 @@
 			default=""
 			label="longitude"
 			description="Map longitude"
+		/>
+		<field type="spacer" name="styles" label="Style parameters" />
+		<field
+			name="styles"
+			type="textarea"
+			default="[ { 'featureType':'water', 'elementType':'geometry', 'stylers':[ { 'color':'#e9e9e9' }, { 'lightness':17 } ] }, { 'featureType':'landscape', 'elementType':'geometry', 'stylers':[ { 'color':'#f5f5f5' }, { 'lightness':20 } ] }, { 'featureType':'road.highway', 'elementType':'geometry.fill', 'stylers':[ { 'color':'#ffffff' }, { 'lightness':17 } ] }, { 'featureType':'road.highway', 'elementType':'geometry.stroke', 'stylers':[ { 'color':'#ffffff' }, { 'lightness':29 }, { 'weight':0.2 } ] }, { 'featureType':'road.arterial', 'elementType':'geometry', 'stylers':[ { 'color':'#ffffff' }, { 'lightness':18 } ] }, { 'featureType':'road.local', 'elementType':'geometry', 'stylers':[ { 'color':'#ffffff' }, { 'lightness':16 } ] }, { 'featureType':'poi', 'elementType':'geometry', 'stylers':[ { 'color':'#f5f5f5' }, { 'lightness':21 } ] }, { 'featureType':'poi.park', 'elementType':'geometry', 'stylers':[ { 'color':'#dedede' }, { 'lightness':21 } ] }, { 'elementType':'labels.text.stroke', 'stylers':[ { 'visibility':'on' }, { 'color':'#ffffff' }, { 'lightness':16 } ] }, { 'elementType':'labels.text.fill', 'stylers':[ { 'saturation':36 }, { 'color':'#333333' }, { 'lightness':40 } ] }, { 'elementType':'labels.icon', 'stylers':[ { 'visibility':'off' } ] }, { 'featureType':'transit', 'elementType':'geometry', 'stylers':[ { 'color':'#f2f2f2' }, { 'lightness':19 } ] }, { 'featureType':'administrative', 'elementType':'geometry.fill', 'stylers':[ { 'color':'#fefefe' }, { 'lightness':20 } ] }, { 'featureType':'administrative', 'elementType':'geometry.stroke', 'stylers':[ { 'color':'#fefefe' }, { 'lightness':17 }, { 'weight':1.2 } ] } ]"
+			label="Styles"
+			description="Map styles check https://snazzymaps.com/"
+			rows="10" 
+			cols="5" 
+			filter="raw"
 		/>
 	</fieldset>
 
