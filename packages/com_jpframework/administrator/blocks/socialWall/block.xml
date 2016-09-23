@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="block">
+		<field type="spacer" name="block" label="Block parameters" />
+		<field 
+			name="title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="Block title" 
+		/>
+		<field 
+			name="block_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Background" 
+			description="Background color" 
+		/>
+		<field 
+			name="uniqid" 
+			type="text" 
+			default="" 
+			label="Uniqid" 
+			description="Uniqid is used as the block section id" 
+		/>
+		<field type="spacer" name="facebook" label="&lt;b&gt;Facebook&lt;/b&gt;" />
+		<field 
+			name="fb_account" 
+			type="text" 
+			default="" 
+			label="Facebook account" 
+			description="Facebook account" 
+		/>
+		<field 
+			name="fb_id" 
+			type="text" 
+			default="" 
+			label="Facebook app id" 
+			description="" 
+		/>
+		<field 
+			name="fb_token" 
+			type="text" 
+			default="" 
+			label="Facebook app secret" 
+			description="" 
+		/>
+		<field 
+			name="fb_limit" 
+			type="text" 
+			default="5" 
+			label="Facebook limit" 
+			description="" 
+		/>
+		<field type="spacer" name="twitter" label="&lt;b&gt;Twitter&lt;/b&gt;" />
+		<field 
+			name="tw_account" 
+			type="text" 
+			default="" 
+			label="Twitter account" 
+			description="Twitter account" 
+		/>
+		<field 
+			name="tw_consumer" 
+			type="text" 
+			default="" 
+			label="Twitter consumer key" 
+			description="Make sure your app is read only" 
+		/>
+		<field 
+			name="tw_consumer_secret_key" 
+			type="text" 
+			default="" 
+			label="Twitter consumer secret key" 
+			description="Make sure your app is read only" 
+		/>
+		<field 
+			name="tw_limit" 
+			type="text" 
+			default="5" 
+			label="Twitter limit" 
+			description="" 
+		/>
+		<field type="spacer" name="google" label="&lt;b&gt;Google+&lt;/b&gt;" />
+		<field 
+			name="g_account" 
+			type="text" 
+			default="" 
+			label="G+ account" 
+			description="G+ account" 
+		/>
+		<field 
+			name="g_token" 
+			type="text" 
+			default="" 
+			label="G+ acces token" 
+			description="" 
+		/>
+		<field 
+			name="g_limit" 
+			type="text" 
+			default="5" 
+			label="G+ limit" 
+			description="" 
+		/>
+		<field type="spacer" name="pinterest" label="&lt;b&gt;Pinterest&lt;/b&gt;" />
+		<field 
+			name="pin_account" 
+			type="text" 
+			default="" 
+			label="Pinterest account" 
+			description="Pinterest account" 
+		/>
+		<field 
+			name="pin_token" 
+			type="text" 
+			default="" 
+			label="Pinterest acces token" 
+			description="" 
+		/>
+		<field 
+			name="pin_limit" 
+			type="text" 
+			default="5" 
+			label="Pinterest limit" 
+			description="" 
+		/>
+		<field type="spacer" name="instagram" label="&lt;b&gt;Instagram&lt;/b&gt;" />
+		<field 
+			name="ins_account" 
+			type="text" 
+			default="" 
+			label="Instagram account" 
+			description="Instagram account" 
+		/>
+		<field 
+			name="ins_id" 
+			type="text" 
+			default="" 
+			label="Instagram client id" 
+			description="" 
+		/>
+		<field 
+			name="ins_token" 
+			type="text" 
+			default="" 
+			label="Instagram acces token" 
+			description="" 
+		/>
+		<field 
+			name="ins_limit" 
+			type="text" 
+			default="5" 
+			label="Instagram limit" 
+			description="" 
+		/>
+		<field type="spacer" name="rss" label="&lt;b&gt;Rss&lt;/b&gt;" />
+		<field 
+			name="rss_url" 
+			type="text" 
+			default="" 
+			label="Rss url" 
+			description="Rss url" 
+		/>
+		<field 
+			name="rss_limit" 
+			type="text" 
+			default="5" 
+			label="Feed limit" 
+			description="" 
+		/>
+	</fieldset>
+
+</form>
