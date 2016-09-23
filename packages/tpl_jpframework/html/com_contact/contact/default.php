@@ -166,8 +166,8 @@ jimport('joomla.html.html.bootstrap');
 	
 	                        </div><!-- /row -->
 					
-							<?php endif; ?>
-							<?php if ($this->contact->webpage && $this->params->get('show_webpage')) : ?>
+			<?php endif; ?>
+			<?php if ($this->contact->webpage && $this->params->get('show_webpage')) : ?>
 							<div class="row">
 					                          
 	                          <div class="col-md-4 col-xs-6 text-left">
@@ -181,7 +181,7 @@ jimport('joomla.html.html.bootstrap');
 	                          </div>
 	
 	                        </div><!-- /row -->
-							<?php endif; ?>
+			<?php endif; ?>
 
                     </div><!-- /alert -->
 
@@ -190,23 +190,35 @@ jimport('joomla.html.html.bootstrap');
                 <div class="col-md-6">
 
             <div class="row contact-intro">
-			<?php $this->contact->image == '' ? $c_img = 'http://preview.simonswiss.com/booom/images/icons/support.svg' : $c_img = $this->contact->image; ?>
+			<?php $this->contact->image == '' ? $c_img = '' : $c_img = $this->contact->image; ?>
                         <div class="col-md-3 text-right"><img src="<?php echo $c_img; ?>" alt=""></div>
                         <div class="col-md-9"><p class="lead"><?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_TITLE'); ?></p></div>                        
                     </div>
 
                     <!--////////// CONTACT FORM //////////-->
                     <form id="contact-form" action="<?php echo JRoute::_('index.php'); ?>" method="post" class="form-validate form-horizontal">
-                        <input type="text" name="jform[contact_name]" id="jform_contact_name" required="required" aria-required="true" aria-invalid="true" class="required invalid form-control input-hg" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_NAME'); ?>">
-                        <input type="text" id="jform_contact_email" name="jform[contact_email]" required="required" aria-required="true" class="required validate-email form-control input-hg" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_EMAIL'); ?>">
-						<input type="text" id="jform_contact_subject" name="jform[contact_subject]" required="required" aria-required="true" class="required form-control input-hg" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_SUBJECT'); ?>">
-                        <textarea class="required form-control input-hg" rows="4" id="jform_contact_message" required="required" aria-required="true" name="jform[contact_message]" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_MSG'); ?>"></textarea>
-                        <button type="submit" class="btn btn-inverse btn-hg btn-block" name="submit"><?php echo JText::_('COM_CONTACT_CONTACT_SEND'); ?></button>
-						<input type="hidden" name="option" value="com_contact" />
-						<input type="hidden" name="task" value="contact.submit" />
-						<input type="hidden" name="return" value="<?php echo $this->return_page; ?>" />
-						<input type="hidden" name="id" value="<?php echo $this->contact->slug; ?>" />
-						<?php echo JHtml::_('form.token'); ?>
+
+			<div class="form-group">
+                        	<input type="text" name="jform[contact_name]" id="jform_contact_name" required="required" aria-required="true" aria-invalid="true" class="required invalid form-control input-hg" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_NAME'); ?>">
+			</div>
+			<div class="form-group">
+                        	<input type="text" id="jform_contact_email" name="jform[contact_email]" required="required" aria-required="true" class="required validate-email form-control input-hg" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_EMAIL'); ?>">
+			</div>
+			<div class="form-group">
+				<input type="text" id="jform_contact_subject" name="jform[contact_subject]" required="required" aria-required="true" class="required form-control input-hg" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_SUBJECT'); ?>">
+			</div>
+			<div class="form-group">
+                        	<textarea class="required form-control input-hg" rows="4" id="jform_contact_message" required="required" aria-required="true" name="jform[contact_message]" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_MSG'); ?>"></textarea>
+			</div>
+			<div class="form-group">
+                        	<button type="submit" class="btn btn-primary btn-hg btn-block" name="submit"><?php echo JText::_('COM_CONTACT_CONTACT_SEND'); ?></button>
+			</div>
+			<input type="hidden" name="option" value="com_contact" />
+			<input type="hidden" name="task" value="contact.submit" />
+			<input type="hidden" name="return" value="<?php echo $this->return_page; ?>" />
+			<input type="hidden" name="id" value="<?php echo $this->contact->slug; ?>" />
+			<?php echo JHtml::_('form.token'); ?>
+
                     </form>
 
                      <div id="contact-error"></div>

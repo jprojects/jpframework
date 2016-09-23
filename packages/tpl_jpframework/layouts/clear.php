@@ -2,12 +2,12 @@
 
 /**
  * @version    	2.0 jp_framework.php $ kim 2014
- * @package		JPFramework
+ * @package	JPFramework
  * @copyright   Copyright © 2010 - All rights reserved.
- * @license		GNU/GPL
- * @author		kim
+ * @license	GNU/GPL
+ * @author	kim
  * @author mail kim@afi.cat
- * @website		http://www.afi.cat
+ * @website	http://www.afi.cat
  *
 */
 
@@ -43,7 +43,7 @@ if(!$this->countModules('jpf-left') && !$this->countModules('jpf-right')) { $col
 
 <div class="col-lg-<?php echo $colsc; ?>">
     
-    <jdoc:include type="message" />
+    	<jdoc:include type="message" />
 	<jdoc:include type="component" />
 	
 </div>
@@ -83,15 +83,18 @@ if(!$this->countModules('jpf-left') && !$this->countModules('jpf-right')) { $col
 		</div>
 		<!-- end footer row -->
 		<?php endif; ?>
-		&copy; <?php echo date('Y'); ?> <?php echo jpf::getSitename(); ?>
-		<?php if(jpf::getparameter('privacy') != '') : ?>
-		<a href="<?php echo jpf::getparameter('privacy'); ?>"><?= JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
-		&middot;
-		<?php endif; ?>
+
+		<div class="text-center">
+			&copy; <?php echo date('Y'); ?> <?php echo jpf::getSitename(); ?>
+			<?php if(jpf::getparameter('privacy') != '') : ?>
+			<a href="<?php echo jpf::getparameter('privacy'); ?>"><?= JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
+			&middot;
+			<?php endif; ?>
 		
-		<?php if(jpf::getparameter('terms') != '') : ?>
-		<a href="<?php echo jpf::getparameter('terms'); ?>"><?= JText::_('JP_FRAMEWORK_TERMS'); ?></a>
-		<?php endif; ?>
+			<?php if(jpf::getparameter('terms') != '') : ?>
+			<a href="<?php echo jpf::getparameter('terms'); ?>"><?= JText::_('JP_FRAMEWORK_TERMS'); ?></a>
+			<?php endif; ?>
+		</div>
 	</p>
 	</div>
 </footer>
