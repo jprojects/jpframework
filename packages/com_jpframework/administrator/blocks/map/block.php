@@ -41,7 +41,7 @@ $script = "function initialize() {
                         map: map,
                         draggable: false,
                         position: new google.maps.LatLng(".$lat.", ".$long."),
-			icon: 'templates/jpframework/images/loc.png'
+			icon: '".JURI::root()."templates/jpframework/images/loc.png'
             });
      }
 
