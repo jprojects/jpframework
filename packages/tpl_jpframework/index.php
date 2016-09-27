@@ -31,6 +31,7 @@ require_once('jp_framework.class.php');
 <![endif]-->
 <link rel="shortcut icon" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/icon.png" />
 <link rel="apple-touch-icon-precomposed" href="<?php echo $this->baseurl ?>/templates/<?php echo $this->template ?>/icon.png" />
+<link rel="stylesheet" href="<?php echo $this->baseurl.'/templates/'.$this->template; ?>/css/custom.css" type="text/css" />
 <?php jpf::styles(); ?>
 <?php if(jpf::getparameter('cookies', 0) != 0) : ?>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
