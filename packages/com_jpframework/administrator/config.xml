@@ -136,7 +136,7 @@
           	description="JP_FRAMEWORK_COOKIES_LINK_DESC" 
           />
          <field 
-          	name="piwik" 
+          	name="ganalytics" 
           	type="text" 
           	class="inputbox" 
           	default="" 
