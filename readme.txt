@@ -1,23 +1,17 @@
 JP Framework based on Twitter Bootstrap
-All the available classes and options in http://twitter.github.io/bootstrap/
 
-1- What is this?
-	* This is a Joomla! template framework to version 3.x
+Welcome to JPFramework.
 
-2- What is Joomla?
-	* Joomla is a Content Management System (CMS) which enables you to build Web sites and powerful online applications.
-	* It's a free and OpenSource software, distributed under the GNU General Public License version 2 or later
-	* This is a simple and powerful web server application and it requires a server with PHP and either MySQL, PostgreSQL, or SQL Server to run it.
-	More details here: http://www.joomla.org/about-joomla.html
+JPFramework is a Joomla! template framework for building websites based on the well know Twitter Bootstrap framework. This package includes a component and a template.
 
-5- Learn Joomla!
-	* Read Getting Started with Joomla to find out the basics: http://docs.joomla.org/Getting_Started_with_Joomla!
-	* Before installing, read the beginners guide: http://docs.joomla.org/Beginners
+How it works?
 
-7- Is it easy to install?
-	* Install the jpframework package as an usual extension
-	* Select jpframework as a default template
-	* Start to create content block in the jpframework component
+The JPFramework component manage small portions of code called Blocks, this blocks are asigned to a template positions then the template render this blocks respecting the order and the language. Every block has it owns settings using a xml form as is usual in Joomla.
 
-9- Updates are free!
-	* Always use the latest version: https://bitbucket.org/lazypdf/jpframework
+Creating custom blocks
+
+Create custom blocks easily. The main component has several preinstalled examples. For each new block, you only need a new subfolder in the blocks folder and edit the block.php file with the necessary XML code for the options block form. Additionally, each block can have its own assets folder with custom stylesheets, scripts or images.
+
+License
+
+JPFramework is an Open Source released under the GNU/GPL v3 license
