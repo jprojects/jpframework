@@ -1,16 +1,38 @@
+/* Less vars
+ * @body_font
+ * @body_fcolor
+ * @body_color
+ * @link_color
+ * @linkhover_color
+ * @footer_color
+ * @footer_fcolor
+*/
+
 @import url('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css');
+@import url("https://fonts.googleapis.com/css?family=@body_font:300italic,400italic,700italic,400,300,700");
 
+/*!
+ * bootswatch v3.3.7
+ * Homepage: http://bootswatch.com
+ * Copyright 2012-2016 Thomas Park
+ * Licensed under MIT
+ * Based on Bootstrap
+*/
+/*!
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
 html {
-  font-family: @body_font;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
+  	font-family: @body_font;
+  	-ms-text-size-adjust: 100%;
+  	-webkit-text-size-adjust: 100%;
 }
 body {
-  margin: 0;
-  color: @body_fcolor;
-  background-color: @body_color;
+  	margin: 0;
 }
 article,
 aside,
@@ -25,123 +47,120 @@ menu,
 nav,
 section,
 summary {
-  display: block;
+  	display: block;
 }
 audio,
 canvas,
 progress,
 video {
-  display: inline-block;
-  vertical-align: baseline;
+  	display: inline-block;
+  	vertical-align: baseline;
 }
 audio:not([controls]) {
-  display: none;
-  height: 0;
+  	display: none;
+  	height: 0;
 }
 [hidden],
 template {
-  display: none;
+  	display: none;
 }
 a {
-  background-color: transparent;
-  color: @link_color;
+  	background-color: transparent;
 }
 a:active,
 a:hover {
-  outline: 0;
-   color: @linkhover_color;
+  	outline: 0;
 }
 abbr[title] {
-  border-bottom: 1px dotted;
+  	border-bottom: 1px dotted;
 }
 b,
 strong {
-  font-weight: bold;
+  	font-weight: bold;
 }
 dfn {
-  font-style: italic;
+  	font-style: italic;
 }
 h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
-  color: @link_color;
+  	font-size: 2em;
+  	margin: 0.67em 0;
 }
 mark {
-  background: #ff0;
-  color: #000;
+  	background: #ff0;
+  	color: #000;
 }
 small {
-  font-size: 80%;
+  	font-size: 80%;
 }
 sub,
 sup {
-  font-size: 75%;
-  line-height: 0;
-  position: relative;
-  vertical-align: baseline;
+  	font-size: 75%;
+  	line-height: 0;
+  	position: relative;
+  	vertical-align: baseline;
 }
 sup {
-  top: -0.5em;
+  	top: -0.5em;
 }
 sub {
-  bottom: -0.25em;
+  	bottom: -0.25em;
 }
 img {
-  border: 0;
+  	border: 0;
 }
 svg:not(:root) {
-  overflow: hidden;
+  	overflow: hidden;
 }
 figure {
-  margin: 1em 40px;
+  	margin: 1em 40px;
 }
 hr {
-  -webkit-box-sizing: content-box;
-     -moz-box-sizing: content-box;
-          box-sizing: content-box;
-  height: 0;
+  	-webkit-box-sizing: content-box;
+     	-moz-box-sizing: content-box;
+        box-sizing: content-box;
+  	height: 0;
 }
 pre {
-  overflow: auto;
+  	overflow: auto;
 }
 code,
 kbd,
 pre,
 samp {
-  font-family: monospace, monospace;
-  font-size: 1em;
+  	font-family: monospace, monospace;
+  	font-size: 1em;
 }
 button,
 input,
 optgroup,
 select,
 textarea {
-  color: inherit;
-  font: inherit;
-  margin: 0;
+  	color: inherit;
+  	font: inherit;
+  	margin: 0;
 }
 button {
-  overflow: visible;
+  	overflow: visible;
 }
 button,
 select {
-  text-transform: none;
+  	text-transform: none;
 }
 button,
 html input[type="button"],
 input[type="reset"],
 input[type="submit"] {
-  -webkit-appearance: button;
-  cursor: pointer;
+  	-webkit-appearance: button;
+  	cursor: pointer;
 }
 button[disabled],
 html input[disabled] {
-  cursor: default;
+  	cursor: default;
 }
 button::-moz-focus-inner,
 input::-moz-focus-inner {
-  border: 0;
-  padding: 0;
+  	border: 0;
+  	padding: 0;
 }
 input {
   line-height: normal;
@@ -151,11 +170,11 @@ input[type="radio"] {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-  padding: 0;
+  	padding: 0;
 }
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
-  height: auto;
+  	height: auto;
 }
 input[type="search"] {
   -webkit-appearance: textfield;
@@ -1081,11 +1100,11 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 body {
-  font-family: @body_font, Helvetica, Arial, sans-serif;
+  font-family: @body_font, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 15px;
   line-height: 1.4;
-  color: #222222;
-  background-color: #ffffff;
+  color: @body_fcolor;
+  background-color: @body_color;
 }
 input,
 button,
@@ -1096,16 +1115,15 @@ textarea {
   line-height: inherit;
 }
 a {
-  color: #008cba;
+  color: @link_color;
   text-decoration: none;
 }
 a:hover,
 a:focus {
-  color: #008cba;
+  color: @linkhover_color;
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -1183,7 +1201,7 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: @body_font, Helvetica, Arial, sans-serif;
+  font-family: @body_font, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: 300;
   line-height: 1.1;
   color: inherit;
@@ -2536,7 +2554,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3028,7 +3045,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -5992,7 +6008,7 @@ button.close {
   position: absolute;
   z-index: 1070;
   display: block;
-  font-family: @body_font, Helvetica, Arial, sans-serif;
+  font-family: @body_font, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6110,7 +6126,7 @@ button.close {
   display: none;
   max-width: 276px;
   padding: 1px;
-  font-family: @body_font, Helvetica, Arial, sans-serif;
+  font-family: @body_font, "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-style: normal;
   font-weight: normal;
   letter-spacing: normal;
@@ -6778,6 +6794,10 @@ button.close {
   height: auto;
   padding: 4px 6px;
 }
+.navbar-text {
+  margin: 12px 15px;
+  line-height: 21px;
+}
 .navbar .dropdown-menu {
   border: none;
 }
@@ -7063,130 +7083,18 @@ input[type="checkbox"] {
   color: #222222;
 }
 
-
-/* ========== 11. CONTACT SECTION ========== */
-#faq .panel-group .panel + .panel {
-  margin-top: 14px;
-}
-#faq #accordion {
-  margin-bottom: 15px;
-}
-#faq #accordion .btn {
-  /*border-radius: 0;*/
-  text-align: left;
-}
-#faq #accordion .answer {
-  padding: 18px 24px 0;
-  border-radius: 5px;
-  background-color: #ecf0f1;
-}
-#faq .contact-intro {
-  margin-bottom: 24px;
-}
-#faq .contact-intro img {
-  height: 120px;
-  width: 120px;
-}
-#faq .contact-intro .lead {
-  padding-top: 24px;
-  color: #2c3e50;
-}
-#faq input,
-#faq textarea {
-  border: none;
-  background-color: #ecf0f1;
-}
-#faq form .btn {
-  margin-top: 19px;
-}
-
-/* ========== 14. MEDIA QUERIES ========== */
-@media (max-width: 991px) {
-  body {
-    padding-top: 0;
-  }
-  #header .navbar .navbar-inner ul li a {
-    padding-left: 0;
-  }
-  #faq {
-    text-align: center;
-  }
-  #faq img {
-    margin: 24px auto 0;
-    height: 196px !important;
-    width: 196px !important;
-    display: block;
-    text-align: center;
-  }
-  #faq .alert {
-    text-align: left;
-  }
-}
-
-/* ========== Small devices (tablets, 768px and up) ========== */
-@media (max-width: 767px) {
-  #header .navbar {
-    position: relative;
-  }
-  #header .navbar .navbar-inner ul {
-    width: 75%;
-    margin: 0 auto;
-    display: block;
-    text-align: center;
-  }
-  #header .navbar .navbar-inner ul li {
-    background-color: #ecf0f1;
-    text-align: center;
-    padding: 12px;
-    margin-bottom: 24px;
-  }
-  #hero {
-    text-align: center;
-    height: auto;
-    background-color: #ecf0f1;
-    padding: 48px 0;
-  }
-  #hero .intro {
-    padding: 0;
-  }
-  #blog ul.comments li.indent-1 {
-    margin-left: 48px;
-  }
-  #blog ul.comments li.indent-2 {
-    margin-left: 96px;
-  }
-  #blog .blog-layout {
-    text-align: center;
-  }
-  #blog .blog-layout img {
-    margin: 0 auto;
-    display: block;
-    text-align: center;
-  }
-  #blog .blog-item .blog-main,
-  #blog .blog-item .comment-form {
-    text-align: center;
-  }
-}
-
-.jpfblock { 
-	padding-top: 20px; 
-	padding-bottom: 20px; 
-}
 footer {
 	background-color: @footer_color;
 	height: auto;
 	min-height: 150px;
 	padding-top: 20px;
-	color: @footer_fcolor;
+	color: @footer_fcolor
 }
+footer a { color: @footer_fcolor }
+footer a:hover{ color: @footer_fcolor }
+
 
 /* Helper classes from jpframework */
-
-.col-centered {
-  float: none;
-  margin: 0 auto;
-}
 
 .text-left { text-align: left; }
 .text-center { text-align: center; }
