@@ -31,7 +31,7 @@ class JpframeworkViewStore extends JViewLegacy {
 
 		$items = $this->items;
 
-        //JpframeworkHelper::addSubmenu('blocks');
+        JpframeworkHelper::addSubmenu('store');
 
         $this->addToolbar();
 
