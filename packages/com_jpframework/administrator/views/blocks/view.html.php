@@ -53,7 +53,7 @@ class JpframeworkViewBlocks extends JViewLegacy {
         $state = $this->get('State');
         $canDo = JpframeworkHelper::getActions($state->get('filter.category_id'));
 
-        JToolBarHelper::title(JText::_('COM_JPFRAMEWORK_TITLE_BLOCKS'), 'blocks.png');
+        JToolBarHelper::title(JText::_('COM_JPFRAMEWORK_TITLE_BLOCKS'), 'cube');
 
         //Check if the form exists before showing the add/edit buttons
         $formPath = JPATH_COMPONENT_ADMINISTRATOR . '/views/blocks';

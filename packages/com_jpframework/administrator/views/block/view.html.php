@@ -53,7 +53,7 @@ class JpframeworkViewBlock extends JViewLegacy {
         }
         $canDo = JpframeworkHelper::getActions();
 
-        JToolBarHelper::title(JText::_('COM_JPFRAMEWORK_TITLE_BLOCK'), 'block.png');
+        JToolBarHelper::title(JText::_('COM_JPFRAMEWORK_TITLE_BLOCK'), 'cube');
 
         // If not checked out, can save the item.
         if (!$checkedOut && ($canDo->get('core.edit') || ($canDo->get('core.create')))) {

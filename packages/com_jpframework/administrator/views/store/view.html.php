@@ -44,7 +44,7 @@ class JpframeworkViewStore extends JViewLegacy {
      */
     protected function addToolbar() {
 
-        JToolBarHelper::title(JText::_('COM_JPFRAMEWORK_TITLE_STORE'), 'block.png');
+        JToolBarHelper::title(JText::_('COM_JPFRAMEWORK_TITLE_STORE'), 'cube');
 
         JToolBarHelper::cancel('block.cancel', 'JTOOLBAR_CANCEL');
     }
