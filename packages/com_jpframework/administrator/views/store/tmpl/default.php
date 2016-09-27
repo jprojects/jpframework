@@ -21,7 +21,18 @@ if (!empty($this->extra_sidebar)) {
 ?>
 
 <style>
-.storeitem { text-align: center; }
+#store-list h4.title-store a:hover {
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    color: #f1c40f;
+}
+
+#store-list h4.title-store a {
+    color: #f39c12;
+}
 </style>
 
 <form action="<?php echo JRoute::_('index.php?option=com_jpframework&view=store'); ?>" method="post" name="adminForm" id="adminForm">
@@ -33,19 +44,28 @@ if (!empty($this->extra_sidebar)) {
 <?php else : ?>
 	<div id="j-main-container">
 <?php endif;?>
-        <div class="row-fluid">
+        <div class="row-fluid" id="store-list">
 		<?php 
 		if(count($this->items))  :
 		foreach($this->items->blocks as $item) : ?>
-
-		    <div class="span4 storeitem well">
-		      <h2><?php echo $item->name; ?></h2>
-		      <p><?php echo $item->description; ?></p>
-		      <p><?php echo $item->version; ?></p>
-		      <?php version_compare(blockshelper::getBlockVersion($item->name), $item->version) >= 0 ? $str = 'Install' : $str = 'Update'; ?>
-		      <p><a class="btn" href="index.php?option=com_jpframework&task=store.install&file=<?php echo strtolower($item->name); ?>"><?php echo $str; ?> &raquo;</a></p>
-		    </div>
-    
+			<?php version_compare(blockshelper::getBlockVersion($item->name), $item->version) >= 0 ? $str = 'Install' : $str = 'Update'; ?>
+		    	<div class="span4 well">
+				<div class="panel">
+		    			<div class="panel-body">
+		            				<div class="span12">
+		                				<h4 class="title-store">
+		                    					<strong><a href="#"><i class="icon-cube"></i> <?= $item->name; ?></a></strong>
+		                				</h4>
+		                				<hr>
+		                				<p><?= $item->description; ?></p>
+		                				<p>
+		                    					<a href="#" class="btn btn-default" disabled=""><?= $item->version; ?></a>
+		                    					<a href="index.php?option=com_jpframework&task=store.install&file=<?php echo strtolower($item->name); ?>" class="btn btn-warning pull-right"><?= $str; ?></a>
+		                				</p>
+		            				</div>
+		    			</div>
+	       			</div>
+    			</div>   
 		<?php
 		endforeach;
 		else :
@@ -53,7 +73,7 @@ if (!empty($this->extra_sidebar)) {
 		endif; ?>                   
         </div>
     </div>
-<input type="hidden" name="task" value="" />
-<?php echo JHtml::_('form.token'); ?>
+	<input type="hidden" name="task" value="" />
+	<?php echo JHtml::_('form.token'); ?>
 </form>
 
