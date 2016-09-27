@@ -48,7 +48,9 @@ if (!empty($this->extra_sidebar)) {
 		<?php 
 		if(count($this->items))  :
 		foreach($this->items->blocks as $item) : ?>
-			<?php version_compare(blockshelper::getBlockVersion($item->name), $item->version) >= 0 ? $str = 'Install' : $str = 'Update'; ?>
+			<?php if(version_compare(blockshelper::getBlockVersion($item->name), $item->version) == 0) { $str = 'Up to date'; } ?>
+			<?php if(version_compare(blockshelper::getBlockVersion($item->name), $item->version) == -1) { $str = 'Update'; } ?>
+			<?php if(blockshelper::getBlockVersion($item->name) == '') { $str = 'Install'; } ?>
 		    	<div class="span4 well">
 				<div class="panel">
 		    			<div class="panel-body">
@@ -57,10 +59,12 @@ if (!empty($this->extra_sidebar)) {
 		                    					<strong><a href="#"><i class="icon-cube"></i> <?= $item->name; ?></a></strong>
 		                				</h4>
 		                				<hr>
-		                				<p><?= $item->description; ?></p>
+		                				<p style="height:50px;"><?= $item->description; ?></p>
 		                				<p>
-		                    					<a href="#" class="btn btn-default" disabled=""><?= $item->version; ?></a>
-		                    					<a href="index.php?option=com_jpframework&task=store.install&file=<?php echo strtolower($item->name); ?>" class="btn btn-warning pull-right"><?= $str; ?></a>
+		                    					<a href="#" class="btn btn-default" disabled="">Actual: <?= blockshelper::getBlockVersion($item->name); ?></a>
+									<a href="#" class="btn btn-default" disabled="">New: <?= $item->version; ?></a>
+
+		                    					<a <?php if($str == 'Up to date') : ?>disabled=""<?php endif; ?> href="index.php?option=com_jpframework&task=store.install&file=<?php echo strtolower($item->name); ?>" class="btn btn-warning pull-right"><?= $str; ?></a>
 		                				</p>
 		            				</div>
 		    			</div>
