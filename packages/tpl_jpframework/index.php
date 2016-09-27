@@ -21,7 +21,7 @@ require_once('jp_framework.class.php');
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jdoc:include type="head" />
 <link type="text/plain" rel="author" href="<?php echo $this->baseurl.'/templates/'.$this->template; ?>/humans.txt" />
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?php echo $this->baseurl.'/templates/'.$this->template; ?>/scripts/wow.min.js" type="text/javascript"></script>
 <script src="<?php echo $this->baseurl.'/templates/'.$this->template; ?>/scripts/jpframework.js" type="text/javascript"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
