@@ -6,6 +6,7 @@
  * @linkhover_color
  * @footer_color
  * @footer_fcolor
+ * @unicode 
 */
 
 @import url('//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css');
@@ -7102,6 +7103,31 @@ footer a:hover{ color: @footer_fcolor }
 
 .bold { font-weight: 700; }
 .bolder { font-weight: 400; }
+
+hr.awesome {
+    border-color: #ccc !important;
+}
+hr.awesome {
+    padding: 0;
+    border: none;
+    border-top: solid 5px;
+    text-align: center;
+    max-width: 250px;
+    margin: 50px auto 50px;
+}
+hr.awesome:after {
+    background-color: #fff;
+    color: #ccc;
+}
+hr.awesome:after {
+    content: "\@unicode";
+    font-family: FontAwesome;
+    display: inline-block;
+    position: relative;
+    top: -.8em;
+    font-size: 2em;
+    padding: 0 .25em;
+}
 
 /* ===== cookieCuttr by Chris Wharton (http://cookiecuttr.com) ===== */
 

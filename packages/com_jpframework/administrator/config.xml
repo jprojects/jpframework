@@ -237,6 +237,14 @@
 			label="Footer font color" 
 			description="Footer font color" 
 		/>
+		<field 
+          		name="unicode" 
+          		type="text" 
+          		class="inputbox" 
+          		default="f005" 
+          		label="JP_FRAMEWORK_UNICODE_LABEL" 
+          		description="JP_FRAMEWORK_UNICODE_DESC" 
+          	/>
     </fieldset>
     <fieldset 
         name="permissions"

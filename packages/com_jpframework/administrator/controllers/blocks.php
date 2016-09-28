@@ -108,14 +108,15 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 		$params = &JComponentHelper::getParams( 'com_jpframework' );
 	
 		$body_color 		= $params->get('body_color');
-		$body_font 			= $params->get('body_font');
+		$body_font 		= $params->get('body_font');
 		$body_fcolor 		= $params->get('body_fcolor');
 		$link_color 		= $params->get('link_color');
 		$linkhover_color 	= $params->get('linkhover_color');
 		$footer_color 		= $params->get('footer_color');
 		$footer_fcolor 		= $params->get('footer_fcolor');
-		$menu 				= $params->get('menu');
-		$menu_bg 				= $params->get('menu_bg');
+		$menu 			= $params->get('menu');
+		$menu_bg 		= $params->get('menu_bg');
+		$unicode 		= $params->get('unicode');
 		
 		$options 	= array( 'compress'=>true );
 		$parser 	= new Less_Parser($options);
@@ -124,19 +125,18 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 		$parser->parseFile( JPATH_ROOT.'/templates/jpframework/css/animate.less' );
 		$parser->parse("
 			@body_color: ".$body_color.";
-			@body_font:  '".$body_font."', Helvetica, Arial, sans-serif;
+			@body_font:  '".$body_font.";
 			@body_fcolor:  ".$body_fcolor.";
 			@link_color: ".$link_color.";
 			@linkhover_color: ".$linkhover_color.";
 			@footer_color: ".$footer_color.";
 			@footer_fcolor: ".$footer_fcolor.";
 			@menu_background: ".$menu_bg.";
+			@unicode: ".$unicode.";
 		");
 		$css = $parser->getCss();
 		file_put_contents(JPATH_ROOT.'/templates/jpframework/css/jpframework.css', $css);
 		chmod(JPATH_ROOT.'/templates/jpframework/css/jpframework.css', 0777);
-		//JFactory::getDocument()->addStylesheet(JURI::root().'templates/jpframework/css/jpframework.css');
-		//JFactory::getDocument()->addStylesheet('http://fonts.googleapis.com/css?family='.str_replace(' ', '+', $body_font));
 	
 		$this->setRedirect('index.php?option=com_jpframework&view=blocks', 'Less compiled successfully');
 	
