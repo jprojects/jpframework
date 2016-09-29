@@ -2,45 +2,45 @@
 <form>
 	<fieldset addfieldpath="/components/com_jpframework/models/fields">
 
-      <field 
+      	<field 
       		name="id" 
       		type="text" 
       		default="0" 
       		label="COM_JPFRAMEWORK_FORM_LBL_BLOCKS_ID"
-            readonly="true" class="readonly"
-            description="JGLOBAL_FIELD_ID_DESC" /> 
-
-       <field 
+            	readonly="true" class="readonly"
+            	description="JGLOBAL_FIELD_ID_DESC" 
+	/> 
+       	<field 
        		name="created_by" 
        		type="createdby" 
        		default="" 
-            label="COM_JPFRAMEWORK_FORM_LBL_BLOCKS_CREATED_BY"
-            description="COM_JPFRAMEWORK_FORM_DESC_BLOCKS_CREATED_BY" /> 
-
-       <field 
+            	label="COM_JPFRAMEWORK_FORM_LBL_BLOCKS_CREATED_BY"
+            	description="COM_JPFRAMEWORK_FORM_DESC_BLOCKS_CREATED_BY" 
+	/> 
+       	<field 
        		name="type" 
        		type="folderlist"                                        
-            label="COM_JPFRAMEWORK_FORM_LBL_BLOCKS_TYPE"
-            description="COM_JPFRAMEWORK_FORM_DESC_BLOCKS_TYPE" 
-            required="true" 
-			hide_none="true"
-			onchange="Joomla.submitbutton('block.apply');"
-            directory="administrator/components/com_jpframework/blocks" /> 
-
-       <field 
+            	label="COM_JPFRAMEWORK_FORM_LBL_BLOCKS_TYPE"
+            	description="COM_JPFRAMEWORK_FORM_DESC_BLOCKS_TYPE" 
+           	required="true" 
+		hide_none="true"
+		onchange="Joomla.submitbutton('block.apply');"
+            	directory="administrator/components/com_jpframework/blocks" 
+	/> 
+       	<field 
        		name="position" 
        		type="moduleposition"                                                   
-            label="COM_JPFRAMEWORK_FORM_LBL_BLOCKS_POSITION"
-            description="COM_JPFRAMEWORK_FORM_DESC_BLOCKS_POSITION" />
-
-		<field 
+            	label="COM_JPFRAMEWORK_FORM_LBL_BLOCKS_POSITION"
+            	description="COM_JPFRAMEWORK_FORM_DESC_BLOCKS_POSITION" 
+	/>
+	<field 
          	name="language" 
          	type="language" 
          	client="site" 
          	default="en-GB" 
-         	label="Select a language" 
-         	description="" />          
-
+         	label="COM_JPFRAMEWORK_FORM_LBL_BLOCKS_LANG" 
+         	description="COM_JPFRAMEWORK_FORM_DESC_BLOCKS_LANG" 
+	/>          
         <field
 	        name="state"
 	        type="list"
@@ -53,11 +53,17 @@
 	        <option value="0">JUNPUBLISHED</option>
 	        <option value="2">JARCHIVED</option>
 	        <option value="-2">JTRASHED</option>
-    	</field> 
-    
-    	<field name="menuitem" type="menuitem" default="0" label="Select a menu item" published="1" description="Select a menu item">
-			<option	value="0">JALL</option> 
-		</field> 
+    	</field>    
+    	<field 
+		name="menuitem" 
+		type="menuitem" 
+		default="0" 
+		label="COM_JPFRAMEWORK_FORM_LBL_BLOCKS_MENUITEM" 
+		published="1" 
+		description="COM_JPFRAMEWORK_FORM_DESC_BLOCKS_MUNITEM"
+	>
+		<option	value="0">JALL</option> 
+	</field>
 
     	<field name="checked_out" type="hidden" filter="unset" />
     	<field name="checked_out_time" type="hidden" filter="unset" />
