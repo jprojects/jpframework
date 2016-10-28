@@ -125,14 +125,14 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 		$parser->parseFile( JPATH_ROOT.'/templates/jpframework/css/animate.less' );
 		$parser->parse("
 			@body_color: ".$body_color.";
-			@body_font:  '".$body_font.";
+			@body_font:  '".$body_font."';
 			@body_fcolor:  ".$body_fcolor.";
 			@link_color: ".$link_color.";
 			@linkhover_color: ".$linkhover_color.";
 			@footer_color: ".$footer_color.";
 			@footer_fcolor: ".$footer_fcolor.";
 			@menu_background: ".$menu_bg.";
-			@unicode: ".$unicode.";
+			@unicode: '".$unicode."';
 		");
 		$css = $parser->getCss();
 		file_put_contents(JPATH_ROOT.'/templates/jpframework/css/jpframework.css', $css);

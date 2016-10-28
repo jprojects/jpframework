@@ -12,7 +12,7 @@ Creating custom blocks
 
 Create custom blocks easily. The main component has several preinstalled examples. For each new block, you only need a new subfolder in the blocks folder and edit the block.php file with the necessary XML code for the options block form. Additionally, each block can have its own assets folder with custom stylesheets, scripts or images.
 
-If you need more blocks check my other repository <a href="https://github.com/jprojects/blocks">Link</a>.
+If you need more blocks check my other repository https://github.com/jprojects/blocks.
 
 License
 
