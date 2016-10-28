@@ -74,7 +74,7 @@
 			label="longitude"
 			description="Map longitude"
 		/>
-		<field type="spacer" name="styles" label="Style parameters" />
+		<field type="spacer" name="style" label="Style parameters" />
 		<field
 			name="styles"
 			type="textarea"
