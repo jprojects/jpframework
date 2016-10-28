@@ -35,13 +35,13 @@ transition: all 0.2s ease;
 }
 </style>
 
-<section id="<?php echo blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:<?php echo blocksHelper::getBlockParameter($blockid,'block_color'); ?>">
+<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
 
 <div class="container" id="features">
 
 <header>
-<h1><?php echo blocksHelper::getBlockParameter($blockid,'feature_heading'); ?></h1>
-<p class="lead"><?php echo blocksHelper::getBlockParameter($blockid,'feature_subheading'); ?></p>
+<h1><?= blocksHelper::getBlockParameter($blockid,'feature_heading'); ?></h1>
+<p class="lead"><?= blocksHelper::getBlockParameter($blockid,'feature_subheading'); ?></p>
 </header>
 
 <div class="row">
@@ -49,13 +49,13 @@ transition: all 0.2s ease;
 <!-- Feature Item 1 -->
 <div class="col-md-4 text-center">
 		<div class="feature-icon">
-		<img class="img-circle" src="<?php echo blocksHelper::getBlockParameter($blockid,'feature_img1', 'http://preview.simonswiss.com/booom/images/icons/key.svg'); ?>" alt="">
+		<img class="img-circle" src="<?= blocksHelper::getBlockParameter($blockid,'feature_img1', 'http://preview.simonswiss.com/booom/images/icons/key.svg'); ?>" alt="">
 		</div>
-		<h4><?php echo blocksHelper::getBlockParameter($blockid,'feature_title1', 'Ready to Start'); ?></h4>
+		<h4><?= blocksHelper::getBlockParameter($blockid,'feature_title1', 'Ready to Start'); ?></h4>
 		<p>
-		<?php echo blocksHelper::getBlockParameter($blockid,'feature_text1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'); ?><br/>
+		<?= blocksHelper::getBlockParameter($blockid,'feature_text1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'); ?><br/>
 		<?php if(blocksHelper::getBlockParameter($blockid,'feature_twitter1') != '') : ?>
-		<a target="_blank" href="https://twitter.com/<?php echo blocksHelper::getBlockParameter($blockid,'feature_twitter1'); ?>"><i class="fa fa-twitter"></i></a>
+		<a target="_blank" href="https://twitter.com/<?= blocksHelper::getBlockParameter($blockid,'feature_twitter1'); ?>"><i class="fa fa-twitter"></i></a>
 		<?php endif; ?>
 		</p>
 </div>
@@ -63,13 +63,13 @@ transition: all 0.2s ease;
 <!-- Feature Item 2 -->
 <div class="col-md-4 text-center">
 	<div class="feature-icon">
-	<img class="img-circle" src="<?php echo blocksHelper::getBlockParameter($blockid,'feature_img2', 'http://preview.simonswiss.com/booom/images/icons/magic.svg'); ?>" alt="">
+	<img class="img-circle" src="<?= blocksHelper::getBlockParameter($blockid,'feature_img2', 'http://preview.simonswiss.com/booom/images/icons/magic.svg'); ?>" alt="">
 	</div>
-	<h4><?php echo blocksHelper::getBlockParameter($blockid,'feature_title2', 'Dressed to Impress'); ?></h4>
+	<h4><?= blocksHelper::getBlockParameter($blockid,'feature_title2', 'Dressed to Impress'); ?></h4>
 	<p>
-	<?php echo blocksHelper::getBlockParameter($blockid,'feature_text2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'); ?><br/>
+	<?= blocksHelper::getBlockParameter($blockid,'feature_text2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'); ?><br/>
 	<?php if(blocksHelper::getBlockParameter($blockid,'feature_twitter2') != '') : ?>
-	<a target="_blank" href="https://twitter.com/<?php echo blocksHelper::getBlockParameter($blockid,'feature_twitter2'); ?>"><i class="fa fa-twitter"></i></a>
+	<a target="_blank" href="https://twitter.com/<?= blocksHelper::getBlockParameter($blockid,'feature_twitter2'); ?>"><i class="fa fa-twitter"></i></a>
 	<?php endif; ?>
 	</p>
 </div>
@@ -77,13 +77,13 @@ transition: all 0.2s ease;
 <!-- Feature Item 3 -->
 <div class="col-md-4 text-center">
 	<div class="feature-icon">
-	<img class="img-circle" src="<?php echo blocksHelper::getBlockParameter($blockid,'feature_img3', 'http://preview.simonswiss.com/booom/images/icons/rocket.svg'); ?>" alt="">
+	<img class="img-circle" src="<?= blocksHelper::getBlockParameter($blockid,'feature_img3', 'http://preview.simonswiss.com/booom/images/icons/rocket.svg'); ?>" alt="">
 	</div>
-	<h4><?php echo blocksHelper::getBlockParameter($blockid,'feature_title3', 'Shoot for the Stars'); ?></h4>
+	<h4><?= blocksHelper::getBlockParameter($blockid,'feature_title3', 'Shoot for the Stars'); ?></h4>
 	<p>
-	<?php echo blocksHelper::getBlockParameter($blockid,'feature_text3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'); ?><br/>
+	<?= blocksHelper::getBlockParameter($blockid,'feature_text3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'); ?><br/>
 	<?php if(blocksHelper::getBlockParameter($blockid,'feature_twitter3') != '') : ?>
-	<a target="_blank" href="https://twitter.com/<?php echo blocksHelper::getBlockParameter($blockid,'feature_twitter3'); ?>"><i class="fa fa-twitter"></i></a>
+	<a target="_blank" href="https://twitter.com/<?= blocksHelper::getBlockParameter($blockid,'feature_twitter3'); ?>"><i class="fa fa-twitter"></i></a>
 	<?php endif; ?>
 	</p>
 </div>
