@@ -19,8 +19,8 @@ $styles   = blocksHelper::getBlockParameter($blockid, 'styles');
 $styles   = str_replace(' ', '', $styles);
 $styles   = str_replace('"',"'", $styles);
 
-blocksHelper::getBlockParameter($blockid, 'draggable') == 0 ? $draggable = false : $draggable = true;
-blocksHelper::getBlockParameter($blockid, 'scrollable') == 0 ? $scrollable = false : $scrollable = true;
+blocksHelper::getBlockParameter($blockid, 'draggable', 0) == 0 ? $draggable = 'false' : $draggable = 'true';
+blocksHelper::getBlockParameter($blockid, 'scrollable', 0) == 0 ? $scrollable = 'false' : $scrollable = 'true';
 
 blocksHelper::loadJs('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key='.$key);
 $script = "function initialize() {
