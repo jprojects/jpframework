@@ -48,10 +48,12 @@ class jpf  extends blocksHelper
     */
     public function styles()
     {
-    		$body_font 			= parent::getParameter('body_font');
+    	$params = &JComponentHelper::getParams( 'com_jpframework' );
+    	
+    	$body_font 	= $params->get('body_font');
 
-    		JFactory::getDocument()->addStylesheet('templates/'.$this->template.'/css/jpframework.css');
-    		JFactory::getDocument()->addStylesheet('//fonts.googleapis.com/css?family='.str_replace(' ', '+', $body_font));
+    	JFactory::getDocument()->addStylesheet('templates/'.$this->template.'/css/jpframework.css');
+    	JFactory::getDocument()->addStylesheet('//fonts.googleapis.com/css?family='.str_replace(' ', '+', $body_font));
     }
 
     /**
@@ -149,7 +151,9 @@ class jpf  extends blocksHelper
      */
     public function getColumn($mod, $name, $class="")
     {
-    	$num = parent::getParameter($mod);
+    	$params = &JComponentHelper::getParams( 'com_jpframework' );
+
+    	$num = $params->get($mod);
     	switch($num) {
     		case 1:
     			$row = 1;
