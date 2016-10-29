@@ -53,7 +53,7 @@ class jpf  extends blocksHelper
     	$body_font 	= $params->get('body_font');
 
     	JFactory::getDocument()->addStylesheet('templates/'.$this->template.'/css/jpframework.css');
-    	JFactory::getDocument()->addStylesheet('//fonts.googleapis.com/css?family='.str_replace(' ', '+', $body_font));
+    	JFactory::getDocument()->addStylesheet('//fonts.googleapis.com/css?family='.str_replace(' ', '+', $body_font).':300italic,400italic,700italic,400,300,700');
     }
 
     /**
