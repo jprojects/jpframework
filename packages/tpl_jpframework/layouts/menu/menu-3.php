@@ -15,7 +15,7 @@
 <!-- menu 3 -->
 <div id="container">
 
-  	<div class="navT">
+  	<div class="navT" data-toggle="collapse" href="#menu">
     		<div class="icon"></div>
   	</div>
   
