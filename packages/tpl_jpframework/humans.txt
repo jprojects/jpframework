@@ -14,16 +14,14 @@
 
 	Chef: Carles Serra
 	Contact: carles@aficat.com
-	From: Barcelona, Catalonia
+	From: Barcelona
 
-	UI developer: Joaquim Buñuel
+	UI developer: Kim Buñuel
 	Contact: kim@aficat.com
 	Twitter: @kim_afi
-	From: Barcelona, Catalonia
+	From: Barcelona
 		
 
 /* SITE */
-	Last update:2015/07/04
-	Language: Català / English / Castellano 
+
 	Doctype: HTML5
-	
