@@ -246,6 +246,78 @@
           		description="JP_FRAMEWORK_UNICODE_DESC" 
           	/>
     </fieldset>
+    <fieldset label="COM_JPFRAMEWORK_SOCIAL" name="social">
+    	<field 
+			name="facebook" 
+			type="text" 
+			default="" 
+			label="Facebook link" 
+			description="Facebook link" 
+		/>
+		<field 
+			name="flickr" 
+			type="text" 
+			default="" 
+			label="Flickr link" 
+			description="Flickr link" 
+		/>
+		<field 
+			name="foursquare" 
+			type="text" 
+			default="" 
+			label="Foursquare link" 
+			description="Foursquare link" 
+		/>
+		<field 
+			name="github" 
+			type="text" 
+			default="" 
+			label="Github link" 
+			description="Github link" 
+		/>
+		<field 
+			name="gplus" 
+			type="text" 
+			default="" 
+			label="Google plus link" 
+			description="Google plus link" 
+		/>
+		<field 
+			name="instagram" 
+			type="text" 
+			default="" 
+			label="Instagram link" 
+			description="Instagram link" 
+		/>
+		<field 
+			name="linkedin" 
+			type="text" 
+			default="" 
+			label="Linkedin link" 
+			description="Linkedin link" 
+		/>
+		<field 
+			name="pinterest" 
+			type="text" 
+			default="" 
+			label="Pinterest link" 
+			description="Pinterest link" 
+		/>
+		<field 
+			name="twitter" 
+			type="text" 
+			default="" 
+			label="Twitter link" 
+			description="Twitter link" 
+		/>
+		<field 
+			name="youtube" 
+			type="text" 
+			default="" 
+			label="Youtube link" 
+			description="Youtube link" 
+		/>
+    </fieldset>
     <fieldset 
         name="permissions"
 		description="JCONFIG_PERMISSIONS_DESC"

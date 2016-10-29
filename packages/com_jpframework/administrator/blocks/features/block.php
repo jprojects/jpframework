@@ -15,7 +15,8 @@ $blockid = JRequest::getVar('blockid');
 
 <style>
 #features {
-padding-bottom: 48px;
+padding-bottom: 60px;
+padding-top: 60px;
 }
 #features header {
 margin-bottom: 12px;
@@ -49,7 +50,7 @@ transition: all 0.2s ease;
 <!-- Feature Item 1 -->
 <div class="col-md-4 text-center">
 		<div class="feature-icon">
-		<img class="img-circle" src="<?= blocksHelper::getBlockParameter($blockid,'feature_img1', 'http://preview.simonswiss.com/booom/images/icons/key.svg'); ?>" alt="">
+		<img class="img-circle" src="<?= blocksHelper::getBlockParameter($blockid,'feature_img1', 'https://www.uts.edu.au/sites/default/files/twitter_8.png'); ?>" alt="">
 		</div>
 		<h4><?= blocksHelper::getBlockParameter($blockid,'feature_title1', 'Ready to Start'); ?></h4>
 		<p>
@@ -63,7 +64,7 @@ transition: all 0.2s ease;
 <!-- Feature Item 2 -->
 <div class="col-md-4 text-center">
 	<div class="feature-icon">
-	<img class="img-circle" src="<?= blocksHelper::getBlockParameter($blockid,'feature_img2', 'http://preview.simonswiss.com/booom/images/icons/magic.svg'); ?>" alt="">
+	<img class="img-circle" src="<?= blocksHelper::getBlockParameter($blockid,'feature_img2', 'http://icons.iconarchive.com/icons/martz90/circle/512/dropbox-icon.png'); ?>" alt="">
 	</div>
 	<h4><?= blocksHelper::getBlockParameter($blockid,'feature_title2', 'Dressed to Impress'); ?></h4>
 	<p>
@@ -77,7 +78,7 @@ transition: all 0.2s ease;
 <!-- Feature Item 3 -->
 <div class="col-md-4 text-center">
 	<div class="feature-icon">
-	<img class="img-circle" src="<?= blocksHelper::getBlockParameter($blockid,'feature_img3', 'http://preview.simonswiss.com/booom/images/icons/rocket.svg'); ?>" alt="">
+	<img class="img-circle" src="<?= blocksHelper::getBlockParameter($blockid,'feature_img3', 'http://farishtheme.ir/wp-content/uploads/2016/02/Facebook-Messenger-flat-circle-256.png'); ?>" alt="">
 	</div>
 	<h4><?= blocksHelper::getBlockParameter($blockid,'feature_title3', 'Shoot for the Stars'); ?></h4>
 	<p>

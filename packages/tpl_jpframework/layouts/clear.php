@@ -85,6 +85,35 @@ if(!$this->countModules('jpf-left') && !$this->countModules('jpf-right')) { $col
 		<?php endif; ?>
 
 		<div class="text-center">
+			<ul class="social-icons list-unstyled list-inline"> 
+				<?php if(jpf::getparameter('flickr') != '') : ?>
+			  	<li><a target="_blank" href="<?php echo jpf::getparameter('flickr'); ?>"><i class="fa fa-flickr"></i></a></li> 
+			  	<?php endif; ?>
+			  	<?php if(jpf::getparameter('foursquare') != '') : ?>
+			  	<li><a target="_blank" href="<?php echo jpf::getparameter('foursquare'); ?>"><i class="fa fa-foursquare"></i></a></li> 
+			  	<?php endif; ?>
+			  	<?php if(jpf::getparameter('github') != '') : ?>
+			  	<li> <a target="_blank" href="<?php echo jpf::getparameter('github'); ?>"><i class="fa fa-github"></i></a></li> 
+			  	<?php endif; ?>
+			  	<?php if(jpf::getparameter('gplus') != '') : ?>
+			  	<li> <a target="_blank" href="<?php echo jpf::getparameter('gplus'); ?>"><i class="fa fa-google-plus"></i></a></li> 
+			  	<?php endif; ?>
+			  	<?php if(jpf::getparameter('instagram') != '') : ?>
+			  	<li> <a target="_blank" href="<?php echo jpf::getparameter('instagram'); ?>"><i class="fa fa-instagram"></i></a></li> 
+			  	<?php endif; ?>
+			  	<?php if(jpf::getparameter('pinterest') != '') : ?>
+				<li> <a target="_blank" href="<?php echo jpf::getparameter('pinterest'); ?>"><i class="fa fa-pinterest"></i></a></li>
+				<?php endif; ?>
+			  	<?php if(jpf::getparameter('facebook') != '') : ?> 
+				<li> <a target="_blank" href="<?php echo jpf::getparameter('facebook'); ?>"><i class="fa fa-facebook"></i></a></li> 
+				<?php endif; ?>
+			  	<?php if(jpf::getparameter('twitter') != '') : ?> 
+				<li> <a target="_blank" href="<?php echo jpf::getparameter('twitter'); ?>"><i class="fa fa-twitter"></i></a></li> 
+				<?php endif; ?>
+			  	<?php if(jpf::getparameter('youtube') != '') : ?>
+				<li> <a target="_blank" href="<?php echo jpf::getparameter('youtube'); ?>"><i class="fa fa-youtube"></i></a></li> 
+				<?php endif; ?>  
+			</ul>
 			&copy; <?php echo date('Y'); ?> <?php echo jpf::getSitename(); ?>
 			<?php if(jpf::getparameter('privacy') != '') : ?>
 			<a href="<?php echo jpf::getparameter('privacy'); ?>"><?= JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
