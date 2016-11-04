@@ -11,9 +11,9 @@
 */
 
 defined('_JEXEC') or die;
+
 $app = JFactory::getApplication();
-$params = &JComponentHelper::getParams( 'com_jpframework' );
-$date = $params->get( 'offline_date', '' );
+$date = JComponentHelper::getParams( 'com_jpframework' )->get( 'offline_date', '' );
 ?>
 <!DOCTYPE HTML>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
@@ -27,7 +27,7 @@ $date = $params->get( 'offline_date', '' );
 
 <?php 
 if($date != '') : 
-$parts = $explode('-', $date);
+$parts = explode('-', $date);
 ?>
 <script>
 $(function(){
