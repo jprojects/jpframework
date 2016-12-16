@@ -1,3 +1,6 @@
+// Initialize WOW.js Scrolling Animations
+new WOW().init();
+
 jQuery(document).ready(function($) {
 
 	// browser window scroll (in pixels) after which the "back to top" link is shown
