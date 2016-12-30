@@ -151,9 +151,8 @@ class jpf  extends blocksHelper
      */
     public static function getColumn($mod, $name, $class="")
     {
-    	$params = &JComponentHelper::getParams( 'com_jpframework' );
-
-    	$num = $params->get($mod);
+    	jimport( 'joomla.document.html.html' );
+    	$num = parent::getParameter($mod);
     	switch($num) {
     		case 1:
     			$row = 1;
@@ -179,9 +178,9 @@ class jpf  extends blocksHelper
     
     	$i = 1;
     	while($i <= $row) {
-    		$grid[] = '<div class="col-lg-'.$num.' '.$class.'">';
+    		$grid[] = '<div class="row '.$class.'">';
     		$grid[] = jpf::getBlock('jpf-'.$name.'-'.$i);
-    		if(JFactory::getDocument()->countModules('jpf-'.$name.'-'.$i)) {
+    		if(JDocumentHTML::countModules('jpf-'.$name.'-'.$i)) {
     			$grid[] = '<jdoc:include type="modules" name="jpf-'.$name.'-'.$i.'" />';
     		}
     		$grid[] = '</div>';
