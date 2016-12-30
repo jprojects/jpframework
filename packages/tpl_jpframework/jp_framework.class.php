@@ -23,7 +23,7 @@ class jpf  extends blocksHelper
      * @access public
      * @return boolean, return a JP Framework layout output
     */
-    public function getLayout($name, $folder = "")
+    public static function getLayout($name, $folder = "")
     {
         $html = "";
         if($folder != "") { 
@@ -46,13 +46,13 @@ class jpf  extends blocksHelper
      * @return  void
      * @since   3.0
     */
-    public function styles()
+    public static function styles()
     {
     	$params = &JComponentHelper::getParams( 'com_jpframework' );
     	
     	$body_font 	= $params->get('body_font');
 
-    	JFactory::getDocument()->addStylesheet('templates/'.$this->template.'/css/jpframework.css');
+    	JFactory::getDocument()->addStylesheet('templates/jpframework/css/jpframework.css');
     	JFactory::getDocument()->addStylesheet('//fonts.googleapis.com/css?family='.str_replace(' ', '+', $body_font).':300italic,400italic,700italic,400,300,700');
     }
 
@@ -61,7 +61,7 @@ class jpf  extends blocksHelper
      * @access public
      * @return boolean, true if is in frontpage or false if not
     */
-    public function isFrontpage()
+    public static function isFrontpage()
     {
         $app = JFactory::getApplication();
         $menu = $app->getMenu();
@@ -88,7 +88,7 @@ class jpf  extends blocksHelper
      * @access public
      * @return the page suffix
     */
-    public function getPageSuffix()
+    public static function getPageSuffix()
     {
         $menus = JSite::getMenu();
         $menu = $menus->getActive();
@@ -106,7 +106,7 @@ class jpf  extends blocksHelper
      * @param $position string module position name
      * @return the layout output
      */
-	public function getBlock($position)
+	public static function getBlock($position)
     {
     	$db   = JFactory::getDbo();
     	$lang = JFactory::getLanguage();
@@ -149,7 +149,7 @@ class jpf  extends blocksHelper
      * @access public
      * @return set columns number and width
      */
-    public function getColumn($mod, $name, $class="")
+    public static function getColumn($mod, $name, $class="")
     {
     	$params = &JComponentHelper::getParams( 'com_jpframework' );
 
@@ -181,7 +181,7 @@ class jpf  extends blocksHelper
     	while($i <= $row) {
     		$grid[] = '<div class="col-lg-'.$num.' '.$class.'">';
     		$grid[] = jpf::getBlock('jpf-'.$name.'-'.$i);
-    		if($this->countModules('jpf-'.$name.'-'.$i)) {
+    		if(JFactory::getDocument()->countModules('jpf-'.$name.'-'.$i)) {
     			$grid[] = '<jdoc:include type="modules" name="jpf-'.$name.'-'.$i.'" />';
     		}
     		$grid[] = '</div>';

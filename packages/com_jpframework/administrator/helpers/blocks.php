@@ -50,7 +50,7 @@ class blocksHelper {
 	 * @param mixed $default
 	 * @return mixed
 	*/
-	function getParameter($param, $default="")
+	public static function getParameter($param, $default="")
 	{
 		$params = &JComponentHelper::getParams( 'com_jpframework' );
 		$param = $params->get( $param, $default );
