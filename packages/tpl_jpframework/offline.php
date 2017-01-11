@@ -13,80 +13,138 @@
 defined('_JEXEC') or die;
 
 $app = JFactory::getApplication();
-$date = JComponentHelper::getParams( 'com_jpframework' )->get( 'offline_date', '' );
-?>
-<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-<link href="<?php echo $this->baseurl.'/templates/'.$this->template; ?>/css/offline.css" rel="stylesheet">
-<script src="//code.jquery.com/jquery.js"></script>
-<script src="<?php echo $this->baseurl.'/templates/'.$this->template; ?>/scripts/jquery.countdown.js" type="text/javascript"></script>
-<title><?php echo htmlspecialchars($app->getCfg('sitename')); ?></title>
-
-<?php 
-if($date != '') : 
+$date = JComponentHelper::getParams( 'com_jpframework' )->get( 'offline_date', date('Y-m-d', strtotime("+1 week")) );
 $parts = explode('-', $date);
 ?>
-<script>
-$(function(){
-	
-	var note = $('#note');
-	var ts = new Date(<?php echo $parts[0]; ?>, <?php echo $parts[1]; ?>, <?php echo $parts[2]; ?>, 0, 0, 0);
-		
-	$('#countdown').countdown({
-		timestamp	: ts,
-		callback	: function(days, hours, minutes, seconds){
-			
-			var message = "Queden ";
-			
-			message += days + " " + ( days==1 ? 'dia':'dies' ) + ", ";
-			message += hours + " " + ( hours==1 ? 'hora':'hores' ) + ", ";
-			message += minutes + " minut" + ( minutes==1 ? '':'s' ) + " i ";
-			message += seconds + " segon" + ( seconds==1 ? '':'s' ) + " ";
-			message += "per la presentació!";
-			
-			note.html(message);
-		}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><?= htmlspecialchars($app->getCfg('sitename')); ?></title>
+
+    <!-- Bootstrap -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- fontawesome -->
+    <script src="https://use.fontawesome.com/3db7fc1628.js"></script>
+
+    
+    <!-- google font -->
+    <link href='http://fonts.googleapis.com/css?family=Cabin:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- custom css -->
+    <link href="offline/css/custom.css" rel="stylesheet"/>
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script>
+	$(document).ready(function(){
+	  $("#counter").countdown({
+	  until: new Date(<?php echo $parts[0]; ?>, <?php echo $parts[1]; ?>, <?php echo $parts[2]; ?>, 0, 0, 0),
+	  format: 'dHMS'
+	  });
 	});
-	
-});
-</script>
-<?php endif; ?>
-</head>
-<body>
 
-<jdoc:include type="message" />
+	</script>
+    
+  </head>
+  <body>
+    <div class="se-pre-con"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          	<div class="header-logo-wrapper">
+            	<?= htmlspecialchars($app->getCfg('sitename')); ?>
+          	</div>
+        </div>
+      </div>
+      
+      <div class="row">
+      	<div class="col-md-12">
+      		<jdoc:include type="message" />
+      	</div>
+      </div>
 
-<div id="coming-soon">
+      <div class="row">
+        <div class="col-md-12">
+        <?php if ($app->getCfg('display_offline_message', 1) == 1 && str_replace(' ', '', $app->getCfg('offline_message')) != ''): ?>
+        <h1 class="text-center"><?php echo $app->getCfg('offline_message'); ?></h1>
+        <?php elseif ($app->getCfg('display_offline_message', 1) == 2 && str_replace(' ', '', JText::_('JOFFLINE_MESSAGE')) != ''): ?>
+        <h1 class="text-center"><?php echo JText::_('JOFFLINE_MESSAGE'); ?></h1>
+        <?php  endif; ?>
+        </div>
+      </div>
+  
+      <div class="row">
+        <div class="col-md-12">
+          <div id="counter_wrapper">
+            <div class="text-center" id="counter"></div>
+          </div>
+        </div>
+      </div>
 
-    <h1><?php echo htmlspecialchars($app->getCfg('sitename')); ?></h1>
-	
-	<?php if ($app->getCfg('display_offline_message', 1) == 1 && str_replace(' ', '', $app->getCfg('offline_message')) != ''): ?>
-	<p><?php echo $app->getCfg('offline_message'); ?></p>
-	<?php elseif ($app->getCfg('display_offline_message', 1) == 2 && str_replace(' ', '', JText::_('JOFFLINE_MESSAGE')) != ''): ?>
-	<p><?php echo JText::_('JOFFLINE_MESSAGE'); ?></p>
-	<?php  endif; ?>
-	
-	<div id="subscribe">
-    	<form action="<?php echo JRoute::_('index.php', true); ?>" method="post" id="form-login" class="form-inline">
-		<div class="form-group">
-			<input name="username" id="username" type="text" class="form-control" placeholder="<?php echo JText::_('JGLOBAL_USERNAME') ?>" />
-		</div>
-		<div class="form-group">
-			<input type="password" name="password" class="form-control" placeholder="<?php echo JText::_('JGLOBAL_PASSWORD') ?>" id="passwd" />
-		</div>
-		<input type="submit" name="Submit" class="btn btn-default" value="<?php echo JText::_('JLOGIN') ?>" />
-		<input type="hidden" name="option" value="com_users" />
-		<input type="hidden" name="task" value="user.login" />
-		<input type="hidden" name="return" value="<?php echo base64_encode(JURI::base()) ?>" />
-		<?php echo JHtml::_('form.token'); ?>
-    	</form>
-	</div>
+      <div class="text-center subscribe-form-wrapper">
+       <form action="<?php echo JRoute::_('index.php', true); ?>" method="post" id="form-login" class="form-inline">
+          <div class="form-group">
+           <label for="username"><?php echo JText::_('JGLOBAL_USERNAME') ?></label>
+           <input name="username" id="username" name="username" class="center-block form-control" placeholder="<?php echo JText::_('JGLOBAL_USERNAME') ?>" />
+          </div>
 
-	<div id="countdown"></div>
-	<p id="note"></p>
-	
-</body>
+          <div class="form-group">
+            <label for="passwd"><?php echo JText::_('JGLOBAL_PASSWORD') ?></label>
+            <input type="password" name="password" id="passwd" class="center-block form-control form-subs-email" placeholder="<?php echo JText::_('JGLOBAL_PASSWORD') ?>" />
+          </div>
+
+          <button type="submit" class="btn btn-default"><?php echo JText::_('JLOGIN') ?></button>
+		  <input type="hidden" name="option" value="com_users" />
+		  <input type="hidden" name="task" value="user.login" />
+		  <input type="hidden" name="return" value="<?php echo base64_encode(JURI::base()) ?>" />
+		  <?php echo JHtml::_('form.token'); ?>
+        </form>
+      </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="social-media-wrapper text-center">
+          <a href="#"><i class="fa fa-pinterest"></i></a>
+          <a href="#"><i class="fa fa-facebook-official"></i></a>
+          <a href="#"><i class="fa fa-google-plus-official"></i></a>
+          <a href="#"><i class="fa fa-twitter"></i></a>
+		  <a href="#"><i class="fa fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-center copyright">Copyright &copy; 2016 <?= htmlspecialchars($app->getCfg('sitename')); ?> by <a target="_blank" style="color:#fff;" href="https://www.afi.cat">Afi informàtica</a></div> 
+      </div>
+    </div>
+    
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="offline/js/bootstrap.min.js"></script>
+
+    <!-- fit text -->
+    <script type="text/javascript" src="offline/js/jquery.fittext.js"></script>
+
+    <!-- jquery countdown -->
+    <script type="text/javascript" src="offline/js/jquery.plugin.js"></script> 
+    <script type="text/javascript" src="offline/js/jquery.countdown.js"></script>
+
+    <!--placeholder -->
+    <script type="text/javascript" src="offline/js/jquery.placeholder.js"></script>
+
+    <script type="text/javascript" src="offline/js/scripts.js"></script>
+  </body>
 </html>
