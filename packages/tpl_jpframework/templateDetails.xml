@@ -23,6 +23,7 @@
         <filename>raw.php</filename>
         <filename>offline.php</filename>
 	<folder>images/</folder>
+	<folder>offline/</folder>
     	<folder>css/</folder>
 	<folder>elements/</folder>
 	<folder>html/</folder>
