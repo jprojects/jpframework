@@ -18,7 +18,7 @@ $parts = explode('-', $date);
 ?>
 
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?= $this->language; ?>" lang="<?= $this->language; ?>" dir="<?= $this->direction; ?>">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,6 +44,10 @@ $parts = explode('-', $date);
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    
+    <?php if ($app->get('offline_image', $this->baseurl.'/templates/'.$this->template.'/offline/images/offline.jpg') && file_exists($app->get('offline_image'))) : ?>
+		body { background: url("<?= $app->get('offline_image'); ?>") no-repeat center center fixed; }
+	<?php endif; ?>
     
     <script>
 	$(document).ready(function(){
@@ -92,22 +96,29 @@ $parts = explode('-', $date);
       </div>
 
       <div class="text-center subscribe-form-wrapper">
-       <form action="<?php echo JRoute::_('index.php', true); ?>" method="post" id="form-login" class="form-inline">
+       <form action="<?= JRoute::_('index.php', true); ?>" method="post" id="form-login" class="form-inline">
           <div class="form-group">
-           <label for="username"><?php echo JText::_('JGLOBAL_USERNAME') ?></label>
-           <input name="username" id="username" name="username" class="center-block form-control" placeholder="<?php echo JText::_('JGLOBAL_USERNAME') ?>" />
+           <label for="username"><?= JText::_('JGLOBAL_USERNAME') ?></label>
+           <input name="username" id="username" name="username" class="center-block form-control" placeholder="<?= JText::_('JGLOBAL_USERNAME') ?>" />
           </div>
 
           <div class="form-group">
             <label for="passwd"><?php echo JText::_('JGLOBAL_PASSWORD') ?></label>
             <input type="password" name="password" id="passwd" class="center-block form-control form-subs-email" placeholder="<?php echo JText::_('JGLOBAL_PASSWORD') ?>" />
           </div>
+          
+          <?php if (count($twofactormethods) > 1) : ?>
+          <div class="form-group">
+		  	<label for="secretkey"><?= JText::_('JGLOBAL_SECRETKEY'); ?></label>
+			<input type="text" name="secretkey" id="secretkey" class="center-block form-control" placeholder="<?= JText::_('JGLOBAL_SECRETKEY'); ?>" />
+		  </div>
+		  <?php endif; ?>
 
-          <button type="submit" class="btn btn-default"><?php echo JText::_('JLOGIN') ?></button>
+          <button type="submit" class="btn btn-default"><?= JText::_('JLOGIN') ?></button>
 		  <input type="hidden" name="option" value="com_users" />
 		  <input type="hidden" name="task" value="user.login" />
-		  <input type="hidden" name="return" value="<?php echo base64_encode(JURI::base()) ?>" />
-		  <?php echo JHtml::_('form.token'); ?>
+		  <input type="hidden" name="return" value="<?= base64_encode(JURI::base()) ?>" />
+		  <?= JHtml::_('form.token'); ?>
         </form>
       </div>
 
@@ -136,15 +147,15 @@ $parts = explode('-', $date);
     <script src="offline/js/bootstrap.min.js"></script>
 
     <!-- fit text -->
-    <script type="text/javascript" src="offline/js/jquery.fittext.js"></script>
+    <script type="text/javascript" src="<?= $this->baseurl ?>/templates/<?= $this->template ?>/offline/js/jquery.fittext.js"></script>
 
     <!-- jquery countdown -->
-    <script type="text/javascript" src="offline/js/jquery.plugin.js"></script> 
-    <script type="text/javascript" src="offline/js/jquery.countdown.js"></script>
+    <script type="text/javascript" src="<?= $this->baseurl ?>/templates/<?= $this->template ?>/offline/js/jquery.plugin.js"></script> 
+    <script type="text/javascript" src="<?= $this->baseurl ?>/templates/<?= $this->template ?>/offline/js/jquery.countdown.js"></script>
 
     <!--placeholder -->
-    <script type="text/javascript" src="offline/js/jquery.placeholder.js"></script>
+    <script type="text/javascript" src="<?= $this->baseurl ?>/templates/<?= $this->template ?>/offline/js/jquery.placeholder.js"></script>
 
-    <script type="text/javascript" src="offline/js/scripts.js"></script>
+    <script type="text/javascript" src="<?= $this->baseurl ?>/templates/<?= $this->template ?>/offline/js/scripts.js"></script>
   </body>
 </html>
