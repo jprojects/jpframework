@@ -11,10 +11,11 @@
  *
 */
 
-if($this->countModules('jpf-left') && $this->countModules('jpf-right')) { $colsc = 6; $colsl = 3; $colsr = 3; }
-if(!$this->countModules('jpf-left') && $this->countModules('jpf-right')) { $colsc = 8; $colsl = 0; $colsr = 4; }
-if($this->countModules('jpf-left') && !$this->countModules('jpf-right')) { $colsc = 8; $colsl = 4; $colsr = 0; }
-if(!$this->countModules('jpf-left') && !$this->countModules('jpf-right')) { $colsc = 12; $colsl = 0; $colsr = 0; }
+$doc = JFactory::getDocument();
+if($doc->countModules('jpf-left') && $doc->countModules('jpf-right')) { $colsc = 6; $colsl = 3; $colsr = 3; }
+if(!$doc->countModules('jpf-left') && $doc->countModules('jpf-right')) { $colsc = 8; $colsl = 0; $colsr = 4; }
+if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc = 8; $colsl = 4; $colsr = 0; }
+if(!$doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc = 12; $colsl = 0; $colsr = 0; }
 
 ?>
 
@@ -35,7 +36,7 @@ if(!$this->countModules('jpf-left') && !$this->countModules('jpf-right')) { $col
 <?php endif; ?>
 
 <div class="container">
-<?php if($this->countModules('jpf-left')) : ?>
+<?php if($doc->countModules('jpf-left')) : ?>
 <div class="col-lg-<?php echo $colsl; ?>">
     <jdoc:include type="modules" name="jpf-left" />
 </div>
@@ -48,7 +49,7 @@ if(!$this->countModules('jpf-left') && !$this->countModules('jpf-right')) { $col
 	
 </div>
 
-<?php if($this->countModules('jpf-right')) : ?>
+<?php if($doc->countModules('jpf-right')) : ?>
 <div class="col-lg-<?php echo $colsr; ?>">
 	<jdoc:include type="modules" name="jpf-right" />
 </div>
