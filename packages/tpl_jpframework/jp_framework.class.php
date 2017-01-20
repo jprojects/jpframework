@@ -178,7 +178,7 @@ class jpf  extends blocksHelper
     
     	$i = 1;
     	while($i <= $row) {
-    		$grid[] = '<div class="row '.$class.'">';
+    		$grid[] = '<div class="col-lg-'.$num.' '.$class.'">';
     		$grid[] = jpf::getBlock('jpf-'.$name.'-'.$i);
     		if(JDocumentHTML::countModules('jpf-'.$name.'-'.$i)) {
     			$grid[] = '<jdoc:include type="modules" name="jpf-'.$name.'-'.$i.'" />';
