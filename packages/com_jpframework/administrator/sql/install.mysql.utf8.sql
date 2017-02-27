@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS `#__jpframework_blocks` (
 `type` VARCHAR(255)  NOT NULL ,
 `position` VARCHAR(50)  NOT NULL ,
 `language` CHAR(7)  NOT NULL DEFAULT '' ,
-`menuitem` INT(11)  NOT NULL DEFAULT '0' ,
+`menuitem` VARCHAR(50)  NOT NULL DEFAULT '0' ,
 `params` TEXT NOT NULL ,
 PRIMARY KEY (`id`)
 ) DEFAULT COLLATE=utf8_general_ci;
