@@ -48,7 +48,10 @@
         	label="COM_JPFRAMEWORK_TOP_LABEL" 
         	description="COM_JPFRAMEWORK_TOP_DESC" 
         	class="btn-group"
-        />
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+         </field>
         <field 
         	name="jpf-main" 
         	type="radio" 
@@ -56,7 +59,10 @@
         	label="COM_JPFRAMEWORK_MAIN_LABEL"  
         	description="COM_JPFRAMEWORK_MAIN_DESC" 
         	class="btn-group"
-        />
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+         </field>
         <field 
         	name="jpf-showcase" 
         	type="radio" 
@@ -64,7 +70,10 @@
         	label="COM_JPFRAMEWORK_SHOWCASE_LABEL"  
         	description="COM_JPFRAMEWORK_SHOWCASE_DESC" 
         	class="btn-group"
-        />
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+         </field>
         <field 
         	name="jpf-bottom" 
         	type="radio" 
@@ -72,7 +81,10 @@
         	label="COM_JPFRAMEWORK_BOTTOM_LABEL"  
         	description="COM_JPFRAMEWORK_BOTTOM_DESC" 
         	class="btn-group"
-        />
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+         </field>
         <field 
         	name="jpf-footer" 
         	type="radio" 
@@ -80,7 +92,10 @@
         	label="COM_JPFRAMEWORK_FOOTER_LABEL"  
         	description="COM_JPFRAMEWORK_FOOTER_DESC" 
         	class="btn-group"
-        />
+        >
+            <option value="0">JNO</option>
+            <option value="1">JYES</option>
+         </field>
         <field 
         	name="privacy" 
         	type="article" 
