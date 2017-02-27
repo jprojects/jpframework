@@ -22,40 +22,28 @@
         <filename>icon.png</filename>
         <filename>raw.php</filename>
         <filename>offline.php</filename>
-	<folder>images/</folder>
-	<folder>offline/</folder>
+		<folder>images/</folder>
     	<folder>css/</folder>
-	<folder>elements/</folder>
-	<folder>html/</folder>
+		<folder>elements/</folder>
+		<folder>html/</folder>
+		<folder>offline/</folder>
         <folder>layouts/</folder>
         <folder>less/</folder>
         <folder>scripts/</folder>
   </files>
   <positions>
-  	<position>jpf-menu</position>
-	<position>jpf-inside-menu</position>
-        <position>jpf-top-1</position>
-        <position>jpf-top-2</position>
-        <position>jpf-top-3</position>
-	<position>jpf-top-4</position>
-        <position>jpf-main-1</position>
-        <position>jpf-main-2</position>
-        <position>jpf-main-3</position>
-        <position>jpf-main-4</position>
+  		<position>jpf-lang</position>
+  		<position>jpf-contact</position>
+  		<position>jpf-menu</position>
+		<position>jpf-inside-menu</position>
+		<position>jpf-submenu</position>
+        <position>jpf-top</position>
+        <position>jpf-main</position>
         <position>jpf-left</position>
         <position>jpf-right</position>
-    	<position>jpf-showcase-1</position>
-    	<position>jpf-showcase-2</position>
-        <position>jpf-showcase-3</position>
-        <position>jpf-showcase-4</position>
-    	<position>jpf-bottom-1</position>
-        <position>jpf-bottom-2</position>
-        <position>jpf-bottom-3</position>
-        <position>jpf-bottom-4</position>
-        <position>jpf-footer-1</position>
-        <position>jpf-footer-2</position>
-        <position>jpf-footer-3</position>
-        <position>jpf-footer-4</position>
+    	<position>jpf-showcase</position>
+    	<position>jpf-bottom</position>
+        <position>jpf-footer</position>
   </positions>
   <languages folder="language">
 		<language tag="en-GB">en-GB/en-GB.tpl_jpframework.ini</language>               

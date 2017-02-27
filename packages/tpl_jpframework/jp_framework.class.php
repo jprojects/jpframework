@@ -154,39 +154,14 @@ class jpf  extends blocksHelper
     {
     	jimport( 'joomla.document.html.html' );
     	$num = parent::getParameter($mod);
-    	switch($num) {
-    		case 1:
-    			$row = 1;
-    			$num = 12;
-    			break;
-    		case 2:
-    			$row = 2;
-    			$num = 6;
-    			break;
-    		case 3:
-    			$row = 3;
-    			$num = 4;
-    			break;
-    		case 4:
-    			$row = 4;
-    			$num = 3;
-    			break;
-    		default:
-    			$row = 3;
-    			break;
-    	}
     	$grid = array();
-    
-    	$i = 1;
-    	while($i <= $row) {
-    		$grid[] = '<div class="col-lg-'.$num.' '.$class.'">';
-    		$grid[] = jpf::getBlock('jpf-'.$name.'-'.$i);
-    		if(JDocumentHTML::countModules('jpf-'.$name.'-'.$i)) {
-    			$grid[] = '<jdoc:include type="modules" name="jpf-'.$name.'-'.$i.'" />';
-    		}
-    		$grid[] = '</div>';
-    		$i++;
+      	
+    	$grid[] = '<div class="col-md-12 '.$class.'">';
+    	if($num != 0) { $grid[] = jpf::getBlock('jpf-'.$name); }
+    	if(JDocumentHTML::countModules('jpf-'.$name)) {
+    		$grid[] = '<jdoc:include type="modules" name="jpf-'.$name.'" />';
     	}
+    	$grid[] = '</div>';
     
     	return implode("\n", $grid);
     }
