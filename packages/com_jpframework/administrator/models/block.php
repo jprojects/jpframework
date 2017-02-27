@@ -101,6 +101,7 @@ class JpframeworkModelBlock extends JModelAdmin
 
 		if (empty($data)) {
 			$data = $this->getItem();
+			$data->menuitem = explode(';',$data->menuitem);
 		}
 
 		return $data;
@@ -155,8 +156,8 @@ class JpframeworkModelBlock extends JModelAdmin
 	{		
 		$row =& $this->getTable();
 		
-		$post_data = JRequest::get( 'post' );
-   		$data      = $post_data["jform"];
+		$post_data  = JRequest::get( 'post' );
+   		$data       = $post_data["jform"];
 		$data['id'] = JRequest::getInt('id', 0, 'get');
 
 		if($data['id'] != 0) {
@@ -164,15 +165,21 @@ class JpframeworkModelBlock extends JModelAdmin
 			$form->loadFile(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_jpframework'.DS.'blocks'.DS.$data['type'].DS.'block.xml');
 			$fields = $form->getFieldset('block');
 			$values = array();
-			foreach($fields as $field) {
+			foreach($fields as $field) { 
 				$values[$field->name] = $_POST[$field->name];
 			}
 			$registry = new JRegistry;
 	    	$registry->loadArray($values);
 	    	$row->params = (string) $registry;
 	    	
-	    	$row->title = $_POST['title'];
-	    	$row->uniqid = $_POST['uniqid'];
+	    	$menuitems = array();
+	    	foreach($data['menuitem'] as $k) {
+	    		$menuitems[] = $k;
+	    	}
+			
+	    	$data['menuitem'] = implode(';', $menuitems);
+	    	$row->title    = $_POST['title'];
+	    	$row->uniqid   = $_POST['uniqid'];
 		
 			if (!$row->bind( $data )) {
 				return JError::raiseWarning( 500, $row->getError() );

@@ -123,7 +123,8 @@ class jpf  extends blocksHelper
 		ob_start();
 		foreach($rows as $row) {
 	    	$itemid = $app->getMenu()->getActive()->id;
-	    	if($row->menuitem == 0 || $row->menuitem == $itemid) { 
+	    	$menuitems = explode(';', $row->menuitem);
+	    	if($row->menuitem == 0 || in_array($itemid, $menuitems)) { 
 		    	$html = "";
 		    	JRequest::setVar('blockid', $row->id);
 	    		$path1 = dirname(__FILE__).DS.'html'.DS.'blocks'.DS.$row->type.DS.'block.php';

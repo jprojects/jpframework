@@ -58,6 +58,7 @@
 		name="menuitem" 
 		type="menuitem" 
 		default="0" 
+		multiple="true"
 		label="COM_JPFRAMEWORK_FORM_LBL_BLOCKS_MENUITEM" 
 		published="1" 
 		description="COM_JPFRAMEWORK_FORM_DESC_BLOCKS_MUNITEM"
