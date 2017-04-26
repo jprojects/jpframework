@@ -13,7 +13,7 @@ $cparams = JComponentHelper::getParams('com_media');
 
 jimport('joomla.html.html.bootstrap');
 ?>
-<section id="faq">
+<section id="faq" style="margin:50px 0;">
 
         <div class="container">
 
@@ -28,7 +28,8 @@ jimport('joomla.html.html.bootstrap');
 
                     <div class="alert">
                         
-                        <p class="lead"><?php echo JText::_('JP_FRAMEWORK_CONTACT_DETAILS'); ?></p>
+                        <p class="lead" style="margin-bottom:50px;"><?php echo JText::_('JP_FRAMEWORK_CONTACT_DETAILS'); ?></p>
+                        
 						<?php if ($this->contact->address && $this->params->get('show_street_address')) : ?>
                         <div class="row">
                           
@@ -191,8 +192,10 @@ jimport('joomla.html.html.bootstrap');
 
             <div class="row contact-intro">
 			<?php $this->contact->image == '' ? $c_img = '' : $c_img = $this->contact->image; ?>
-                        <div class="col-md-3 text-right"><img src="<?php echo $c_img; ?>" alt=""></div>
-                        <div class="col-md-9"><p class="lead"><?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_TITLE'); ?></p></div>                        
+						<?php if($c_image != '') : ?>
+                        <div class="col-md-3 text-right"><img class="img-responsive" src="<?php echo $c_img; ?>" alt=""></div>
+                        <?php endif; ?>
+                        <div class="col-md-<?php if($c_image != '') : ?>12<?php else: ?>9<?php endif; ?>"><p class="lead"><?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_TITLE'); ?></p></div>                        
                     </div>
 
                     <!--////////// CONTACT FORM //////////-->
@@ -210,9 +213,27 @@ jimport('joomla.html.html.bootstrap');
 			<div class="form-group">
                         	<textarea class="required form-control input-hg" rows="4" id="jform_contact_message" required="required" aria-required="true" name="jform[contact_message]" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_MSG'); ?>"></textarea>
 			</div>
+			
 			<div class="form-group">
-                        	<button type="submit" class="btn btn-primary btn-hg btn-block" name="submit"><?php echo JText::_('COM_CONTACT_CONTACT_SEND'); ?></button>
+			<?php foreach ($this->form->getFieldsets() as $fieldset) : ?>
+			<?php if ($fieldset->name === 'captcha' && $this->captchaEnabled) : ?>
+				<?php $fields = $this->form->getFieldset($fieldset->name); ?>
+				<?php if (count($fields)) : ?>
+					<?php if (isset($fieldset->label) && ($legend = trim(JText::_($fieldset->label))) !== '') : ?>
+						<legend><?php echo $legend; ?></legend>
+					<?php endif; ?>
+					<?php foreach ($fields as $field) : ?>
+						<?php echo $field->renderField(); ?>
+					<?php endforeach; ?>
+			<?php endif; ?>
+			<?php endif; ?>
+			<?php endforeach; ?>
 			</div>
+			
+			<div class="form-group">
+                        	<button type="submit" class="btn btn-primary btn-hg btn-block" name="submit"><span class="glyphicon glyphicon-send"></span> <?php echo JText::_('COM_CONTACT_CONTACT_SEND'); ?></button>
+			</div>
+		
 			<input type="hidden" name="option" value="com_contact" />
 			<input type="hidden" name="task" value="contact.submit" />
 			<input type="hidden" name="return" value="<?php echo $this->return_page; ?>" />
@@ -228,5 +249,7 @@ jimport('joomla.html.html.bootstrap');
                 
             </div>
         </div>
+        
+        <?php echo $this->item->event->afterDisplayContent; ?>
 
     </section>
