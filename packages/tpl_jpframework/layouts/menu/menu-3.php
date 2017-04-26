@@ -19,7 +19,7 @@
     		<div class="icon"></div>
   	</div>
   
-  	<div id="menu">
+  	<div id="menu" aria-expanded="false" class="collapse" style="height: 1px;">
     		<jdoc:include type="modules" name="jpf-menu" />
   	</div>
 
