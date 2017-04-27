@@ -22,7 +22,7 @@ if(blocksHelper::getBlockParameter($blockid,'content_position','right') == 'righ
 
 <section id="<?php echo blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
 
-<div id="content" style="background-color:<?php echo blocksHelper::getBlockParameter($blockid,'block_color'); ?>">
+<div id="content<?= $blockid; ?>" style="background-color:<?php echo blocksHelper::getBlockParameter($blockid,'block_color'); ?>">
 <div class="container jpfblock">
 	<div class="col-md-6 pull-<?php echo $pos; ?>">
 		<?php if(blocksHelper::getBlockParameter($blockid,'content_video') == '') : ?>
