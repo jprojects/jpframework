@@ -9,6 +9,7 @@
  */
 // No direct access
 defined('_JEXEC') or die;
+JHtml::_('jquery.framework');
 
 $blockid  = JRequest::getVar('blockid');
 $zoom     = blocksHelper::getBlockParameter($blockid, 'zoom', '9');
