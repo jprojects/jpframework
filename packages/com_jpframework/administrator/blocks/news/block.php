@@ -32,7 +32,7 @@ $rows = $db->loadObjectList();
 			<h2><?php echo $row->title; ?></h2>
 			<p><?php echo $row->introtext; ?></p>
 			<a href="<?php echo JRoute::_('index.php?option=com_content&view=article&id='.$row->id); ?>" class="cd-read-more">Read more</a>
-			<span class="cd-date"><?php echo date('M j', strtotime($row->created)); ?></span>
+			<span class="cd-date"><?php echo date('M j Y', strtotime($row->created)); ?></span>
 		</div> <!-- cd-timeline-content -->
 	</div> <!-- cd-timeline-block -->
 	<?php endforeach; ?>

@@ -231,7 +231,7 @@ jimport('joomla.html.html.bootstrap');
 			</div>
 			
 			<div class="form-group">
-                        	<button type="submit" class="btn btn-primary btn-hg btn-block" name="submit"><span class="glyphicon glyphicon-send"></span> <?php echo JText::_('COM_CONTACT_CONTACT_SEND'); ?></button>
+                        	<button type="submit" class="btn btn-primary btn-lg btn-block" name="submit"><span class="glyphicon glyphicon-send"></span> <?php echo JText::_('COM_CONTACT_CONTACT_SEND'); ?></button>
 			</div>
 		
 			<input type="hidden" name="option" value="com_contact" />
