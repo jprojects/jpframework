@@ -24,11 +24,6 @@ $parts = explode('-', $date);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= htmlspecialchars($app->getCfg('sitename')); ?></title>
-    
-    <script
-  	src="https://code.jquery.com/jquery-1.12.4.min.js"
-  	integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-  	crossorigin="anonymous"></script>
 
     <!-- Bootstrap -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +36,7 @@ $parts = explode('-', $date);
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,700' rel='stylesheet' type='text/css'>
 
     <!-- custom css -->
-    <link href="offline/css/custom.css" rel="stylesheet"/>
+    <link href="<?= $this->baseurl; ?>/templates/<?= $this->template; ?>/offline/css/custom.css" rel="stylesheet"/>
     
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -52,18 +47,8 @@ $parts = explode('-', $date);
     
     
     <?php if ($app->get('offline_image', $this->baseurl.'/templates/'.$this->template.'/offline/images/offline.jpg') && file_exists($app->get('offline_image'))) : ?>
-		<style>body { background: url("<?= $app->get('offline_image'); ?>") no-repeat center center fixed; }</style>
+		<style>body { background: url("<?= JURI::root().$app->get('offline_image'); ?>") no-repeat center center fixed; }</style>
 	<?php endif; ?>
-    
-    <script>
-	$(document).ready(function(){
-	  $("#counter").countdown({
-	  until: new Date(<?php echo $parts[0]; ?>, <?php echo $parts[1]; ?>, <?php echo $parts[2]; ?>, 0, 0, 0),
-	  format: 'dHMS'
-	  });
-	});
-
-	</script>
     
   </head>
   <body>
@@ -150,7 +135,7 @@ $parts = explode('-', $date);
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="offline/js/bootstrap.min.js"></script>
+    <script src="<?= $this->baseurl; ?>/templates/<?= $this->template; ?>/offline/js/bootstrap.min.js"></script>
 
     <!-- fit text -->
     <script type="text/javascript" src="<?= $this->baseurl ?>/templates/<?= $this->template ?>/offline/js/jquery.fittext.js"></script>
@@ -163,5 +148,13 @@ $parts = explode('-', $date);
     <script type="text/javascript" src="<?= $this->baseurl ?>/templates/<?= $this->template ?>/offline/js/jquery.placeholder.js"></script>
 
     <script type="text/javascript" src="<?= $this->baseurl ?>/templates/<?= $this->template ?>/offline/js/scripts.js"></script>
+    <script>
+	$(document).ready(function(){
+	  $("#counter").countdown({
+	  until: new Date(<?php echo $parts[0]; ?>, <?php echo $parts[1]; ?>, <?php echo $parts[2]; ?>, 0, 0, 0),
+	  format: 'dHMS'
+	  });
+	});
+	</script>
   </body>
 </html>
