@@ -24,6 +24,11 @@ $parts = explode('-', $date);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= htmlspecialchars($app->getCfg('sitename')); ?></title>
+    
+    <script
+  	src="https://code.jquery.com/jquery-1.12.4.min.js"
+  	integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  	crossorigin="anonymous"></script>
 
     <!-- Bootstrap -->
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
@@ -45,8 +50,9 @@ $parts = explode('-', $date);
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     
+    
     <?php if ($app->get('offline_image', $this->baseurl.'/templates/'.$this->template.'/offline/images/offline.jpg') && file_exists($app->get('offline_image'))) : ?>
-		body { background: url("<?= $app->get('offline_image'); ?>") no-repeat center center fixed; }
+		<style>body { background: url("<?= $app->get('offline_image'); ?>") no-repeat center center fixed; }</style>
 	<?php endif; ?>
     
     <script>
