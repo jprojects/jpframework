@@ -53,8 +53,11 @@ class JpframeworkModelBlocks extends JModelList {
         $search = $app->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
         $this->setState('filter.search', $search);
 
-        $published = $app->getUserStateFromRequest($this->context . '.filter.state', 'filter_published', '', 'string');
-        $this->setState('filter.state', $published);     
+        $published = $app->getUserStateFromRequest($this->context . '.filter.published', 'filter_published', '', 'string');
+        $this->setState('filter.published', $published);  
+        
+        $language = $app->getUserStateFromRequest($this->context . '.filter.language', 'filter_language', '', 'string');
+        $this->setState('filter.language', $language);   
 
         // Load the parameters.
         $params = JComponentHelper::getParams('com_jpframework');
@@ -79,6 +82,7 @@ class JpframeworkModelBlocks extends JModelList {
         // Compile the store id.
         $id.= ':' . $this->getState('filter.search');
         $id.= ':' . $this->getState('filter.state');
+        $id.= ':' . $this->getState('filter.language');
 
         return parent::getStoreId($id);
     }
@@ -115,6 +119,12 @@ class JpframeworkModelBlocks extends JModelList {
 			$query->where('a.state = ' . (int) $published);
 		} else if ($published === '') {
 			$query->where('(a.state IN (0, 1))');
+		}
+		
+		// Filter by language
+		$language = $this->getState('filter.language');
+		if (!empty($language)) {
+			$query->where('a.language = ' . $db->quote($language));
 		}
 
         // Filter by search in title
