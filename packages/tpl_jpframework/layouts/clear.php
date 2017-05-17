@@ -113,6 +113,9 @@ if(!$doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc
 				<?php endif; ?>
 			  	<?php if(jpf::getparameter('youtube') != '') : ?>
 				<li> <a target="_blank" href="<?php echo jpf::getparameter('youtube'); ?>"><i class="fa fa-youtube"></i></a></li> 
+				<?php endif; ?> 
+				<?php if(jpf::getparameter('linkedin') != '') : ?>
+				<li> <a target="_blank" href="<?php echo jpf::getparameter('linkedin'); ?>"><i class="fa fa-linkedin"></i></a></li> 
 				<?php endif; ?>  
 			</ul>
 			&copy; <?php echo date('Y'); ?> <?php echo jpf::getSitename(); ?>
