@@ -42,11 +42,12 @@ jQuery(document).ready(function () {
 jQuery.cookieCuttr({
     cookieDeclineButton: true,
     cookieNotificationLocationBottom: true,
-    cookieWhatAreTheyLink: '<?= jpf::getparameter('cookies_link', ''); ?>',
+    cookieWhatAreTheyLink: '<?= jpf::getparameter("cookies_link", ''); ?>',
     cookieAcceptButtonText: "<?php echo JText::_('JP_FRAMEWORK_ACCEPT'); ?>",
     cookieDeclineButtonText: "<?php echo JText::_('JP_FRAMEWORK_DECLINE'); ?>",
     cookieWhatAreLinkText: "<?php echo JText::_('JP_FRAMEWORK_COOKIES_TITLE'); ?>",
-    cookieAnalyticsMessage: "<?php echo JText::_('JP_FRAMEWORK_COOKIES_EXPLANATION'); ?>"
+    cookieAnalyticsMessage: "<?php echo JText::_('JP_FRAMEWORK_COOKIES_EXPLANATION'); ?>",
+    cookiePolicyLink: false
     });	
 });
 </script>
