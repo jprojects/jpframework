@@ -95,36 +95,6 @@ sub {
   color: #999999;
 }
 
-/* Alerts */
-
-.alert-success {
-  background-color: #43ac6a;
-  border-color: #3c9a5f;
-  color: #ffffff;
-}
-
-.alert-success .alert-link {
-  color: #e6e6e6;
-}
-.alert-info, .alert-message {
-  background-color: #5bc0de;
-  border-color: #3db5d8;
-  color: #ffffff;
-}
-.alert-info .alert-link, .alert-message .alert-link {
-  color: #e6e6e6;
-}
-.alert-warning {
-  background-color: #e99002;
-  border-color: #d08002;
-  color: #ffffff;
-}
-.alert-error {
-  background-color: #f04124;
-  border-color: #ea2f10;
-  color: #ffffff;
-}
-
 
 /* Helper classes from jpframework */
 
@@ -158,6 +128,59 @@ hr.awesome:after {
     top: -.8em;
     font-size: 2em;
     padding: 0 .25em;
+}
+
+/* ===== alert messaqges ==== */
+
+.alert {  
+    padding: 12px 35px 12px 14px;  
+    margin-bottom: 18px;  
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);  
+    background-color: #ffb321;  
+    border: 1px solid #ffb321;  
+    -webkit-border-radius: 4px;  
+    -moz-border-radius: 4px;  
+    border-radius: 0;  
+    color: #fff;   
+}  
+.alert h4 {  
+    margin: 0;  
+}  
+.alert .close {  
+    position: relative;  
+    top: -2px;  
+    right: -21px;  
+    line-height: 18px;  
+    float:right;
+    color: #000;  
+}  
+.alert-success {  
+    background-color: #468c46;  
+    border-color: #468c46;   
+}  
+.alert-danger,  
+.alert-error {  
+    background-color: #9b1717;  
+    border-color: #9b1717;   
+}  
+.alert-info {  
+    background-color: #498daf;  
+    border-color: #498daf;    
+} 
+.alert-message {  
+    background-color: #ffb321;  
+    border-color: #ffb321;    
+} 
+.alert-block {  
+    padding-top: 14px;  
+    padding-bottom: 14px;  
+}  
+.alert-block > p,  
+.alert-block > ul {  
+    margin-bottom: 0;  
+}  
+.alert-block p + p {  
+    margin-top: 5px;  
 }
 
 /* ===== cookieCuttr by Chris Wharton (http://cookiecuttr.com) ===== */
