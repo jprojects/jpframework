@@ -14,7 +14,7 @@
 require(JPATH_ADMINISTRATOR.'/components/com_jpframework/helpers/blocks.php');
 
 if(!defined('DS')) { define('DS', DIRECTORY_SEPARATOR); }
-if(!defined('JPF_BLOCKS_PATH')) { define('JPF_BLOCKS_PATH', JPATH_ADMINISTRATOR.'/components/com_jpframework/blocks/'); }
+if(!defined('JPF_BLOCKS_PATH')) { define('JPF_BLOCKS_PATH', JPATH_ADMINISTRATOR.'/components/com_jpframework/blocks'); }
 
 class jpf  extends blocksHelper
 {       
@@ -128,7 +128,7 @@ class jpf  extends blocksHelper
 		    	$html = "";
 		    	JRequest::setVar('blockid', $row->id);
 	    		$path1 = dirname(__FILE__).DS.'html'.DS.'blocks'.DS.$row->type.DS.'block.php';
-				$path2 = JPATH_ADMINISTRATOR.DS.'components'.DS.'com_jpframework'.DS.'blocks'.DS.$row->type.DS.'block.php';
+				$path2 = JPF_BLOCKS_PATH.DS.$row->type.DS.'block.php';
 		    	if (is_file($path1)) {
 		    		//tmpl override
 		    		include $path1;
