@@ -12,16 +12,20 @@
 */
 
 $doc = JFactory::getDocument();
-if($doc->countModules('jpf-left') && $doc->countModules('jpf-right')) { $colsc = 6; $colsl = 3; $colsr = 3; }
-if(!$doc->countModules('jpf-left') && $doc->countModules('jpf-right')) { $colsc = 8; $colsl = 0; $colsr = 4; }
-if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc = 8; $colsl = 4; $colsr = 0; }
-if(!$doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc = 12; $colsl = 0; $colsr = 0; }
+$colsc = "";
+$colsl = "";
+$colsr = "";
+if($doc->countModules('jpf-left') || $doc->countModules('jpf-right')) { 
+	if($doc->countModules('jpf-left') && $doc->countModules('jpf-right')) { $colsc = 'col-md-6'; $colsl = 'col-md-3'; $colsr = 'col-md-3'; }
+	if(!$doc->countModules('jpf-left') && $doc->countModules('jpf-right')) { $colsc = 'col-md-8'; $colsl = 'col-md-0'; $colsr = 'col-md-2'; }
+	if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc = 'col-md-8'; $colsl = 'col-md-2'; $colsr = 'col-md-0'; }
+}
 
 ?>
 
 <?php if(jpf::getparameter('jpf-top') != 0) : ?>
 <!-- start top row -->	
-<div class="row first-row">		
+<div class="first-row">		
 <?php echo jpf::getColumn('jpf-top', 'top'); ?>		
 </div>
 <!-- end top row -->
@@ -29,28 +33,30 @@ if(!$doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc
     	
 <?php if(jpf::getparameter('jpf-main') != 0) : ?>
 <!-- start main row -->	
-<div class="row">
 <?php echo jpf::getColumn('jpf-main', 'main'); ?>		
-</div>
 <!-- end main row -->
 <?php endif; ?>
 
-<div class="container">
+<div>
 <?php if($doc->countModules('jpf-left')) : ?>
-<div class="col-lg-<?php echo $colsl; ?>">
+<div class="<?php echo $colsl; ?>">
     <jdoc:include type="modules" name="jpf-left" />
 </div>
 <?php endif; ?>
 
-<div class="col-lg-<?php echo $colsc; ?>">
-    
-    	<jdoc:include type="message" />
+<div class="<?php echo $colsc; ?> mainbody">
+  
+  	<?php if(count(JFactory::getApplication()->getMessageQueue())) : ?>  
+    <div class="container top20"><jdoc:include type="message" /></div>
+    <?php endif; ?>
+    <?php if(!jpf::isFrontpage()) : ?>
 	<jdoc:include type="component" />
+	<?php endif; ?>
 	
 </div>
 
 <?php if($doc->countModules('jpf-right')) : ?>
-<div class="col-lg-<?php echo $colsr; ?>">
+<div class="<?php echo $colsr; ?>">
 	<jdoc:include type="modules" name="jpf-right" />
 </div>
 <?php endif; ?>
@@ -58,17 +64,13 @@ if(!$doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc
 
 <?php if(jpf::getparameter('jpf-showcase') != 0) : ?>
 <!-- start showcase row -->	
-<div class="row">
 <?php echo jpf::getColumn('jpf-showcase', 'showcase'); ?>		
-</div>
 <!-- end showcase row -->
 <?php endif; ?>
     	
 <?php if(jpf::getparameter('jpf-bottom') != 0) : ?>
 <!-- start bottom row -->	
-<div class="row">
 <?php echo jpf::getColumn('jpf-bottom', 'bottom'); ?>		
-</div>
 <!-- end bottom row -->
 <?php endif; ?>
 
