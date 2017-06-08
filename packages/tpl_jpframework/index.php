@@ -11,7 +11,7 @@
 */
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
-error_reporting(E_ALL & ~E_STRICT & ~E_NOTICE);
+error_reporting(E_ALL & ~E_NOTICE & ~E_DEPRECATED);
 require_once('jp_framework.class.php');
 ?>
 <!DOCTYPE html>
