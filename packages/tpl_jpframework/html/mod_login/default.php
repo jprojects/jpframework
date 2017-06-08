@@ -11,8 +11,8 @@ defined('_JEXEC') or die;
 
 require_once JPATH_SITE . '/components/com_users/helpers/route.php';
 
-JHtml::_('behavior.keepalive');
-JHtml::_('bootstrap.tooltip');
+//JHtml::_('behavior.keepalive');
+//JHtml::_('bootstrap.tooltip');
 
 $params = &JComponentHelper::getParams( 'com_jpframework' );
 $link = $params->get( 'register', 'index.php?option=com_users&view=registration&Itemid=' . UsersHelperRoute::getRegistrationRoute() );
