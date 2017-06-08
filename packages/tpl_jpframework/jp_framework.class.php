@@ -55,6 +55,14 @@ class jpf  extends blocksHelper
     	JFactory::getDocument()->addStylesheet('templates/jpframework/css/jpframework.css');
     	JFactory::getDocument()->addStylesheet('//fonts.googleapis.com/css?family='.str_replace(' ', '+', $body_font).':300italic,400italic,700italic,400,300,700');
     }
+    
+    public static function unload()
+    {
+    	$scripts = array('/media/jui/js/bootstrap.min.js');
+    	foreach($scripts as $script) {
+    		unset(JFactory::getDocument()->_scripts[JURI::root(true).$script]);
+    	}
+    }
 
     /**
      * Method to know if we are in the frontpage or not

@@ -20,6 +20,7 @@ require_once('jp_framework.class.php');
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jdoc:include type="head" />
+<?php jpf::unload(); ?>
 <link type="text/plain" rel="author" href="<?php echo $this->baseurl.'/templates/'.$this->template; ?>/humans.txt" />
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?php echo $this->baseurl.'/templates/'.$this->template; ?>/scripts/wow.min.js" type="text/javascript"></script>
