@@ -35,7 +35,7 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 <!-- end main row -->
 <?php endif; ?>
 
-<div>
+<div class="row" style="margin:0;">
 <?php if($doc->countModules('jpf-left')) : ?>
 <div class="<?php echo $colsl; ?>">
     <jdoc:include type="modules" name="jpf-left" />
