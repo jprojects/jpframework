@@ -12,7 +12,7 @@
 */
 
 $doc = JFactory::getDocument();
-$colsc = "container";
+$colsc = "container-fluid";
 $colsl = "";
 $colsr = "";
 if($doc->countModules('jpf-left') && $doc->countModules('jpf-right')) { $colsc = 'col-md-6'; $colsl = 'col-md-3'; $colsr = 'col-md-3'; }
