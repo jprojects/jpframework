@@ -10,6 +10,20 @@
 			description="Block title" 
 		/>
 		<field 
+			name="block_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Background" 
+			description="Background color" 
+		/>
+		<field 
+			name="block_font_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Font color" 
+			description="Font color" 
+		/>
+		<field 
 			name="uniqid" 
 			type="text" 
 			default="" 
