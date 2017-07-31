@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+
+	<fieldset name="block">
+		<field 
+			name="title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="Block title" 
+		/>
+		<field 
+			name="uniqid" 
+			type="text" 
+			default="" 
+			label="Uniqid" 
+			description="Uniqid is used as the block section id" 
+		/>
+		<field 
+			name="bg_title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="title" 
+		/>
+		<field 
+        	name="bg_subtitle" 
+        	type="text" 
+        	default="" 
+        	label="Subtitle" 
+        	description="subtitle" 
+        />
+		<field 
+			name="bg_image" 
+			type="media" 
+			directory="" 
+			label="Image" 
+		/>
+	</fieldset>
+</form>

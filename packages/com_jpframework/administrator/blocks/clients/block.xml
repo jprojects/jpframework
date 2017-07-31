@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="block">
+	<field 
+			name="title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="Block title" 
+		/>
+		<field 
+			name="block_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Background" 
+			description="Background color" 
+		/>
+		<field 
+			name="uniqid" 
+			type="text" 
+			default="" 
+			label="Uniqid" 
+			description="Uniqid is used as the block section id" 
+		/>
+		<field 
+			name="heading_title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="Heading title" 
+		/>
+		<field 
+			name="heading_subtitle" 
+			type="textarea" 
+			default="" 
+			label="Subtitle" 
+			description="Subheading text" 
+			rows="10" 
+			cols="5" 
+			filter="raw"
+		/>
+		<field 
+			name="testimonial_img1" 
+			type="media" 
+			directory="sampledata/brands" 
+			label="Image 1" 
+		/>
+		<field 
+			name="link1" 
+			type="text" 
+			default="#" 
+			label="Link 1" 
+			description="" 
+		/>
+		<field 
+			name="testimonial_img2" 
+			type="media" 
+			directory="sampledata/brands" 
+			label="Image 2" 
+		/>
+		<field 
+			name="link2" 
+			type="text" 
+			default="#" 
+			label="Link 2" 
+			description="" 
+		/>
+		<field 
+			name="testimonial_img3" 
+			type="media" 
+			directory="sampledata/brands" 
+			label="Image 3" 
+		/>
+		<field 
+			name="link3" 
+			type="text" 
+			default="#" 
+			label="Link 3" 
+			description="" 
+		/>
+		<field 
+			name="testimonial_img4" 
+			type="media" 
+			directory="sampledata/brands" 
+			label="Image 4" 
+		/>
+		<field 
+			name="link4" 
+			type="text" 
+			default="#" 
+			label="Link 4" 
+			description="" 
+		/>
+		<field 
+			name="testimonial_img5" 
+			type="media" 
+			directory="sampledata/brands" 
+			label="Image 5" 
+		/>
+		<field 
+			name="link5" 
+			type="text" 
+			default="#" 
+			label="Link 5" 
+			description="" 
+		/>
+		<field 
+			name="testimonial_img6" 
+			type="media" 
+			directory="sampledata/brands" 
+			label="Image 6" 
+		/>
+	</fieldset>
+
+</form>
