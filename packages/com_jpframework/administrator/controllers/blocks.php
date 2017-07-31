@@ -117,7 +117,6 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 		$menu 				= $params->get('menu');
 		$menu_bg 			= $params->get('menu_bg');
 		$unicode 			= $params->get('unicode');
-		$bootswatch 		= $params->get('bootswatch', 'darkly');
 		
 		$options 	= array( 'compress'=>true );
 		$parser 	= new Less_Parser($options);
@@ -134,7 +133,6 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 			@footer_fcolor: ".$footer_fcolor.";
 			@menu_background: ".$menu_bg.";
 			@unicode: '".$unicode."';
-			@bootswatch: '".$bootswatch."';
 		");
 		$css = $parser->getCss();
 		file_put_contents(JPATH_ROOT.'/templates/jpframework/css/jpframework.css', $css);

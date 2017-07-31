@@ -193,21 +193,6 @@
             <option value="Ubuntu Mono">Ubuntu Mono</option>
             <option value="Vollkorn">Vollkorn</option>
         </field>
-         <field 
-        	name="bootswatch" 
-        	type="list" 
-        	default="darkly" 
-        	label="COM_JPFRAMEWORK_BOOTSWATCH_LABEL" 
-        	description="COM_JPFRAMEWORK_BOOTSWATCH_DESC" 
-        >
-            <option value="darkly">Darkly</option>
-            <option value="flatly">Flatly</option>
-            <option value="sandstone">Sandstone</option>
-            <option value="journal">Journal</option>
-            <option value="superhero">Superhero</option>
-            <option value="united">United</option>
-            <option value="yeti">Yeti</option>
-         </field>
     	<field 
 			name="body_color" 
 			type="color" 
