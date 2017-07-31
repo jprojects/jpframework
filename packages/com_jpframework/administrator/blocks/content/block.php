@@ -20,9 +20,26 @@ if(blocksHelper::getBlockParameter($blockid,'content_position','right') == 'righ
 }
 ?>
 
+<style>
+#content<?= $blockid; ?>  {
+    padding-bottom: 60px;
+    padding-top: 60px;
+}
+#content<?= $blockid; ?> header {
+    margin-bottom: 30px;
+    text-align: center;
+}
+</style>
+
 <section id="<?php echo blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
 
-<div id="content<?= $blockid; ?>" style="background-color:<?php echo blocksHelper::getBlockParameter($blockid,'block_color'); ?>">
+<div id="content<?= $blockid; ?>" style="background-color:<?php echo blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
+
+<header>
+<h1><?= blocksHelper::getBlockParameter($blockid, 'content_title'); ?></h1>
+</header>
+
+
 <div class="container jpfblock">
 	<div class="col-md-6 pull-<?php echo $pos; ?>">
 		<?php if(blocksHelper::getBlockParameter($blockid,'content_video') == '') : ?>
@@ -33,7 +50,6 @@ if(blocksHelper::getBlockParameter($blockid,'content_position','right') == 'righ
     </div> 
 
      <div class="col-md-6 pull-<?php echo $pos2; ?>">
-     	 <h3><?php echo blocksHelper::getBlockParameter($blockid, 'content_title', 'Single Photo Example'); ?></h3>
          <div class="lead"><?php echo blocksHelper::getBlockParameter($blockid,'content_text'); ?></div>
       </div> 
 </div>
