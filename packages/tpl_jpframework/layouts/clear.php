@@ -47,7 +47,7 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
   	<?php if(count(JFactory::getApplication()->getMessageQueue())) : ?>  
     <div class="container top20"><jdoc:include type="message" /></div>
     <?php endif; ?>
-    <?php if(!jpf::isFrontpage()) : ?>
+    <?php if((jpf::getparameter('front_component') == 1 && jpf::isFrontpage()) || !jpf::isFrontpage()) : ?>
 	<jdoc:include type="component" />
 	<?php endif; ?>
 	
