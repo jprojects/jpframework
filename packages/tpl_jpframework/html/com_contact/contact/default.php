@@ -202,16 +202,16 @@ jimport('joomla.html.html.bootstrap');
                     <form id="contact-form" action="<?php echo JRoute::_('index.php'); ?>" method="post" class="form-validate form-horizontal">
 
 			<div class="form-group">
-                        	<input type="text" name="jform[contact_name]" id="jform_contact_name" required="required" aria-required="true" aria-invalid="true" class="required invalid form-control input-hg" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_NAME'); ?>">
+                        	<input type="text" name="jform[contact_name]" id="jform_contact_name" required="required" aria-required="true" aria-invalid="true" class="required invalid form-control input-lg" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_NAME'); ?>">
 			</div>
 			<div class="form-group">
-                        	<input type="text" id="jform_contact_email" name="jform[contact_email]" required="required" aria-required="true" class="required validate-email form-control input-hg" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_EMAIL'); ?>">
+                        	<input type="text" id="jform_contact_email" name="jform[contact_email]" required="required" aria-required="true" class="required validate-email form-control input-lg" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_EMAIL'); ?>">
 			</div>
 			<div class="form-group">
-				<input type="text" id="jform_contact_subject" name="jform[contact_subject]" required="required" aria-required="true" class="required form-control input-hg" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_SUBJECT'); ?>">
+				<input type="text" id="jform_contact_subject" name="jform[contact_subject]" required="required" aria-required="true" class="required form-control input-lg" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_SUBJECT'); ?>">
 			</div>
 			<div class="form-group">
-                        	<textarea class="required form-control input-hg" rows="4" id="jform_contact_message" required="required" aria-required="true" name="jform[contact_message]" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_MSG'); ?>"></textarea>
+                        	<textarea class="required form-control input-lg" rows="4" id="jform_contact_message" required="required" aria-required="true" name="jform[contact_message]" placeholder="<?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_MSG'); ?>"></textarea>
 			</div>
 			
 			<div class="form-group">
