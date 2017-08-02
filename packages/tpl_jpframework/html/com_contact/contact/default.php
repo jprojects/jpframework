@@ -192,7 +192,7 @@ jimport('joomla.html.html.bootstrap');
 
             <div class="row contact-intro">
 			<?php $this->contact->image == '' ? $c_img = '' : $c_img = $this->contact->image; ?>
-						<?php if($c_image != '') : ?>
+						<?php if($c_img != '') : ?>
                         <div class="col-md-3 text-right"><img class="img-responsive" src="<?php echo $c_img; ?>" alt=""></div>
                         <?php endif; ?>
                         <div class="col-md-<?php if($c_image != '') : ?>12<?php else: ?>9<?php endif; ?>"><p class="lead"><?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_TITLE'); ?></p></div>                        
