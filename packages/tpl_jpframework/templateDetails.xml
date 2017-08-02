@@ -43,7 +43,9 @@
         <position>jpf-right</position>
     	<position>jpf-showcase</position>
     	<position>jpf-bottom</position>
-        <position>jpf-footer</position>
+        <position>jpf-footer-1</position>
+        <position>jpf-footer-2</position>
+        <position>jpf-footer-3</position>
   </positions>
   <languages folder="language">
 		<language tag="en-GB">en-GB/en-GB.tpl_jpframework.ini</language>

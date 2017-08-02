@@ -80,7 +80,15 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 		<?php if(jpf::getparameter('jpf-footer') != 0) : ?>
 		<!-- start footer row -->	
 		<div class="row">
-		<?php echo jpf::getColumn('jpf-footer', 'footer'); ?>		
+			<div class="col-xs-12 col-md-4">
+			<?php echo jpf::getColumn('jpf-footer-1', 'footer-1'); ?>	
+			</div>
+			<div class="col-xs-12 col-md-4">
+			<?php echo jpf::getColumn('jpf-footer-2', 'footer-2'); ?>	
+			</div>
+			<div class="col-xs-12 col-md-4">
+			<?php echo jpf::getColumn('jpf-footer-3', 'footer-3'); ?>	
+			</div>		
 		</div>
 		<!-- end footer row -->
 		<?php endif; ?>
