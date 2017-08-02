@@ -195,7 +195,7 @@ jimport('joomla.html.html.bootstrap');
 						<?php if($c_img != '') : ?>
                         <div class="col-md-3 text-right"><img class="img-responsive" src="<?php echo $c_img; ?>" alt=""></div>
                         <?php endif; ?>
-                        <div class="col-md-<?php if($c_image != '') : ?>12<?php else: ?>9<?php endif; ?>"><p class="lead"><?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_TITLE'); ?></p></div>                        
+                        <div class="col-md-<?php if($c_img != '') : ?>12<?php else: ?>9<?php endif; ?>"><p class="lead"><?php echo JText::_('JP_FRAMEWORK_CONTACT_FORM_TITLE'); ?></p></div>                        
                     </div>
 
                     <!--////////// CONTACT FORM //////////-->
