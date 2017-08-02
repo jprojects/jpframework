@@ -11,6 +11,8 @@
 defined('_JEXEC') or die;
 
 $blockid = JRequest::getVar('blockid');
+$effect  = blocksHelper::getBlockParameter($blockid, 'effect', '');
+$effect != '' ? $efecte = 'wow '.$effect : $efecte = '';
 if(blocksHelper::getBlockParameter($blockid,'content_position','right') == 'right') {
 	$pos  = 'right';
 	$pos2 = 'left';
@@ -23,7 +25,7 @@ if(blocksHelper::getBlockParameter($blockid,'content_position','right') == 'righ
 <style>
 #content<?= $blockid; ?>  {
     padding-bottom: 60px;
-    padding-top: 60px;
+    padding-top: 30px;
 }
 #content<?= $blockid; ?> header {
     margin-bottom: 30px;
@@ -41,7 +43,7 @@ if(blocksHelper::getBlockParameter($blockid,'content_position','right') == 'righ
 
 
 <div class="container jpfblock">
-	<div class="col-md-6 pull-<?php echo $pos; ?>">
+	<div class="col-md-6 pull-<?php echo $pos; ?> <?= $efecte; ?>">
 		<?php if(blocksHelper::getBlockParameter($blockid,'content_video') == '') : ?>
     	<img src="<?php echo blocksHelper::getBlockParameter($blockid,'content_img', 'http://preview.simonswiss.com/booom/images/img.png'); ?>" alt="placeholder image" class="img-responsive">
     	<?php else : ?>
