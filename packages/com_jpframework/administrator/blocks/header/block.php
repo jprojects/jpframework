@@ -11,22 +11,23 @@
 defined('_JEXEC') or die;
 
 $blockid = JRequest::getVar('blockid');
-$app = JFactory::getApplication();
-$sitename = $app->getCfg('sitename', 'JP Framework');
 ?>
 
+<style>
+.header { 
+	height: 250px;
+	width: 100%;
+}
+.header-img {
+    background-image: url(<?= JURI::root().blocksHelper::getBlockParameter($blockid, 'header_logo'); ?>);
+    height: 100vh;
+    max-height: 250px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+</style>
 
-
-<main class="bs-docs-masthead" id="<?php echo blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" role="main" style="text-align: center;background-color:<?php echo blocksHelper::getBlockParameter($blockid,'block_color'); ?>">
-  <div class="container">
-  	<?php if(blocksHelper::getBlockParameter($blockid,'header_logo') != '') : ?>
-    <img src="<?php echo blocksHelper::getBlockParameter($blockid,'header_logo'); ?>" alt="logo">
-    <?php else : ?>
-    <h1><?php echo $sitename; ?></h1>
-    <?php endif; ?>
-    <p class="lead"><?php echo blocksHelper::getBlockParameter($blockid,'header_lead'); ?></p>
-    <?php if(blocksHelper::getBlockParameter($blockid,'header_button_txt') != '') : ?>
-    <p><a href="<?php echo blocksHelper::getBlockParameter($blockid,'header_button_link'); ?>" class="btn"><?php echo blocksHelper::getBlockParameter($blockid,'header_button_txt'); ?></a></p>
-    <?php endif; ?>
-  </div>
-</main>
+<div class="header" id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
+	<div class="header-img"></div>
+</div>
