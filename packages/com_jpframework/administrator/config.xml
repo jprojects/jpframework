@@ -175,6 +175,15 @@
           	label="JP_FRAMEWORK_REGISTER_LABEL" 
           	description="JP_FRAMEWORK_REGISTER_DESC" 
           />
+          <field
+          	name="unload"
+          	type="textarea"
+          	label="JP_FRAMEWORK_UNLOAD_LABEL"
+          	description="JP_FRAMEWORK_UNLOAD_DESC"
+          	rows="10" 
+			cols="5" 
+			filter="raw"
+          />
     </fieldset>
     <fieldset label="COM_JPFRAMEWORK_STYLES" name="styles">
     	<field type="list" name="body_font" size="15" default="Noto Sans" label="COM_JPFRAMEWORK_BODYFONT_LABEL" description="COM_JPFRAMEWORK_BODYFONT_DESC">

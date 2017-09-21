@@ -59,10 +59,13 @@ class jpf  extends blocksHelper
     
     public static function unload()
     {
-    	//ToDo::coger este array desde la config
-    	$scripts = array('/media/jui/js/bootstrap.min.js');
+    	$params = &JComponentHelper::getParams( 'com_jpframework' );
+    	
+    	$scripts = implode(',', $params->get('unload'));    	
+    	$scripts[] = 'media/jui/js/bootstrap.min.js';
+    	
     	foreach($scripts as $script) {
-    		unset(JFactory::getDocument()->_scripts[JURI::root(true).$script]);
+    		unset(JFactory::getDocument()->_scripts[JURI::root().$script]);
     	}
     }
 
