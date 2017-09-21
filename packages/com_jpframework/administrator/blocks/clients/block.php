@@ -11,6 +11,7 @@
 defined('_JEXEC') or die;
 
 $blockid = JRequest::getVar('blockid');
+blocksHelper::getBlockParameter($blockid, 'effect', '') == '' ? $effect = '' : $effect = 'class="wow '.$effect.'"';
 ?>
 
 <style>
@@ -19,7 +20,7 @@ $blockid = JRequest::getVar('blockid');
 }
 </style>
 
-<section id="<?php echo blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:#ecf0f1">
+<section <?= $effect; ?> id="<?php echo blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:#ecf0f1">
 
 		<div class="container">
 		
@@ -36,44 +37,44 @@ $blockid = JRequest::getVar('blockid');
 
 						<div class="col-xs-12 col-sm-12 col-md-2 text-center">
 							<?php if(blocksHelper::getBlockParameter($blockid, 'testimonial_img1') != '') : ?>
-							<!--<a href="<?= blocksHelper::getBlockParameter($blockid, 'link1'); ?>" target="_blank">-->
+							<a href="<?= blocksHelper::getBlockParameter($blockid, 'link1', '#'); ?>" target="_blank">
 							<img class="img-responsive" src="<?= blocksHelper::getBlockParameter($blockid, 'testimonial_img1'); ?>" alt="">
-							<!--</a>-->
+							</a>
 							<?php endif; ?>
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-2 text-center">
 							<?php if(blocksHelper::getBlockParameter($blockid, 'testimonial_img2') != '') : ?>
-							<!--<a href="<?= blocksHelper::getBlockParameter($blockid, 'link2'); ?>" target="_blank">-->
+							<a href="<?= blocksHelper::getBlockParameter($blockid, 'link2', '#'); ?>" target="_blank">
 							<img class="img-responsive" src="<?= blocksHelper::getBlockParameter($blockid, 'testimonial_img2'); ?>" alt="">
-							<!--</a>-->
+							</a>
 							<?php endif; ?>
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-2 text-center">
 							<?php if(blocksHelper::getBlockParameter($blockid, 'testimonial_img3') != '') : ?>
-							<!--<a href="<?= blocksHelper::getBlockParameter($blockid, 'link3'); ?>" target="_blank">-->
+							<a href="<?= blocksHelper::getBlockParameter($blockid, 'link3', '#'); ?>" target="_blank">
 							<img class="img-responsive" src="<?= blocksHelper::getBlockParameter($blockid, 'testimonial_img3'); ?>" alt="">
-							<!--</a>-->
+							</a>
 							<?php endif; ?>
 						</div>
 						<div class="col-xs-12 col-md-2">
 							<?php if(blocksHelper::getBlockParameter($blockid, 'testimonial_img4') != '') : ?>
-							<!--<a href="<?= blocksHelper::getBlockParameter($blockid, 'link4'); ?>" target="_blank">-->
+							<a href="<?= blocksHelper::getBlockParameter($blockid, 'link4', '#'); ?>" target="_blank">
 							<img class="img-responsive" src="<?= blocksHelper::getBlockParameter($blockid, 'testimonial_img4'); ?>" alt="">
-							<!--</a>-->
+							</a>
 							<?php endif; ?>
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-2 text-center">
 							<?php if(blocksHelper::getBlockParameter($blockid, 'testimonial_img5') != '') : ?>
-							<!--<a href="<?= blocksHelper::getBlockParameter($blockid, 'link5'); ?>" target="_blank">-->
+							<a href="<?= blocksHelper::getBlockParameter($blockid, 'link5', '#'); ?>" target="_blank">
 							<img class="img-responsive" src="<?= blocksHelper::getBlockParameter($blockid, 'testimonial_img5'); ?>" alt="">
-							<!--</a>-->
+							</a>
 							<?php endif; ?>
 						</div>
 						<div class="col-xs-12 col-sm-12 col-md-2 text-center">
 							<?php if(blocksHelper::getBlockParameter($blockid, 'testimonial_img6') != '') : ?>
-							<!--<a href="<?= blocksHelper::getBlockParameter($blockid, 'link6'); ?>" target="_blank">-->
+							<a href="<?= blocksHelper::getBlockParameter($blockid, 'link6', '#'); ?>" target="_blank">
 							<img class="img-responsive" src="<?= blocksHelper::getBlockParameter($blockid, 'testimonial_img6'); ?>" alt="">
-							<!--</a>-->
+							</a>
 							<?php endif; ?>
 						</div>
 	
