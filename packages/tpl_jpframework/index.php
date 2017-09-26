@@ -17,6 +17,18 @@ require_once('jp_framework.class.php');
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <head>
+<?php if(jpf::getparameter('ganalytics') != '') : ?>
+<!-- Google analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?= jpf::getparameter('ganalytics'); ?>"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+ 
+  gtag('config', '<?= jpf::getparameter("ganalytics"); ?>');
+</script>
+<!-- End Google analytics -->
+<?php endif; ?>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jdoc:include type="head" />
@@ -56,21 +68,6 @@ jQuery.cookieCuttr({
 </head>
     
 <body>
-
-<?php if(jpf::getparameter('ganalytics') != '') : ?>
-<!-- Google analytics -->
-<script type="text/javascript">
-	var _gaq = _gaq || [];
-	_gaq.push(['_setAccount', '<?= jpf::getparameter("ganalytics"); ?>']);
-	_gaq.push(['_trackPageview']);
-	(function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	})();
-</script>
-<!-- End Google analytics -->
-<?php endif; ?>
 
 <?php if(jpf::getparameter('fluid', 0) == 0) : ?>
 <div class="container">
