@@ -52,6 +52,17 @@
             <option value="0">JNO</option>
             <option value="1">JYES</option>
          </field>
+         <field 
+			name="itemids" 
+			type="menuitem" 
+			default="0" 
+			multiple="true"
+			label="COM_JPFRAMEWORK_FORM_LBL_BLOCKS_MENUITEM" 
+			published="1" 
+			description="COM_JPFRAMEWORK_FORM_DESC_BLOCKS_MUNITEM"
+		>
+		<option	value="0">JALL</option> 
+		</field>
         <field 
         	name="jpf-top" 
         	type="radio" 

@@ -97,6 +97,30 @@ class jpf  extends blocksHelper
     }
     
     /**
+     * Method to know if component is show in a page or not
+     * @access public
+     * @return boolean, true if is in frontpage or false if not
+    */
+    public static function showComponent()
+    {
+    	$params = &JComponentHelper::getParams( 'com_jpframework' );
+    	
+    	$ids 	= $params->get('itemids');
+    	
+        $app    = JFactory::getApplication();
+        $lang   = JFactory::getLanguage();
+        
+        $menu   = $app->getMenu();	 
+	    $active = $menu->getActive();
+	    $itemId = $active->id;
+	    
+	    if (!in_array($itemId, $ids)) {
+            return true;
+        }
+        return false;
+    }
+    
+    /**
 	 * Method to get the page suffix
      * @access public
      * @return the page suffix
