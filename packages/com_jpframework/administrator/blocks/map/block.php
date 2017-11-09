@@ -16,10 +16,12 @@ $zoom     = blocksHelper::getBlockParameter($blockid, 'zoom', '9');
 $lat      = blocksHelper::getBlockParameter($blockid, 'lat', '28.9285745');
 $long     = blocksHelper::getBlockParameter($blockid, 'long', '77.09149350000007');
 $key      = blocksHelper::getBlockParameter($blockid, 'apikey');
+$style    = blocksHelper::getBlockParameter($blockid, 'style');
 $styles   = blocksHelper::getBlockParameter($blockid, 'styles');
 $type     = blocksHelper::getBlockParameter($blockid, 'type', 'roadmap');
 $styles   = str_replace(' ', '', $styles);
 $styles   = str_replace('"',"'", $styles);
+$style == 1 ? $customstyles = ",styles: ".$styles : $customstyles = "";
 
 blocksHelper::getBlockParameter($blockid, 'draggable', 0) == 0 ? $draggable = 'false' : $draggable = 'true';
 blocksHelper::getBlockParameter($blockid, 'scrollable', 0) == 0 ? $scrollable = 'false' : $scrollable = 'true';
@@ -34,8 +36,8 @@ $script = "function initialize() {
     		scaleControl: false,
     		draggable: ".$draggable.",
             center: new google.maps.LatLng(".$lat.", ".$long."),
-            mapTypeId: '".$type."',
-            styles: ".$styles."
+            mapTypeId: '".$type."'
+            ".$customstyles."
 	};
 
         var map = new google.maps.Map(document.getElementById('location-canvas'), mapOptions);
@@ -53,6 +55,6 @@ $script = "function initialize() {
 JFactory::getDocument()->addScriptDeclaration($script);
 ?>
 
-<section id="<?php echo blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style='padding:0;'>
-<div id='location-canvas' style='width:100%;height:<?php echo blocksHelper::getBlockParameter($blockid, 'height', '300px'); ?>;'></div>
+<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style='padding:0;'>
+<div id='location-canvas' style='width:100%;height:<?= blocksHelper::getBlockParameter($blockid, 'height', '300px'); ?>;'></div>
 </section>
