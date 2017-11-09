@@ -126,14 +126,14 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 				<li> <a target="_blank" href="<?php echo jpf::getparameter('linkedin'); ?>"><i class="fa fa-linkedin"></i></a></li> 
 				<?php endif; ?>  
 			</ul>
-			&copy; <?php echo date('Y'); ?> <?php echo jpf::getSitename(); ?>
+			&copy; <?= date('Y'); ?> <?= jpf::getSitename(); ?>
 			<?php if(jpf::getparameter('privacy') != '') : ?>
-			<a href="<?php echo jpf::getparameter('privacy'); ?>"><?= JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
+			<a href="<?= jpf::getArticleByLanguage('privacy'); ?>"><?= JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
 			&middot;
 			<?php endif; ?>
 		
 			<?php if(jpf::getparameter('terms') != '') : ?>
-			<a href="<?php echo jpf::getparameter('terms'); ?>"><?= JText::_('JP_FRAMEWORK_TERMS'); ?></a>
+			<a href="<?= jpf::getArticleByLanguage('terms'); ?>"><?= JText::_('JP_FRAMEWORK_TERMS'); ?></a>
 			<?php endif; ?>
 		</div>
 	</p>

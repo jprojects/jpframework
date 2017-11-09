@@ -118,20 +118,54 @@
             <option value="0">JNO</option>
             <option value="1">JYES</option>
          </field>
-        <field 
-        	name="privacy" 
-        	type="article" 
-        	default="" 
-        	label="COM_JPFRAMEWORK_PRIVACY_LABEL" 
-        	description="COM_JPFRAMEWORK_PRIVACY_DESC" 
-        />
-		<field 
-			name="terms" 
-			type="article" 
-			default="" 
-			label="COM_JPFRAMEWORK_TERMS_LABEL" 
-			description="COM_JPFRAMEWORK_TERMS_DESC" 
-		/>
+        <field name="privacy"
+			type="repeatable"
+			icon="list"
+			description="COM_JPFRAMEWORK_PRIVACY_DESC"
+			label="COM_JPFRAMEWORK_PRIVACY_LABEL"
+			default=''>
+			<fieldset hidden="true" name="list_templates_modal" repeat="true">
+				<field 
+					name="language" 
+					type="language" 
+					client="site" 
+					default="" 
+					label="Select a language" 
+					description="" 
+				/>
+				<field 
+					name="article" 
+					type="text" 
+					default="" 
+					label="COM_JPFRAMEWORK_PRIVACY_LABEL" 
+					description="COM_JPFRAMEWORK_PRIVACY_DESC" 
+				/>				
+			</fieldset>
+		</field>  
+		<field name="terms"
+			type="repeatable"
+			icon="list"
+			description="COM_JPFRAMEWORK_TERMS_DESC"
+			label="COM_JPFRAMEWORK_TERMS_LABEL"
+			default=''>
+			<fieldset hidden="true" name="list_templates_modal" repeat="true">
+				<field 
+					name="language" 
+					type="language" 
+					client="site" 
+					default="" 
+					label="Select a language" 
+					description="" 
+				/>
+				<field 
+					name="article" 
+					type="text" 
+					default="" 
+					label="COM_JPFRAMEWORK_PRIVACY_LABEL" 
+					description="COM_JPFRAMEWORK_PRIVACY_DESC" 
+				/>				
+			</fieldset>
+		</field>
 		<field 
 			type="radio" 
 			name="fluid" 
