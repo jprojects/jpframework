@@ -108,6 +108,7 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 		$params = &JComponentHelper::getParams( 'com_jpframework' );
 	
 		$body_color 		= $params->get('body_color');
+		$body_fontsize 		= $params->get('body_fontsize');
 		$body_font 			= $params->get('body_font');
 		$body_fcolor 		= $params->get('body_fcolor');
 		$link_color 		= $params->get('link_color');
@@ -125,6 +126,7 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 		$parser->parseFile( JPATH_ROOT.'/templates/jpframework/css/animate.less' );
 		$parser->parse("
 			@body_color: ".$body_color.";
+			@body_fontsize: ".$body_fontsize.";
 			@body_font:  '".$body_font."';
 			@body_fcolor:  ".$body_fcolor.";
 			@link_color: ".$link_color.";
