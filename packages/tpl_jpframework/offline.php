@@ -26,7 +26,7 @@ $parts = explode('-', $date);
     <title><?= htmlspecialchars($app->getCfg('sitename')); ?></title>
 
     <!-- Bootstrap -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- fontawesome -->
     <script src="https://use.fontawesome.com/3db7fc1628.js"></script>
@@ -71,9 +71,9 @@ $parts = explode('-', $date);
       <div class="row">
         <div class="col-md-12">
         <?php if ($app->getCfg('display_offline_message', 1) == 1 && str_replace(' ', '', $app->getCfg('offline_message')) != ''): ?>
-        <h1 class="text-center"><?php echo $app->getCfg('offline_message'); ?></h1>
+        <h1 class="text-center"><?= $app->getCfg('offline_message'); ?></h1>
         <?php elseif ($app->getCfg('display_offline_message', 1) == 2 && str_replace(' ', '', JText::_('JOFFLINE_MESSAGE')) != ''): ?>
-        <h1 class="text-center"><?php echo JText::_('JOFFLINE_MESSAGE'); ?></h1>
+        <h1 class="text-center"><?= JText::_('JOFFLINE_MESSAGE'); ?></h1>
         <?php  endif; ?>
         </div>
       </div>
@@ -94,8 +94,8 @@ $parts = explode('-', $date);
           </div>
 
           <div class="form-group">
-            <label for="passwd"><?php echo JText::_('JGLOBAL_PASSWORD') ?></label>
-            <input type="password" name="password" id="passwd" class="center-block form-control form-subs-email" placeholder="<?php echo JText::_('JGLOBAL_PASSWORD') ?>" />
+            <label for="passwd"><?= JText::_('JGLOBAL_PASSWORD') ?></label>
+            <input type="password" name="password" id="passwd" class="center-block form-control form-subs-email" placeholder="<?= JText::_('JGLOBAL_PASSWORD') ?>" />
           </div>
           
           <?php if (count($twofactormethods) > 1) : ?>
@@ -151,7 +151,7 @@ $parts = explode('-', $date);
     <script>
 	$(document).ready(function(){
 	  $("#counter").countdown({
-	  until: new Date(<?php echo $parts[0]; ?>, <?php echo $parts[1]; ?>, <?php echo $parts[2]; ?>, 0, 0, 0),
+	  until: new Date(<?= $parts[0]; ?>, <?= $parts[1]; ?>, <?= $parts[2]; ?>, 0, 0, 0),
 	  format: 'dHMS'
 	  });
 	});

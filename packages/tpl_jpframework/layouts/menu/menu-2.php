@@ -10,7 +10,7 @@
  *
 */
 
-JHtml::script('templates/jpframework/scripts/jquery.navgoco.js');
+JHtml::script('templates/jpframework/js/jquery.navgoco.js');
 
 ?>
 
@@ -55,9 +55,9 @@ jQuery(document).ready(function(){
  
     <a href="index.php" class="navbar-brand">
                     <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
-                    <img class="logo-img" src="<?php echo jpf::getparameter('topmenu-logo'); ?>" alt="<?php echo jpf::getSitename(); ?>">
+                    <img class="logo-img" src="<?= jpf::getparameter('topmenu-logo'); ?>" alt="<?= jpf::getSitename(); ?>">
                     <?php else : ?>
-                    <?php echo jpf::getSitename(); ?>
+                    <?= jpf::getSitename(); ?>
                     <?php endif; ?>
            </a> 
     <div class="navbar-header pull-right">
