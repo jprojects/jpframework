@@ -17,6 +17,7 @@ $lat      = blocksHelper::getBlockParameter($blockid, 'lat', '28.9285745');
 $long     = blocksHelper::getBlockParameter($blockid, 'long', '77.09149350000007');
 $key      = blocksHelper::getBlockParameter($blockid, 'apikey');
 $styles   = blocksHelper::getBlockParameter($blockid, 'styles');
+$type     = blocksHelper::getBlockParameter($blockid, 'type', 'roadmap');
 $styles   = str_replace(' ', '', $styles);
 $styles   = str_replace('"',"'", $styles);
 
@@ -26,14 +27,15 @@ blocksHelper::getBlockParameter($blockid, 'scrollable', 0) == 0 ? $scrollable = 
 blocksHelper::loadJs('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key='.$key);
 $script = "function initialize() {
         var mapOptions = {
-                zoom: ".$zoom.",
-                scrollwheel: ".$scrollable.",
+            zoom: ".$zoom.",
+            scrollwheel: ".$scrollable.",
     		navigationControl: false,
     		mapTypeControl: false,
     		scaleControl: false,
     		draggable: ".$draggable.",
-                center: new google.maps.LatLng(".$lat.", ".$long."),
-                styles: ".$styles."
+            center: new google.maps.LatLng(".$lat.", ".$long."),
+            mapTypeId: '".$type."',
+            styles: ".$styles."
 	};
 
         var map = new google.maps.Map(document.getElementById('location-canvas'), mapOptions);

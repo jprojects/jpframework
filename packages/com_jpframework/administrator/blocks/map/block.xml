@@ -55,6 +55,19 @@
 			<option value="1">JYES</option>
 		</field>
 		<field
+			name="type"
+			type="radio"
+			default="roadmap"
+			label="Map Type"
+			description=""
+			class="btn-group"
+		>
+			<option value="roadmap">Roadmap</option>
+			<option value="terrain">Terrain</option>
+			<option value="hybrid">Hybrid</option>
+			<option value="satellite">Satellite</option>
+		</field>
+		<field
 			name="height"
 			type="text"
 			default="300px"
