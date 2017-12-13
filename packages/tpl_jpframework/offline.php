@@ -12,8 +12,9 @@
 
 defined('_JEXEC') or die;
 
-$app = JFactory::getApplication();
-$date = JComponentHelper::getParams( 'com_jpframework' )->get( 'offline_date', date('Y-m-d', strtotime("+1 week")) );
+$app   = JFactory::getApplication();
+$params = JComponentHelper::getParams( 'com_jpframework' );
+$date  = $params->get( 'offline_date', date('Y-m-d', strtotime("+1 week")) );
 $parts = explode('-', $date);
 ?>
 
@@ -116,11 +117,11 @@ $parts = explode('-', $date);
     <div class="row">
       <div class="col-md-12">
         <div class="social-media-wrapper text-center">
-          <a href="#"><i class="fa fa-pinterest"></i></a>
-          <a href="#"><i class="fa fa-facebook-official"></i></a>
-          <a href="#"><i class="fa fa-google-plus-official"></i></a>
-          <a href="#"><i class="fa fa-twitter"></i></a>
-		  <a href="#"><i class="fa fa-instagram"></i></a>
+          <a href="<?= $params->get('pinterest', '#'); ?>#"><i class="fa fa-pinterest"></i></a>
+          <a href="<?= $params->get('facebook', '#'); ?>"><i class="fa fa-facebook-official"></i></a>
+          <a href="<?= $params->get('gplus', '#'); ?>"><i class="fa fa-google-plus-official"></i></a>
+          <a href="<?= $params->get('twitter', '#'); ?>"><i class="fa fa-twitter"></i></a>
+		  <a href="<?= $params->get('instagram', '#'); ?>"><i class="fa fa-instagram"></i></a>
         </div>
       </div>
     </div>
@@ -151,7 +152,7 @@ $parts = explode('-', $date);
     <script>
 	$(document).ready(function(){
 	  $("#counter").countdown({
-	  until: new Date(<?= $parts[0]; ?>, <?= $parts[1]; ?>, <?= $parts[2]; ?>, 0, 0, 0),
+	  until: new Date(<?= $parts[0]; ?>, <?= $parts[1]; ?> - 1, <?= $parts[2]; ?>),
 	  format: 'dHMS'
 	  });
 	});
