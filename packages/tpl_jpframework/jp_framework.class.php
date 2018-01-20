@@ -61,11 +61,15 @@ class jpf  extends blocksHelper
     {
     	$params = &JComponentHelper::getParams( 'com_jpframework' );
     	
-    	$scripts = implode(',', $params->get('unload'));    	
-    	$scripts[] = 'media/jui/js/bootstrap.min.js';
+    	$unload = $params->get('unload');
     	
-    	foreach($scripts as $script) {
-    		unset(JFactory::getDocument()->_scripts[JURI::root().$script]);
+    	if($unload != '') {
+			$scripts = implode(',', $params->get('unload'));    	
+			$scripts[] = 'media/jui/js/bootstrap.min.js';
+			
+			foreach($scripts as $script) {
+				unset(JFactory::getDocument()->_scripts[JURI::root().$script]);
+			}
     	}
     }
 
@@ -210,7 +214,7 @@ class jpf  extends blocksHelper
      * Method to render the number of columns on every position
      * @access public
      * @return set columns number and width
-     */
+    */
     public static function getColumn($mod, $name, $class="")
     {
     	jimport( 'joomla.document.html.html' );
@@ -225,6 +229,29 @@ class jpf  extends blocksHelper
     	//$grid[] = '</div>';
     
     	return implode("\n", $grid);
+    }    
+    
+    public static function getCarritoCount() 
+    {
+   		$db 	 = JFactory::getDbo();
+   		$session = JFactory::getSession();
+   		$user 	 = JFactory::getUser();
+   		
+   		if($user->guest) { return 0; }
+
+		//check if a comanda exist
+		$db->setQuery('select id from #__botiga_comandes where userid = '.$user->id.' and status = 1');
+		$id = $db->loadResult();
+		if($id > 0) { $session->set('idComanda', $id); }
+		
+		$idComanda = $session->get('idComanda', '');
+		
+		if($idComanda != '') {
+   			$db->setQuery('select sum(qty) from #__botiga_comandesDetall where idComanda = '.$idComanda);
+   			return $db->loadResult();
+   		} else {
+   			return 0;
+   		}
     }
 }
 
