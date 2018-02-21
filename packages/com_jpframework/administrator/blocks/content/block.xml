@@ -163,6 +163,7 @@
 			label="Content position" 
 			description="Content position" 
 		>
+			<option value="">Full width</option>
 			<option value="right">Right</option>
 			<option value="left">Left</option>
 		</field>
@@ -173,11 +174,11 @@
 			label="Image" 
 		/>
 		<field 
-			name="content_caption" 
+			name="content_img_alt" 
 			type="text" 
 			default="" 
-			label="Caption Title" 
-			description="Content caption" 
+			label="Image Alt" 
+			description="Image Alt" 
 		/>
 		<field 
 			name="content_video" 

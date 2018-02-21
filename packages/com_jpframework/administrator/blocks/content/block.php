@@ -13,12 +13,19 @@ defined('_JEXEC') or die;
 $blockid = JRequest::getVar('blockid');
 $effect  = blocksHelper::getBlockParameter($blockid, 'effect', '');
 $effect != '' ? $efecte = 'wow '.$effect : $efecte = '';
-if(blocksHelper::getBlockParameter($blockid,'content_position','right') == 'right') {
-	$pos  = 'right';
-	$pos2 = 'left';
+$position = blocksHelper::getBlockParameter($blockid,'content_position', '');
+if($position == 'right') {
+	$col  = 'col-xs-12 col-md-6';
+	$pos  = 'pull-right';
+	$col2 = 'col-xs-12 col-md-6';
+	$pos2 = 'pull-left';
+} elseif($position == 'left') {
+	$col  = 'col-xs-12 col-md-6';
+	$pos2 = 'pull-right';
+	$col2 = 'col-xs-12 col-md-6';
+	$pos  = 'pull-left';
 } else {
-	$pos2 = 'right';
-	$pos  = 'left';
+	$col2 = 12;
 }
 ?>
 
@@ -29,31 +36,35 @@ if(blocksHelper::getBlockParameter($blockid,'content_position','right') == 'righ
 }
 #content<?= $blockid; ?> header {
     margin-bottom: 30px;
-    text-align: center;
 }
 </style>
 
-<section id="<?php echo blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
+<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
 
-<div id="content<?= $blockid; ?>" style="background-color:<?php echo blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
-
-<header>
-<h1><?= blocksHelper::getBlockParameter($blockid, 'content_title'); ?></h1>
-</header>
+<div id="content<?= $blockid; ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
 
 
 <div class="container jpfblock">
-	<div class="col-md-6 pull-<?php echo $pos; ?> <?= $efecte; ?>">
+
+	<header>
+		<h1><?= blocksHelper::getBlockParameter($blockid, 'content_title'); ?></h1>
+		<hr class="line-green-medium">
+	</header>
+
+	<?php if($position != '') : ?>
+	<div class="<?= $col; ?>  <?= $pos; ?> <?= $efecte; ?>">
 		<?php if(blocksHelper::getBlockParameter($blockid,'content_video') == '') : ?>
-    	<img src="<?php echo blocksHelper::getBlockParameter($blockid,'content_img', 'http://preview.simonswiss.com/booom/images/img.png'); ?>" alt="placeholder image" class="img-responsive">
+    	<img src="<?= blocksHelper::getBlockParameter($blockid,'content_img', ''); ?>" alt="<?= blocksHelper::getBlockParameter($blockid,'content_alt', ''); ?>" class="img-responsive">
     	<?php else : ?>
-    	<iframe class="col-lg-2 col-md-6 col-sm-12 col-xs-12" src="<?php echo blocksHelper::getBlockParameter($blockid,'content_video'); ?>" frameborder="0" allowfullscreen></iframe>
+    	<iframe class="col-lg-2 col-md-6 col-sm-12 col-xs-12" src="<?= blocksHelper::getBlockParameter($blockid, 'content_video'); ?>" frameborder="0" allowfullscreen></iframe>
     	<?php endif; ?>
     </div> 
-
-     <div class="col-md-6 pull-<?php echo $pos2; ?>">
-         <div class="lead"><?php echo blocksHelper::getBlockParameter($blockid,'content_text'); ?></div>
-      </div> 
+	<?php endif; ?>
+	
+    <div class="<?= $col2; ?> <?= $pos2; ?>">
+         <div class="lead"><?= blocksHelper::getBlockParameter($blockid, 'content_text'); ?></div>
+    </div> 
+    
 </div>
 </div>
 
