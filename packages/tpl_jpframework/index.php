@@ -33,7 +33,7 @@ JHtml::_('jquery.framework');
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <jdoc:include type="head" />
-<?php jpf::unload(); ?>
+<?php jpf::setHead(); ?>
 <link type="text/plain" rel="author" href="<?= $this->baseurl.'/templates/'.$this->template; ?>/humans.txt" />
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/wow.min.js" type="text/javascript"></script>
@@ -46,7 +46,6 @@ JHtml::_('jquery.framework');
 <link rel="shortcut icon" href="<?= $this->baseurl ?>/templates/<?= $this->template ?>/icon.png" />
 <link rel="apple-touch-icon-precomposed" href="<?= $this->baseurl ?>/templates/<?= $this->template ?>/icon.png" />
 <link rel="stylesheet" href="<?= $this->baseurl.'/templates/'.$this->template; ?>/css/custom.css" type="text/css" />
-<?php jpf::styles(); ?>
 <?php if(jpf::getparameter('cookies', 0) != 0) : ?>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
 <script src="//cookiecuttr.com/assets/js/plugins/jquery.cookiecuttr.js"></script>

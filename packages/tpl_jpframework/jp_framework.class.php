@@ -46,23 +46,22 @@ class jpf  extends blocksHelper
      * @return  void
      * @since   3.0
     */
-    public static function styles()
+    public static function setHead()
     {
-    	$params = &JComponentHelper::getParams( 'com_jpframework' );
+    	$params = JComponentHelper::getParams( 'com_jpframework' );
     	
     	$body_font 	= $params->get('body_font');
+    	$unload 	= $params->get('unload');
 
+		//add stylesheets
     	JFactory::getDocument()->addStylesheet('templates/jpframework/css/jpframework.css');
     	//ToDo::permitir multiples fuentes a cargar
     	JFactory::getDocument()->addStylesheet('//fonts.googleapis.com/css?family='.str_replace(' ', '+', $body_font).':300italic,400italic,700italic,400,300,700');
-    }
-    
-    public static function unload()
-    {
-    	$params = &JComponentHelper::getParams( 'com_jpframework' );
     	
-    	$unload = $params->get('unload');
+    	//add scripts...
+    	JFactory::getDocument()->addScript('https://use.fontawesome.com/releases/v5.0.6/js/all.js');
     	
+    	//unload scripts from configuration..
     	if($unload != '') {
 			$scripts = implode(',', $params->get('unload'));    	
 			$scripts[] = 'media/jui/js/bootstrap.min.js';
