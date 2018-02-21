@@ -16,8 +16,8 @@ Image credits: unsplash.com
 }
 .fade-carousel .carousel-indicators > li {
     margin: 0 2px;
-    background-color: #f39c12;
-    border-color: #f39c12;
+    background-color: #8fce39;
+    border-color: #8fce39;
     opacity: .7;
 }
 .fade-carousel .carousel-indicators > li.active {
@@ -49,6 +49,7 @@ Image credits: unsplash.com
     font-weight: bold;
     margin: 0;
     padding: 0;
+    color: #8fce39;
 }
 
 .fade-carousel .carousel-inner .item .hero {

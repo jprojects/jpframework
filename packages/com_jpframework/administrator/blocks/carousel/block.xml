@@ -21,7 +21,7 @@
 			default="#ffffff" 
 			label="Font color" 
 			description="Font color" 
-		/>
+		/>	
 		<field 
 			name="uniqid" 
 			type="text" 
@@ -119,6 +119,20 @@
 			directory="" 
 			label="Image 3" 
 		/>
+		<field 
+        	name="carousel_btn" 
+        	type="text" 
+        	default="" 
+        	label="Button title" 
+        	description="Button title" 
+        />
+        <field 
+        	name="carousel_btn_link" 
+        	type="text" 
+        	default="#" 
+        	label="Button Link" 
+        	description="Button link" 
+        />
 	</fieldset>
 
 </form>
