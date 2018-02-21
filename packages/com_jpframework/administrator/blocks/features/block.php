@@ -11,83 +11,91 @@
 defined('_JEXEC') or die;
 
 $blockid = JRequest::getVar('blockid');
+$heading = blocksHelper::getBlockParameter($blockid,'feature_heading');
+$uniqid  = blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid);
+$position = blocksHelper::getBlockParameter($blockid,'content_position', '');
+if($position == 'right') {
+	$pos = 'text-right';
+} elseif($position == 'left') {
+	$pos  = 'text-left';
+} else {
+	$pos = 'text-center';
+}
 ?>
 
 <style>
-#features {
-padding-bottom: 60px;
-padding-top: 60px;
+#<?= $uniqid; ?> {
+	padding-bottom: 60px;
+	padding-top: 60px;
 }
-#features header {
-margin-bottom: 12px;
-text-align: center;
+#<?= $uniqid; ?> header {
+	margin-bottom: 12px;
+	text-align: center;
 }
-#features .feature-icon img {
-height: 168px;
-width: 168px;
-transition: all 0.2s ease;
+#<?= $uniqid; ?> .feature-icon img {
+	height: 168px;
+	width: 168px;
 }
-#features .feature-icon img:hover {
-  	-webkit-transform: scale(1.1);
-	-moz-transform: scale(1.1);
-	-ms-transform: scale(1.1);
-	-o-transform: scale(1.1);
-	transform: scale(1.1); 
-}
+#<?= $uniqid; ?> h4 { font-weight: bold; }
 </style>
 
-<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
+<section id="<?= $uniqid; ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
 
-<div class="container" id="features">
+<div class="container">
 
+<?php if($heading != '') : ?>
 <header>
-<h1><?= blocksHelper::getBlockParameter($blockid,'feature_heading'); ?></h1>
+<h1><?= $heading; ?></h1>
 <p class="lead"><?= blocksHelper::getBlockParameter($blockid,'feature_subheading'); ?></p>
 </header>
+<?php endif; ?>
 
 <div class="row">
 
-<!-- Feature Item 1 -->
-<div class="col-md-4 text-center">
+	<!-- Feature Item 1 -->
+	<div class="col-md-4 <?= $pos; ?>">
 		<div class="feature-icon">
-		<img class="img-circle" src="<?= blocksHelper::getBlockParameter($blockid,'feature_img1', 'https://www.uts.edu.au/sites/default/files/twitter_8.png'); ?>" alt="">
+		<img class="img-circle" src="<?= blocksHelper::getBlockParameter($blockid,'feature_img1', 'images/sampledata/icona-vehiculos.svg'); ?>" alt="">
 		</div>
-		<h4><?= blocksHelper::getBlockParameter($blockid,'feature_title1', 'Ready to Start'); ?></h4>
+		<h4><?= blocksHelper::getBlockParameter($blockid, 'feature_title1', ''); ?></h4>
+		<hr class="line-green-medium">
 		<p>
-		<?= blocksHelper::getBlockParameter($blockid,'feature_text1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'); ?><br/>
-		<?php if(blocksHelper::getBlockParameter($blockid,'feature_twitter1') != '') : ?>
-		<a target="_blank" href="https://twitter.com/<?= blocksHelper::getBlockParameter($blockid,'feature_twitter1'); ?>"><i class="fa fa-twitter"></i></a>
-		<?php endif; ?>
+		<?= blocksHelper::getBlockParameter($blockid, 'feature_text1', ''); ?><br/>
 		</p>
-</div>
-
-<!-- Feature Item 2 -->
-<div class="col-md-4 text-center">
-	<div class="feature-icon">
-	<img class="img-circle" src="<?= blocksHelper::getBlockParameter($blockid,'feature_img2', 'http://icons.iconarchive.com/icons/martz90/circle/512/dropbox-icon.png'); ?>" alt="">
+		<?php if(blocksHelper::getBlockParameter($blockid, 'feature_btn1', '')) : ?>
+		<a href="<?= blocksHelper::getBlockParameter($blockid, 'feature_btn_link1', ''); ?>" class="btn btn-default"><?= blocksHelper::getBlockParameter($blockid, 'feature_btn1', ''); ?></a>
+		<?php endif; ?>
 	</div>
-	<h4><?= blocksHelper::getBlockParameter($blockid,'feature_title2', 'Dressed to Impress'); ?></h4>
-	<p>
-	<?= blocksHelper::getBlockParameter($blockid,'feature_text2', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'); ?><br/>
-	<?php if(blocksHelper::getBlockParameter($blockid,'feature_twitter2') != '') : ?>
-	<a target="_blank" href="https://twitter.com/<?= blocksHelper::getBlockParameter($blockid,'feature_twitter2'); ?>"><i class="fa fa-twitter"></i></a>
-	<?php endif; ?>
-	</p>
-</div>
 
-<!-- Feature Item 3 -->
-<div class="col-md-4 text-center">
-	<div class="feature-icon">
-	<img class="img-circle" src="<?= blocksHelper::getBlockParameter($blockid,'feature_img3', 'http://farishtheme.ir/wp-content/uploads/2016/02/Facebook-Messenger-flat-circle-256.png'); ?>" alt="">
+	<!-- Feature Item 2 -->
+	<div class="col-md-4 <?= $pos; ?>">
+		<div class="feature-icon">
+		<img class="img-circle" src="<?= blocksHelper::getBlockParameter($blockid,'feature_img2', 'images/sampledata/icona-fiscal.svg'); ?>" alt="">
+		</div>
+		<h4><?= blocksHelper::getBlockParameter($blockid, 'feature_title2', ''); ?></h4>
+		<hr class="line-green-medium">
+		<p>
+		<?= blocksHelper::getBlockParameter($blockid, 'feature_text2', ''); ?><br/>
+		</p>
+		<?php if(blocksHelper::getBlockParameter($blockid, 'feature_btn2', '')) : ?>
+		<a href="<?= blocksHelper::getBlockParameter($blockid, 'feature_btn_link2', ''); ?>" class="btn btn-default"><?= blocksHelper::getBlockParameter($blockid, 'feature_btn2', ''); ?></a>
+		<?php endif; ?>
 	</div>
-	<h4><?= blocksHelper::getBlockParameter($blockid,'feature_title3', 'Shoot for the Stars'); ?></h4>
-	<p>
-	<?= blocksHelper::getBlockParameter($blockid,'feature_text3', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit.'); ?><br/>
-	<?php if(blocksHelper::getBlockParameter($blockid,'feature_twitter3') != '') : ?>
-	<a target="_blank" href="https://twitter.com/<?= blocksHelper::getBlockParameter($blockid,'feature_twitter3'); ?>"><i class="fa fa-twitter"></i></a>
-	<?php endif; ?>
-	</p>
-</div>
+
+	<!-- Feature Item 3 -->
+	<div class="col-md-4 <?= $pos; ?>">
+		<div class="feature-icon">
+		<img class="img-circle" src="<?= blocksHelper::getBlockParameter($blockid,'feature_img3', 'images/sampledata/icona-laboral.svg'); ?>" alt="">
+		</div>
+		<h4><?= blocksHelper::getBlockParameter($blockid,'feature_title3', ''); ?></h4>
+		<hr class="line-green-medium">
+		<p>
+		<?= blocksHelper::getBlockParameter($blockid, 'feature_text3', ''); ?><br/>
+		</p>
+		<?php if(blocksHelper::getBlockParameter($blockid, 'feature_btn3', '')) : ?>
+		<a href="<?= blocksHelper::getBlockParameter($blockid, 'feature_btn_link3', ''); ?>" class="btn btn-default"><?= blocksHelper::getBlockParameter($blockid, 'feature_btn3', ''); ?></a>
+		<?php endif; ?>
+	</div>
 
 </div><!-- /row -->
 </div><!-- /container -->

@@ -48,6 +48,17 @@
 			filter="raw"
 		/>
 		<field 
+			name="content_position" 
+			type="list" 
+			default="center" 
+			label="Content position" 
+			description="Content position" 
+		>
+			<option value="center">Center</option>
+			<option value="right">Right</option>
+			<option value="left">Left</option>
+		</field>
+		<field 
         	name="feature_title1" 
         	type="text" 
         	default="" 
@@ -65,18 +76,25 @@
 			filter="raw"
 		/>
 		<field 
-			name="feature_twitter1" 
-			type="text" 
-			default="" 
-			label="Twitter 1" 
-			description="Feature twitter 1" 
-		/>
-		<field 
 			name="feature_img1" 
 			type="media" 
 			directory="" 
 			label="Image 1" 
 		/>
+		<field 
+        	name="feature_btn1" 
+        	type="text" 
+        	default="" 
+        	label="Button 1" 
+        	description="Button title 1" 
+        />
+        <field 
+        	name="feature_btn_link1" 
+        	type="text" 
+        	default="#" 
+        	label="Button Link 1" 
+        	description="Button link 1" 
+        />
 		<field 
         	name="feature_title2" 
         	type="text" 
@@ -95,18 +113,25 @@
 			filter="raw"
 		/>
 		<field 
-			name="feature_twitter2" 
-			type="text" 
-			default="" 
-			label="Twitter 1" 
-			description="Feature twitter 2" 
-		/>
-		<field 
 			name="feature_img2" 
 			type="media" 
 			directory="" 
 			label="Image 2" 
 		/>
+		<field 
+        	name="feature_btn2" 
+        	type="text" 
+        	default="" 
+        	label="Button 2" 
+        	description="Button title 2" 
+        />
+        <field 
+        	name="feature_btn_link2" 
+        	type="text" 
+        	default="#" 
+        	label="Button Link 2" 
+        	description="Button link 2" 
+        />
 		<field 
         	name="feature_title3" 
         	type="text" 
@@ -125,18 +150,25 @@
 			filter="raw"
 		/>
 		<field 
-			name="feature_twitter3" 
-			type="text" 
-			default="" 
-			label="Twitter 1" 
-			description="Feature twitter 3" 
-		/>
-		<field 
 			name="feature_img3" 
 			type="media" 
 			directory="" 
 			label="Image 3" 
 		/>
+		<field 
+        	name="feature_btn3" 
+        	type="text" 
+        	default="" 
+        	label="Button 3" 
+        	description="Button title 3" 
+        />
+        <field 
+        	name="feature_btn_link3" 
+        	type="text" 
+        	default="#" 
+        	label="Button Link 3" 
+        	description="Button link 3" 
+        />
 	</fieldset>
 
 </form>
