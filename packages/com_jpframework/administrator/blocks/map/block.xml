@@ -24,6 +24,34 @@
 			label="Uniqid"
 			description="Uniqid is used as the block section id"
 		/>
+		<field 
+        	name="heading" 
+        	type="text" 
+        	default="" 
+        	label="Heading" 
+        	description="Heading" 
+        />
+		<field 
+			name="subheading" 
+			type="textarea" 
+			default="" 
+			label="Subhead" 
+			description="Subhead" 
+			rows="10" 
+			cols="5" 
+			filter="raw"
+		/>
+		<field
+			name="fluid"
+			type="radio"
+			default="1"
+			label="Fluid"
+			description="Set if map is 100% width or not"
+			class="btn-group"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
 		<field type="spacer" name="map" label="Map parameters" />
 		<field
 			name="apikey"
@@ -100,7 +128,7 @@
 		/>
 		<field type="spacer" name="style" label="Style parameters" />
 		<field
-			name="style"
+			name="active_style"
 			type="radio"
 			default="1"
 			label="Active styles"

@@ -12,11 +12,13 @@ defined('_JEXEC') or die;
 JHtml::_('jquery.framework');
 
 $blockid  = JRequest::getVar('blockid');
+$heading  = blocksHelper::getBlockParameter($blockid, 'heading');
+$fluid    = blocksHelper::getBlockParameter($blockid, 'fluid', 1);
 $zoom     = blocksHelper::getBlockParameter($blockid, 'zoom', '9');
 $lat      = blocksHelper::getBlockParameter($blockid, 'lat', '28.9285745');
 $long     = blocksHelper::getBlockParameter($blockid, 'long', '77.09149350000007');
 $key      = blocksHelper::getBlockParameter($blockid, 'apikey');
-$style    = blocksHelper::getBlockParameter($blockid, 'style');
+$style    = blocksHelper::getBlockParameter($blockid, 'active_style');
 $styles   = blocksHelper::getBlockParameter($blockid, 'styles');
 $type     = blocksHelper::getBlockParameter($blockid, 'type', 'roadmap');
 $styles   = str_replace(' ', '', $styles);
@@ -55,6 +57,18 @@ $script = "function initialize() {
 JFactory::getDocument()->addScriptDeclaration($script);
 ?>
 
-<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style='padding:0;'>
-<div id='location-canvas' style='width:100%;height:<?= blocksHelper::getBlockParameter($blockid, 'height', '300px'); ?>;'></div>
+<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="<?php if($fluid == 1) : ?>padding-bottom: 50px;<?php else: ?>padding:0;<?php endif; ?>background-color:<?= blocksHelper::getBlockParameter($blockid, 'block_color'); ?>;">
+
+	<?php if($fluid == 1) : ?><div class="container"><?php endif; ?>
+	<?php if($heading != '') : ?>
+	<header>
+	<h1><?= $heading; ?></h1>
+	<hr class="line-green-medium">
+	<p class="lead"><?= blocksHelper::getBlockParameter($blockid,'subheading'); ?></p>
+	</header>
+	<?php endif; ?>
+	
+	<div id='location-canvas' style='width:100%;height:<?= blocksHelper::getBlockParameter($blockid, 'height', '300px'); ?>;'></div>
+	<?php if($fluid == 1) : ?></div><?php endif; ?>
+	
 </section>

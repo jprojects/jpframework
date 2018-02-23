@@ -47,7 +47,7 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
   	<?php if(count(JFactory::getApplication()->getMessageQueue())) : ?>  
     <div class="container top20"><jdoc:include type="message" /></div>
     <?php endif; ?>
-    <?php if((jpf::getparameter('front_component') == 1 && jpf::isFrontpage()) && jpf::showComponent()) : ?>
+    <?php if(jpf::showComponent()) : ?>
 	<jdoc:include type="component" />
 	<?php endif; ?>
 	
@@ -126,7 +126,7 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 				<li> <a target="_blank" href="<?php echo jpf::getparameter('linkedin'); ?>"><i class="fa fa-linkedin"></i></a></li> 
 				<?php endif; ?>  
 			</ul>
-			&copy; <?= date('Y'); ?> <?= jpf::getSitename(); ?>
+			<?= jpf::getSitename(); ?> &copy; <?= date('Y'); ?> Todos los derechos reservados.
 			<?php if(jpf::getparameter('privacy') != '') : ?>
 			<a href="<?= jpf::getArticleByLanguage('privacy'); ?>"><?= JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
 			&middot;
