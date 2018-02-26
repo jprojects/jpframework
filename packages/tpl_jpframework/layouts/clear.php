@@ -24,37 +24,37 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 <?php if(jpf::getparameter('jpf-top') != 0) : ?>
 <!-- start top row -->	
 <div class="first-row">		
-<?php echo jpf::getColumn('jpf-top', 'top'); ?>		
+<?= jpf::getColumn('jpf-top', 'top'); ?>		
 </div>
 <!-- end top row -->
 <?php endif; ?>
     	
 <?php if(jpf::getparameter('jpf-main') != 0) : ?>
 <!-- start main row -->	
-<?php echo jpf::getColumn('jpf-main', 'main'); ?>		
+<?= jpf::getColumn('jpf-main', 'main'); ?>		
 <!-- end main row -->
 <?php endif; ?>
 
 <div class="row" style="margin:0;">
 <?php if($doc->countModules('jpf-left')) : ?>
-<div class="<?php echo $colsl; ?>">
+<div class="<?= $colsl; ?>">
     <jdoc:include type="modules" name="jpf-left" />
 </div>
 <?php endif; ?>
 
-<div class="<?php echo $colsc; ?> mainbody">
+<div class="<?= $colsc; ?>">
   
   	<?php if(count(JFactory::getApplication()->getMessageQueue())) : ?>  
     <div class="container top20"><jdoc:include type="message" /></div>
     <?php endif; ?>
     <?php if(jpf::showComponent()) : ?>
-	<jdoc:include type="component" />
+	<div class="container mainbody"><jdoc:include type="component" /></div>
 	<?php endif; ?>
 	
 </div>
 
 <?php if($doc->countModules('jpf-right')) : ?>
-<div class="<?php echo $colsr; ?>">
+<div class="<?= $colsr; ?>">
 	<jdoc:include type="modules" name="jpf-right" />
 </div>
 <?php endif; ?>
@@ -62,13 +62,13 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 
 <?php if(jpf::getparameter('jpf-showcase') != 0) : ?>
 <!-- start showcase row -->	
-<?php echo jpf::getColumn('jpf-showcase', 'showcase'); ?>		
+<?= jpf::getColumn('jpf-showcase', 'showcase'); ?>		
 <!-- end showcase row -->
 <?php endif; ?>
     	
 <?php if(jpf::getparameter('jpf-bottom') != 0) : ?>
 <!-- start bottom row -->	
-<?php echo jpf::getColumn('jpf-bottom', 'bottom'); ?>		
+<?= jpf::getColumn('jpf-bottom', 'bottom'); ?>		
 <!-- end bottom row -->
 <?php endif; ?>
 
@@ -81,13 +81,13 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 		<!-- start footer row -->	
 		<div class="row">
 			<div class="col-xs-12 col-md-4">
-			<?php echo jpf::getColumn('jpf-footer-1', 'footer-1'); ?>	
+			<?= jpf::getColumn('jpf-footer-1', 'footer-1'); ?>	
 			</div>
 			<div class="col-xs-12 col-md-4">
-			<?php echo jpf::getColumn('jpf-footer-2', 'footer-2'); ?>	
+			<?= jpf::getColumn('jpf-footer-2', 'footer-2'); ?>	
 			</div>
 			<div class="col-xs-12 col-md-4">
-			<?php echo jpf::getColumn('jpf-footer-3', 'footer-3'); ?>	
+			<?= jpf::getColumn('jpf-footer-3', 'footer-3'); ?>	
 			</div>		
 		</div>
 		<!-- end footer row -->
@@ -96,44 +96,44 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 		<div class="text-center">
 			<ul class="social-icons list-unstyled list-inline"> 
 				<?php if(jpf::getparameter('flickr') != '') : ?>
-			  	<li><a target="_blank" href="<?php echo jpf::getparameter('flickr'); ?>"><i class="fa fa-flickr"></i></a></li> 
+			  	<li><a target="_blank" href="<?= jpf::getparameter('flickr'); ?>"><i class="fa fa-flickr"></i></a></li> 
 			  	<?php endif; ?>
 			  	<?php if(jpf::getparameter('foursquare') != '') : ?>
-			  	<li><a target="_blank" href="<?php echo jpf::getparameter('foursquare'); ?>"><i class="fa fa-foursquare"></i></a></li> 
+			  	<li><a target="_blank" href="<?= jpf::getparameter('foursquare'); ?>"><i class="fa fa-foursquare"></i></a></li> 
 			  	<?php endif; ?>
 			  	<?php if(jpf::getparameter('github') != '') : ?>
-			  	<li> <a target="_blank" href="<?php echo jpf::getparameter('github'); ?>"><i class="fa fa-github"></i></a></li> 
+			  	<li> <a target="_blank" href="<?= jpf::getparameter('github'); ?>"><i class="fa fa-github"></i></a></li> 
 			  	<?php endif; ?>
 			  	<?php if(jpf::getparameter('gplus') != '') : ?>
-			  	<li> <a target="_blank" href="<?php echo jpf::getparameter('gplus'); ?>"><i class="fa fa-google-plus"></i></a></li> 
+			  	<li> <a target="_blank" href="<?= jpf::getparameter('gplus'); ?>"><i class="fa fa-google-plus"></i></a></li> 
 			  	<?php endif; ?>
 			  	<?php if(jpf::getparameter('instagram') != '') : ?>
-			  	<li> <a target="_blank" href="<?php echo jpf::getparameter('instagram'); ?>"><i class="fa fa-instagram"></i></a></li> 
+			  	<li> <a target="_blank" href="<?= jpf::getparameter('instagram'); ?>"><i class="fa fa-instagram"></i></a></li> 
 			  	<?php endif; ?>
 			  	<?php if(jpf::getparameter('pinterest') != '') : ?>
-				<li> <a target="_blank" href="<?php echo jpf::getparameter('pinterest'); ?>"><i class="fa fa-pinterest"></i></a></li>
+				<li> <a target="_blank" href="<?= jpf::getparameter('pinterest'); ?>"><i class="fa fa-pinterest"></i></a></li>
 				<?php endif; ?>
 			  	<?php if(jpf::getparameter('facebook') != '') : ?> 
-				<li> <a target="_blank" href="<?php echo jpf::getparameter('facebook'); ?>"><i class="fa fa-facebook"></i></a></li> 
+				<li> <a target="_blank" href="<?= jpf::getparameter('facebook'); ?>"><i class="fa fa-facebook"></i></a></li> 
 				<?php endif; ?>
 			  	<?php if(jpf::getparameter('twitter') != '') : ?> 
-				<li> <a target="_blank" href="<?php echo jpf::getparameter('twitter'); ?>"><i class="fa fa-twitter"></i></a></li> 
+				<li> <a target="_blank" href="<?= jpf::getparameter('twitter'); ?>"><i class="fa fa-twitter"></i></a></li> 
 				<?php endif; ?>
 			  	<?php if(jpf::getparameter('youtube') != '') : ?>
-				<li> <a target="_blank" href="<?php echo jpf::getparameter('youtube'); ?>"><i class="fa fa-youtube"></i></a></li> 
+				<li> <a target="_blank" href="<?= jpf::getparameter('youtube'); ?>"><i class="fa fa-youtube"></i></a></li> 
 				<?php endif; ?> 
 				<?php if(jpf::getparameter('linkedin') != '') : ?>
-				<li> <a target="_blank" href="<?php echo jpf::getparameter('linkedin'); ?>"><i class="fa fa-linkedin"></i></a></li> 
+				<li> <a target="_blank" href="<?= jpf::getparameter('linkedin'); ?>"><i class="fa fa-linkedin"></i></a></li> 
 				<?php endif; ?>  
 			</ul>
-			<?= jpf::getSitename(); ?> &copy; <?= date('Y'); ?> Todos los derechos reservados.
+			<?=jpf::getSitename(); ?> &copy; <?=date('Y'); ?> Todos los derechos reservados.
 			<?php if(jpf::getparameter('privacy') != '') : ?>
-			<a href="<?= jpf::getArticleByLanguage('privacy'); ?>"><?= JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
+			<a href="<?=jpf::getArticleByLanguage('privacy'); ?>"><?=JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
 			&middot;
 			<?php endif; ?>
 		
 			<?php if(jpf::getparameter('terms') != '') : ?>
-			<a href="<?= jpf::getArticleByLanguage('terms'); ?>"><?= JText::_('JP_FRAMEWORK_TERMS'); ?></a>
+			<a href="<?=jpf::getArticleByLanguage('terms'); ?>"><?=JText::_('JP_FRAMEWORK_TERMS'); ?></a>
 			<?php endif; ?>
 		</div>
 	</p>
