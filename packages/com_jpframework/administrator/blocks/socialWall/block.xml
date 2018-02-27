@@ -177,5 +177,16 @@
 			description="" 
 		/>
 	</fieldset>
-
+	<fieldset name="styles">
+		<field 
+			name="css" 
+			type="textarea" 
+			default="" 
+			label="Css" 
+			description="Custom css styles" 
+			rows="20" 
+			cols="50" 
+			filter="raw"
+		/>
+	</fieldset>
 </form>

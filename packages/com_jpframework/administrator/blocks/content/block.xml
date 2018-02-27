@@ -151,7 +151,7 @@
 		/>
 		<field 
 			name="content_text" 
-			label ="Text" 
+			label="Text" 
 			type="editor" 
 			width="300" 
 			filter="safehtml" 
@@ -188,5 +188,16 @@
 			description="Content video url" 
 		/>
 	</fieldset>
-
+	<fieldset name="styles">
+		<field 
+			name="css" 
+			type="textarea" 
+			default="" 
+			label="Css" 
+			description="Custom css styles" 
+			rows="20" 
+			cols="50" 
+			filter="raw"
+		/>
+	</fieldset>
 </form>

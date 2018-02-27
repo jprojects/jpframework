@@ -93,6 +93,12 @@ $model = $this->getModel('block');
 		<?php echo $model->renderFieldSet ($this->item->type, 'block'); ?>
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
 		<?php endif; ?>
+		
+		<?php if($this->item->type != '') : ?>
+		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'styles', JText::_('COM_JPFRAMEWORK_TITLE_STYLES', true)); ?>
+		<?php echo $model->renderFieldSet ($this->item->type, 'styles'); ?>
+		<?php echo JHtml::_('bootstrap.endTab'); ?>
+		<?php endif; ?>
 
         <?php echo JHtml::_('bootstrap.endTabSet'); ?>
 

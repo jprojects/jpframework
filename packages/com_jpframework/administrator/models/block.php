@@ -163,11 +163,20 @@ class JpframeworkModelBlock extends JModelAdmin
 		if($data['id'] != 0) {
 			$form = new JForm('block');
 			$form->loadFile(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_jpframework'.DS.'blocks'.DS.$data['type'].DS.'block.xml');
+			
+			//block fieldset
 			$fields = $form->getFieldset('block');
 			$values = array();
 			foreach($fields as $field) { 
 				$values[$field->name] = $_POST[$field->name];
 			}
+			
+			//styles fieldset
+			$fields = $form->getFieldset('styles');
+			foreach($fields as $field) { 
+				$values[$field->name] = $_POST[$field->name];
+			}
+			
 			$registry = new JRegistry;
 	    	$registry->loadArray($values);
 	    	$row->params = (string) $registry;

@@ -60,5 +60,16 @@
 			description="Select an images folder, add one of the above tags to the image filename like tag-filename" 
 		/>
 	</fieldset>
-
+	<fieldset name="styles">
+		<field 
+			name="css" 
+			type="textarea" 
+			default="" 
+			label="Css" 
+			description="Custom css styles" 
+			rows="20" 
+			cols="50" 
+			filter="raw"
+		/>
+	</fieldset>
 </form>
