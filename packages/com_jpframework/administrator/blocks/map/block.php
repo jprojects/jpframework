@@ -57,9 +57,9 @@ $script = "function initialize() {
 JFactory::getDocument()->addScriptDeclaration($script);
 ?>
 
-<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="<?php if($fluid == 1) : ?>padding-bottom: 50px;<?php else: ?>padding:0;<?php endif; ?>background-color:<?= blocksHelper::getBlockParameter($blockid, 'block_color'); ?>;">
+<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="<?php if($fluid != 1) : ?>padding-bottom: 50px;<?php else: ?>padding:0;<?php endif; ?>background-color:<?= blocksHelper::getBlockParameter($blockid, 'block_color'); ?>;">
 
-	<?php if($fluid == 1) : ?><div class="container"><?php endif; ?>
+	<?php if($fluid != 1) : ?><div class="container"><?php endif; ?>
 	<?php if($heading != '') : ?>
 	<header>
 	<h1><?= $heading; ?></h1>
@@ -69,6 +69,6 @@ JFactory::getDocument()->addScriptDeclaration($script);
 	<?php endif; ?>
 	
 	<div id='location-canvas' style='width:100%;height:<?= blocksHelper::getBlockParameter($blockid, 'height', '300px'); ?>;'></div>
-	<?php if($fluid == 1) : ?></div><?php endif; ?>
+	<?php if($fluid != 1) : ?></div><?php endif; ?>
 	
 </section>
