@@ -55,6 +55,7 @@ class jpf  extends blocksHelper
 
 		//add stylesheets
     	JFactory::getDocument()->addStylesheet('templates/jpframework/css/jpframework.css');
+    	JFactory::getDocument()->addStylesheet('https://use.fontawesome.com/releases/v5.0.7/css/all.css');
     	//ToDo::permitir multiples fuentes a cargar
     	JFactory::getDocument()->addStylesheet('//fonts.googleapis.com/css?family='.str_replace(' ', '+', $body_font).':300italic,400italic,700italic,400,300,700');
     	
