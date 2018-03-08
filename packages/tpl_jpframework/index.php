@@ -36,8 +36,8 @@ JHtml::_('jquery.framework');
 <?php jpf::setHead(); ?>
 <link type="text/plain" rel="author" href="<?= $this->baseurl.'/templates/'.$this->template; ?>/humans.txt" />
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/wow.min.js" type="text/javascript"></script>
-<script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/jpframework.js" type="text/javascript"></script>
+<script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/scripts/wow.min.js" type="text/javascript"></script>
+<script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/scripts/jpframework.js" type="text/javascript"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -53,12 +53,12 @@ JHtml::_('jquery.framework');
 jQuery.noConflict();
 jQuery(document).ready(function () {
 jQuery.cookieCuttr({
-    cookieDeclineButton: true,
+    cookieDeclineButton: false,
     cookieNotificationLocationBottom: true,
     cookieWhatAreTheyLink: '<?= jpf::getparameter("cookies_link", ''); ?>',
     cookieAcceptButtonText: "<?= JText::_('JP_FRAMEWORK_ACCEPT'); ?>",
     cookieDeclineButtonText: "<?= JText::_('JP_FRAMEWORK_DECLINE'); ?>",
-    cookieWhatAreLinkText: "<?= JText::_('JP_FRAMEWORK_COOKIES_TITLE'); ?>",
+    cookieWhatAreLinkText: "",
     cookieAnalyticsMessage: "<?= JText::_('JP_FRAMEWORK_COOKIES_EXPLANATION'); ?>",
     cookiePolicyLink: false
     });	
