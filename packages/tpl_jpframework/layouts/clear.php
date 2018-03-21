@@ -28,6 +28,10 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 </div>
 <!-- end top row -->
 <?php endif; ?>
+
+<?php if(count(JFactory::getApplication()->getMessageQueue())) : ?>  
+<div class="message-container"><jdoc:include type="message" /></div>
+<?php endif; ?>
     	
 <?php if(jpf::getparameter('jpf-main') != 0) : ?>
 <!-- start main row -->	
@@ -44,9 +48,6 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 
 <div class="<?= $colsc; ?>">
   
-  	<?php if(count(JFactory::getApplication()->getMessageQueue())) : ?>  
-    <div class="container top20"><jdoc:include type="message" /></div>
-    <?php endif; ?>
     <?php if(jpf::showComponent()) : ?>
 	<div class="container mainbody"><jdoc:include type="component" /></div>
 	<?php endif; ?>

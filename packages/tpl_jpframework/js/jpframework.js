@@ -29,6 +29,12 @@ jQuery(document).ready(function($) {
 		);
 	});
 	
+	setTimeout(function() {
+    $('.message-container').fadeOut('fast');
+	}, 8000);
+	
+	$('[data-toggle="tooltip"]').tooltip(); 
+	
 	//Performs a smooth page scroll to an anchor on the same page.
 	jQuery('a[href*=#]:not([href=#])').click(function() {
 		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
@@ -37,7 +43,7 @@ jQuery(document).ready(function($) {
 		  target = target.length ? target : jQuery('[name=' + this.hash.slice(1) +']');
 		  if (target.length) {
 		    jQuery('html,body').animate({
-		      scrollTop: target.offset().top
+		      scrollTop: target.offset().top -80
 		    }, 1000);
 		    return false;
 		  }

@@ -1,0 +1,9 @@
+/* Messages */
+
+.message-container {
+	position: fixed;
+    width: 90%;
+    top: 10px;
+    z-index: 1500;
+    margin: 0 5%;
+}
