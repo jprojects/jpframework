@@ -36,8 +36,8 @@ JHtml::_('jquery.framework');
 <?php jpf::setHead(); ?>
 <link type="text/plain" rel="author" href="<?= $this->baseurl.'/templates/'.$this->template; ?>/humans.txt" />
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/scripts/wow.min.js" type="text/javascript"></script>
-<script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/scripts/jpframework.js" type="text/javascript"></script>
+<script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/wow.min.js" type="text/javascript"></script>
+<script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/jpframework.js" type="text/javascript"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
