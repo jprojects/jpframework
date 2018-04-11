@@ -99,6 +99,12 @@ $model = $this->getModel('block');
 		<?php echo $model->renderFieldSet ($this->item->type, 'styles'); ?>
 		<?php echo JHtml::_('bootstrap.endTab'); ?>
 		<?php endif; ?>
+		
+		<?php if($this->item->type != '' && $model->isMedia($this->item->type)) : ?>
+		<?php echo JHtml::_('bootstrap.addTab', 'myTab', 'cropper', JText::_('COM_JPFRAMEWORK_TITLE_CROPPER', true)); ?>
+		 <iframe src="components/com_jpframework/assets/cropper/index.php" width="100%" height="600" frameborder="0"></iframe> 
+		<?php echo JHtml::_('bootstrap.endTab'); ?>
+		<?php endif; ?>
 
         <?php echo JHtml::_('bootstrap.endTabSet'); ?>
 

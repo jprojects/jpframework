@@ -60,6 +60,18 @@ class JpframeworkModelBlock extends JModelAdmin
 
 		return $form;
 	}
+	
+	function isMedia($block) {
+		$form = new JForm('block');
+		$form->loadFile(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_jpframework'.DS.'blocks'.DS.$block.DS.'block.xml');
+		$fields = $form->getFieldset('block');
+		foreach ($fields as $field)
+		{
+			if($field->type == 'Media') { return true; }
+		}
+		
+		return false;
+	}
 
 	function renderFieldSet ($block, $name) {
 			$id = JRequest::getInt('id', 0, 'get');
