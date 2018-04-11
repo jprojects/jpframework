@@ -234,7 +234,7 @@ class JpframeworkModelBlock extends JModelAdmin
 			$item->title = $row->title;
 			$item->uniqid = $row->uniqid;
 			$item->ordering = $row->ordering;
-			$item->state = $row->state;
+			$item->state = 0;
 			$item->checked_out = $row->checked_out;
 			$item->checked_out_time = $row->checked_out_time;
 			$item->created_by = $row->created_by;
