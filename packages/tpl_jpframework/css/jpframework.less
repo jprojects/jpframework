@@ -57,28 +57,6 @@ sub {
   	bottom: -0.25em;
 }
 
-.text-left {
-  text-align: left;
-}
-.text-right {
-  text-align: right;
-}
-.text-center {
-  text-align: center;
-}
-.text-lowercase {
-  text-transform: lowercase;
-}
-.text-uppercase {
-  text-transform: uppercase;
-}
-.text-capitalize {
-  text-transform: capitalize;
-}
-.text-muted {
-  color: #999999;
-}
-
 .article-info { padding: 10px 0 20px 0; }
 
 
@@ -87,6 +65,10 @@ sub {
 .text-left { text-align: left; }
 .text-center { text-align: center; }
 .text-right { text-align: right; }
+.text-lowercase { text-transform: lowercase; }
+.text-uppercase { text-transform: uppercase; }
+.text-capitalize { text-transform: capitalize; }
+.text-muted { color: #ccc; }
 
 .bold { font-weight: 700; }
 .bolder { font-weight: 400; }
@@ -118,6 +100,14 @@ hr.awesome:after {
 
 /* ===== alert messaqges ==== */
 
+.message-container {
+	position: fixed;
+    width: 90%;
+    top: 10px;
+    z-index: 1500;
+    margin: 0 5%;
+}
+
 .alert {  
     padding: 12px 35px 12px 14px;  
     margin-bottom: 18px;  
@@ -141,8 +131,8 @@ hr.awesome:after {
     color: #000;  
 }  
 .alert-success {  
-    background-color: #468c46;  
-    border-color: #468c46;   
+    background-color: #8fce39;  
+    border-color: #8fce39;   
 }  
 .alert-danger,  
 .alert-error {  
@@ -150,36 +140,20 @@ hr.awesome:after {
     border-color: #9b1717;   
 }  
 .alert-info {  
-    background-color: #498daf;  
-    border-color: #498daf;    
-} 
-.alert-message {  
-    background-color: #ffb321;  
-    border-color: #ffb321;    
-} 
-.alert-block {  
-    padding-top: 14px;  
-    padding-bottom: 14px;  
+    background-color: #8fce39;  
+    border-color: #8fce39;    
 }  
-.alert-block > p,  
-.alert-block > ul {  
-    margin-bottom: 0;  
-}  
-.alert-block p + p {  
-    margin-top: 5px;  
-}
 
 /* ===== cookieCuttr by Chris Wharton (http://cookiecuttr.com) ===== */
 
-.cc-cookies { position:fixed; width: 100%; left: 0; top: 0; padding: 0.5em 5%; background: #565656; background: rgba(86,86,86,0.95); color: #fff; font-size: 13px; font-weight: 700; text-shadow: 0 -1px 0 rgba(0,0,0,0.35); z-index: 99999; text-align: center; color: #fff; }
-.cc-cookies a, .cc-cookies a:hover { color: #fff; text-decoration: underline; }
+.cc-cookies { position:fixed; width: 100%; left: 0; top: 0; padding: 0.5em 5%; background: #fff; color: #000; font-size: 13px; font-weight: 700; text-align: center; display: block; }
+.cc-cookies a, .cc-cookies a:hover { color: #000; text-decoration: underline; }
 .cc-cookies a:hover { text-decoration: none; }
 .cc-overlay { height: 100%; padding-top: 25%; }
 .cc-cookies-error { float: left; width: 90%; text-align: center; margin: 1em 0 2em 0; background: #fff; padding: 2em 5%; border: 1px solid #ccc; font-size: 18px; color: #333; }
-.cc-cookies a.cc-cookie-accept, .cc-cookies-error a.cc-cookie-accept, .cc-cookies a.cc-cookie-decline, .cc-cookies-error a.cc-cookie-decline, .cc-cookies a.cc-cookie-reset { display: inline-block; color: #fff; text-decoration: none; background: #7DAF3B; padding: 0.5em 0.75em; border-radius: 3px; box-shadow: 0 0 2px rgba(0,0,0,0.25); text-shadow: 0 -1px 0 rgba(0,0,0,0.35); -o-transition: background 0.5s ease-in; -webkit-transition: background 0.25s ease-in; -moz-transition: background 0.25s ease-in; }
+.cc-cookies a.cc-cookie-accept, .cc-cookies-error a.cc-cookie-accept, .cc-cookies a.cc-cookie-decline, .cc-cookies-error a.cc-cookie-decline, .cc-cookies a.cc-cookie-reset { display: inline-block; color: #000; text-decoration: none; background: #fff; padding: .6em 2em; border-radius: 15px; border: 1px solid #000; -o-transition: background 0.5s ease-in; -webkit-transition: background 0.25s ease-in; -moz-transition: background 0.25s ease-in; }
 .cc-cookies a.cc-cookie-decline, .cc-cookies-error a.cc-cookie-decline { background: #af3b3b; margin-left: 0.5em; }
 .cc-cookies a.cc-cookie-reset { background: #f15b00; }
-.cc-cookies a:hover.cc-cookie-accept, .cc-cookies-error a:hover.cc-cookie-accept, .cc-cookies a:hover.cc-cookie-decline, .cc-cookies-error a:hover.cc-cookie-decline, .cc-cookies a:hover.cc-cookie-reset  { background: #000; -o-transition: background 0.5s ease-in; -webkit-transition: background 0.25s ease-in; -moz-transition: background 0.25s ease-in; }
 .cc-cookies-error a.cc-cookie-accept, .cc-cookies-error a.cc-cookie-decline { display: block; margin-top: 1em; }
 .cc-cookies.cc-discreet { width: auto; padding: 0.5em 1em; left: auto; top: auto; }
 .cc-cookies.cc-discreet a.cc-cookie-reset { background: none; text-shadow: none; padding: 0; text-decoration: underline; }
@@ -195,7 +169,13 @@ hr.awesome:after {
 
 /* ========== Styles ========== */
 
-.mainbody { margin-top: 100px; }
+.first-row {
+	margin-top: 90px;
+}
+.mainbody {
+	margin-top: 50px; 
+	min-height: 500px;
+}
 
 /* ========== Footer ========== */
 
@@ -209,6 +189,8 @@ footer {
 footer a { color: @footer_fcolor }
 footer a:hover{ color: @footer_fcolor }
 
+.credits { width: 100%; background-color: #000; color: #fff; padding: 10px 0; }
+
 /* ========== Back to top button ========== */
 
 .cd-top {
@@ -216,7 +198,7 @@ footer a:hover{ color: @footer_fcolor }
   height: 40px;
   width: 40px;
   position: fixed;
-  bottom: 40px;
+  bottom: 60px;
   right: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
   /* image replacement properties */
@@ -239,6 +221,7 @@ footer a:hover{ color: @footer_fcolor }
   /* the button becomes visible */
   visibility: visible;
   opacity: 1;
+  border: 1px solid #fff;
 }
 .cd-top.cd-fade-out {
   /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
@@ -259,6 +242,6 @@ footer a:hover{ color: @footer_fcolor }
     height: 60px;
     width: 60px;
     right: 30px;
-    bottom: 30px;
+    bottom: 60px;
   }
 }
