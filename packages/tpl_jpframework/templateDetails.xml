@@ -29,7 +29,7 @@
 		<folder>offline/</folder>
         <folder>layouts/</folder>
         <folder>less/</folder>
-        <folder>scripts/</folder>
+        <folder>js/</folder>
   </files>
   <positions>
   		<position>jpf-lang</position>
