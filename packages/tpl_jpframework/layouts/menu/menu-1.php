@@ -17,7 +17,7 @@
         <nav class="navbar navbar-fixed-top" role="navigation" id="menu-1">
 
             <div class="navbar-inner">
-                <div class="container<?php if(jpf::getparameter('fluid', 0) == 0) : ?>-fluid<?php endif; ?>">
+                <div class="container<?php if(jpf::getparameter('fluid', 0) == 1) : ?>-fluid<?php endif; ?>">
 
                     <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#navigation"></button>
 
