@@ -12,12 +12,12 @@ defined('_JEXEC') or die('Restricted access');
 
 abstract class SliderNewsHelper {
 
-	public static function getArticles($cat, $start, $limit) {
+	public static function getArticles($cat, $limit) {
 	
 		$db = JFactory::getDbo();
 		$db->setQuery(	"select * from #__content ".
 				"where catid = ".$cat." and state = 1 order by created ".
-				"asc limit ".$start.",".$limit."");
+				"asc limit ".$limit."");
 		return $db->loadObjectList();
 	}
 	
