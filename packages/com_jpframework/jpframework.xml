@@ -26,8 +26,9 @@
         <submenu>
             
 		<menu link="option=com_jpframework&amp;view=blocks" view="blocks" img="components/com_jpframework/assets/images/s_blockss.png" alt="Jpframework/Blocks">COM_JPFRAMEWORK_TITLE_BLOCKS</menu>
+		<!--
 		<menu link="option=com_jpframework&amp;view=store" view="store" img="components/com_jpframework/assets/images/s_blocks.png" alt="Jpframework/Store">COM_JPFRAMEWORK_TITLE_STORE</menu>
-
+		-->
         </submenu>
         <files folder="administrator">
             <filename>access.xml</filename>
@@ -44,8 +45,12 @@
             <folder>views</folder>
             <folder>blocks</folder>
         </files>
-        <languages folder="languages/administrator">
-            
+        <files folder="site">
+            <filename>controller.php</filename>
+            <filename>index.html</filename>
+            <filename>jpframework.php</filename>
+        </files>
+        <languages folder="languages/administrator">            
 			<language tag="en-GB">en-GB/en-GB.com_jpframework.ini</language>
 			<language tag="en-GB">en-GB/en-GB.com_jpframework.sys.ini</language>
         </languages>
