@@ -49,7 +49,8 @@ Image credits: unsplash.com
     font-weight: bold;
     margin: 0;
     padding: 0;
-    color: #8fce39;
+    color: #fff;
+    line-height: 80px;
 }
 
 .fade-carousel .carousel-inner .item .hero {
@@ -81,18 +82,6 @@ Image credits: unsplash.com
     border-color: #1abc9c;
     outline: none;
     margin: 20px auto;
-}
-
-/********************************/
-/*       Slides backgrounds     */
-/********************************/
-.fade-carousel .slides .slide-1, 
-.fade-carousel .slides .slide-2,
-.fade-carousel .slides .slide-3 {
-  height: 100vh;
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
 }
 
 /********************************/

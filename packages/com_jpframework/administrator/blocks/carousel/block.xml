@@ -50,75 +50,41 @@
 			label="Carousel autoplay" 
 			description="Carousel autoplay control 0 to deactivate or miliseconds to activate" 
 		/>
-        <field 
-        	name="carousel_title1" 
-        	type="text" 
-        	default="" 
-        	label="Title 1" 
-        	description="Carousel title 1" 
-        />
 		<field 
-			name="carousel_text1" 
-			type="textarea" 
-			default="" 
-			label="Text 1" 
-			description="Carousel text 1" 
-			rows="10" 
-			cols="5" 
-			filter="raw"
-		/>
-		<field 
-			name="carousel_img1" 
-			type="media" 
-			directory="" 
-			label="Image 1" 
-		/>
-		<field 
-			name="carousel_title2" 
-			type="text" 
-			default="" 
-			label="Title 2" 
-			description="Carousel title 2" 
-		/>
-		<field 
-			name="carousel_text2" 
-			type="textarea" 
-			default="" 
-			label="Text 2" 
-			description="Carousel text 2" 
-			rows="10" 
-			cols="5" 
-			filter="raw"
-		/>
-		<field 
-			name="carousel_img2" 
-			type="media" 
-			directory="" 
-			label="Image 2" 
-		/>
-		<field 
-			name="carousel_title3" 
-			type="text" 
-			default="" 
-			label="Title 3" 
-			description="Carousel title 3" 
-		/>
-		<field 
-			name="carousel_text3" 
-			type="textarea" 
-			default="" 
-			label="Text 3" 
-			description="Carousel text 3" 
-			rows="10" 
-			cols="5" 
-			filter="raw"
-		/>
-		<field 
-			name="carousel_img3" 
-			type="media" 
-			directory="" 
-			label="Image 3" 
-		/>
+			name="list_images"
+			type="repeatable"
+			icon="list"
+			description="Carousel items"
+			label="Carousel items"
+			default='{"carousel_title":[""],
+				"carousel_text":[""],
+				"carousel_img":[""]}'>
+			<fieldset hidden="true" name="list_images_modal" repeat="true">
+				<field 
+					name="carousel_title" 
+					type="text" 
+					default="" 
+					label="Title" 
+					description="Carousel title" 
+				/>
+				<field 
+					name="carousel_text" 
+					type="textarea" 
+					default="" 
+					label="Text" 
+					description="Carousel text" 
+					rows="10" 
+					cols="5" 
+					filter="raw"
+				/>
+				<field 
+					name="carousel_img" 
+					type="media" 
+					directory="" 
+					label="Image" 
+				/>
+			</fieldset>
+		</field>
 		<field 
         	name="carousel_btn" 
         	type="text" 

@@ -13,90 +13,61 @@ defined('_JEXEC') or die('Restricted access');
 $blockid = JRequest::getVar('blockid');
 blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blocks/carousel/assets/css/carousel.css');
 blocksHelper::getBlockParameter($blockid,'carousel_play') == 0 ? $play = "false" : $play = blocksHelper::getBlockParameter($blockid,'carousel_play');
-$cid = blocksHelper::getBlockParameter($blockid,'carousel_id');
+$cid 	= blocksHelper::getBlockParameter($blockid,'carousel_id');
+$items 	= json_decode(blocksHelper::getBlockParameter($blockid, 'list_images'), true);
+$height = blocksHelper::getBlockParameter($blockid, 'carousel_height');
+//print_r($items);
 ?>
 
 <style>
-.carousel-<?=  $blockid; ?> .slides .slide-1 {
-  background-image: url(<?= JURI::root().blocksHelper::getBlockParameter($blockid,'carousel_img1'); ?>); 
+<?php 
+$i = 0;
+foreach($items as $item): 
+if($items['carousel_img'][$i] == '') break;
+?>
+.carousel-<?=  $blockid; ?> .slides .slide-<?= $i; ?> {
+  	background-image: url(<?= $items['carousel_img'][$i]; ?>); 
+  	height: <?= $height; ?>;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
 }
-<?php if(blocksHelper::getBlockParameter($blockid,'carousel_img2') != '') : ?>
-.carousel-<?=  $blockid; ?> .slides .slide-2 {
-  background-image: url(<?= JURI::root().blocksHelper::getBlockParameter($blockid,'carousel_img2'); ?>);
-}
-<?php endif; ?>
-<?php if(blocksHelper::getBlockParameter($blockid,'carousel_img3') != '') : ?>
-.carousel-<?=  $blockid; ?> .slides .slide-3 {
-  background-image: url(<?= JURI::root().blocksHelper::getBlockParameter($blockid,'carousel_img3'); ?>);
-}
-<?php endif; ?>
+<?php 
+$i++;
+endforeach; ?>
 .carousel-<?=  $blockid; ?> {
-    height: <?= blocksHelper::getBlockParameter($blockid,'carousel_height'); ?>px;
+    height: <?= $height; ?>;
 }
 .carousel-<?=  $blockid; ?> .carousel-inner .item {
-    height: <?= blocksHelper::getBlockParameter($blockid,'carousel_height'); ?>px;
-}
-.carousel-<?=  $blockid; ?> .slides .slide-1, 
-.carousel-<?=  $blockid; ?> .slides .slide-2,
-.carousel-<?=  $blockid; ?> .slides .slide-3 {
-  height: <?= blocksHelper::getBlockParameter($blockid,'carousel_height'); ?>px;
+    height: <?= $height; ?>;
 }
 </style>
 
 <section id="<?=  blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="padding:0;">
 
-<div class="carousel fade-carousel slide carousel-<?= $blockid; ?>" data-ride="carousel" data-interval="<?= $play; ?>" id="<?= $cid; ?>">
-
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <?php if(blocksHelper::getBlockParameter($blockid,'carousel_img2') != '') : ?>
-    <li data-target="#<?= $cid; ?>" data-slide-to="0" class="active"></li>
-    <li data-target="#<?= $cid; ?>" data-slide-to="1"></li>
-    <?php endif; ?>
-    <?php if(blocksHelper::getBlockParameter($blockid,'carousel_img3') != '') : ?>
-    <li data-target="#<?= $cid; ?>" data-slide-to="2"></li>
-    <?php endif; ?>
-  </ol>
+<div class="carousel fade-carousel slide carousel-<?= $blockid; ?>" data-ride="carousel" id="<?= $cid; ?>">
   
   <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item slides active">
-      <div class="slide-1"></div>
-      <div class="hero">
+  <div class="carousel-inner" role="listbox">
+  	<?php 
+  	$i = 0;
+  	foreach($items as $item): 
+  	if($items['carousel_img'][$i] == '') break;
+  	?>
+    <div class="item slides <?php if($i == 0) : ?>active<?php endif; ?>">
+      <div class="slide-<?= $i; ?>"></div>
+      <div class="container hero">
         <hgroup>
-            <h1><?= blocksHelper::getBlockParameter($blockid,'carousel_title1'); ?></h1>        
-            <h3><?= blocksHelper::getBlockParameter($blockid,'carousel_text1'); ?></h3>
-            <?php if(blocksHelper::getBlockParameter($blockid, 'carousel_btn', '')) : ?>
-		<a href="<?= blocksHelper::getBlockParameter($blockid, 'carousel_btn_link', ''); ?>" class="btn btn-default"><?= blocksHelper::getBlockParameter($blockid, 'carousel_btn', ''); ?></a>
-		<?php endif; ?>
+            <h1><?= $items['carousel_title'][$i]; ?></h1>        
         </hgroup>
       </div>
     </div>
-    <?php if(blocksHelper::getBlockParameter($blockid,'carousel_img2') != '') : ?>
-    <div class="item slides">
-      <div class="slide-2"></div>
-      <div class="hero">        
-        <hgroup>
-            <h1><?= blocksHelper::getBlockParameter($blockid,'carousel_title2'); ?></h1>        
-            <h3><?= blocksHelper::getBlockParameter($blockid,'carousel_text2'); ?></h3>
-        </hgroup>       
-      </div>
-    </div>
-    <?php endif; ?>
-    <?php if(blocksHelper::getBlockParameter($blockid,'carousel_img3') != '') : ?>
-    <div class="item slides">
-      <div class="slide-3"></div>
-      <div class="hero">        
-        <hgroup>
-            <h1><?= blocksHelper::getBlockParameter($blockid,'carousel_title3'); ?></h1>        
-            <h3><?= blocksHelper::getBlockParameter($blockid,'carousel_text3'); ?></h3>
-        </hgroup>
-      </div>
-    </div>
-    <?php endif; ?>
+    <?php 
+    $i++;
+    endforeach; ?>
   </div> 
   
-  <?php if(blocksHelper::getBlockParameter($blockid,'carousel_img2') != '') : ?>
+  <?php if(count($items) > 1) : ?>
   <!-- Controls -->
   <a class="left carousel-control" href="#<?= $cid; ?>" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left"></span>
