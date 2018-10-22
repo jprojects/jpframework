@@ -12,23 +12,31 @@
 
 ?>
 
-<!-- menu 4 -->
-<nav class="navbar navbar-default" id="colorful-nav">
-    <div>
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu3">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-        </div>
-        <div class="collapse navbar-collapse" id="menu3">
-        	<!-- needs class nav navbar nav -->
-        	<jdoc:include type="modules" name="jpf-menu" />
-            <!-- 
-            ToDo: los items del menu deben ser asi modificando el mod_menu seguramente
-            <li class="home"><a href="#"><span class="glyphicon glyphicon-home"></span><h5>HOME</h5></a></li> 
-            -->
-        </div>
-    </div>
+<script>
+jQuery(function () {
+  'use strict'
+
+  jQuery('[data-toggle="offcanvas"]').on('click', function () {
+    jQuery('.offcanvas-collapse').toggleClass('open')
+  })
+})
+</script>
+
+<!-- menu 4 example: http://getbootstrap.com/docs/4.1/examples/offcanvas/ -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+      <a class="navbar-brand mr-auto mr-lg-0" href="#">
+      <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
+        <img class="logo-img" src="<?= jpf::getparameter('topmenu-logo'); ?>" alt="<?= jpf::getSitename(); ?>">
+        <?php else : ?>
+        <?= jpf::getSitename(); ?>
+       <?php endif; ?>
+      </a>
+      <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+          <!-- add class navbar-nav mr-auto -->
+         <jdoc:include type="modules" name="jpf-menu" /> 
+      </div>
 </nav>

@@ -18,48 +18,27 @@ if (!isset($this->error)) {
 $app = JFactory::getApplication();
 ?>
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?= $this->language; ?>" lang="<?= $this->language; ?>" dir="<?= $this->direction; ?>">
+<html lang="<?= $this->language; ?>">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title><?= $this->error->getCode(); ?> - <?= $this->title; ?></title>
 
-<style>
-body {
-    font-size:16px;
-    line-height:30px;
-}
-.pad-top {
-    padding-top:80px;
-    
-}
-h1 {
-    font-size:100px;
-    padding-bottom:20px;
-    font-weight:900;
-}
-h3 {
-    text-transform:uppercase;
-    font-size:40px;
-     padding-bottom:40px;
-}
-</style>
 </head>
 
 <body>
-
-<div class="container">
-     
-   <div class="row pad-top text-center">
-       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-           <h1><strong>Ops! something was really wrong</strong></h1>
-           <h3><?= $this->error->getCode(); ?> - <?= $this->title; ?></h3>
-           <p><?= JText::_('JP_FRAMEWORK_ERROR_'.$this->error->getCode()); ?></p>
-           <a href="index.php" class="btn btn-default btn-lg">  <strong> BACK TO HOME </strong></a>
-       </div>
-
-   </div>
- </div>
+ 
+<section class="error_section">
+	<p class="error_section_subtitle">Ops! sembla que la página no existeix</p>
+      <h1 class="error_title">
+        <p><?= $this->error->getCode(); ?></p>
+        <?= $this->error->getCode(); ?>
+      </h1>
+      <a href="index.php" class="btn">Tornar</a>
+</section>
 
 </body>
 </html>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
 	<fieldset name="block">
-		<field 
+	<field 
 			name="title" 
 			type="text" 
 			default="" 
@@ -35,13 +35,6 @@
 			extension="com_content" 
 			label="Select a category" 
 			description="" 
-		/>
-		<field 
-			name="limit" 
-			type="text" 
-			default="" 
-			label="Limit" 
-			description="Limit articles number" 
 		/>
 	</fieldset>
 	<fieldset name="styles">

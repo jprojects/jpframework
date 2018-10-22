@@ -10,59 +10,19 @@
  *
 */
 
-JHtml::script('templates/jpframework/js/jquery.navgoco.js');
-
 ?>
 
-<script>
-jQuery(document).ready(function(){												
-
-       //Navigation Menu Slider
-        jQuery('#nav-expander').on('click',function(e){
-      		e.preventDefault();
-      		jQuery('body').toggleClass('nav-expanded');
-      	});
-      	jQuery('#nav-close').on('click',function(e){
-      		e.preventDefault();
-      		jQuery('body').removeClass('nav-expanded');
-      	});
-      	
-      	
-      	// Initialize navgoco with default options
-        jQuery(".main-menu").navgoco({
-            caret: '<span class="caret"></span>',
-            accordion: false,
-            openClass: 'open',
-            save: true,
-            cookie: {
-                name: 'navgoco',
-                expires: false,
-                path: '/'
-            },
-            slide: {
-                duration: 300,
-                easing: 'swing'
-            }
-        });
-});
-</script>
-
-<nav>
-<jdoc:include type="modules" name="jpf-menu" />
-</nav>
- 
-<div class="navbar navbar-inverse navbar-fixed-top">      
- 
-    <a href="index.php" class="navbar-brand">
-                    <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
-                    <img class="logo-img" src="<?= jpf::getparameter('topmenu-logo'); ?>" alt="<?= jpf::getSitename(); ?>">
-                    <?php else : ?>
-                    <?= jpf::getSitename(); ?>
-                    <?php endif; ?>
-           </a> 
-    <div class="navbar-header pull-right">
-      <a id="nav-expander" class="nav-expander fixed">
-  		<i class="fa fa-bars fa-lg white"></i>
-      </a>
-    </div>
+<!-- menu 2  example: http://getbootstrap.com/docs/4.1/examples/pricing/ -->
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+      <div class="my-0 mr-md-auto font-weight-normal">
+      <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
+        <img class="logo-img" src="<?= jpf::getparameter('topmenu-logo'); ?>" alt="<?= jpf::getSitename(); ?>">
+        <?php else : ?>
+        <?= jpf::getSitename(); ?>
+       <?php endif; ?>
+      </div>
+      <nav class="my-2 my-md-0 mr-md-3">
+        <jdoc:include type="modules" name="jpf-menu" />
+      </nav>
+      <a class="btn btn-outline-primary" href="#">Sign up</a>
 </div>

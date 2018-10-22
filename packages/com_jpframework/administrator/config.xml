@@ -28,6 +28,16 @@
     		label="COM_JPFRAMEWORK_LOGO_LABEL" 
     		description="COM_JPFRAMEWORK_LOGO_DESC" 
     		directory="images/" 
+    	/> 
+    	<field 
+    		name="topmenu-about" 
+    		class="inputbox" 
+    		type="textarea" 
+    		label="COM_JPFRAMEWORK_ABOUT_LABEL" 
+    		description="COM_JPFRAMEWORK_ABOUT_DESC"
+    		default="Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information."
+    		cols="10"
+    		rows="5" 
     	/> 	
         <field 
         	name="layout" 
@@ -353,13 +363,6 @@
 			default="" 
 			label="Github link" 
 			description="Github link" 
-		/>
-		<field 
-			name="gplus" 
-			type="text" 
-			default="" 
-			label="Google plus link" 
-			description="Google plus link" 
 		/>
 		<field 
 			name="instagram" 

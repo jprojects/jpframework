@@ -1,189 +1,292 @@
+/*
+Author: WebThemez
+Author URL: http://webthemez.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+*/
+
 body {
-  font-family: 'Cabin', sans-serif;
-  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.3);
-  color: #fff;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-color: #f50b41;
+	color:#FFF; 
+	font-family: 'OpenSansYtoKRegular', sans-serif;
+	min-width:960px;
+	top:0;
+	left:0;
+	position:absolute;
+	height:100%;
+	width:100%;
+	margin:0;
+	background-size:cover;
 }
-
+.ie body {
+	filter: dropshadow(color=#000000, offx=0, offy=1);	
+}
 h1 {
-  color: #ffffff;
-  font-weight: 700;
-  font-size: 40px;
+	font-size:68px;
+	letter-spacing:-2px;  
+	text-align:center; 
+	padding-top:30px;
+	font-weight:700;
+	font-family: 'LobsterRegular', cursive;
+	text-shadow: 2px 2px rgba(12, 11, 11, 0.56);
 }
-
+.ie h1 {
+	filter: dropshadow(color=#000000, offx=0, offy=3);
+	padding-bottom:12px;	
+} 
+.ie h2 {
+	filter: dropshadow(color=#000000, offx=0, offy=3);
+}
 h3 {
-  color: #ffffff;
-  font-style: italic;
-  font-size: 25px;
+	font-size:25px;
+	margin:0.2em 0; 
+}
+.ie h3 {
+	filter: dropshadow(color=#000000, offx=0, offy=3);
+}
+h4 {
+	margin-bottom:5px;	
+}
+p, pre {
+	margin:0 0 10px 0; 
+}
+code {
+	text-transform:uppercase !important;
+	color:#EEE;	
+	border-bottom:1px dotted #666;
+}
+small {
+	background:url(../images/alpha.png);
+	background:rgba(0, 0, 0, 0.8) url();	
+	border:1px solid #111;
+	font-size:15px;
+	padding:0 5px;
+}
+a {
+	color: rgba(255, 255, 255, 0.57);
+	text-decoration:none;	
+}
+a:hover {
+	color:#BBB;	
+} 
+#Header {
+margin-bottom: 62px;
+position: relative;
+width: 100%;
+height: 110px;
+line-height: 110px;
+z-index: 1;
+}
+.wrapper {
+margin: 0 auto;
+position: relative;
+width: 920px;
+z-index: 1;
+}
+#socialIcons {
+display:block;
+}
+#socialIcons ul {
+margin: 0px; 
+padding:0px;
+text-align: center;
+}
+#socialIcons ul li {
+margin-right: 5px;
+height: 34px;
+line-height: 34px;
+list-style-type: none;
+display: inline-block; 
+}
+#socialIcons ul li a{
+width:34px;
+height:34px; 
+display: inline-block;
+}
+.tempBy{
+display:block;
+text-align:center;
+margin-top:40px;
+}
+#Content h2 {
+display: inline-block;
+margin: 25px 0 45px;
+padding: 0px;
+text-align: center;
+font-size: 28px; 
+font-weight: 300;
+color: #fff;
+line-height: 36px;
+}
+#WindowSlide {
+margin: 0 auto;
+position: relative;
+width: 634px;
+height: 170px;
+display: block;
+overflow: hidden;
+}
+#Mail {
+position: absolute;
+width: 634px;
+top: 0px;
+left: 0px;
+}
+#Content h3 {
+text-align: center;
+font-size: 20px;
+font-weight: normal;
+display: block;
+clear: both;
 }
 
-/* 
-Loading section
-*/
-.se-pre-con {
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  height: 100%;
-  z-index: 9999;
-  background: url("../images/loading.gif") center no-repeat #032b44;
+#subscribe p{
+text-align:center;
 }
-
-.no-js #loader {
-  display: none;
+#subscribe input {
+background: rgba(255, 255, 255, 0.52);
+color: #000; 
+vertical-align: middle;
+width: 293px;
+border: 1px solid rgba(255, 255, 255, 0.76);
+padding: 0 10px;
+height: 40px;
 }
-
-.js #loader {
-  position: absolute;
-  left: 100px;
-  top: 0;
-  display: block;
-}
-
-/*
-Header Section
-*/
-.header-logo-wrapper {
-  margin: 50px 0px 70px 0px;
-}
-
-/*
-countdown timer section
-*/
-#counter {
-  color: #ffffff;
-}
-
-#counter_wrapper {
-  margin: 1.3em 0px 1em;
-}
-
-.countdown-period {
-  display: block;
-  font-size: 60%;
-}
-
-.countdown-amount {
-  display: block;
-  font-size: 200%;
-}
-
-.countdown-section {
-  display: inline-block;
-  margin-right: 8%;
-}
-
-.countdown-section:last-child {
-  margin-right: 0px;
-}
-
-.subscribe-form-wrapper {
-  margin: 30px 0px 20px 0px;
-}
-
-.subscribe-form-wrapper button {
-  padding: 10px 35px;
-  border-radius: 20px;
-  border: 0;
-  outline: none;
-  font-style: italic;
-  font-weight: 700;
-  font-size: 14px;
-  color: #ffffff;
-  background-color: #ff6000;
-  transition-duration: 0.4s;
-}
-
-.subscribe-form-wrapper button:hover,
-.subscribe-form-wrapper button:focus,
-.subscribe-form-wrapper button:active:focus {
-  outline: none;
-  color: #ffffff;
-  background-color: #FF7E00;
-}
-
-.subscribe-form-wrapper input {
-  border: 0;
-  border-radius: 20px;
-}
-
-.subscribe-form-wrapper input,
-.subscribe-form-wrapper button {
-  -webkit-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
-  -moz-box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
-  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.3);
-}
-
-@media (min-width: 768px) {
-  .form-subs-email {
-    margin-left: 10px;
-    margin-right: 10px;
-    width:100% !important;
-  }
-}
-
-/*
- Social media section
- */
-.social-media-wrapper {
-  margin-top: 30px;
-  margin-bottom: 80px;
-  font-size: 25px;
-}
-
-.social-media-wrapper a {
-  margin-right: 20px;
-  font-size: 25px;
-  color: #ffffff;
-}
-
-.social-media-wrapper a:last-child {
-  margin-right: 0px;
-}
-
-/*
-Footer and copyright section
-*/
-.copyright {
-  margin: 30px 0px 20px 0px;
-  color: #ffffff;
+#subscribe input[type="button"]{
+background: rgba(255, 255, 255, 1);
+width: auto;
+padding: 0px 25px;
+cursor: pointer;
+margin-left: -5px;
+font-weight: bold; 
+height: 42px;
+display: inline-block;
 }
 
 
-
-/*--- FORMS ---*/
-/*
-This is the bit you need.
-*/
-.subscribe-form-wrapper label{
-  position:absolute;
-  left:-9999px;
+.callback,
+.simple {
+  font-size: 20px;
+  background: #27ae60;
+  padding: 0.5em 0.7em;
+  color: #ecf0f1;
+  margin-bottom: 50px;
+  -webkit-transition: background 0.5s ease-out;
+  transition: background 0.5s ease-out;
 }
-.subscribe-form-wrapper input,
-.subscribe-form-wrapper textarea{
-  font:inherit;
-  resize:none;
-height: 38px;
-width: 234px !important;
+.callback{
+  cursor: pointer;
+}
+.ended {
+  background: #c0392b;
+}
+.countdown {
+text-align:center;
+}
+.intro{
+font-size:22px;
+font-weight:normal;
+margin-bottom:30px;
+}
+.styled{
+  margin-bottom: 30px;
+}
+.styled div {
+display: inline-block;
+font-size: 80px;
+font-weight: 900;
+text-align: center;
+margin: 0 1px;
+width: 136px;
+padding: 10px 30px 53px; 
+height: 100px;
+background:rgba(255, 255, 255, 0.0);
+text-shadow: none;
+vertical-align: middle; 
+border-right:1px solid rgba(255, 255, 255, 0.36);
+text-shadow: 2px 2px rgba(12, 11, 11, 0.56);
+}
+.styled div:last-child{
+border:none;
+}
+#overlay{ 
+background: rgba(0, 0, 0, 0.04) url(../images/overlays/06.png) top left repeat;
+background:rgba(0, 0, 0, 0.14);
+position: fixed;
+top: 0px;
+width: 100%;
+bottom: 0px;
+opacity:0.8;
+}
+/* IE7 inline-block hack */
+*+html .styled div{
+  display: inline;
+  zoom: 1;
+}
+.styled div:first-child {
+  margin-left: 0;
+}
+.styled div span {
+display: block;
+border-top: 1px solid rgba(255, 255, 255, 0.36);
+padding-top: 3px;
+font-size: 21px;
+font-weight: 400;
+text-align: center;
+}
+footer{
+width:100%;
+height:30px;
+background:rgba(0, 0, 0, 0.64);
+position:absolute;
+bottom:0px;
+}
+footer span{
+float:right;
+margin:10px;
+}
+@media(max-width:768px){
+	body {
+	min-width: initial !important;
+	}
+	.wrapper{width:100%;}
+	.styled div {
+	  margin-bottom:10px; 
+	}
+}
+@media(max-width:420px){
+	h1{
+	float:initial;
+	text-align: center;
+	margin-left:0px;
+	margin-bottom:0px;
+	}
+	.styled div {
+	  margin-bottom:10px;
+	  font-size: 40px;
+	  font-weight: normal; 
+	  text-align: center;
+	  width:80px; 
+	  border-radius:80px; 
+	  height:80px;  
+	}
+	#Content h2 {
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+	text-align: center;
+	font-size: 29px;
+	font-weight: 300;
+	}
+	.styled {
+	margin-bottom: 30px;
+	}
+	#subscribe input[type="button"]{
+	margin-top:10px;
+	}
+	#subscribe input{
+	width:80%;
+	}
+	footer{
+	position:relative !important;
+	}
 }
 
-
-
-
-
-/*--- THE MAGIC ---*/
-/*
-This is the best bit!
-*/
-[placeholder]{
-  cursor:pointer;
-}
-[placeholder]:active,
-[placeholder]:focus{
-  cursor:text;
-}

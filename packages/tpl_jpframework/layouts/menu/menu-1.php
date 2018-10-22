@@ -11,52 +11,21 @@
  */
 
 ?>
-<!-- menu 1 -->
-<section id="header">
+<!-- menu 1 example: http://getbootstrap.com/docs/4.1/examples/carousel/ -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <a class="navbar-brand" href="index.php">
+        <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
+            <img class="logo-img" src="<?= jpf::getparameter('topmenu-logo'); ?>" alt="<?= jpf::getSitename(); ?>">
+        <?php else : ?>
+            <strong><?= jpf::getSitename(); ?></strong>
+        <?php endif; ?>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+        	<!-- add class navbar-nav mr-auto -->
+         	<jdoc:include type="modules" name="jpf-menu" />          
+        </div>
+</nav>
 
-        <nav class="navbar navbar-fixed-top" role="navigation" id="menu-1">
-
-            <div class="navbar-inner">
-                <div class="container<?php if(jpf::getparameter('fluid', 0) == 1) : ?>-fluid<?php endif; ?>">
-
-                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target="#navigation"></button>
-
-                    <a href="index.php" class="navbar-brand">
-                    <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
-                    <img class="logo-img" src="<?php echo jpf::getparameter('topmenu-logo'); ?>" alt="<?php echo jpf::getSitename(); ?>">
-                    <?php else : ?>
-                    <?php echo jpf::getSitename(); ?>
-                    <?php endif; ?>
-                    </a>
-                    <div class="collapse navbar-collapse main-nav" id="navigation">
-
-                        <jdoc:include type="modules" name="jpf-menu" />
-
-			<ul class="nav navbar-nav  pull-right">
-				<?php
-				$modules = JModuleHelper::getModules('jpf-inside-menu');
-				if (count($modules)) {
-				    $i = 1;
-				    foreach ($modules as $module) {
-				        echo '<li class="dropdown"><a href="#">'.$module->title.' <span class="caret"></span></a>';
-				        echo '<ul class="dropdown-menu">
-				        	<li>
-				              <div class="container-cart">
-				                    <h4 class="modal-title" id="mod-'.$module->id.'">'.$module->title.'</h4>
-				                    <hr>
-				                    '.JModuleHelper::renderModule($module).'
-				              </div>
-				            </li>
-				        </ul></li>';
-				        $i++;
-				    }
-				}
-				?>
-			</ul>
-
-                    </div><!-- /nav-collapse -->
-                </div><!-- /container -->
-            </div><!-- /navbar-inner -->
-        </nav>
-
-    </section>

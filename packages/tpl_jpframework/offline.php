@@ -12,150 +12,75 @@
 
 defined('_JEXEC') or die;
 
-$app   = JFactory::getApplication();
+$app    = JFactory::getApplication();
 $params = JComponentHelper::getParams( 'com_jpframework' );
-$date  = $params->get( 'offline_date', date('Y-m-d', strtotime("+1 week")) );
-$parts = explode('-', $date);
+$date   = $params->get( 'offline_date' );
 ?>
 
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?= $this->language; ?>" lang="<?= $this->language; ?>" dir="<?= $this->direction; ?>">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= htmlspecialchars($app->getCfg('sitename')); ?></title>
+<!DOCTYPE HTML>
+<!--[if lt IE 7 ]> <html lang="en" class="ie ie6"> <![endif]--> 
+<!--[if IE 7 ]>	<html lang="en" class="ie ie7"> <![endif]--> 
+<!--[if IE 8 ]>	<html lang="en" class="ie ie8"> <![endif]--> 
+<!--[if IE 9 ]>	<html lang="en" class="ie ie9"> <![endif]--> 
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title><?= htmlspecialchars($app->getCfg('sitename')); ?></title>
+<meta http-equiv="X-UA-Compatible" content="chrome=1">
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/open-sans-y2k" type="text/css"/>  
+<link rel="stylesheet" media="screen" href="https://fontlibrary.org/face/lobster" type="text/css"/>  
+<!-- forkawesome -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.5/css/fork-awesome.min.css" integrity="sha256-P64qV9gULPHiZTdrS1nM59toStkgjM0dsf5mK/UwBV4=" crossorigin="anonymous">
+<!-- custom css -->
+<link href="<?= $this->baseurl; ?>/templates/<?= $this->template; ?>/offline/css/custom.css" rel="stylesheet"/>
+</head>
 
-    <!-- Bootstrap -->
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<body id="home">
+<div id="Header">
+<div class="wrapper">
+	<h1><?= htmlspecialchars($app->getCfg('sitename')); ?></h1>	
+	</div>
+</div>
+<div id="Content" class="wrapper"> 
+<div class="countdown styled"></div> 
+<?php if ($app->getCfg('display_offline_message', 1) == 1 && str_replace(' ', '', $app->getCfg('offline_message')) != ''): ?>
+    <h1 class="intro"><?= $app->getCfg('offline_message'); ?></h1>
+<?php elseif ($app->getCfg('display_offline_message', 1) == 2 && str_replace(' ', '', JText::_('JOFFLINE_MESSAGE')) != ''): ?>
+    <h1 class="intro"><?= JText::_('JOFFLINE_MESSAGE'); ?></h1>
+<?php  endif; ?></h2>
+<div id="subscribe"> 
+	<form action="" method="post" onsubmit="">
+		<p><input name="" value="Enter your e-mail" type="text" id=""/>
+		<input type="button" value="Submit"/></p>
+	</form>
+	<div id="socialIcons">
+		<ul> 
+			<li><a href="<?= $params->get('youtube', '#'); ?>#"><i class="fa fa-youtube"></i></a></li>
+          	<li><a href="<?= $params->get('facebook', '#'); ?>"><i class="fa fa-facebook-official"></i></a></li>
+          	<li><a href="<?= $params->get('twitter', '#'); ?>"><i class="fa fa-twitter"></i></a></li>
+		  	<li><a href="<?= $params->get('instagram', '#'); ?>"><i class="fa fa-instagram"></i></a></li>
+		</ul>
+	</div>
+</div>
+<span class="tempBy">Copyright &copy; 2016 <?= htmlspecialchars($app->getCfg('sitename')); ?> by <a target="_blank" style="color:#fff;" href="https://www.afi.cat">Afi informàtica</a></span>
+</div>
 
-    <!-- fontawesome -->
-    <script src="https://use.fontawesome.com/3db7fc1628.js"></script>
+<div id="overlay"></div>
 
-    
-    <!-- google font -->
-    <link href='http://fonts.googleapis.com/css?family=Cabin:400,700' rel='stylesheet' type='text/css'>
+<!--Scripts-->
+<script
+src="https://code.jquery.com/jquery-1.12.4.min.js"
+integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+crossorigin="anonymous"></script>
+<script type="text/javascript" src="<?= $this->baseurl; ?>/templates/<?= $this->template; ?>/offline/js/Backstretch.js"></script>
+<script type="text/javascript" src="<?= $this->baseurl; ?>/templates/<?= $this->template; ?>/offline/js/jquery.countdown.js"></script>
+<script>
+$( function() {
+	$.backstretch("<?= JURI::root().$app->get('offline_image', '<?= $this->baseurl; ?>/templates/<?= $this->template; ?>/offline/images/offline.jpg'); ?>"); //background image
+	var endDate = "<?= $date; ?>"; //countdown
+});
+</script>
+<script type="text/javascript" src="js/scripts.js"></script>
 
-    <!-- custom css -->
-    <link href="<?= $this->baseurl; ?>/templates/<?= $this->template; ?>/offline/css/custom.css" rel="stylesheet"/>
-    
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    
-    
-    <?php if ($app->get('offline_image', $this->baseurl.'/templates/'.$this->template.'/offline/images/offline.jpg') && file_exists($app->get('offline_image'))) : ?>
-		<style>body { background: url("<?= JURI::root().$app->get('offline_image'); ?>") no-repeat center center fixed; }</style>
-	<?php endif; ?>
-    
-  </head>
-  <body>
-    <div class="se-pre-con"></div>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          	<div class="header-logo-wrapper">
-            	<?= htmlspecialchars($app->getCfg('sitename')); ?>
-          	</div>
-        </div>
-      </div>
-      
-      <div class="row">
-      	<div class="col-md-12">
-      		<jdoc:include type="message" />
-      	</div>
-      </div>
-
-      <div class="row">
-        <div class="col-md-12">
-        <?php if ($app->getCfg('display_offline_message', 1) == 1 && str_replace(' ', '', $app->getCfg('offline_message')) != ''): ?>
-        <h1 class="text-center"><?= $app->getCfg('offline_message'); ?></h1>
-        <?php elseif ($app->getCfg('display_offline_message', 1) == 2 && str_replace(' ', '', JText::_('JOFFLINE_MESSAGE')) != ''): ?>
-        <h1 class="text-center"><?= JText::_('JOFFLINE_MESSAGE'); ?></h1>
-        <?php  endif; ?>
-        </div>
-      </div>
-  
-      <div class="row">
-        <div class="col-md-12">
-          <div id="counter_wrapper">
-            <div class="text-center" id="counter"></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="text-center subscribe-form-wrapper">
-       <form action="<?= JRoute::_('index.php', true); ?>" method="post" id="form-login" class="form-inline">
-          <div class="form-group">
-           <label for="username"><?= JText::_('JGLOBAL_USERNAME') ?></label>
-           <input name="username" id="username" name="username" class="center-block form-control" placeholder="<?= JText::_('JGLOBAL_USERNAME') ?>" />
-          </div>
-
-          <div class="form-group">
-            <label for="passwd"><?= JText::_('JGLOBAL_PASSWORD') ?></label>
-            <input type="password" name="password" id="passwd" class="center-block form-control form-subs-email" placeholder="<?= JText::_('JGLOBAL_PASSWORD') ?>" />
-          </div>
-          
-          <?php if (count($twofactormethods) > 1) : ?>
-          <div class="form-group">
-		  	<label for="secretkey"><?= JText::_('JGLOBAL_SECRETKEY'); ?></label>
-			<input type="text" name="secretkey" id="secretkey" class="center-block form-control" placeholder="<?= JText::_('JGLOBAL_SECRETKEY'); ?>" />
-		  </div>
-		  <?php endif; ?>
-
-          <button type="submit" class="btn btn-default"><?= JText::_('JLOGIN') ?></button>
-		  <input type="hidden" name="option" value="com_users" />
-		  <input type="hidden" name="task" value="user.login" />
-		  <input type="hidden" name="return" value="<?= base64_encode(JURI::base()) ?>" />
-		  <?= JHtml::_('form.token'); ?>
-        </form>
-      </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="social-media-wrapper text-center">
-          <a href="<?= $params->get('pinterest', '#'); ?>#"><i class="fa fa-pinterest"></i></a>
-          <a href="<?= $params->get('facebook', '#'); ?>"><i class="fa fa-facebook-official"></i></a>
-          <a href="<?= $params->get('gplus', '#'); ?>"><i class="fa fa-google-plus-official"></i></a>
-          <a href="<?= $params->get('twitter', '#'); ?>"><i class="fa fa-twitter"></i></a>
-		  <a href="<?= $params->get('instagram', '#'); ?>"><i class="fa fa-instagram"></i></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-12">
-        <div class="text-center copyright">Copyright &copy; 2016 <?= htmlspecialchars($app->getCfg('sitename')); ?> by <a target="_blank" style="color:#fff;" href="https://www.afi.cat">Afi informàtica</a></div> 
-      </div>
-    </div>
-    
-    </div>
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="<?= $this->baseurl; ?>/templates/<?= $this->template; ?>/offline/js/bootstrap.min.js"></script>
-
-    <!-- fit text -->
-    <script type="text/javascript" src="<?= $this->baseurl ?>/templates/<?= $this->template ?>/offline/js/jquery.fittext.js"></script>
-
-    <!-- jquery countdown -->
-    <script type="text/javascript" src="<?= $this->baseurl ?>/templates/<?= $this->template ?>/offline/js/jquery.plugin.js"></script> 
-    <script type="text/javascript" src="<?= $this->baseurl ?>/templates/<?= $this->template ?>/offline/js/jquery.countdown.js"></script>
-
-    <!--placeholder -->
-    <script type="text/javascript" src="<?= $this->baseurl ?>/templates/<?= $this->template ?>/offline/js/jquery.placeholder.js"></script>
-
-    <script type="text/javascript" src="<?= $this->baseurl ?>/templates/<?= $this->template ?>/offline/js/scripts.js"></script>
-    <script>
-	$(document).ready(function(){
-	  $("#counter").countdown({
-	  until: new Date(<?= $parts[0]; ?>, <?= $parts[1]; ?> - 1, <?= $parts[2]; ?>),
-	  format: 'dHMS'
-	  });
-	});
-	</script>
-  </body>
+</body>
 </html>

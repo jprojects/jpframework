@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @version    	2.0 jp_framework.php $ kim 2014
+ * @version    	3.0 jp_framework.php $ kim 2014
  * @package	JPFramework
  * @copyright   Copyright © 2010 - All rights reserved.
  * @license	GNU/GPL
@@ -22,10 +22,8 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 ?>
 
 <?php if(jpf::getparameter('jpf-top') != 0) : ?>
-<!-- start top row -->	
-<div class="first-row">		
+<!-- start top row -->			
 <?= jpf::getColumn('jpf-top', 'top'); ?>		
-</div>
 <!-- end top row -->
 <?php endif; ?>
 
@@ -39,26 +37,28 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 <!-- end main row -->
 <?php endif; ?>
 
-<div class="row" style="margin:0;">
-<?php if($doc->countModules('jpf-left')) : ?>
-<div class="<?= $colsl; ?>">
-    <jdoc:include type="modules" name="jpf-left" />
-</div>
-<?php endif; ?>
+<div class="container<?php if(jpf::getparameter('fluid', 0) == 0) : ?>-fluid<?php endif;; ?>">
+	<div class="row">
+		<?php if($doc->countModules('jpf-left')) : ?>
+		<div class="<?= $colsl; ?>">
+			<jdoc:include type="modules" name="jpf-left" />
+		</div>
+		<?php endif; ?>
 
-<div class="<?= $colsc; ?>">
-  
-    <?php if(jpf::showComponent()) : ?>
-	<div class="container mainbody"><jdoc:include type="component" /></div>
-	<?php endif; ?>
-	
-</div>
+		<div class="<?= $colsc; ?>">
+		  
+			<?php if(jpf::showComponent()) : ?>
+			<div class="container mainbody"><jdoc:include type="component" /></div>
+			<?php endif; ?>
+			
+		</div>
 
-<?php if($doc->countModules('jpf-right')) : ?>
-<div class="<?= $colsr; ?>">
-	<jdoc:include type="modules" name="jpf-right" />
-</div>
-<?php endif; ?>
+		<?php if($doc->countModules('jpf-right')) : ?>
+		<div class="<?= $colsr; ?>">
+			<jdoc:include type="modules" name="jpf-right" />
+		</div>
+		<?php endif; ?>
+	</div>
 </div>
 
 <?php if(jpf::getparameter('jpf-showcase') != 0) : ?>
@@ -104,9 +104,6 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 			  	<?php endif; ?>
 			  	<?php if(jpf::getparameter('github') != '') : ?>
 			  	<li> <a target="_blank" href="<?= jpf::getparameter('github'); ?>"><i class="fa fa-github"></i></a></li> 
-			  	<?php endif; ?>
-			  	<?php if(jpf::getparameter('gplus') != '') : ?>
-			  	<li> <a target="_blank" href="<?= jpf::getparameter('gplus'); ?>"><i class="fa fa-google-plus"></i></a></li> 
 			  	<?php endif; ?>
 			  	<?php if(jpf::getparameter('instagram') != '') : ?>
 			  	<li> <a target="_blank" href="<?= jpf::getparameter('instagram'); ?>"><i class="fa fa-instagram"></i></a></li> 

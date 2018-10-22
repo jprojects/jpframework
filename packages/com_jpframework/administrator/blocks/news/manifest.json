@@ -1,5 +1,5 @@
 {
-  "name": "News",
+  "name": "Carousel",
   "version": "1.0",
-  "description": "News block choose a category ans show a timeline blog"
+  "description": "Carousel block up to three sliding images with captions"
 }

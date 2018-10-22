@@ -24,31 +24,47 @@
 			description="Uniqid is used as the block section id" 
 		/>
 		<field 
-			name="header_lead" 
+			name="jumbotron-title" 
 			type="text" 
 			default="" 
 			label="Text" 
 			description="Heading text" 
 		/>
 		<field 
-			name="header_logo" 
-			type="media" 
-			directory="" 
+			name="jumbotron-text" 
+			type="textarea" 
+			description="" 
 			label="Logo" 
+			cols="10"
+			rows="5"
 		/>
 		<field 
-			name="header_button_txt" 
+			name="jumbotron-btn1-text" 
 			type="text" 
 			default="" 
 			label="Button text" 
-			description="Heading button text" 
+			description="Button text" 
 		/>
 		<field 
-			name="header_button_link" 
+			name="jumbotron-btn1-link" 
 			type="text" 
 			default="" 
 			label="Button link" 
-			description="Heading button link" 
+			description="Button link" 
+		/>
+		<field 
+			name="jumbotron-btn2-text" 
+			type="text" 
+			default="" 
+			label="Button text" 
+			description="Button text" 
+		/>
+		<field 
+			name="jumbotron-btn2-link" 
+			type="text" 
+			default="" 
+			label="Button link" 
+			description="Button link" 
 		/>
 	</fieldset>
 	<fieldset name="styles">

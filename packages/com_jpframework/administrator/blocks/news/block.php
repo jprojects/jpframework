@@ -1,61 +1,53 @@
 <?php
 
 /**
- * @version     1.0.0
- * @package     com_jpframework
- * @copyright   Copyright (C) 2015. Todos los derechos reservados.
- * @license     Licencia Pública General GNU versión 2 o posterior. Consulte LICENSE.txt
- * @author      aficat <kim@aficat.com> - http://www.afi.cat
- */
-// No direct access
-defined('_JEXEC') or die;
-require_once(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jpframework' . DS . 'helpers' . DS . 'blocks.php');
-$blockid = JRequest::getVar('blockid');
-blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blocks/news/assets/css/news.css');
-$cat = blocksHelper::getBlockParameter($blockid, 'category');
-$limit = blocksHelper::getBlockParameter($blockid, 'limit');
+* @version		$Id: com_jpframework  Kim $
+* @package		com_jpframework v 1.0.0
+* @copyright	Copyright (C) 2014 Afi. All rights reserved.
+* @license		GNU/GPL, see LICENSE.txt
+*/
 
-$db = JFactory::getDbo();
-$db->setQuery("select * from #__content where catid = ".$cat." and state = 1 order by created desc limit ".$limit);
-$rows = $db->loadObjectList();
+// restricted access
+defined('_JEXEC') or die('Restricted access');
+require_once('helper.php');
+$blockid = JRequest::getVar('blockid');
+blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blocks/SliderNews/assets/css/SliderNews.css');
+$cid = blocksHelper::getBlockParameter($blockid, 'carousel_id');
+$cat = blocksHelper::getBlockParameter($blockid, 'category');
+$uniqid = blocksHelper::getBlockParameter($blockid, 'uniqid');
+
 ?>
 
-<section id="<?php echo blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:<?php echo blocksHelper::getBlockParameter($blockid,'block_color'); ?>">
-	<div id="cd-timeline" class="container">
-	<?php foreach($rows as $row) : ?>
-	<div class="cd-timeline-block">
-		<div class="cd-timeline-img cd-location bounce-in">
-			<img src="http://codyhouse.co/demo/vertical-timeline/img/cd-icon-location.svg" alt="Picture">
-		</div> <!-- cd-timeline-img -->
-	
-		<div class="cd-timeline-content">
-			<h2><?php echo $row->title; ?></h2>
-			<p><?php echo $row->introtext; ?></p>
-			<a href="<?php echo JRoute::_('index.php?option=com_content&view=article&id='.$row->id); ?>" class="cd-read-more">Read more</a>
-			<span class="cd-date"><?php echo date('M j Y', strtotime($row->created)); ?></span>
-		</div> <!-- cd-timeline-content -->
-	</div> <!-- cd-timeline-block -->
-	<?php endforeach; ?>
-	<script>
-	jQuery(document).ready(function($){
-	var $timeline_block = $('.cd-timeline-block');
+<style>
 
-	//hide timeline blocks which are outside the viewport
-	$timeline_block.each(function(){
-		if($(this).offset().top > $(window).scrollTop()+$(window).height()*0.75) {
-			$(this).find('.cd-timeline-img, .cd-timeline-content').addClass('is-hidden');
-		}
-	});
+</style>
 
-	//on scolling, show/animate timeline blocks when enter the viewport
-	$(window).on('scroll', function(){
-		$timeline_block.each(function(){
-			if( $(this).offset().top <= $(window).scrollTop()+$(window).height()*0.75 && $(this).find('.cd-timeline-img').hasClass('is-hidden') ) {
-				$(this).find('.cd-timeline-img, .cd-timeline-content').removeClass('is-hidden').addClass('bounce-in');
-			}
-		});
-	});
-});
-	</script>
-	</div>
+<section class="SliderNews" id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
+
+	<div class="row">
+		<div class="col col-xs-12">
+        	<div class="blog-grids" id="<?= $cid; ?>">
+                
+            	<?php foreach(SliderNewsHelper::getArticles($cat, 3) as $item) : ?>
+            	<?php $link = JRoute::_('index.php?option=com_content&view=article&id='.$item->id.'&catid='.$cat); ?>
+                <div class="grid">
+                    <div class="entry-media">
+                        <a href="<?= $link; ?>"><?= SliderNewsHelper::getImage($item->introtext); ?></a>
+                    </div>
+                    <div class="entry-body">
+                        <span class="cat">Notícies</span>
+                        <h3><a href="<?= $link; ?>"><?= $item->title; ?></a></h3>
+                        <p><?= SliderNewsHelper::getText($item->introtext); ?></p>
+                        <div class="read-more-date">
+                            <a href="<?= $link; ?>">Llegir més..</a>
+                            <span class="date"><?= date('M j', strtotime($item->created)); ?></span>
+                        </div>
+                    </div>
+                </div>
+				<?php endforeach; ?>
+				
+            </div>
+        </div>
+	</div>       
+
 </section>
