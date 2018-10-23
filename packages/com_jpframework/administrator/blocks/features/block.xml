@@ -54,121 +54,61 @@
 			label="Content position" 
 			description="Content position" 
 		>
-			<option value="center">Center</option>
-			<option value="right">Right</option>
-			<option value="left">Left</option>
+			<option value="text-center">Center</option>
+			<option value="text-right">Right</option>
+			<option value="text-left">Left</option>
 		</field>
 		<field 
-        	name="feature_title1" 
-        	type="text" 
-        	default="" 
-        	label="Title 1" 
-        	description="feature title 1" 
-        />
-		<field 
-			name="feature_text1" 
-			type="textarea" 
-			default="" 
-			label="Text 1" 
-			description="Feature text 1" 
-			rows="10" 
-			cols="5" 
-			filter="raw"
-		/>
-		<field 
-			name="feature_img1" 
-			type="media" 
-			directory="" 
-			label="Image 1" 
-		/>
-		<field 
-        	name="feature_btn1" 
-        	type="text" 
-        	default="" 
-        	label="Button 1" 
-        	description="Button title 1" 
-        />
-        <field 
-        	name="feature_btn_link1" 
-        	type="text" 
-        	default="#" 
-        	label="Button Link 1" 
-        	description="Button link 1" 
-        />
-		<field 
-        	name="feature_title2" 
-        	type="text" 
-        	default="" 
-        	label="Title 2" 
-        	description="feature title 2" 
-        />
-		<field 
-			name="feature_text2" 
-			type="textarea" 
-			default="" 
-			label="Text 2" 
-			description="Feature text 2" 
-			rows="10" 
-			cols="5" 
-			filter="raw"
-		/>
-		<field 
-			name="feature_img2" 
-			type="media" 
-			directory="" 
-			label="Image 2" 
-		/>
-		<field 
-        	name="feature_btn2" 
-        	type="text" 
-        	default="" 
-        	label="Button 2" 
-        	description="Button title 2" 
-        />
-        <field 
-        	name="feature_btn_link2" 
-        	type="text" 
-        	default="#" 
-        	label="Button Link 2" 
-        	description="Button link 2" 
-        />
-		<field 
-        	name="feature_title3" 
-        	type="text" 
-        	default="" 
-        	label="Title 3" 
-        	description="feature title 3" 
-        />
-		<field 
-			name="feature_text3" 
-			type="textarea" 
-			default="" 
-			label="Text 3" 
-			description="Feature text 3" 
-			rows="10" 
-			cols="5" 
-			filter="raw"
-		/>
-		<field 
-			name="feature_img3" 
-			type="media" 
-			directory="" 
-			label="Image 3" 
-		/>
-		<field 
-        	name="feature_btn3" 
-        	type="text" 
-        	default="" 
-        	label="Button 3" 
-        	description="Button title 3" 
-        />
-        <field 
-        	name="feature_btn_link3" 
-        	type="text" 
-        	default="#" 
-        	label="Button Link 3" 
-        	description="Button link 3" 
-        />
+			name="list_features"
+			type="repeatable"
+			icon="list"
+			description="Features items"
+			label="Features items"
+			default='{"feature_title":[""],
+				"feature_text":[""],
+				"feature_img":[""],
+				"feature_btn":[""],
+				"feature_btn_link":[""]}'>
+			<fieldset hidden="true" name="list_features_modal" repeat="true">
+				<field 
+					name="feature_title" 
+					type="text" 
+					default="" 
+					label="Button" 
+					description="Button title" 
+				/>
+				<field 
+					name="feature_text" 
+					type="textarea" 
+					default="" 
+					label="Text" 
+					description="Feature text" 
+					rows="10" 
+					cols="5" 
+					filter="raw"
+				/>
+				<field 
+					name="feature_img" 
+					type="media" 
+					directory="" 
+					label="Image" 
+				/>
+				<field 
+					name="feature_btn" 
+					type="text" 
+					default="" 
+					label="Button" 
+					description="Button title" 
+				/>
+				<field 
+					name="feature_btn_link" 
+					type="text" 
+					default="#" 
+					label="Button Link" 
+					description="Button link" 
+				/>
+			</fieldset>
+		</field>
 	</fieldset>
 	<fieldset name="styles">
 		<field 

@@ -50,89 +50,89 @@ jQuery(window).load(function(){
 </script>
 
 <style>
-#<?php echo $uniqid; ?> {
-	background-color: <?php echo blocksHelper::getBlockParameter($blockid,'block_color'); ?>;
+#<?= $uniqid; ?> {
+	background-color: <?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;
 }
-#<?php echo $uniqid; ?> header {
+#<?= $uniqid; ?> header {
 margin-bottom: 12px;
 text-align: center;
 }
-#<?php echo $uniqid; ?> .thumb { height: 160px; }
+#<?= $uniqid; ?> .thumb { height: 160px; }
 
-#<?php echo $uniqid; ?> .creations-filter a.current { 
+#<?= $uniqid; ?> .creations-filter a.current { 
     font-weight:bold;
 }
 
-#<?php echo $uniqid; ?> .isotope-item {
+#<?= $uniqid; ?> .isotope-item {
     z-index: 2;
 }
-#<?php echo $uniqid; ?> .isotope-hidden.isotope-item {
+#<?= $uniqid; ?> .isotope-hidden.isotope-item {
     pointer-events: none;
     z-index: 1;
 }
-#<?php echo $uniqid; ?> .isotope,
-#<?php echo $uniqid; ?> .isotope .isotope-item {
+#<?= $uniqid; ?> .isotope,
+#<?= $uniqid; ?> .isotope .isotope-item {
   /* change duration value to whatever you like */
 
     -webkit-transition-duration: 0.8s;
     -moz-transition-duration: 0.8s;
     transition-duration: 0.8s;
 }
-#<?php echo $uniqid; ?> .isotope {
+#<?= $uniqid; ?> .isotope {
     -webkit-transition-property: height, width;
     -moz-transition-property: height, width;
     transition-property: height, width;
 }
-#<?php echo $uniqid; ?> .isotope .isotope-item {
+#<?= $uniqid; ?> .isotope .isotope-item {
     -webkit-transition-property: -webkit-transform, opacity;
     -moz-transition-property: -moz-transform, opacity;
     transition-property: transform, opacity;
 }
 </style>
 
-<section id="<?php echo blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
+<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
 
-<div>
-<div class="container jpfblock">
-<header>
-<h1><?php echo blocksHelper::getBlockParameter($blockid,'gallery_title'); ?></h1>
-<div class="lead"><?php echo blocksHelper::getBlockParameter($blockid,'gallery_text'); ?></div>
-<div class="btn-group creations-filter" role="group" aria-label="...">	
-  	<a href="#all" data-filter="*" class="current btn btn-default">All</a>
-  	<?php 
-  	$tags = explode(',', blocksHelper::getBlockParameter($blockid,'gallery_tags'));
-  	foreach($tags as $tag) :
-  	?>
-  	<a href="#<?php echo $tag;?>" data-filter=".<?php echo $tag;?>" class="btn btn-default"><?php echo $tag;?></a>
-	<?php endforeach; ?>
-</div>
-</header>
+	<div>
+		<div class="container jpfblock">
+			<header>
+				<h1><?= blocksHelper::getBlockParameter($blockid, 'gallery_title'); ?></h1>
+				<div class="lead"><?= blocksHelper::getBlockParameter($blockid, 'gallery_text'); ?></div>
+				<div class="btn-group creations-filter" role="group" aria-label="...">	
+				  	<a href="#all" data-filter="*" class="current btn btn-default">All</a>
+				  	<?php 
+				  	$tags = explode(',', blocksHelper::getBlockParameter($blockid,'gallery_tags'));
+				  	foreach($tags as $tag) :
+				  	?>
+				  	<a href="#<?= $tag;?>" data-filter=".<?= $tag;?>" class="btn btn-default"><?= $tag;?></a>
+					<?php endforeach; ?>
+				</div>
+			</header>
 
-<div class="creations-container">
-<?php 
-$dir = JPATH_ROOT.'/images/'.blocksHelper::getBlockParameter($blockid, 'gallery_folder');
-$i = 1;
-if (is_dir($dir)) {
-    if ($dh = opendir($dir)) {
-        while (($file = readdir($dh)) !== false) { 
-	if ($file != "." && $file != ".." && $file != "index.html") {
-	$img = explode('-', $file);
-	?>
-	<div class="col-lg-3 col-md-4 col-xs-6 thumb <?php echo $img[0]; ?>">
-    	<a class="thumbnail" href="images/<?php echo blocksHelper::getBlockParameter($blockid, 'gallery_folder').DS.$file; ?>" data-lightbox="gallery">
-    	<img class="img-responsive" src="images/<?php echo blocksHelper::getBlockParameter($blockid, 'gallery_folder').DS.$file; ?>" alt="">
-	</a>
+			<div class="creations-container">
+			<?php 
+			$dir = JPATH_ROOT.'/images/'.blocksHelper::getBlockParameter($blockid, 'gallery_folder');
+			$i = 1;
+			if (is_dir($dir)) {
+				if ($dh = opendir($dir)) {
+					while (($file = readdir($dh)) !== false) { 
+				if ($file != "." && $file != ".." && $file != "index.html") {
+				$img = explode('-', $file);
+				?>
+				<div class="col-lg-3 col-md-4 col-xs-6 thumb <?= $img[0]; ?>">
+					<a class="thumbnail" href="images/<?= blocksHelper::getBlockParameter($blockid, 'gallery_folder').DS.$file; ?>" data-lightbox="gallery">
+					<img class="img-responsive" src="images/<?= blocksHelper::getBlockParameter($blockid, 'gallery_folder').DS.$file; ?>" alt="">
+				</a>
+				</div>
+			<?php 
+			}
+			$i++;
+			}
+					closedir($dh);
+				}
+			}
+			?>
+			</div>
+		</div>
 	</div>
-<?php 
-}
-$i++;
-}
-        closedir($dh);
-    }
-}
-?>
-</div>
-</div>
-</div>
 
 </section>

@@ -43,39 +43,51 @@ endforeach; ?>
 }
 </style>
 
-<section id="<?=  blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="padding:0;">
+<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
 
 <div class="carousel fade-carousel slide carousel-<?= $blockid; ?>" data-ride="carousel" id="<?= $cid; ?>">
   
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-  	<?php 
-  	$i = 0;
-  	foreach($items as $item): 
-  	if($items['carousel_img'][$i] == '') break;
-  	?>
-    <div class="item slides <?php if($i == 0) : ?>active<?php endif; ?>">
-      <div class="slide-<?= $i; ?>"></div>
-      <div class="container hero">
-        <hgroup>
-            <h1><?= $items['carousel_title'][$i]; ?></h1>        
-        </hgroup>
-      </div>
-    </div>
-    <?php 
-    $i++;
-    endforeach; ?>
-  </div> 
+  	<ol class="carousel-indicators">
+  		<?php 
+	  	$i = 0;
+	  	foreach($items as $item): 
+	  	if($items['carousel_img'][$i] == '') break;
+	  	?>
+  		<li data-target="#<?= $cid; ?>" data-slide-to="<?= $i; ?>" <?php if($i == 0) : ?>class="active"<?php endif; ?>></li>
+  		<?php 
+    	$i++;
+    	endforeach; ?>
+	</ol>
+        
+  	<div class="carousel-inner">
+	  	<?php 
+	  	$i = 0;
+	  	foreach($items as $item): 
+	  	if($items['carousel_img'][$i] == '') break;
+	  	?>
+		<div class="carousel-item slides <?php if($i == 0) : ?>active<?php endif; ?>">
+		  <div class="slide-<?= $i; ?>"></div>
+		  <div class="container hero">
+		    <hgroup>
+		        <h1><?= $items['carousel_title'][$i]; ?></h1>        
+		    </hgroup>
+		  </div>
+		</div>
+		<?php 
+		$i++;
+		endforeach; ?>
+  	</div> 
   
-  <?php if(count($items) > 1) : ?>
-  <!-- Controls -->
-  <a class="left carousel-control" href="#<?= $cid; ?>" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-  </a>
-  <a class="right carousel-control" href="#<?= $cid; ?>" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-  <?php endif; ?>
+	<?php if(count($items) > 1) : ?>
+	<a class="carousel-control-prev" href="#<?= $cid; ?>" role="button" data-slide="prev">
+		  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		  <span class="sr-only">Previous</span>
+	</a>
+	<a class="carousel-control-next" href="#<?= $cid; ?>" role="button" data-slide="next">
+		  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		  <span class="sr-only">Next</span>
+	</a>
+	<?php endif; ?>
       
 </div>
 
