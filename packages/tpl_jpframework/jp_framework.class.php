@@ -191,6 +191,7 @@ class jpf  extends blocksHelper
 	    	if($row->menuitem == 0 || in_array($itemid, $menuitems)) { 
 		    	$html = "";
 		    	JRequest::setVar('blockid', $row->id);
+		    	//override blocks from template
 	    		$path1 = dirname(__FILE__).DS.'html'.DS.'blocks'.DS.$row->type.DS.'block.php';
 				$path2 = JPF_BLOCKS_PATH.DS.$row->type.DS.'block.php';
 		    	if (is_file($path1)) {
