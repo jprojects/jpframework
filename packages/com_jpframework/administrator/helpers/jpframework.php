@@ -24,11 +24,6 @@ class JpframeworkHelper {
 					'index.php?option=com_jpframework&view=blocks',
 					$vName == 'blocks'
 			);
-        	JHtmlSidebar::addEntry(
-        		JText::_('COM_JPFRAMEWORK_TITLE_STORE'),
-        		'index.php?option=com_jpframework&view=store',
-        		$vName == 'store'
-        	);
     }
 
     /**
