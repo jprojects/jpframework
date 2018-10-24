@@ -45,6 +45,26 @@ class blocksHelper {
 	}
 	
 	/**
+	 * Method to order the repetable fields data
+     * @access public
+     * @param array
+     * @return grouped array
+    */
+    public static function group_by_key($array) 
+	{
+		$result = array();
+
+		foreach ($array as $sub) 
+		{
+		    foreach ($sub as $k => $v) 
+		    {
+		        $result[$k][] = $v;
+		    }
+		}
+		return $result;
+	}
+	
+	/**
 	 * method to get component parameters
 	 * @param string $param
 	 * @param mixed $default
