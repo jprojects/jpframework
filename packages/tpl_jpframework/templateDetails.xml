@@ -13,7 +13,6 @@
   <files>
         <filename>index.php</filename>
     	<filename>index.html</filename>
-    	<filename>humans.txt</filename>
     	<filename>jp_framework.class.php</filename>
         <filename>component.php</filename>
         <filename>template_thumbnail.png</filename>
