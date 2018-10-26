@@ -24,10 +24,10 @@
         </sql>
     </uninstall>
     
-    <installfile>install.component.php</installfile>
+    <scriptfile>script.php</scriptfile>
 
     <administration>
-        <menu img="components/com_jpframework/assets/images/s_com_jpframework.png" >COM_JPFRAMEWORK</menu>
+        <menu>COM_JPFRAMEWORK</menu>
         <submenu>
             
 		<menu link="option=com_jpframework&amp;view=blocks" view="blocks" img="components/com_jpframework/assets/images/s_blockss.png" alt="Jpframework/Blocks">COM_JPFRAMEWORK_TITLE_BLOCKS</menu>
