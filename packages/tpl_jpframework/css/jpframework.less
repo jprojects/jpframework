@@ -7,7 +7,7 @@
  * @linkhover_color
  * @footer_color
  * @footer_fcolor
- * @unicode 
+ * @menu_background
 */
 
 @import url('//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css');
@@ -85,7 +85,9 @@ sub {
   margin: 5rem 0; /* Space out the Bootstrap <hr> more */
 }
 
-span.mirror { unicode-bidi:bidi-override; direction: rtl; } /* spam bot protection for email addreses */
+.bg-dark {
+    background-color: @menu_background !important;
+}
 
 /* ===== alert messaqges ==== */
 
@@ -158,9 +160,6 @@ span.mirror { unicode-bidi:bidi-override; direction: rtl; } /* spam bot protecti
 
 /* ========== Styles ========== */
 
-.first-row {
-	margin-top: 90px;
-}
 .mainbody {
 	margin-top: 50px; 
 	min-height: 500px;
