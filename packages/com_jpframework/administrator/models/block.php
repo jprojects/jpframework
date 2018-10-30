@@ -84,7 +84,14 @@ class JpframeworkModelBlock extends JModelAdmin
 			}			
 			// create new JForm object
 			$form = new JForm('block');
-			$form->loadFile(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_jpframework'.DS.'blocks'.DS.$block.DS.'block.xml');
+			//overiide if exists
+			$path1 = JPATH_ROOT.DS.'templates'.DS.'jpframework'.DS.'html'.DS.'blocks'.DS.$block.DS.'block.xml';
+			$path2 = JPATH_ADMINISTRATOR.DS.'components'.DS.'com_jpframework'.DS.'blocks'.DS.$block.DS.'block.xml';
+			if (is_file($path1)) {
+				$form->loadFile($path1);
+			} else {
+				$form->loadFile($path2);
+			}
 			$fields = $form->getFieldset($name);
 			$html = array();
 			foreach ($fields as $field)
