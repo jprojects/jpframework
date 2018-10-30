@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="component" version="3.0" method="upgrade">
     <name>com_jpframework</name>
-    <creationDate>2015-01-24</creationDate>
+    <creationDate>2018-10-24</creationDate>
     <copyright>Copyright (C) 2018. Todos los derechos reservados.</copyright>
     <license>Licencia Pública General GNU versión 2 o posterior. Consulte LICENSE.txt</license>
     <author>Afi</author>
@@ -25,6 +25,10 @@
     </uninstall>
     
     <scriptfile>script.php</scriptfile>
+    
+    <updateservers>
+    	<server type="extension" priority="2" name="JPFramework Component">http://www.aficat.com/updates/jpframework/com_jpframework.xml</server>
+ 	</updateservers>
 
     <administration>
         <menu>COM_JPFRAMEWORK</menu>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-
 	<fieldset name="block">
-		<field 
+	<field 
 			name="title" 
 			type="text" 
 			default="" 
@@ -22,7 +21,7 @@
 			default="#ffffff" 
 			label="Font color" 
 			description="Font color" 
-		/>
+		/>	
 		<field 
 			name="uniqid" 
 			type="text" 
@@ -34,78 +33,69 @@
 			name="feature_heading" 
 			type="text" 
 			default="" 
-			label="Title" 
-			description="Heading title" 
+			label="Heading" 
+			description="Feature heading" 
 		/>
 		<field 
 			name="feature_subheading" 
-			type="textarea" 
+			type="text" 
 			default="" 
-			label="Subtitle" 
-			description="Subheading text" 
-			rows="10" 
-			cols="5" 
-			filter="raw"
+			label="Sub Heading" 
+			description="Feature subheading" 
 		/>
 		<field 
-			name="content_position" 
-			type="list" 
-			default="center" 
-			label="Content position" 
-			description="Content position" 
-		>
-			<option value="text-center">Center</option>
-			<option value="text-right">Right</option>
-			<option value="text-left">Left</option>
-		</field>
+			name="height" 
+			type="text" 
+			default="140" 
+			label="Image Height" 
+			description="" 
+		/>
 		<field 
 			name="list_features"
 			type="repeatable"
 			icon="list"
 			description="Features items"
 			label="Features items"
-			default='{"feature_title":[""],
-				"feature_text":[""],
-				"feature_img":[""],
-				"feature_btn":[""],
-				"feature_btn_link":[""]}'>
-			<fieldset hidden="true" name="list_features_modal" repeat="true">
+			default='{"feat_title":[""],
+				"feat_text":[""],
+				"feat_img":[""],
+				"feat_btn_text":[""],
+				"feat_btn_link":[""]}'>
+			<fieldset hidden="true" name="list_images_modal" repeat="true">
 				<field 
-					name="feature_title" 
+					name="feat_title" 
 					type="text" 
 					default="" 
-					label="Button" 
-					description="Button title" 
+					label="Title" 
+					description="Feature title" 
 				/>
 				<field 
-					name="feature_text" 
-					type="textarea" 
+					name="feat_text" 
+					type="text" 
 					default="" 
 					label="Text" 
 					description="Feature text" 
-					rows="10" 
-					cols="5" 
-					filter="raw"
 				/>
 				<field 
-					name="feature_img" 
+					name="feat_img" 
 					type="media" 
 					directory="" 
 					label="Image" 
+					description="Feature image"
 				/>
 				<field 
-					name="feature_btn" 
+					name="feat_btn_text" 
 					type="text" 
 					default="" 
-					label="Button" 
-					description="Button title" 
+					label="Button text" 
+					description="Feature button text" 
 				/>
 				<field 
-					name="feature_btn_link" 
+					name="feat_btn_link" 
 					type="text" 
-					default="#" 
+					default="" 
 					label="Button Link" 
-					description="Button link" 
+					description="Feature button link" 
 				/>
 			</fieldset>
 		</field>
