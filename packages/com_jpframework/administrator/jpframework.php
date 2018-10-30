@@ -11,6 +11,9 @@
 // no direct access
 defined('_JEXEC') or die;
 
+// Report simple running errors
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
+
 // Access check.
 if (!JFactory::getUser()->authorise('core.manage', 'com_jpframework')) 
 {
