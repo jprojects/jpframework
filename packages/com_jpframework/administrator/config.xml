@@ -287,21 +287,21 @@
 		<field 
 			name="body_fcolor" 
 			type="color" 
-			default="#34495e" 
+			default="#5c778c" 
 			label="Body font color" 
 			description="Body font color" 
 		/>
 		<field 
 			name="menu_bg" 
 			type="color" 
-			default="#000" 
+			default="#343a40" 
 			label="Menu background" 
 			description="Menu background color" 
 		/>
         <field 
 			name="link_color" 
 			type="color" 
-			default="#1abc9c" 
+			default="#5c778c" 
 			label="Link color" 
 			description="Link color" 
 		/>
@@ -315,7 +315,7 @@
 		<field 
 			name="footer_color" 
 			type="color" 
-			default="#1abc9c" 
+			default="#343a40" 
 			label="Footer background" 
 			description="Footer background color" 
 		/>
@@ -326,14 +326,6 @@
 			label="Footer font color" 
 			description="Footer font color" 
 		/>
-		<field 
-          		name="unicode" 
-          		type="text" 
-          		class="inputbox" 
-          		default="f005" 
-          		label="JP_FRAMEWORK_UNICODE_LABEL" 
-          		description="JP_FRAMEWORK_UNICODE_DESC" 
-          	/>
     </fieldset>
     <fieldset label="COM_JPFRAMEWORK_SOCIAL" name="social">
     	<field 

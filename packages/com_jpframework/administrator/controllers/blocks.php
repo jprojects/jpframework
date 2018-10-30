@@ -117,7 +117,6 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 		$footer_fcolor 		= $params->get('footer_fcolor');
 		$menu 				= $params->get('menu');
 		$menu_bg 			= $params->get('menu_bg');
-		$unicode 			= $params->get('unicode');
 		
 		$options 	= array( 'compress'=>true );
 		$parser 	= new Less_Parser($options);
@@ -134,13 +133,12 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 			@footer_color: ".$footer_color.";
 			@footer_fcolor: ".$footer_fcolor.";
 			@menu_background: ".$menu_bg.";
-			@unicode: '".$unicode."';
 		");
 		$css = $parser->getCss();
 		file_put_contents(JPATH_ROOT.'/templates/jpframework/css/jpframework.css', $css);
 		chmod(JPATH_ROOT.'/templates/jpframework/css/jpframework.css', 0777);
 	
-		$this->setRedirect('index.php?option=com_jpframework&view=blocks', 'Less compiled successfully');
+		$this->setRedirect('index.php?option=com_jpframework&view=blocks', 'Less successfully compiled');
 	
 	}
 }
