@@ -13,6 +13,8 @@
 defined( '_JEXEC' ) or die( 'Restricted access' );
 require_once('jp_framework.class.php');
 JHtml::_('jquery.framework');
+// Report simple running errors
+error_reporting(E_ERROR | E_WARNING | E_PARSE);
 ?>
 <!DOCTYPE html>
 <html lang="<?= $this->language; ?>">
