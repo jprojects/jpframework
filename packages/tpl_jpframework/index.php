@@ -72,9 +72,9 @@ jQuery.cookieCuttr({
 </header>
 
 <main role="main">
-<?php if(jpf::getparameter('fluid', 0) == 0) : ?><div class="container"><?php endif; ?>
+
 <?= jpf::getLayout(jpf::getparameter('layout', 'clear')); ?>
-<?php if(jpf::getparameter('fluid', 0) == 0) : ?></div><?php endif; ?>
+
 </div>
 
 </body>
