@@ -69,36 +69,20 @@
 				/>
 				<field 
 					name="carousel_text" 
-					type="textarea" 
+					type="text" 
 					default="" 
 					label="Text" 
 					description="Carousel text" 
-					rows="10" 
-					cols="5" 
-					filter="raw"
 				/>
 				<field 
 					name="carousel_img" 
 					type="media" 
 					directory="" 
 					label="Image" 
+					description="Carousel image"
 				/>
 			</fieldset>
 		</field>
-		<field 
-        	name="carousel_btn" 
-        	type="text" 
-        	default="" 
-        	label="Button title" 
-        	description="Button title" 
-        />
-        <field 
-        	name="carousel_btn_link" 
-        	type="text" 
-        	default="#" 
-        	label="Button Link" 
-        	description="Button link" 
-        />
 	</fieldset>
 	<fieldset name="styles">
 		<field 

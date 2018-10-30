@@ -16,17 +16,18 @@ blocksHelper::getBlockParameter($blockid,'carousel_play') == 0 ? $play = "false"
 $cid 	= blocksHelper::getBlockParameter($blockid,'carousel_id');
 $items 	= json_decode(blocksHelper::getBlockParameter($blockid, 'list_images'), true);
 $height = blocksHelper::getBlockParameter($blockid, 'carousel_height');
-//print_r($items);
+$data   = blocksHelper::group_by_key($items);
+//print_r($data);
 ?>
 
 <style>
 <?php 
 $i = 0;
-foreach($items as $item): 
-if($items['carousel_img'][$i] == '') break;
+foreach($data as $k => $v):
+if($v[2] == '') break;
 ?>
 .carousel-<?=  $blockid; ?> .slides .slide-<?= $i; ?> {
-  	background-image: url(<?= $items['carousel_img'][$i]; ?>); 
+  	background-image: url(<?= $v[2]; ?>); 
   	height: <?= $height; ?>;
 	background-size: cover;
 	background-position: center center;
@@ -35,59 +36,45 @@ if($items['carousel_img'][$i] == '') break;
 <?php 
 $i++;
 endforeach; ?>
-.carousel-<?=  $blockid; ?> {
-    height: <?= $height; ?>;
-}
+.carousel-<?=  $blockid; ?>,
 .carousel-<?=  $blockid; ?> .carousel-inner .item {
     height: <?= $height; ?>;
 }
 </style>
 
-<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
+<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="padding:0;">
 
 <div class="carousel fade-carousel slide carousel-<?= $blockid; ?>" data-ride="carousel" id="<?= $cid; ?>">
   
-  	<ol class="carousel-indicators">
-  		<?php 
-	  	$i = 0;
-	  	foreach($items as $item): 
-	  	if($items['carousel_img'][$i] == '') break;
-	  	?>
-  		<li data-target="#<?= $cid; ?>" data-slide-to="<?= $i; ?>" <?php if($i == 0) : ?>class="active"<?php endif; ?>></li>
-  		<?php 
-    	$i++;
-    	endforeach; ?>
-	</ol>
-        
-  	<div class="carousel-inner">
-	  	<?php 
-	  	$i = 0;
-	  	foreach($items as $item): 
-	  	if($items['carousel_img'][$i] == '') break;
-	  	?>
-		<div class="carousel-item slides <?php if($i == 0) : ?>active<?php endif; ?>">
-		  <div class="slide-<?= $i; ?>"></div>
-		  <div class="container hero">
-		    <hgroup>
-		        <h1><?= $items['carousel_title'][$i]; ?></h1>        
-		    </hgroup>
-		  </div>
-		</div>
-		<?php 
-		$i++;
-		endforeach; ?>
-  	</div> 
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+  	<?php 
+  	$i = 0;
+  	foreach($data as $k => $v):
+	if($v[2] == '') break;
+  	?>
+    <div class="item slides <?php if($i == 0) : ?>active<?php endif; ?>">
+      <div class="slide-<?= $i; ?>"></div>
+      <div class="container hero">
+        <hgroup>
+            <h1><?= $v[0]; ?></h1>        
+        </hgroup>
+      </div>
+    </div>
+    <?php 
+    $i++;
+    endforeach; ?>
+  </div> 
   
-	<?php if(count($items) > 1) : ?>
-	<a class="carousel-control-prev" href="#<?= $cid; ?>" role="button" data-slide="prev">
-		  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		  <span class="sr-only">Previous</span>
-	</a>
-	<a class="carousel-control-next" href="#<?= $cid; ?>" role="button" data-slide="next">
-		  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		  <span class="sr-only">Next</span>
-	</a>
-	<?php endif; ?>
+  <?php if(count($data) > 1) : ?>
+  <!-- Controls -->
+  <a class="left carousel-control" href="#<?= $cid; ?>" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+  </a>
+  <a class="right carousel-control" href="#<?= $cid; ?>" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right"></span>
+  </a>
+  <?php endif; ?>
       
 </div>
 
