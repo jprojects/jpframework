@@ -20,7 +20,7 @@ $data   = blocksHelper::group_by_key($items);
 
 <section id="<?= $uniqid; ?>">
 
-<div class="container marketing">
+<div class="container marketing jpfblock">
 
 	<header>
 		<h1><?= blocksHelper::getBlockParameter($blockid, 'feature_heading'); ?></h1>
