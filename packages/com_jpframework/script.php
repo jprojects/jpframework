@@ -37,6 +37,7 @@ class com_jpframeworkInstallerScript
 		$post->metadata = '{"robots":"","author":"","rights":"","xreference":""}';
 		$post->featured = 0;
 		$post->language = '*';
+		$post->attribs  = '{"article_layout":"","show_title":"0","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"0","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"0","link_author":"","show_create_date":"0","show_modify_date":"0","show_publish_date":"0","show_item_navigation":"0","show_icons":"0","show_print_icon":"0","show_email_icon":"0","show_vote":"0","show_hits":"0","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}';
 		
 		$db->insertObject('#__content', $post);
 		
