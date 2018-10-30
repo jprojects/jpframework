@@ -13,7 +13,7 @@
 ?>
 
 <!-- menu 2  example: http://getbootstrap.com/docs/4.1/examples/pricing/ -->
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-jp">
       <div class="my-0 mr-md-auto font-weight-normal">
       <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
         <img class="logo-img" src="<?= jpf::getparameter('topmenu-logo'); ?>" alt="<?= jpf::getSitename(); ?>">

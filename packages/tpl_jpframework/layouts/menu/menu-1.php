@@ -12,7 +12,7 @@
 
 ?>
 <!-- menu 1 example: http://getbootstrap.com/docs/4.1/examples/carousel/ -->
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-jp">
         <a class="navbar-brand" href="index.php">
         <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
             <img class="logo-img" src="<?= jpf::getparameter('topmenu-logo'); ?>" alt="<?= jpf::getSitename(); ?>">
