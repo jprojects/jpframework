@@ -46,7 +46,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 <link rel="stylesheet" href="<?= $this->baseurl.'/templates/'.$this->template; ?>/css/custom.css" type="text/css" />
 <?php if(jpf::getparameter('cookies', 0) != 0) : ?>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-<script src="//cookiecuttr.com/assets/js/plugins/jquery.cookiecuttr.js"></script>
+<script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/jquery.cookiecuttr.js"></script>
 <script>
 jQuery.noConflict();
 jQuery(document).ready(function () {
