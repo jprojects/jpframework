@@ -76,7 +76,7 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 <!-- FOOTER -->
 <footer>
 	<div class="container">
-	<p class="pull-right"><a href="#" class="cd-top">Back to top</a></p>
+	<p class="float-right"><a href="#" class="cd-top">Back to top</a></p>
 	<p>
 		<?php if(jpf::getparameter('jpf-footer') != 0) : ?>
 		<!-- start footer row -->	
@@ -124,7 +124,7 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 				<li> <a target="_blank" href="<?= jpf::getparameter('linkedin'); ?>"><i class="fa fa-linkedin"></i></a></li> 
 				<?php endif; ?>  
 			</ul>
-			<?=jpf::getSitename(); ?> &copy; <?=date('Y'); ?> Todos los derechos reservados.
+			<?=jpf::getSitename(); ?> &copy; <?=date('Y'); ?>
 			<?php if(jpf::getparameter('privacy') != '') : ?>
 			<a href="<?=jpf::getArticleByLanguage('privacy'); ?>"><?=JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
 			&middot;

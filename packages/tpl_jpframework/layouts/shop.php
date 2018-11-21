@@ -23,52 +23,53 @@ $Itemid = JFactory::getApplication()->input->get('Itemid');
 <!-- end top row -->
 <?php endif; ?>
 
-<div class="wrap">
-
-	<div class="col-md-2">
-		<jdoc:include type="modules" name="jpf-left" />
-	</div>
-
-	<div class="col-md-10">
-
-		<jdoc:include type="modules" name="jpf-bread" />
-
-		<?php if($Itemid != 115 && $Itemid != 134) : ?>
-		<div class="col-md-9 mainbody">
+<div class="container<?php if(jpf::getparameter('fluid', 0) == 0) : ?>-fluid<?php endif;; ?>">
+	<div class="row">
 	
-			<?php if(jpf::getparameter('jpf-main') != 0) : ?>
-			<!-- start main row -->	
-			<?= jpf::getColumn('jpf-main', 'main'); ?>		
-			<!-- end main row -->
-			<?php endif; ?>
-	
+		<div class="col-md-2">
+			<jdoc:include type="modules" name="jpf-left" />
 		</div>
-	
-		<div class="col-md-3">
-			<jdoc:include type="modules" name="jpf-right" />
-		</div>	
-		<?php endif; ?>
+
+		<div class="col-md-10">
+
+			<jdoc:include type="modules" name="jpf-bread" />
+
+			<?php if($Itemid != 115 && $Itemid != 134) : ?>
+			<div class="col-md-9 mainbody">
 		
-		<div class="clearfix"></div>
+				<?php if(jpf::getparameter('jpf-main') != 0) : ?>
+				<!-- start main row -->	
+				<?= jpf::getColumn('jpf-main', 'main'); ?>		
+				<!-- end main row -->
+				<?php endif; ?>
 		
-		<div class="col-md-12">
-			<?php if(count(JFactory::getApplication()->getMessageQueue())) : ?>  
-			<div class="messages"><jdoc:include type="message" /></div>
-			<?php endif; ?>
-			<?php if((jpf::getparameter('front_component') == 1 && jpf::isFrontpage()) || !jpf::isFrontpage()) : ?>
-			<jdoc:include type="component" />
-			<?php endif; ?>
 			</div>
 		
-			<?php if(jpf::getparameter('jpf-showcase') != 0) : ?>
-			<!-- start showcase row -->	
-			<?= jpf::getColumn('jpf-showcase', 'showcase'); ?>		
-			<!-- end showcase row -->
-			<?php endif; ?>	
-		</div>
+			<div class="col-md-3">
+				<jdoc:include type="modules" name="jpf-right" />
+			</div>	
+			<?php endif; ?>
+			
+			<div class="clearfix"></div>
+			
+			<div class="col-md-12">
+				<?php if(count(JFactory::getApplication()->getMessageQueue())) : ?>  
+				<div class="messages"><jdoc:include type="message" /></div>
+				<?php endif; ?>
+				<?php if(jpf::showComponent()) : ?>
+				<jdoc:include type="component" />
+				<?php endif; ?>
+				</div>
+			
+				<?php if(jpf::getparameter('jpf-showcase') != 0) : ?>
+				<!-- start showcase row -->	
+				<?= jpf::getColumn('jpf-showcase', 'showcase'); ?>		
+				<!-- end showcase row -->
+				<?php endif; ?>	
+			</div>
 
-	</div>
-	
+		</div>
+	</div>	
 </div>
 
 <div class="clearfix"></div>
@@ -78,19 +79,11 @@ $Itemid = JFactory::getApplication()->input->get('Itemid');
 <?= jpf::getColumn('jpf-bottom', 'bottom'); ?>		
 <!-- end bottom row -->
 <?php endif; ?>
-		
-<?php if(JFactory::getUser()->guest) : ?>
-<div id="message_box" class="hidden-xs hidden-sm">
-    <span id="close_message" class="fa fa-times" style="float:right;cursor:pointer"></span>
-    <p>Introduce tu usuario para acceder a los precios</p><p></p><p>Si no eres usuario debes <a href="index.php?option=com_botiga&view=register&Itemid=113">registrarte</a></p>
-</div>
-<?php endif; ?>
-<div class="clearfix"></div>
 
 <!-- FOOTER -->
 <footer>
 	<div class="container">
-	<p class="pull-right"><a href="#top" class="cd-top">Back to top</a></p>
+	<p class="float-right"><a href="#" class="cd-top">Back to top</a></p>
 	<p>
 		<?php if(jpf::getparameter('jpf-footer') != 0) : ?>
 		<!-- start footer row -->	
@@ -108,7 +101,7 @@ $Itemid = JFactory::getApplication()->input->get('Itemid');
 		<!-- end footer row -->
 		<?php endif; ?>
 
-		<div class="text-left">
+		<div class="text-center">
 			<ul class="social-icons list-unstyled list-inline"> 
 				<?php if(jpf::getparameter('flickr') != '') : ?>
 			  	<li><a target="_blank" href="<?= jpf::getparameter('flickr'); ?>"><i class="fa fa-flickr"></i></a></li> 
@@ -118,9 +111,6 @@ $Itemid = JFactory::getApplication()->input->get('Itemid');
 			  	<?php endif; ?>
 			  	<?php if(jpf::getparameter('github') != '') : ?>
 			  	<li> <a target="_blank" href="<?= jpf::getparameter('github'); ?>"><i class="fa fa-github"></i></a></li> 
-			  	<?php endif; ?>
-			  	<?php if(jpf::getparameter('gplus') != '') : ?>
-			  	<li> <a target="_blank" href="<?= jpf::getparameter('gplus'); ?>"><i class="fa fa-google-plus"></i></a></li> 
 			  	<?php endif; ?>
 			  	<?php if(jpf::getparameter('instagram') != '') : ?>
 			  	<li> <a target="_blank" href="<?= jpf::getparameter('instagram'); ?>"><i class="fa fa-instagram"></i></a></li> 
@@ -141,7 +131,15 @@ $Itemid = JFactory::getApplication()->input->get('Itemid');
 				<li> <a target="_blank" href="<?= jpf::getparameter('linkedin'); ?>"><i class="fa fa-linkedin"></i></a></li> 
 				<?php endif; ?>  
 			</ul>
-			&copy; DICO - T <a href="tel:34938869318">+34 938869318</a> - F  +34 938893734 - <a href="mailto:info@dicohotel.com">info@dicohotel.com</a>
+			<?=jpf::getSitename(); ?> &copy; <?=date('Y'); ?>
+			<?php if(jpf::getparameter('privacy') != '') : ?>
+			<a href="<?=jpf::getArticleByLanguage('privacy'); ?>"><?=JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
+			&middot;
+			<?php endif; ?>
+		
+			<?php if(jpf::getparameter('terms') != '') : ?>
+			<a href="<?=jpf::getArticleByLanguage('terms'); ?>"><?=JText::_('JP_FRAMEWORK_TERMS'); ?></a>
+			<?php endif; ?>
 		</div>
 	</p>
 	</div>
