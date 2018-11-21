@@ -106,7 +106,7 @@ class jpf  extends blocksHelper
     {
     	$params = JComponentHelper::getParams( 'com_jpframework' );
     	
-    	if($params->get('front_component') == 1 && jpf::isFrontpage()) { return true; }
+    	if($params->get('front_component', 0) == 0 && jpf::isFrontpage()) { return false; }
     	
     	$ids 	= $params->get('itemids');
     	
