@@ -47,7 +47,7 @@
 			name="height" 
 			type="text" 
 			default="140" 
-			label="Image Height" 
+			label="Image Width and Height" 
 			description="" 
 		/>
 		<field 

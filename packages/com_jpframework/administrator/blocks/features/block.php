@@ -29,7 +29,7 @@ $data   = blocksHelper::group_by_key($items);
 		<?php endif; ?>
 	</header>
 
-	<div class="row">
+	<div class="row text-center">
 
 		<?php 
 	  	$i = 0;
@@ -37,7 +37,7 @@ $data   = blocksHelper::group_by_key($items);
 		if($v[2] == '') break;
 	  	?>
 		<div class="col-lg-4">
-		    <img class="rounded-circle" src="<?= $v[2]; ?>" alt="<?= $v[0]; ?>" height="<?= $height; ?>">
+		    <img class="rounded-circle" src="<?= $v[2]; ?>" alt="<?= $v[0]; ?>" width="<?= $height; ?>" height="<?= $height; ?>">
 		    <h2><?= $v[0]; ?></h2>
 		    <p><?= $v[1]; ?></p>
 		    <?php if($v[3] != '') : ?>
