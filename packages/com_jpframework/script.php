@@ -24,8 +24,7 @@ class com_jpframeworkInstallerScript
 
 		$db = JFactory::getDbo();
 		
-		//create article base to associate all menú items
-		
+		//create article base to associate all menú items		
 		$post = new stdClass();
 		$post->title 	= 'JPFramework';
 		$post->alias 	= 'jpframework';
@@ -40,6 +39,10 @@ class com_jpframeworkInstallerScript
 		$post->attribs  = '{"article_layout":"","show_title":"0","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"0","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"0","link_author":"","show_create_date":"0","show_modify_date":"0","show_publish_date":"0","show_item_navigation":"0","show_icons":"0","show_print_icon":"0","show_email_icon":"0","show_vote":"0","show_hits":"0","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}';
 		
 		$db->insertObject('#__content', $post);
+		
+		//change menu module position
+		$db->setQuery('UPDATE #__modules SET position = '.$db->quote('jpf-menu').' WHERE id = 1');
+		$db->query();
 		
 		$parent->getParent()->setRedirectURL('index.php?option=com_jpframework');
 	}
