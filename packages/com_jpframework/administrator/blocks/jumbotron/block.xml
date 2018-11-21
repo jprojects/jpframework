@@ -42,28 +42,28 @@
 			name="jumbotron-btn1-text" 
 			type="text" 
 			default="" 
-			label="Button text" 
+			label="Button 1 text" 
 			description="Button text" 
 		/>
 		<field 
 			name="jumbotron-btn1-link" 
 			type="text" 
 			default="" 
-			label="Button link" 
+			label="Button 1 link" 
 			description="Button link" 
 		/>
 		<field 
 			name="jumbotron-btn2-text" 
 			type="text" 
 			default="" 
-			label="Button text" 
+			label="Button 2 text" 
 			description="Button text" 
 		/>
 		<field 
 			name="jumbotron-btn2-link" 
 			type="text" 
 			default="" 
-			label="Button link" 
+			label="Button 2 link" 
 			description="Button link" 
 		/>
 	</fieldset>
