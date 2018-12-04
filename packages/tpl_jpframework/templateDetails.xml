@@ -2,7 +2,7 @@
 <!DOCTYPE install PUBLIC "-//Joomla! 2.5//DTD template 1.0//EN" "http://www.joomla.org/xml/dtd/2.5/template-install.dtd">
 <extension version="3.0" type="template" client="site" method="upgrade">
   <name>JPFramework</name>
-  <version>2.0</version>
+  <version>3.0.0</version>
   <creationDate>05/12/2014</creationDate>
   <author>Kim</author>
   <authorEmail>kim@afi.cat</authorEmail>
@@ -46,6 +46,9 @@
         <position>jpf-footer-2</position>
         <position>jpf-footer-3</position>
   </positions>
+  <updateservers>
+    	<server type="extension" priority="2" name="JPFramework Template">http://www.aficat.com/updates/jpframework/tpl_jpframework.xml</server>
+  </updateservers>
   <languages folder="language">
 		<language tag="en-GB">en-GB/en-GB.tpl_jpframework.ini</language>
 		<language tag="ca-ES">ca-ES/ca-ES.tpl_jpframework.ini</language>
