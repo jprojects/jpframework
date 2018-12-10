@@ -51,11 +51,17 @@ class jpf  extends blocksHelper
     	$params = JComponentHelper::getParams( 'com_jpframework' );
     	
     	$body_font 	= $params->get('body_font');
+    	$icon_font 	= $params->get('icon_font', 'forkawesome');
     	$unload 	= $params->get('unload');
 
 		//add stylesheets
     	JFactory::getDocument()->addStylesheet('templates/jpframework/css/jpframework.css');
-    	JFactory::getDocument()->addStylesheet('https://cdn.jsdelivr.net/npm/fork-awesome@1.1.5/css/fork-awesome.min.css');
+    	if($icon_font == 'fontawesome') {
+    		JFactory::getDocument()->addStylesheet('https://use.fontawesome.com/releases/v5.5.0/css/all.css');
+    	}
+    	if($icon_font == 'forkawesome') {
+    		JFactory::getDocument()->addStylesheet('https://cdn.jsdelivr.net/npm/fork-awesome@1.1.5/css/fork-awesome.min.css');
+    	}
     	//ToDo::permitir multiples fuentes a cargar
     	JFactory::getDocument()->addStylesheet('//fonts.googleapis.com/css?family='.str_replace(' ', '+', $body_font).':300italic,400italic,700italic,400,300,700');
     	

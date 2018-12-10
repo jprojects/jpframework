@@ -268,6 +268,10 @@
             <option value="Ubuntu Mono">Ubuntu Mono</option>
             <option value="Vollkorn">Vollkorn</option>
         </field>
+        <field type="list" name="icon_font" size="15" default="fontawesome" label="COM_JPFRAMEWORK_ICONFONT_LABEL" description="COM_JPFRAMEWORK_ICONFONT_DESC">
+        	<option value="fontawesome">Fontawesome</option>
+            <option value="forkawesome">Forkawesome</option>
+        </field>
         <field 
 			name="body_fontsize" 
 			type="number" 
