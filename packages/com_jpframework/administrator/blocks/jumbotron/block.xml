@@ -53,11 +53,25 @@
 			description="Button link" 
 		/>
 		<field 
+			name="jumbotron-btn1-class" 
+			type="classes" 
+			default="dark" 
+			label="Button 1 claqss" 
+			description="Button class" 
+		/>
+		<field 
 			name="jumbotron-btn2-text" 
 			type="text" 
 			default="" 
 			label="Button 2 text" 
 			description="Button text" 
+		/>
+		<field 
+			name="jumbotron-btn2-class" 
+			type="classes" 
+			default="dark" 
+			label="Button 2 claqss" 
+			description="Button class" 
 		/>
 		<field 
 			name="jumbotron-btn2-link" 

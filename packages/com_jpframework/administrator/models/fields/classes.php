@@ -35,7 +35,8 @@ class JFormFieldClasses extends JFormField
 		// Initialize variables.
 		$html = array();       
 
-		$html[] = '<select name="'.$this->name.'" class="form-control" />';
+		$html[] = "<select name='".$this->name."' class='form-control'>";
+		$html[] = "<option value=''>Select an option</option>";
 		$html[] = "<option value='primary'>Primary</option>";
 		$html[] = "<option value='secondary'>Secondary</option>";
 		$html[] = "<option value='success'>Success</option>";

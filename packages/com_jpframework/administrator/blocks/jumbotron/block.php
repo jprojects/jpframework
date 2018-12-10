@@ -13,6 +13,8 @@ defined('_JEXEC') or die;
 $blockid   = JRequest::getVar('blockid');
 $btn1_text = blocksHelper::getBlockParameter($blockid, 'jumbotron-btn1-text', '');
 $btn2_text = blocksHelper::getBlockParameter($blockid, 'jumbotron-btn2-text', '');
+$btn1_class = blocksHelper::getBlockParameter($blockid, 'jumbotron-btn1-class', 'dark');
+$btn2_class = blocksHelper::getBlockParameter($blockid, 'jumbotron-btn2-class', 'dark');
 $text      = blocksHelper::getBlockParameter($blockid, 'jumbotron-text', '');
 ?>
 
@@ -25,10 +27,10 @@ $text      = blocksHelper::getBlockParameter($blockid, 'jumbotron-text', '');
           <?php if($btn1_text != '' || $btn2_text != '') : ?>
           <p>
           	<?php if($btn1_text != '') : ?>
-            <a href="<?= blocksHelper::getBlockParameter($blockid, 'jumbotron-btn1-link', '#'); ?>" class="btn btn-primary my-2"><?= $btn1_text; ?></a>
+            <a href="<?= blocksHelper::getBlockParameter($blockid, 'jumbotron-btn1-link', '#'); ?>" class="btn btn-<?= $btn1_class; ?> my-2"><?= $btn1_text; ?></a>
             <?php endif; ?>
             <?php if($btn2_text != '') : ?>
-            <a href="<?= blocksHelper::getBlockParameter($blockid, 'jumbotron-btn2-link', '#'); ?>" class="btn btn-secondary my-2"><?= $btn2_text; ?></a>
+            <a href="<?= blocksHelper::getBlockParameter($blockid, 'jumbotron-btn2-link', '#'); ?>" class="btn btn-<?= $btn2_class; ?> my-2"><?= $btn2_text; ?></a>
             <?php endif; ?>
           </p>
           <?php endif; ?>
