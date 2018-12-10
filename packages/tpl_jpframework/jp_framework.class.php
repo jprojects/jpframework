@@ -171,6 +171,32 @@ class jpf  extends blocksHelper
     }
     
     /**
+	 * Method to get the social links
+     * @access public
+     * @return string
+    */
+    public static function getSocial()
+    {
+		$items = json_decode(jpf::getparameter('list_social'));
+		$html = array();
+		
+		foreach ($items as $item) 
+      	{
+			foreach ($item as $k => $v) 
+			{
+				$result[$k][] = $v;
+			}
+      	}
+      	
+	  	foreach ($result as $k => $v) 
+		{ 			
+			$html[] = '<a class="mx-1" target="_blank" href="'.$v[2].'"><i title="'.$v[0].'" class="fa '.$v[1].'"></i></a>';			
+		}
+		
+		return implode($html);
+    }
+    
+    /**
      * Method to get a block from component
      * @access public
      * @param $position string module position name

@@ -333,68 +333,38 @@
     </fieldset>
     <fieldset label="COM_JPFRAMEWORK_SOCIAL" name="social">
     	<field 
-			name="facebook" 
-			type="text" 
-			default="" 
-			label="Facebook link" 
-			description="Facebook link" 
-		/>
-		<field 
-			name="flickr" 
-			type="text" 
-			default="" 
-			label="Flickr link" 
-			description="Flickr link" 
-		/>
-		<field 
-			name="foursquare" 
-			type="text" 
-			default="" 
-			label="Foursquare link" 
-			description="Foursquare link" 
-		/>
-		<field 
-			name="github" 
-			type="text" 
-			default="" 
-			label="Github link" 
-			description="Github link" 
-		/>
-		<field 
-			name="instagram" 
-			type="text" 
-			default="" 
-			label="Instagram link" 
-			description="Instagram link" 
-		/>
-		<field 
-			name="linkedin" 
-			type="text" 
-			default="" 
-			label="Linkedin link" 
-			description="Linkedin link" 
-		/>
-		<field 
-			name="pinterest" 
-			type="text" 
-			default="" 
-			label="Pinterest link" 
-			description="Pinterest link" 
-		/>
-		<field 
-			name="twitter" 
-			type="text" 
-			default="" 
-			label="Twitter link" 
-			description="Twitter link" 
-		/>
-		<field 
-			name="youtube" 
-			type="text" 
-			default="" 
-			label="Youtube link" 
-			description="Youtube link" 
-		/>
+			name="list_social"
+			type="repeatable"
+			icon="list"
+			description="Social items"
+			label="Social items"
+			default='{"social_name":[""],
+				"social_icon":[""],
+				"social_link":[""]}'>
+			<fieldset hidden="true" name="list_images_modal" repeat="true">
+				<field 
+					name="social_name" 
+					type="text" 
+					default="" 
+					label="Social Name" 
+					description="Social name" 
+				/>				
+				<field 
+					name="social_icon" 
+					type="text" 
+					default="" 
+					label="Social icon" 
+					description="Social icon" 
+				/>				
+				<field 
+					name="social_link" 
+					type="text" 
+					default="" 
+					label="Social Link" 
+					description="Social link" 
+				/>
+			</fieldset>
+		</field>
     </fieldset>
     <fieldset 
         name="permissions"

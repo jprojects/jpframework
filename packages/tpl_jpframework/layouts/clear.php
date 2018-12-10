@@ -95,35 +95,9 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 		<?php endif; ?>
 
 		<div class="text-center">
-			<ul class="social-icons list-unstyled list-inline"> 
-				<?php if(jpf::getparameter('flickr') != '') : ?>
-			  	<li><a target="_blank" href="<?= jpf::getparameter('flickr'); ?>"><i class="fa fa-flickr"></i></a></li> 
-			  	<?php endif; ?>
-			  	<?php if(jpf::getparameter('foursquare') != '') : ?>
-			  	<li><a target="_blank" href="<?= jpf::getparameter('foursquare'); ?>"><i class="fa fa-foursquare"></i></a></li> 
-			  	<?php endif; ?>
-			  	<?php if(jpf::getparameter('github') != '') : ?>
-			  	<li> <a target="_blank" href="<?= jpf::getparameter('github'); ?>"><i class="fa fa-github"></i></a></li> 
-			  	<?php endif; ?>
-			  	<?php if(jpf::getparameter('instagram') != '') : ?>
-			  	<li> <a target="_blank" href="<?= jpf::getparameter('instagram'); ?>"><i class="fa fa-instagram"></i></a></li> 
-			  	<?php endif; ?>
-			  	<?php if(jpf::getparameter('pinterest') != '') : ?>
-				<li> <a target="_blank" href="<?= jpf::getparameter('pinterest'); ?>"><i class="fa fa-pinterest"></i></a></li>
-				<?php endif; ?>
-			  	<?php if(jpf::getparameter('facebook') != '') : ?> 
-				<li> <a target="_blank" href="<?= jpf::getparameter('facebook'); ?>"><i class="fa fa-facebook"></i></a></li> 
-				<?php endif; ?>
-			  	<?php if(jpf::getparameter('twitter') != '') : ?> 
-				<li> <a target="_blank" href="<?= jpf::getparameter('twitter'); ?>"><i class="fa fa-twitter"></i></a></li> 
-				<?php endif; ?>
-			  	<?php if(jpf::getparameter('youtube') != '') : ?>
-				<li> <a target="_blank" href="<?= jpf::getparameter('youtube'); ?>"><i class="fa fa-youtube"></i></a></li> 
-				<?php endif; ?> 
-				<?php if(jpf::getparameter('linkedin') != '') : ?>
-				<li> <a target="_blank" href="<?= jpf::getparameter('linkedin'); ?>"><i class="fa fa-linkedin"></i></a></li> 
-				<?php endif; ?>  
-			</ul>
+			<div class="social-icons"> 
+				<?= jpf::getSocial(); ?>  
+			</div>
 			<?=jpf::getSitename(); ?> &copy; <?=date('Y'); ?>
 			<?php if(jpf::getparameter('privacy') != '') : ?>
 			<a href="<?=jpf::getArticleByLanguage('privacy'); ?>"><?=JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
