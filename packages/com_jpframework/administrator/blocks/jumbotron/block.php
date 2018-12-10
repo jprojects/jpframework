@@ -22,10 +22,14 @@ $text      = blocksHelper::getBlockParameter($blockid, 'jumbotron-text', '');
           <?php if($text != '') : ?>
           <p class="lead text-muted"><?= blocksHelper::getBlockParameter($blockid, 'jumbotron-text', ''); ?></p>
           <?php endif; ?>
-          <?php if($btn1_text != '') : ?>
+          <?php if($btn1_text != '' || $btn2_text != '') : ?>
           <p>
+          	<?php if($btn1_text != '') : ?>
             <a href="<?= blocksHelper::getBlockParameter($blockid, 'jumbotron-btn1-link', '#'); ?>" class="btn btn-primary my-2"><?= $btn1_text; ?></a>
+            <?php endif; ?>
+            <?php if($btn2_text != '') : ?>
             <a href="<?= blocksHelper::getBlockParameter($blockid, 'jumbotron-btn2-link', '#'); ?>" class="btn btn-secondary my-2"><?= $btn2_text; ?></a>
+            <?php endif; ?>
           </p>
           <?php endif; ?>
 	</div>
