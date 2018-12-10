@@ -41,7 +41,7 @@ $data   = blocksHelper::group_by_key($items);
 		    <h2><?= $v[0]; ?></h2>
 		    <p><?= $v[1]; ?></p>
 		    <?php if($v[3] != '') : ?>
-		    <p><a class="btn btn-secondary" href="<?= $v[4]; ?>" role="button"><?= $v[3]; ?></a></p>
+		    <p><a class="btn btn-<?= $v[5]; ?>" href="<?= $v[4]; ?>" role="button"><?= $v[3]; ?></a></p>
 		    <?php endif; ?>
 		</div>
 		<?php 
