@@ -44,6 +44,26 @@
 			description="Carousel height in pixels" 
 		/>
 		<field 
+			name="carousel_controls" 
+			type="radio" 
+			default="1" 
+			label="Carousel controls" 
+			description="Show the carousel controls, arrows to slide left or right" 
+		>
+		<option value="0">JNO</option>
+		<option value="1">JYES</option>
+		</field>
+		<field 
+			name="carousel_indicators" 
+			type="radio" 
+			default="1" 
+			label="Carousel indicators" 
+			description="Show the carousel indicators" 
+		>
+		<option value="0">JNO</option>
+		<option value="1">JYES</option>
+		</field>
+		<field 
 			name="carousel_play" 
 			type="text" 
 			default="0" 
