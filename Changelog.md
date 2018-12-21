@@ -4,3 +4,4 @@
 * Jumbotron block conditonals
 * New field Biitstrap classes
 * Jumbotron button classes
+* Repeatable social links configuration

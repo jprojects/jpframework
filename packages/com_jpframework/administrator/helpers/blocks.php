@@ -72,7 +72,7 @@ class blocksHelper {
 	*/
 	public static function getParameter($param, $default="")
 	{
-		$params = &JComponentHelper::getParams( 'com_jpframework' );
+		$params = JComponentHelper::getParams( 'com_jpframework' );
 		$param = $params->get( $param, $default );
 	
 		return $param;
