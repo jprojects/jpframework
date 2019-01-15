@@ -285,6 +285,7 @@ class jpf  extends blocksHelper
    			return 0;
    		}
     }
+    
 }
 
 ?>
