@@ -110,6 +110,7 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 		$body_color 		= $params->get('body_color');
 		$body_fontsize 		= $params->get('body_fontsize');
 		$body_font 			= $params->get('body_font');
+		$body_font_type		= $params->get('body_font_type', 'px');
 		$body_fcolor 		= $params->get('body_fcolor');
 		$link_color 		= $params->get('link_color');
 		$linkhover_color 	= $params->get('linkhover_color');
@@ -126,7 +127,7 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 		$parser->parse("
 			@body_color: ".$body_color.";
 			@body_fontsize: ".$body_fontsize.";
-			@body_font:  '".$body_font."';
+			@body_font:  '".$body_font.$body_font_type"';
 			@body_fcolor:  ".$body_fcolor.";
 			@link_color: ".$link_color.";
 			@linkhover_color: ".$linkhover_color.";

@@ -253,6 +253,7 @@
             <option value="Lobster Two">Lobster Two</option>
             <option value="Merriweather">Merriweather</option>
             <option value="Merriweather Sans">Merriweather Sans</option>
+            <option value="Montserrat">Montserrat</option>
             <option value="Open Sans">Open Sans</option>
             <option value="Open Sans Condensed:300">Open Sans Condensed</option>
             <option value="Oswald">Oswald</option>
@@ -281,6 +282,16 @@
 			min="10"
 			max="20"
 		/>
+		<field 
+			name="body_font_type" 
+			type="list" 
+			default="px" 
+			label="Body font type" 
+			description="Body font type" 
+		>
+			<option value="px">px</option>
+            <option value="em">em</option>
+		</field>
     	<field 
 			name="body_color" 
 			type="color" 
