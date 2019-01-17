@@ -12,18 +12,27 @@ defined('_JEXEC') or die;
 
 $blockid = JRequest::getVar('blockid');
 jHtml::_('jquery.framework');
-blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/assets/css/lightbox.css');
-blocksHelper::loadJs(JURI::root().'administrator/components/com_jpframework/assets/js/lightbox.min.js');
-blocksHelper::loadJs(JURI::root().'administrator/components/com_jpframework/blocks/gallery/assets/js/jquery.isotope.min.js');
+blocksHelper::loadJs('https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js');
 $uniqid = blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid);
+
+$tags = json_decode(blocksHelper::getBlockParameter($blockid, 'list_tags'), true);
+$keys    = blocksHelper::group_by_key($tags);
+
+$gallery = json_decode(blocksHelper::getBlockParameter($blockid, 'list_items'), true);
+$gals    = blocksHelper::group_by_key($gallery);
 ?>
 
 <script>
 jQuery.noConflict();
 jQuery(window).load(function(){
-    var container = jQuery('.creations-container');
+
+    var container = jQuery('.grid');
+    
     container.isotope({
         filter: '*',
+        itemSelector: '.grid-item',
+        layoutMode: 'fitRows',
+        percentPosition: true,
         animationOptions: {
             duration: 750,
             easing: 'linear',
@@ -31,13 +40,15 @@ jQuery(window).load(function(){
         }
     });
 
-    jQuery('.creations-filter a').click(function(){
-        jQuery('.creations-filter .current').removeClass('current');
+    jQuery('.filter a').click(function(){
+        jQuery('.filter .current').removeClass('current');
         jQuery(this).addClass('current');
 
         var selector = jQuery(this).attr('data-filter');
         container.isotope({
             filter: selector,
+            layoutMode: 'fitRows',
+            percentPosition: true,
             animationOptions: {
                 duration: 750,
                 easing: 'linear',
@@ -50,87 +61,53 @@ jQuery(window).load(function(){
 </script>
 
 <style>
-#<?= $uniqid; ?> {
-	background-color: <?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;
-}
-#<?= $uniqid; ?> header {
-margin-bottom: 12px;
-text-align: center;
-}
-#<?= $uniqid; ?> .thumb { height: 160px; }
-
-#<?= $uniqid; ?> .creations-filter a.current { 
-    font-weight:bold;
-}
-
-#<?= $uniqid; ?> .isotope-item {
-    z-index: 2;
-}
-#<?= $uniqid; ?> .isotope-hidden.isotope-item {
-    pointer-events: none;
-    z-index: 1;
-}
-#<?= $uniqid; ?> .isotope,
-#<?= $uniqid; ?> .isotope .isotope-item {
-  /* change duration value to whatever you like */
-
-    -webkit-transition-duration: 0.8s;
-    -moz-transition-duration: 0.8s;
-    transition-duration: 0.8s;
-}
-#<?= $uniqid; ?> .isotope {
-    -webkit-transition-property: height, width;
-    -moz-transition-property: height, width;
-    transition-property: height, width;
-}
-#<?= $uniqid; ?> .isotope .isotope-item {
-    -webkit-transition-property: -webkit-transform, opacity;
-    -moz-transition-property: -moz-transform, opacity;
-    transition-property: transform, opacity;
-}
+.grid-item { width: 24%; }
 </style>
 
-<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
+<section id="<?= $uniqid; ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>" class="scrollable">
 
-	<div>
-		<div class="container jpfblock">
+	<div class="my-5">
+		<div class="container py-5">
 			<header>
-				<h1><?= blocksHelper::getBlockParameter($blockid, 'gallery_title'); ?></h1>
+			
+				<h1 class="lblue"><?= blocksHelper::getBlockParameter($blockid, 'gallery_title'); ?></h1>
 				<div class="lead"><?= blocksHelper::getBlockParameter($blockid, 'gallery_text'); ?></div>
-				<div class="btn-group creations-filter" role="group" aria-label="...">	
-				  	<a href="#all" data-filter="*" class="current btn btn-default">All</a>
+				
+				<div class="row filter">
+					<div class="col-md-3">
+						<a href="#all" data-filter="*" class="current btn btn-default">
+						<img class="rounded-circle" src="images/sampledata/exposicions/rodona_header_noseleccio.png" alt="" onmouseover="this.src='images/sampledata/exposicions/rodona_header_seleccio_i_mouseover.png'" onmouseout="this.src='images/sampledata/exposicions/rodona_header_noseleccio.png'">	
+						<div class="mt-2 fs-12 hblue"><?= JText::_('JALL'); ?></div>
+					  	</a>
+					 </div>
 				  	<?php 
 				  	$tags = explode(',', blocksHelper::getBlockParameter($blockid,'gallery_tags'));
-				  	foreach($tags as $tag) :
+				  	foreach($keys as $x => $y) :
 				  	?>
-				  	<a href="#<?= $tag;?>" data-filter=".<?= $tag;?>" class="btn btn-default"><?= $tag;?></a>
+				  	<div class="col-md-3">
+				  	<a href="#<?= $y[1];?>" data-filter=".<?= $y[1];?>">
+				  	<img class="rounded-circle" src="images/sampledata/exposicions/rodona_header_noseleccio.png" alt="" onmouseover="this.src='images/sampledata/exposicions/rodona_header_seleccio_i_mouseover.png'" onmouseout="this.src='images/sampledata/exposicions/rodona_header_noseleccio.png'">
+				  	<div class="mt-2 fs-12 hblue"><?= $y[0];?></div>
+				  	</a>
+				  	</div>
 					<?php endforeach; ?>
 				</div>
+				</div>
+				
 			</header>
 
-			<div class="creations-container">
-			<?php 
-			$dir = JPATH_ROOT.'/images/'.blocksHelper::getBlockParameter($blockid, 'gallery_folder');
-			$i = 1;
-			if (is_dir($dir)) {
-				if ($dh = opendir($dir)) {
-					while (($file = readdir($dh)) !== false) { 
-				if ($file != "." && $file != ".." && $file != "index.html") {
-				$img = explode('-', $file);
-				?>
-				<div class="col-lg-3 col-md-4 col-xs-6 thumb <?= $img[0]; ?>">
-					<a class="thumbnail" href="images/<?= blocksHelper::getBlockParameter($blockid, 'gallery_folder').DS.$file; ?>" data-lightbox="gallery">
-					<img class="img-responsive" src="images/<?= blocksHelper::getBlockParameter($blockid, 'gallery_folder').DS.$file; ?>" alt="">
+			<div class="grid container-fluid text-center mx-auto">
+			<?php if(count($gals) > 0) : ?>
+			<?php foreach($gals as $r => $b): ?>
+
+			<div class="grid-item col-md-3 text-center <?= $b[1]; ?>">
+				<a href="<?= JRoute::_('index.php?Itemid='.$b[4]); ?>">
+					<img class="img-fluid" src="<?= $b[2]; ?>" alt="<?= $b[0]; ?>" onmouseover="this.src='<?= $b[3]; ?>'" onmouseout="this.src='<?= $b[2]; ?>'">
+					<div class="mt-2 fs-12 hblue"><?= $b[0]; ?></div>
 				</a>
-				</div>
-			<?php 
-			}
-			$i++;
-			}
-					closedir($dh);
-				}
-			}
-			?>
+			</div>			
+			<?php endforeach; ?>
+			<?php endif; ?>
 			</div>
 		</div>
 	</div>
