@@ -68,47 +68,46 @@ jQuery(window).load(function(){
 
 	<div class="my-5">
 		<div class="container py-5">
-			<header>
-			
+		
+			<header>			
 				<h1 class="lblue"><?= blocksHelper::getBlockParameter($blockid, 'gallery_title'); ?></h1>
 				<div class="lead"><?= blocksHelper::getBlockParameter($blockid, 'gallery_text'); ?></div>
+			</header>
 				
-				<div class="row filter">
-					<div class="col-md-3">
-						<a href="#all" data-filter="*" class="current btn btn-default">
-						<img class="rounded-circle" src="images/sampledata/exposicions/rodona_header_noseleccio.png" alt="" onmouseover="this.src='images/sampledata/exposicions/rodona_header_seleccio_i_mouseover.png'" onmouseout="this.src='images/sampledata/exposicions/rodona_header_noseleccio.png'">	
-						<div class="mt-2 fs-12 hblue"><?= JText::_('JALL'); ?></div>
-					  	</a>
-					 </div>
-				  	<?php 
-				  	$tags = explode(',', blocksHelper::getBlockParameter($blockid,'gallery_tags'));
-				  	foreach($keys as $x => $y) :
-				  	?>
-				  	<div class="col-md-3">
+			<div class="row filter">
+				<div class="col-md-3">
+					<a href="#all" data-filter="*" class="current btn btn-default">
+					<img class="rounded-circle" src="images/sampledata/exposicions/rodona_header_noseleccio.png" alt="" onmouseover="this.src='images/sampledata/exposicions/rodona_header_seleccio_i_mouseover.png'" onmouseout="this.src='images/sampledata/exposicions/rodona_header_noseleccio.png'">	
+					<div class="mt-2 fs-12 hblue"><?= JText::_('JALL'); ?></div>
+				  	</a>
+				</div>
+			  	<?php 
+			  	$tags = explode(',', blocksHelper::getBlockParameter($blockid,'gallery_tags'));
+			  	foreach($keys as $x => $y) :
+			  	?>
+			  	<div class="col-md-3">
 				  	<a href="#<?= $y[1];?>" data-filter=".<?= $y[1];?>">
 				  	<img class="rounded-circle" src="images/sampledata/exposicions/rodona_header_noseleccio.png" alt="" onmouseover="this.src='images/sampledata/exposicions/rodona_header_seleccio_i_mouseover.png'" onmouseout="this.src='images/sampledata/exposicions/rodona_header_noseleccio.png'">
 				  	<div class="mt-2 fs-12 hblue"><?= $y[0];?></div>
 				  	</a>
-				  	</div>
-					<?php endforeach; ?>
-				</div>
-				</div>
-				
-			</header>
+			  	</div>
+				<?php endforeach; ?>
+			</div>							
 
 			<div class="grid container-fluid text-center mx-auto">
-			<?php if(count($gals) > 0) : ?>
-			<?php foreach($gals as $r => $b): ?>
+				<?php if(count($gals) > 0) : ?>
+				<?php foreach($gals as $r => $b): ?>
 
-			<div class="grid-item col-md-3 text-center <?= $b[1]; ?>">
-				<a href="<?= JRoute::_('index.php?Itemid='.$b[4]); ?>">
-					<img class="img-fluid" src="<?= $b[2]; ?>" alt="<?= $b[0]; ?>" onmouseover="this.src='<?= $b[3]; ?>'" onmouseout="this.src='<?= $b[2]; ?>'">
-					<div class="mt-2 fs-12 hblue"><?= $b[0]; ?></div>
-				</a>
-			</div>			
-			<?php endforeach; ?>
-			<?php endif; ?>
+				<div class="grid-item col-md-3 text-center <?= $b[1]; ?>">
+					<a href="<?= JRoute::_('index.php?Itemid='.$b[4]); ?>">
+						<img class="img-fluid" src="<?= $b[2]; ?>" alt="<?= $b[0]; ?>" onmouseover="this.src='<?= $b[3]; ?>'" onmouseout="this.src='<?= $b[2]; ?>'">
+						<div class="mt-2 fs-12 hblue"><?= $b[0]; ?></div>
+					</a>
+				</div>			
+				<?php endforeach; ?>
+				<?php endif; ?>
 			</div>
+			
 		</div>
 	</div>
 
