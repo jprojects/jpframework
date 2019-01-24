@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+
+	<fieldset name="block">
+		<field 
+			name="title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="Block title" 
+		/>
+		<field 
+			name="block_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Background" 
+			description="Background color" 
+		/>
+		<field 
+			name="block_font_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Font color" 
+			description="Font color" 
+		/>
+		<field 
+			name="uniqid" 
+			type="text" 
+			default="" 
+			label="Uniqid" 
+			description="Uniqid is used as the block section id" 
+		/>
+		<field 
+			name="tabs_heading" 
+			type="text" 
+			default="" 
+			label="Heading" 
+			description="Heading title" 
+		/>
+		<field 
+			name="tabs_subheading" 
+			type="text" 
+			default="" 
+			label="Subheading" 
+			description="Text under heading" 
+		/>
+		<field 
+			name="list_tabs"
+			type="repeatable"
+			icon="list"
+			description="Tabs titles"
+			label="Tabs titles"
+			default='{
+				"tab_title":[""],
+				"tab_id":[""]}'>
+			<fieldset hidden="true" name="list_tabs_modal" repeat="true">
+				<field 
+					name="tab_title" 
+					type="text" 
+					default="" 
+					label="Título" 
+					description="Título visible" 
+				/>
+				<field 
+					name="tab_id" 
+					type="text" 
+					default="" 
+					label="id" 
+					description="ID con el símbolo #" 
+				/>
+			</fieldset>
+		</field>
+		<field 
+			name="list_items"
+			type="repeatable"
+			icon="list"
+			description="Tabs content"
+			label="Tabs content"
+			default='{
+				"item_id":[""],
+				"item_text":[""]}'>
+			<fieldset hidden="true" name="list_items_modal" repeat="true">
+				<field 
+					name="item_id" 
+					type="text" 
+					default="" 
+					label="ID" 
+					description="ID del contenido asociado al campo repetible anterior" 
+				/>
+				<field 
+					name="item_text" 
+					type="textarea" 
+					default="" 
+					label="Content" 
+					description="Contenido de este tab" 
+				/>
+			</fieldset>
+		</field>
+	</fieldset>
+	<fieldset name="styles">
+		<field 
+			type="spacer" 
+			name="spacer1" 
+			class="text"
+			label="COM_JPFRAMEWORK_SYLES_FIELD"
+		/>
+		<field 
+			name="css" 
+			type="textarea" 
+			default="" 
+			label="Css" 
+			description="Custom css styles" 
+			rows="20" 
+			cols="50" 
+			filter="raw"
+		/>
+	</fieldset>
+</form>
