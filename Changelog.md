@@ -1,6 +1,7 @@
 #version 3.0.2
 
 * Removed addthis from configuration
+* New cookies policy multiple field
 
 #version 3.0.1
 

@@ -176,6 +176,30 @@
 				/>				
 			</fieldset>
 		</field>
+		<field name="cookies"
+			type="repeatable"
+			icon="list"
+			description="COM_JPFRAMEWORK_COOKIES_POLICY_DESC"
+			label="COM_JPFRAMEWORK_COOKIES_POLICY_LABEL"
+			default=''>
+			<fieldset hidden="true" name="list_templates_modal" repeat="true">
+				<field 
+					name="language" 
+					type="language" 
+					client="site" 
+					default="" 
+					label="Select a language" 
+					description="" 
+				/>
+				<field 
+					name="article" 
+					type="text" 
+					default="" 
+					label="COM_JPFRAMEWORK_COOKIES_POLICY_LABEL" 
+					description="COM_JPFRAMEWORK_COOKIES_POLICY_DESC" 
+				/>				
+			</fieldset>
+		</field>
 		<field 
 			type="radio" 
 			name="fluid" 
