@@ -2,6 +2,8 @@
 
 * Removed addthis from configuration
 * New cookies policy multiple field
+* New block tabs
+* New block cards
 
 #version 3.0.1
 

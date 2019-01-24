@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+
+	<fieldset name="block">
+		<field 
+			name="title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="Block title" 
+		/>
+		<field 
+			name="block_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Background" 
+			description="Background color" 
+		/>
+		<field 
+			name="block_font_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Font color" 
+			description="Font color" 
+		/>
+		<field 
+			name="uniqid" 
+			type="text" 
+			default="" 
+			label="Uniqid" 
+			description="Uniqid is used as the block section id" 
+		/>
+		<field 
+			name="cards_heading" 
+			type="text" 
+			default="" 
+			label="Heading" 
+			description="Heading title" 
+		/>
+		<field 
+			name="cards_subheading" 
+			type="text" 
+			default="" 
+			label="Subheading" 
+			description="Text under heading" 
+		/>
+		<field 
+			name="cards_column" 
+			type="list" 
+			default="4" 
+			label="Cards columns" 
+			description="" 
+		>
+			<option value="6">2</option>
+			<option value="4">3</option>
+			<option value="3">4</option>
+		</field>
+		<field 
+			name="list_cards"
+			type="repeatable"
+			icon="list"
+			description="Cards"
+			label="Cards"
+			default='{
+				"card_img":[""],
+				"card_img_alt":[""],
+				"card_img_heading":[""],
+				"card_desc_heading":[""],
+				"card_desc_text":[""],
+				"card_href":[""],
+				"card_href_text":[""]}'>
+			<fieldset hidden="true" name="list_items_modal" repeat="true">
+				<field 
+					name="card_img" 
+					type="media" 
+					directory=""
+					label="Image" 
+					description="" 
+				/>
+				<field 
+					name="card_img_alt" 
+					type="text" 
+					default="" 
+					label="Alt attribute" 
+					description="" 
+				/>
+				<field 
+					name="card_img_heading" 
+					type="text" 
+					default="" 
+					label="Image heading" 
+					description="" 
+				/>
+				<field 
+					name="card_desc_heading" 
+					type="text" 
+					default="" 
+					label="Card desc heading" 
+					description="" 
+				/>
+				<field 
+					name="card_desc_text" 
+					type="textarea" 
+					default="" 
+					label="Card content" 
+					description="" 
+				/>
+				<field 
+					name="card_href" 
+					type="text" 
+					default="" 
+					label="Href" 
+					description="" 
+				/>
+				<field 
+					name="card_href_text" 
+					type="text" 
+					default="" 
+					label="Card button text" 
+					description="" 
+				/>
+			</fieldset>
+		</field>
+	</fieldset>
+	<fieldset name="styles">
+		<field 
+			type="spacer" 
+			name="spacer1" 
+			class="text"
+			label="COM_JPFRAMEWORK_SYLES_FIELD"
+		/>
+		<field 
+			name="css" 
+			type="textarea" 
+			default="" 
+			label="Css" 
+			description="Custom css styles" 
+			rows="20" 
+			cols="50" 
+			filter="raw"
+		/>
+	</fieldset>
+</form>
