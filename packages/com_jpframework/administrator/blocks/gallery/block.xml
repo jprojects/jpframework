@@ -130,6 +130,12 @@
 	</fieldset>
 	<fieldset name="styles">
 		<field 
+			type="spacer" 
+			name="spacer1" 
+			class="text"
+			label="COM_JPFRAMEWORK_SYLES_FIELD"
+		/>
+		<field 
 			name="css" 
 			type="textarea" 
 			default="" 

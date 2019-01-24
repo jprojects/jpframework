@@ -106,6 +106,11 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 		
 			<?php if(jpf::getparameter('terms') != '') : ?>
 			<a href="<?=jpf::getArticleByLanguage('terms'); ?>"><?=JText::_('JP_FRAMEWORK_TERMS'); ?></a>
+			&middot;
+			<?php endif; ?>
+			
+			<?php if(jpf::getparameter('cookies') != '') : ?>
+			<a href="<?=jpf::getArticleByLanguage('cookies'); ?>"><?=JText::_('JP_FRAMEWORK_COOKIES_POLICY'); ?></a>
 			<?php endif; ?>
 		</div>
 	</p>
