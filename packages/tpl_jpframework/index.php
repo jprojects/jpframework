@@ -34,7 +34,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <jdoc:include type="head" />
 <?php jpf::setHead(); ?>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/wow.min.js" type="text/javascript"></script>
 <script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/jpframework.js" type="text/javascript"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
