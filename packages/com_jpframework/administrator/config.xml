@@ -215,14 +215,6 @@
           	description="JP_FRAMEWORK_ANALYTICS_DESC" 
           />
           <field 
-          	name="addthis" 
-          	type="text" 
-          	class="inputbox" 
-          	default="" 
-          	label="JP_FRAMEWORK_ADDTHIS_LABEL" 
-          	description="JP_FRAMEWORK_ADDTHIS_DESC" 
-          />
-          <field 
           	name="register" 
           	type="text" 
           	class="inputbox" 

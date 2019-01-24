@@ -1,3 +1,7 @@
+#version 3.0.2
+
+* Removed addthis from configuration
+
 #version 3.0.1
 
 * New configurable parameters carousel block, indicators and controls

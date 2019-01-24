@@ -309,6 +309,5 @@ if (!empty($this->item->pagination) && $this->item->pagination && $this->item->p
 	echo $this->item->pagination;
 ?>
 	<?php endif; ?>
-	<!-- Go to www.addthis.com/dashboard to customize your tools -->
-<div class="addthis_sharing_toolbox pull-right" style="margin-bottom:30px;"></div>
+
 	<?php echo $this->item->event->afterDisplayContent; ?> </div>
