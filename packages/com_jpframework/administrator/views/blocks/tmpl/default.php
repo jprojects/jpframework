@@ -182,7 +182,7 @@ if (!empty($this->extra_sidebar)) {
                 <?php endif; ?>
                 <td>
                 	<a href="<?= JRoute::_('index.php?option=com_jpframework&task=block.edit&id='.(int) $item->id); ?>">
-					<?= $item->type; ?>
+					<?= $item->title != '' ? $item->title : $item->type; ?>
 					</a>
 				</td>   
 				<td>

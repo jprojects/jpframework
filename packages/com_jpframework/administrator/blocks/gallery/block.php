@@ -6,7 +6,8 @@
  * @copyright   Copyright (C) 2015. Todos los derechos reservados.
  * @license     Licencia Pública General GNU versión 2 o posterior. Consulte LICENSE.txt
  * @author      aficat <kim@aficat.com> - http://www.afi.cat
- */
+*/
+
 // No direct access
 defined('_JEXEC') or die;
 
