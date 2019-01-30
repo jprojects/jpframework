@@ -29,11 +29,12 @@ foreach($data as $k => $v):
 if($v[2] == '') break;
 ?>
 .carousel-<?=  $blockid; ?> .slides .slide-<?= $i; ?> {
-  	background-image: url(<?= $v[2]; ?>); 
+  	background-image: url(<?= JURI::root().$v[2]; ?>); 
   	height: <?= $height; ?>;
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
 <?php 
 $i++;
@@ -46,7 +47,7 @@ endforeach; ?>
 
 <section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="padding:0;">
 
-<div class="carousel fade-carousel slide carousel-<?= $blockid; ?>" data-ride="carousel" id="<?= $cid; ?>">
+<div class="carousel fade-carousel slide carousel-<?= $blockid; ?> parallax" data-ride="carousel" id="<?= $cid; ?>">
   
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
@@ -67,9 +68,12 @@ endforeach; ?>
     <div class="item slides <?php if($i == 0) : ?>active<?php endif; ?>">
       <div class="slide-<?= $i; ?>"></div>
       <div class="container hero">
+      	<a href="<?= $v[3]; ?>">
         <hgroup>
-            <h1><?= $v[0]; ?></h1>        
+            <h1><?= $v[0]; ?></h1> 
+            <p><?= $v[1]; ?></p>       
         </hgroup>
+        </a>
       </div>
     </div>
     <?php 
