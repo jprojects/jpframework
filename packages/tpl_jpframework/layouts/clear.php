@@ -37,7 +37,7 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 <!-- end main row -->
 <?php endif; ?>
 
-<div class="container<?php if(jpf::getparameter('fluid', 0) == 0) : ?>-fluid<?php endif;; ?>">
+<div class="container<?php if(jpf::getparameter('fluid', 0) == 1) : ?>-fluid<?php endif;; ?>">
 	<div class="row">
 		<?php if($doc->countModules('jpf-left')) : ?>
 		<div class="<?= $colsl; ?>">
@@ -48,7 +48,7 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 		<div class="<?= $colsc; ?>">
 		  
 			<?php if(jpf::showComponent()) : ?>
-			<div class="container mainbody"><jdoc:include type="component" /></div>
+			<div class="mainbody"><jdoc:include type="component" /></div>
 			<?php endif; ?>
 			
 		</div>
@@ -106,11 +106,6 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 		
 			<?php if(jpf::getparameter('terms') != '') : ?>
 			<a href="<?=jpf::getArticleByLanguage('terms'); ?>"><?=JText::_('JP_FRAMEWORK_TERMS'); ?></a>
-			&middot;
-			<?php endif; ?>
-			
-			<?php if(jpf::getparameter('cookies') != '') : ?>
-			<a href="<?=jpf::getArticleByLanguage('cookies'); ?>"><?=JText::_('JP_FRAMEWORK_COOKIES_POLICY'); ?></a>
 			<?php endif; ?>
 		</div>
 	</p>
