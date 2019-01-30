@@ -10,12 +10,13 @@
 defined('_JEXEC') or die;
 
 // Create a shortcut for params.
-$params = &$this->item->params;
-$images = json_decode($this->item->images);
-$canEdit	= $this->item->params->get('access-edit');
-JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
-JHtml::_('behavior.tooltip');
-JHtml::_('behavior.framework');
+$params = $this->item->params;
+JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
+$canEdit = $this->item->params->get('access-edit');
+$info    = $params->get('info_block_position', 0);
+
+// Check if associations are implemented. If they are, define the parameter.
+$assocParam = (JLanguageAssociations::isEnabled() && $params->get('show_associations'));
 
 ?>
 
@@ -23,7 +24,7 @@ JHtml::_('behavior.framework');
 <div class="system-unpublished">
 <?php endif; ?>
 <?php if ($params->get('show_title')) : ?>
-	<h2>
+	<h2 class="pt-5 bold">
 		<?php if ($params->get('link_titles') && $params->get('access-view')) : ?>
 			<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language)); ?>">
 			<?php echo $this->escape($this->item->title); ?></a>
@@ -89,7 +90,6 @@ JHtml::_('behavior.framework');
 <?php endif; ?>
 <?php if ($params->get('show_create_date')) : ?>
 		<span class="create">
-		<i class="fa fa-calendar"></i>
 		<?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC2'))); ?>
 		</span>&nbsp;|&nbsp; 
 <?php endif; ?>
@@ -97,17 +97,15 @@ JHtml::_('behavior.framework');
 		<span class="modified">
 		<i class="fa fa-calendar"></i>
 		<?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHtml::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC2'))); ?>
-		</span>&nbsp;|&nbsp; 
+		</span>
 <?php endif; ?>
 <?php if ($params->get('show_publish_date')) : ?>
 		<span class="published">
-		<i class="fa fa-calendar"></i>
 		<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $this->item->publish_up, JText::_('DATE_FORMAT_LC2'))); ?>
-		</span>&nbsp;|&nbsp; 
+		</span>
 <?php endif; ?>
 <?php if ($params->get('show_author') && !empty($this->item->author )) : ?>
 	<span class="createdby">
-	<i class="fa fa-user"></i>
 		<?php $author =  $this->item->author; ?>
 		<?php $author = ($this->item->created_by_alias ? $this->item->created_by_alias : $author);?>
 
@@ -118,7 +116,7 @@ JHtml::_('behavior.framework');
 			<?php else :?>
 				<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', $author); ?>
 			<?php endif; ?>
-	</span>&nbsp;|&nbsp; 
+	</span>
 <?php endif; ?>
 <?php if ($params->get('show_hits')) : ?>
 		<span class="hits">
@@ -154,7 +152,7 @@ JHtml::_('behavior.framework');
 		$link->setVar('return', base64_encode(urlencode($returnURL)));
 	endif;
 ?>
-		<p class="readmore">
+		<p class="readmore bold">
 				<a href="<?php echo $link; ?>">
 					<?php if (!$params->get('access-view')) :
 						echo JText::_('COM_CONTENT_REGISTER_TO_READ_MORE');
@@ -176,5 +174,4 @@ JHtml::_('behavior.framework');
 </div>
 <?php endif; ?>
 
-<div class="item-separator"></div>
 <?php echo $this->item->event->afterDisplayContent; ?>
