@@ -10,7 +10,7 @@
  * @menu_background
 */
 
-@import url('//stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css');
+@import url('//stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css');
 
 html {
   	font-family: @body_font;
@@ -57,7 +57,33 @@ sub {
   	bottom: -0.25em;
 }
 
-.article-info { padding: 10px 0 20px 0; }
+
+/* Blog */
+
+.blog a { color: @link_color; }
+.blog a:hover { text-decoration: none; }
+
+.items-row { margin-top: 50px; }
+
+.article-info {
+	font-size: 80%;
+	font-weight: 400;
+	padding: 10px 0 20px 0;
+}
+
+.pagination>li { margin: 0 5px; }
+
+.pagenav {
+    position: relative;
+    display: block;
+    padding: .5rem .75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: @link_color;
+    background-color: #fff;
+    border: 1px solid @link_color;
+}
+
 
 
 /* Helper classes from jpframework */
@@ -79,9 +105,6 @@ sub {
 }
 .jpfblock header {
     margin-bottom: 30px;
-}
-.parallax {
-	background-attachment: fixed;
 }
 
 /* ===== Features ===== */
