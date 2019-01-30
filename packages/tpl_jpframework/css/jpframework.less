@@ -85,7 +85,10 @@ sub {
     border: 1px solid @link_color;
 }
 
-
+a.pagenav:hover {
+	background: @link_color;
+	color: #fff;
+}
 
 /* Helper classes from jpframework */
 
@@ -106,6 +109,47 @@ sub {
 }
 .jpfblock header {
     margin-bottom: 30px;
+}
+
+/* Menu */
+
+.dropdown:hover ul.dropdown-menu {
+	display: block;
+}
+
+.dropdown-menu {
+	padding-top: 50px !important;
+	background-color: @link_color;
+	position: absolute;
+    top: 100%;
+    left: unset;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 300px;
+    margin: .125rem 0 0;
+    font-size: 1rem;
+    color: #fff !important;
+    text-align: left;
+    list-style: none;
+    background-clip: padding-box;
+    border: none;
+    border-radius: 0;
+}
+
+.dropdown-item {
+	text-align: right;
+	color: #fff !important;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+    color: #1d1d1d;
+    text-decoration: none;
+    background-color: @link_color;
+}
+.dropdown-item.active, .dropdown-item:active {
+    color: #1d1d1d;
+    text-decoration: none;
+    background-color: @link_color;
 }
 
 /* ===== Features ===== */
