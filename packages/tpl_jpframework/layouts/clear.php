@@ -37,7 +37,7 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 <!-- end main row -->
 <?php endif; ?>
 
-<div class="container<?php if(jpf::getparameter('fluid', 0) == 1) : ?>-fluid<?php endif;; ?>">
+<div class="container<?php if(jpf::getparameter('fluid', 0) == 1) : ?>-fluid<?php endif;; ?> mainbody">
 	<div class="row">
 		<?php if($doc->countModules('jpf-left')) : ?>
 		<div class="<?= $colsl; ?>">
@@ -48,7 +48,7 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 		<div class="<?= $colsc; ?>">
 		  
 			<?php if(jpf::showComponent()) : ?>
-			<div class="mainbody"><jdoc:include type="component" /></div>
+			<div><jdoc:include type="component" /></div>
 			<?php endif; ?>
 			
 		</div>
