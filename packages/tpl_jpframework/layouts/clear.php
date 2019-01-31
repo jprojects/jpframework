@@ -16,8 +16,8 @@ $colsc = "container-fluid";
 $colsl = "";
 $colsr = "";
 if($doc->countModules('jpf-left') && $doc->countModules('jpf-right')) { $colsc = 'col-md-6'; $colsl = 'col-md-3'; $colsr = 'col-md-3'; }
-if(!$doc->countModules('jpf-left') && $doc->countModules('jpf-right')) { $colsc = 'col-md-8'; $colsl = 'col-md-0'; $colsr = 'col-md-2'; }
-if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc = 'col-md-8'; $colsl = 'col-md-2'; $colsr = 'col-md-0'; }
+if(!$doc->countModules('jpf-left') && $doc->countModules('jpf-right')) { $colsc = 'col-md-9'; $colsl = 'col-md-0'; $colsr = 'col-md-3'; }
+if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc = 'col-md-9'; $colsl = 'col-md-3'; $colsr = 'col-md-0'; }
 
 ?>
 
