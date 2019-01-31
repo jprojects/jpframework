@@ -17,6 +17,11 @@
   opacity: 1;
 }
 
+.box {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 30px;
+}
+
 .hero {
     position: absolute;
     top: 50%;

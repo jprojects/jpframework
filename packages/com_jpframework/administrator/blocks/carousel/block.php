@@ -17,6 +17,7 @@ $cid 	= blocksHelper::getBlockParameter($blockid,'carousel_id');
 $items 	= json_decode(blocksHelper::getBlockParameter($blockid, 'list_images'), true);
 $controls = blocksHelper::getBlockParameter($blockid, 'carousel_controls', 1);
 $indicators = blocksHelper::getBlockParameter($blockid, 'carousel_indicators', 1);
+$box = blocksHelper::getBlockParameter($blockid, 'carousel_box', 0);
 $height = blocksHelper::getBlockParameter($blockid, 'carousel_height');
 $data   = blocksHelper::group_by_key($items);
 //print_r($data);
@@ -68,8 +69,8 @@ endforeach; ?>
     <div class="item slides <?php if($i == 0) : ?>active<?php endif; ?>">
       <div class="slide-<?= $i; ?>"></div>
       <div class="container hero">
-      	<a href="<?= $v[3]; ?>">
-        <hgroup>
+      	<a href="index.php?Itemid=<?= $v[3]; ?>">
+        <hgroup <?php if($box == 1) : ?>class="box"<?php endif; ?>>
             <h1><?= $v[0]; ?></h1> 
             <p><?= $v[1]; ?></p>       
         </hgroup>

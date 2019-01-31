@@ -44,6 +44,16 @@
 			description="Carousel height in pixels" 
 		/>
 		<field 
+			name="carousel_box" 
+			type="radio" 
+			default="1" 
+			label="Carousel box" 
+			description="Show opacity box with text" 
+		>
+		<option value="0">JNO</option>
+		<option value="1">JYES</option>
+		</field>
+		<field 
 			name="carousel_controls" 
 			type="radio" 
 			default="1" 
