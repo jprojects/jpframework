@@ -43,6 +43,61 @@
         	label="Subtitle" 
         	description="subtitle" 
         />
+        <field 
+			name="tm_parts"
+			type="repeatable"
+			icon="list"
+			description="Timeline parts"
+			label="Timeline"
+			default='{
+				"tm_position":[],
+				"tm_icon":[""],
+				"tm_tooltip":[""],
+				"tm_img":[""],
+				"tm_text":[""]}'>
+			<fieldset hidden="true" name="tm_parts_modal" repeat="true">
+				<field 
+					name="tm_position" 
+					type="radio" 
+					label="Position" 
+					description=""
+					class="btn-group"
+					default="left"
+				>
+				<option value="left">Left</option>
+				<option value="right">Right</option>
+				</field>	
+				<field 
+					name="tm_icon" 
+					type="text" 
+					label="Icon" 
+					description=""
+				/>			
+				<field 
+					name="tm_tooltip" 
+					type="text" 
+					label="Texte tooltip" 
+					description=""
+				/>				
+				<field 
+					name="tm_img" 
+					type="media" 
+					directory="" 
+					label="Image" 
+					description="Image"
+				/>	
+				<field 
+					name="tm_text" 
+					type="textarea" 
+					default="" 
+					label="Texte" 
+					description="Texte" 
+					cols="10"
+					rows="2"
+					filter="raw"
+				/>			
+			</fieldset>
+		</field>
 	</fieldset>
 	<fieldset name="styles">
 		<field 
