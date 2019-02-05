@@ -16,8 +16,10 @@ blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blo
 
 $uniqid = blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid);
 
-$plans   = json_decode(blocksHelper::getBlockParameter($blockid, 'list_plans'), true);
-$items   = blocksHelper::group_by_key($plans);
+$plans  = json_decode(blocksHelper::getBlockParameter($blockid, 'list_plans'), true);
+$items  = blocksHelper::group_by_key($plans);
+
+$count  = count($items);
 
 ?>
 
@@ -37,9 +39,9 @@ $items   = blocksHelper::group_by_key($plans);
 
 			<div class="row">
                 
-            	<?php if(count($items) > 0) :  
+            	<?php if($count > 0) :  
 				foreach($items as $r => $b): ?>
-				<div class="col-4 princing-item" style="background-color: <?= $v[0]; ?>;">
+				<div class="col-<?= (12 / $count); ?> princing-item" style="background-color: <?= $v[0]; ?>;">
           			<div class="pricing-divider ">
               			<h3 class="text-light"><?= $v[1]; ?></h3>
             			<h4 class="my-0 display-2 text-light font-weight-normal mb-3"><span class="h3">&euro;</span> <?= $v[1]; ?> <span class="h5">/mes</span></h4>
