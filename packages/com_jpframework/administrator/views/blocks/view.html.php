@@ -75,15 +75,8 @@ class JpframeworkViewBlocks extends JViewLegacy {
                 JToolBarHelper::custom('blocks.publish', 'publish.png', 'publish_f2.png', 'JTOOLBAR_PUBLISH', true);
                 JToolBarHelper::custom('blocks.unpublish', 'unpublish.png', 'unpublish_f2.png', 'JTOOLBAR_UNPUBLISH', true);
                 JToolbarHelper::custom('blocks.duplicate', 'copy.png', 'copy_f2.png', 'JTOOLBAR_DUPLICATE', true);
-            } else if (isset($this->items[0])) {
-                //If this component does not use state then show a direct delete button as we can not trash
-                JToolBarHelper::deleteList('', 'blocks.delete', 'JTOOLBAR_DELETE');
             }
 
-            if (isset($this->items[0]->state)) {
-                JToolBarHelper::divider();
-                JToolBarHelper::archiveList('blocks.archive', 'JTOOLBAR_ARCHIVE');
-            }
             if (isset($this->items[0]->checked_out)) {
                 JToolBarHelper::custom('blocks.checkin', 'checkin.png', 'checkin_f2.png', 'JTOOLBAR_CHECKIN', true);
             }
@@ -93,7 +86,7 @@ class JpframeworkViewBlocks extends JViewLegacy {
 
         //Show trash and delete for components that uses the state field
         if (isset($this->items[0]->state)) {
-            if ($state->get('filter.state') == -2 && $canDo->get('core.delete')) {
+            if ($canDo->get('core.delete')) {
                 JToolBarHelper::deleteList('', 'blocks.delete', 'JTOOLBAR_EMPTY_TRASH');
                 JToolBarHelper::divider();
             } else if ($canDo->get('core.edit.state')) {
