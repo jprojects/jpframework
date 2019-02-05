@@ -49,6 +49,7 @@
 			default="1" 
 			label="Carousel box" 
 			description="Show opacity box with text" 
+			class="btn-group btn-group-yesno"
 		>
 		<option value="0">JNO</option>
 		<option value="1">JYES</option>
@@ -59,6 +60,7 @@
 			default="1" 
 			label="Carousel controls" 
 			description="Show the carousel controls, arrows to slide left or right" 
+			class="btn-group btn-group-yesno"
 		>
 		<option value="0">JNO</option>
 		<option value="1">JYES</option>
@@ -69,6 +71,7 @@
 			default="1" 
 			label="Carousel indicators" 
 			description="Show the carousel indicators" 
+			class="btn-group btn-group-yesno"
 		>
 		<option value="0">JNO</option>
 		<option value="1">JYES</option>
