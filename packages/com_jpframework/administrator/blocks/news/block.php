@@ -24,11 +24,20 @@ $uniqid = blocksHelper::getBlockParameter($blockid, 'uniqid');
 
 </style>
 
-<section class="SliderNews" id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
+<section class="SliderNews" id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>"  style="background-color:<?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
     
     <div class="demo">
         <div class="container">
-            <h3 class="h3">News slider Demo - 2 </h3>    
+            
+            <?php if(blocksHelper::getBlockParameter($blockid, 'tm_title') != '') : ?>
+			<div class="page-header timeline-header text-center mb-5">
+				<h1 id="timeline"><?= blocksHelper::getBlockParameter($blockid, 'tm_title'); ?></h1>
+				<?php if(blocksHelper::getBlockParameter($blockid, 'tm_subtitle') != '') : ?>
+				<p><?= blocksHelper::getBlockParameter($blockid, 'tm_subtitle'); ?></p>
+				<?php endif; ?>
+			</div>
+			<?php endif; ?>
+        
             <div class="row">
                 <div class="col-md-12">
                     <div id="news-slider2" class="owl-carousel">

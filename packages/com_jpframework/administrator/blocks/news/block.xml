@@ -30,6 +30,20 @@
 			description="Uniqid is used as the block section id" 
 		/>
 		<field 
+			name="tm_title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="title" 
+		/>
+		<field 
+        	name="tm_subtitle" 
+        	type="text" 
+        	default="" 
+        	label="Subtitle" 
+        	description="subtitle" 
+        />
+		<field 
 			name="category" 
 			type="category" 
 			extension="com_content" 
