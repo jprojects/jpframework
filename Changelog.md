@@ -1,3 +1,10 @@
+#version 3.0.3
+
+* Added empty trash button admin list
+* New block plans
+* Updated block testimonials
+* Updated block News
+
 #version 3.0.2
 
 * Removed addthis from configuration
