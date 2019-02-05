@@ -89,7 +89,8 @@
 			icon="list"
 			description="Carousel items"
 			label="Carousel items"
-			default='{"carousel_title":[""],
+			default='{
+				"carousel_title":[""],
 				"carousel_text":[""],
 				"carousel_img":[""]}'>
 			<fieldset hidden="true" name="list_images_modal" repeat="true">

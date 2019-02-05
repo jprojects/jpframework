@@ -6,90 +6,64 @@
  * @copyright   Copyright (C) 2015. Todos los derechos reservados.
  * @license     Licencia Pública General GNU versión 2 o posterior. Consulte LICENSE.txt
  * @author      aficat <kim@aficat.com> - http://www.afi.cat
- */
+*/
+
 // No direct access
 defined('_JEXEC') or die;
 
 $blockid = JRequest::getVar('blockid');
 blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blocks/testimonials/assets/css/testimonials.css');
 blocksHelper::loadJs(JURI::root().'administrator/components/com_jpframework/blocks/testimonials/assets/js/testimonials.js');
+
+$testimonials 	= json_decode(blocksHelper::getBlockParameter($blockid, 'list_testimonials'), true);
+$tm   = blocksHelper::group_by_key($testimonials);
 ?>
 
-<section id="<?php echo blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
+<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" class="testimonial-section2" style="background-color:<?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
 
-<div style="background-color:<?php echo blocksHelper::getBlockParameter($blockid,'block_color'); ?>">
-<div class="container jpfblock" id="block-<?php echo $blockid; ?>">
-<div class="container">
-  <div class="row">
-    <div class='col-md-offset-2 col-md-8 text-center'>
-    <h1>Els nostres clients</h1>
+	<?php if(blocksHelper::getBlockParameter($blockid, 'tm_title') != '') : ?>
+    <div class="page-header timeline-header text-center mb-5">
+        <h1 id="timeline"><?= blocksHelper::getBlockParameter($blockid, 'tm_title'); ?></h1>
+        <?php if(blocksHelper::getBlockParameter($blockid, 'tm_subtitle') != '') : ?>
+        <p><?= blocksHelper::getBlockParameter($blockid, 'tm_subtitle'); ?></p>
+        <?php endif; ?>
     </div>
-  </div>
-  <div class='row'>
-    <div class='col-md-offset-2 col-md-8'>
-      <div class="carousel slide" data-ride="carousel" id="quote-carousel">
-        <!-- Bottom Carousel Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#quote-carousel" data-slide-to="0" class="active"></li>
-          <li data-target="#quote-carousel" data-slide-to="1"></li>
-          <li data-target="#quote-carousel" data-slide-to="2"></li>
-        </ol>
+    <?php endif; ?>
         
-        <!-- Carousel Slides / Quotes -->
-        <div class="carousel-inner">
-        
-          <!-- Quote 1 -->
-          <div class="item active">
-            <blockquote>
-              <div class="row">
-                <div class="col-sm-3 text-center">
-                  <img class="img-circle" src="<?php echo blocksHelper::getBlockParameter($blockid, 'testimonial_img1'); ?>" style="width: 100px;height:100px;">
+   	<div id="testim" class="testim">
+
+        <div class="wrap">
+
+            <span id="right-arrow" class="arrow right fa fa-chevron-right"></span>
+            <span id="left-arrow" class="arrow left fa fa-chevron-left "></span>
+            
+            <ul id="testim-dots" class="dots">
+            	<?php 
+                $i = 0;
+                foreach($tm as $k => $v) : ?> 
+                <li class="dot <?php if($i == 0) : ?>active<?php endif; ?>"></li>
+                <?php 
+                $i++;
+                endforeach; ?>
+            </ul>
+            <div id="testim-content" class="cont"> 
+                
+                <?php 
+                $i = 0;
+                foreach($tm as $k => $v) : ?>               
+                <div <?php if($i == 0) : ?>class="active"<?php endif; ?>>
+                    <div class="img"><img src="<?= $v[0]; ?>" alt=""></div>
+                    <div class="h4"><?= $v[1]; ?></div>
+                    <p><?= $v[2]; ?></p>                    
                 </div>
-                <div class="col-sm-9">
-                  <p><?php echo blocksHelper::getBlockParameter($blockid, 'testimonial_txt1'); ?></p>
-                  <small><?php echo blocksHelper::getBlockParameter($blockid, 'testimonial_sign1'); ?></small>
-                </div>
-              </div>
-            </blockquote>
-          </div>
-          <!-- Quote 2 -->
-          <div class="item">
-            <blockquote>
-              <div class="row">
-                <div class="col-sm-3 text-center">
-                  <img class="img-circle" src="<?php echo blocksHelper::getBlockParameter($blockid, 'testimonial_img2'); ?>" style="width: 100px;height:100px;">
-                </div>
-                <div class="col-sm-9">
-                  <p><?php echo blocksHelper::getBlockParameter($blockid, 'testimonial_txt2'); ?></p>
-                  <small><?php echo blocksHelper::getBlockParameter($blockid, 'testimonial_sign2'); ?></small>
-                </div>
-              </div>
-            </blockquote>
-          </div>
-          <!-- Quote 3 -->
-          <div class="item">
-            <blockquote>
-              <div class="row">
-                <div class="col-sm-3 text-center">
-                  <img class="img-circle" src="<?php echo blocksHelper::getBlockParameter($blockid, 'testimonial_img3'); ?>" style="width: 100px;height:100px;">
-                </div>
-                <div class="col-sm-9">
-                  <p><?php echo blocksHelper::getBlockParameter($blockid, 'testimonial_txt3'); ?></p>
-                  <small><?php echo blocksHelper::getBlockParameter($blockid, 'testimonial_sign3'); ?></small>
-                </div>
-              </div>
-            </blockquote>
-          </div>
-        </div>
-        
-        <!-- Carousel Buttons Next/Prev -->
-        <a data-slide="prev" href="#quote-carousel" class="left carousel-control"><i class="fa fa-chevron-left"></i></a>
-        <a data-slide="next" href="#quote-carousel" class="right carousel-control"><i class="fa fa-chevron-right"></i></a>
-      </div>                          
-    </div>
-  </div>
-</div>
-</div>
-</div>
+                <?php 
+                $i++;
+                endforeach; ?>
+
+            </div>
+            
+       </div>
+       
+   </div>
 
 </section>

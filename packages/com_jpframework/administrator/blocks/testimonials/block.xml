@@ -30,74 +30,55 @@
 			description="Uniqid is used as the block section id" 
 		/>
 		<field 
-			name="testimonial_txt1" 
-			type="textarea" 
-			default="" 
-			label="Testimonial" 
-			description="Testimonial text" 
-			rows="10" 
-			cols="5" 
-			filter="raw"
-		/>
-		<field 
-			name="testimonial_sign1" 
+			name="tm_title" 
 			type="text" 
 			default="" 
-			label="Author" 
-			description="Testimonial signature" 
+			label="Title" 
+			description="title" 
 		/>
 		<field 
-			name="testimonial_img1" 
-			type="media" 
-			directory="" 
-			label="Image 1" 
-		/>
-		<field 
-			name="testimonial_txt2" 
-			type="textarea" 
-			default="" 
-			label="Testimonial" 
-			description="Testimonial text" 
-			rows="10" 
-			cols="5" 
-			filter="raw"
-		/>
-		<field 
-			name="testimonial_sign2" 
-			type="text" 
-			default="" 
-			label="Author" 
-			description="Testimonial signature" 
-		/>
-		<field 
-			name="testimonial_img2" 
-			type="media" 
-			directory="" 
-			label="Image 1" 
-		/>
-		<field 
-			name="testimonial_txt3" 
-			type="textarea" 
-			default="" 
-			label="Testimonial" 
-			description="Testimonial text" 
-			rows="10" 
-			cols="5" 
-			filter="raw"
-		/>
-		<field 
-			name="testimonial_sign3" 
-			type="text" 
-			default="" 
-			label="Author" 
-			description="Testimonial signature" 
-		/>
-		<field 
-			name="testimonial_img3" 
-			type="media" 
-			directory="" 
-			label="Image 1" 
-		/>
+        	name="tm_subtitle" 
+        	type="text" 
+        	default="" 
+        	label="Subtitle" 
+        	description="subtitle" 
+        />
+        <field 
+			name="tm_parts"
+			type="repeatable"
+			icon="list"
+			description="Timeline parts"
+			label="Timeline"
+			default='{
+				"tm_img":[""],
+				"tm_icon":[""],
+				"tm_text":[""]}'>
+			<fieldset hidden="true" name="tm_parts_modal" repeat="true">				
+				<field 
+					name="tm_img" 
+					type="media" 
+					directory="" 
+					label="Image" 
+					description="Image"
+				/>	
+				<field 
+					name="tm_title" 
+					type="text" 
+					label="Title" 
+					description=""
+				/>
+				<field 
+					name="tm_text" 
+					type="textarea" 
+					default="" 
+					label="Text" 
+					description="Text" 
+					cols="10"
+					rows="2"
+					filter="raw"
+				/>			
+			</fieldset>
+		</field>
 	</fieldset>
 	<fieldset name="styles">
 		<field 
