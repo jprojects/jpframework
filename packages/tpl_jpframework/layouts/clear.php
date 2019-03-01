@@ -100,12 +100,17 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 			</div>
 			<?=jpf::getSitename(); ?> &copy; <?=date('Y'); ?>
 			<?php if(jpf::getparameter('privacy') != '') : ?>
-			<a href="<?=jpf::getArticleByLanguage('privacy'); ?>"><?=JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
+			<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('privacy'); ?>"><?=JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
+			&middot;
+			<?php endif; ?>
+			
+			<?php if(jpf::getparameter('cookie') != '') : ?>
+			<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('cookie'); ?>"><?=JText::_('JP_FRAMEWORK_COOKIES'); ?></a>
 			&middot;
 			<?php endif; ?>
 		
 			<?php if(jpf::getparameter('terms') != '') : ?>
-			<a href="<?=jpf::getArticleByLanguage('terms'); ?>"><?=JText::_('JP_FRAMEWORK_TERMS'); ?></a>
+			<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('terms'); ?>"><?=JText::_('JP_FRAMEWORK_TERMS'); ?></a>
 			<?php endif; ?>
 		</div>
 	</p>

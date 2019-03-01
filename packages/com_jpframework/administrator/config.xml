@@ -145,7 +145,7 @@
 				/>
 				<field 
 					name="article" 
-					type="text" 
+					type="menuitem" 
 					default="" 
 					label="COM_JPFRAMEWORK_PRIVACY_LABEL" 
 					description="COM_JPFRAMEWORK_PRIVACY_DESC" 
@@ -169,14 +169,14 @@
 				/>
 				<field 
 					name="article" 
-					type="text" 
+					type="menuitem" 
 					default="" 
 					label="COM_JPFRAMEWORK_PRIVACY_LABEL" 
 					description="COM_JPFRAMEWORK_PRIVACY_DESC" 
 				/>				
 			</fieldset>
 		</field>
-		<field name="cookies"
+		<field name="cookie"
 			type="repeatable"
 			icon="list"
 			description="COM_JPFRAMEWORK_COOKIES_POLICY_DESC"
@@ -193,7 +193,7 @@
 				/>
 				<field 
 					name="article" 
-					type="text" 
+					type="menuitem" 
 					default="" 
 					label="COM_JPFRAMEWORK_COOKIES_POLICY_LABEL" 
 					description="COM_JPFRAMEWORK_COOKIES_POLICY_DESC" 
