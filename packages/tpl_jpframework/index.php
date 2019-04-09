@@ -43,7 +43,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 <link rel="shortcut icon" href="<?= $this->baseurl ?>/templates/<?= $this->template ?>/icon.png" />
-<link rel="stylesheet" href="<?= $this->baseurl.'/templates/'.$this->template; ?>/css/<?= jpf::getparameter('layout', 'clear'); ?>" type="text/css" />
+<link rel="stylesheet" href="<?= $this->baseurl.'/templates/'.$this->template; ?>/css/<?= jpf::getparameter('layout', 'clear'); ?>.css" type="text/css" />
 <link rel="stylesheet" href="<?= $this->baseurl.'/templates/'.$this->template; ?>/css/custom.css" type="text/css" />
 <?php if(jpf::getparameter('cookies', 0) != 0) : ?>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
