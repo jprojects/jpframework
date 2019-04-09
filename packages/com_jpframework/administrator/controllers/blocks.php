@@ -116,18 +116,20 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 		$linkhover_color 	= $params->get('linkhover_color');
 		$footer_color 		= $params->get('footer_color');
 		$footer_fcolor 		= $params->get('footer_fcolor');
-		$menu 				= $params->get('menu');
+		$menu 				= $params->get('menu', '-1');
 		$menu_bg 			= $params->get('menu_bg');
 		
 		$options 	= array( 'compress'=>true );
 		$parser 	= new Less_Parser($options);
 		$parser->parseFile( JPATH_ROOT.'/templates/jpframework/css/jpframework.less' );
-		$parser->parseFile( JPATH_ROOT.'/templates/jpframework/layouts/menu/'.$menu.'.less' );
+		if($menu != '-1') {
+			$parser->parseFile( JPATH_ROOT.'/templates/jpframework/layouts/menu/'.$menu.'.less' );
+		}
 		$parser->parseFile( JPATH_ROOT.'/templates/jpframework/css/animate.less' );
 		$parser->parse("
 			@body_color: ".$body_color.";
 			@body_fontsize: ".$body_fontsize.";
-			@body_font:  '".$body_font.$body_font_type"';
+			@body_font:  '".$body_font.$body_font_type."';
 			@body_fcolor:  ".$body_fcolor.";
 			@link_color: ".$link_color.";
 			@linkhover_color: ".$linkhover_color.";
