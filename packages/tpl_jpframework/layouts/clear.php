@@ -21,57 +21,65 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 
 ?>
 
-<?php if(jpf::getparameter('jpf-top') != 0) : ?>
-<!-- start top row -->			
-<?= jpf::getColumn('jpf-top', 'top'); ?>		
-<!-- end top row -->
-<?php endif; ?>
+<header>
+<?= jpf::getLayout(jpf::getparameter('menu', 'menu-1'), 'menu'); ?>
+</header>
 
-<?php if(count(JFactory::getApplication()->getMessageQueue())) : ?>  
-<div class="message-container"><jdoc:include type="message" /></div>
-<?php endif; ?>
-    	
-<?php if(jpf::getparameter('jpf-main') != 0) : ?>
-<!-- start main row -->	
-<?= jpf::getColumn('jpf-main', 'main'); ?>		
-<!-- end main row -->
-<?php endif; ?>
+<main role="main">
 
-<div class="container<?php if(jpf::getparameter('fluid', 0) == 1) : ?>-fluid<?php endif;; ?> mainbody">
-	<div class="row">
-		<?php if($doc->countModules('jpf-left')) : ?>
-		<div class="<?= $colsl; ?>">
-			<jdoc:include type="modules" name="jpf-left" />
-		</div>
-		<?php endif; ?>
+	<?php if(jpf::getparameter('jpf-top') != 0) : ?>
+	<!-- start top row -->			
+	<?= jpf::getColumn('jpf-top', 'top'); ?>		
+	<!-- end top row -->
+	<?php endif; ?>
 
-		<div class="<?= $colsc; ?>">
-		  
-			<?php if(jpf::showComponent()) : ?>
-			<div><jdoc:include type="component" /></div>
-			<?php endif; ?>
+	<?php if(count(JFactory::getApplication()->getMessageQueue())) : ?>  
+	<div class="message-container"><jdoc:include type="message" /></div>
+	<?php endif; ?>
 			
-		</div>
+	<?php if(jpf::getparameter('jpf-main') != 0) : ?>
+	<!-- start main row -->	
+	<?= jpf::getColumn('jpf-main', 'main'); ?>		
+	<!-- end main row -->
+	<?php endif; ?>
 
-		<?php if($doc->countModules('jpf-right')) : ?>
-		<div class="<?= $colsr; ?>">
-			<jdoc:include type="modules" name="jpf-right" />
+	<div class="container<?php if(jpf::getparameter('fluid', 0) == 1) : ?>-fluid<?php endif;; ?> mainbody">
+		<div class="row">
+			<?php if($doc->countModules('jpf-left')) : ?>
+			<div class="<?= $colsl; ?>">
+				<jdoc:include type="modules" name="jpf-left" />
+			</div>
+			<?php endif; ?>
+
+			<div class="<?= $colsc; ?>">
+			  
+				<?php if(jpf::showComponent()) : ?>
+				<div><jdoc:include type="component" /></div>
+				<?php endif; ?>
+				
+			</div>
+
+			<?php if($doc->countModules('jpf-right')) : ?>
+			<div class="<?= $colsr; ?>">
+				<jdoc:include type="modules" name="jpf-right" />
+			</div>
+			<?php endif; ?>
 		</div>
-		<?php endif; ?>
 	</div>
-</div>
 
-<?php if(jpf::getparameter('jpf-showcase') != 0) : ?>
-<!-- start showcase row -->	
-<?= jpf::getColumn('jpf-showcase', 'showcase'); ?>		
-<!-- end showcase row -->
-<?php endif; ?>
-    	
-<?php if(jpf::getparameter('jpf-bottom') != 0) : ?>
-<!-- start bottom row -->	
-<?= jpf::getColumn('jpf-bottom', 'bottom'); ?>		
-<!-- end bottom row -->
-<?php endif; ?>
+	<?php if(jpf::getparameter('jpf-showcase') != 0) : ?>
+	<!-- start showcase row -->	
+	<?= jpf::getColumn('jpf-showcase', 'showcase'); ?>		
+	<!-- end showcase row -->
+	<?php endif; ?>
+			
+	<?php if(jpf::getparameter('jpf-bottom') != 0) : ?>
+	<!-- start bottom row -->	
+	<?= jpf::getColumn('jpf-bottom', 'bottom'); ?>		
+	<!-- end bottom row -->
+	<?php endif; ?>
+
+</main>
 
 <!-- FOOTER -->
 <footer>

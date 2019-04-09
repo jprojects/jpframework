@@ -68,15 +68,8 @@ jQuery.cookieCuttr({
     
 <body>
 
-<header>
-<?= jpf::getLayout(jpf::getparameter('menu', 'menu-1'), 'menu'); ?>
-</header>
-
-<main role="main">
-
 <?= jpf::getLayout(jpf::getparameter('layout', 'clear')); ?>
 
-</div>
 
 </body>
     <jdoc:include type="modules" name="debug" />
