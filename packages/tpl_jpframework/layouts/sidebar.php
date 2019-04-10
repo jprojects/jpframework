@@ -16,7 +16,7 @@
 <script type="text/javascript">
 jQuery(document).ready(function () {
     jQuery('#sidebarCollapse').on('click', function () {
-        jQuery('#navbarSupportedContent').toggleClass('active');
+        jQuery('#submenu').toggle();
     });
 });
 </script>
@@ -25,15 +25,17 @@ jQuery(document).ready(function () {
 
     <!-- Sidebar  -->
     <nav id="sidebar">
-        <div class="sidebar-header">
-            <button type="button" id="sidebarCollapse">
-          		<span class="navbar-toggler-icon"></span>
-        	</button>
-        </div>
-        <div id="navbarSupportedContent">
-			<jdoc:include type="modules" name="jpf-menu" />
+    	<div class="row">
+			<div class="col-xs-1 mx-auto">
+				<div class="sidebar-header">
+				    <a id="sidebarCollapse"><i class="fa fa-bars fa-2x"></i></a>
+				</div>
+		    </div>		    
         </div>
     </nav>
+    <nav id="submenu">
+		<jdoc:include type="modules" name="jpf-menu" />
+	</nav>
 
     <!-- Page Content  -->
     <div id="content">
@@ -55,13 +57,11 @@ jQuery(document).ready(function () {
 		<?php endif; ?>
 
         <div class="container<?php if(jpf::getparameter('fluid', 0) == 1) : ?>-fluid<?php endif;; ?> mainbody">
-			<div class="row">
 				  
-				<?php if(jpf::showComponent()) : ?>
-				<div><jdoc:include type="component" /></div>
-				<?php endif; ?>
+			<?php if(jpf::showComponent()) : ?>
+			<div><jdoc:include type="component" /></div>
+			<?php endif; ?>
 				
-			</div>
 		</div>
 
 		<?php if(jpf::getparameter('jpf-showcase') != 0) : ?>
