@@ -24,7 +24,14 @@ $assocParam = (JLanguageAssociations::isEnabled() && $params->get('show_associat
 <div class="system-unpublished">
 <?php endif; ?>
 <?php if ($params->get('show_title')) : ?>
-	<h2 class="pt-5 bold">
+	<div class="row">
+	<div class="col-2">
+		<div class="create">
+		<span><?= date('j', strtotime($this->item->created)); ?></span><br><?= date('M', strtotime($this->item->created)); ?>
+		</div> 
+	</div>
+	<div class="col-10">
+	<h2 class="py-4 bold">
 		<?php if ($params->get('link_titles') && $params->get('access-view')) : ?>
 			<a href="<?php echo JRoute::_(ContentHelperRoute::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language)); ?>">
 			<?php echo $this->escape($this->item->title); ?></a>
@@ -32,6 +39,8 @@ $assocParam = (JLanguageAssociations::isEnabled() && $params->get('show_associat
 			<?php echo $this->escape($this->item->title); ?>
 		<?php endif; ?>
 	</h2>
+	</div>
+	</div>
 <?php endif; ?>
 
 <?php if ($params->get('show_print_icon') || $params->get('show_email_icon') || $canEdit) : ?>
@@ -86,11 +95,6 @@ $assocParam = (JLanguageAssociations::isEnabled() && $params->get('show_associat
 				<?php else : ?>
 				<?php echo JText::sprintf('COM_CONTENT_CATEGORY', $title); ?>
 			<?php endif; ?>
-		</span>&nbsp;|&nbsp; 
-<?php endif; ?>
-<?php if ($params->get('show_create_date')) : ?>
-		<span class="create">
-		<?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC2'))); ?>
 		</span>&nbsp;|&nbsp; 
 <?php endif; ?>
 <?php if ($params->get('show_modify_date')) : ?>
@@ -153,7 +157,7 @@ $assocParam = (JLanguageAssociations::isEnabled() && $params->get('show_associat
 	endif;
 ?>
 		<p class="readmore bold">
-				<a href="<?php echo $link; ?>">
+				<a href="<?php echo $link; ?>" class="btn btn-primary">
 					<?php if (!$params->get('access-view')) :
 						echo JText::_('COM_CONTENT_REGISTER_TO_READ_MORE');
 					elseif ($readmore = $this->item->alternative_readmore) :

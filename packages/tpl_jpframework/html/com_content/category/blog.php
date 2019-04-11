@@ -11,7 +11,7 @@ defined('_JEXEC') or die;
 
 JHtml::addIncludePath(JPATH_COMPONENT . '/helpers');
 
-JHtml::_('behavior.caption');
+//JHtml::_('behavior.caption');
 
 $dispatcher = JEventDispatcher::getInstance();
 
@@ -29,7 +29,7 @@ $results = $dispatcher->trigger('onContentAfterDisplay', array($this->category->
 $afterDisplayContent = trim(implode("\n", $results));
 
 ?>
-<div class="blog<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Blog">
+<div class="blog <?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Blog">
 	<?php if ($this->params->get('show_page_heading')) : ?>
 		<div class="page-header">
 			<h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
@@ -128,7 +128,7 @@ $afterDisplayContent = trim(implode("\n", $results));
 			<?php echo $this->loadTemplate('children'); ?> </div>
 	<?php endif; ?>
 	<?php if (($this->params->def('show_pagination', 1) == 1 || ($this->params->get('show_pagination') == 2)) && ($this->pagination->get('pages.total') > 1)) : ?>
-		<div class="mx-auto text-center py-5">
+		<div class="py-5">
 			<?php if ($this->params->def('show_pagination_results', 1)) : ?>
 				<p class="counter"> <?php echo $this->pagination->getPagesCounter(); ?> </p>
 			<?php endif; ?>

@@ -82,7 +82,6 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 
 			<?php if ($params->get('show_author') && !empty($this->item->author )) : ?>
 				<span class="createdby" itemprop="author" itemscope itemtype="http://schema.org/Person">
-					<i class="fa fa-user"></i>
 					<?php $author = $this->item->created_by_alias ? $this->item->created_by_alias : $this->item->author; ?>
 					<?php $author = '<span itemprop="name">' . $author . '</span>'; ?>
 					<?php if (!empty($this->item->contact_link) && $params->get('link_author') == true) : ?>
@@ -90,7 +89,7 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 					<?php else: ?>
 						<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', $author); ?>
 					<?php endif; ?>
-				</span>&nbsp;|&nbsp; 
+				</span>
 			<?php endif; ?>
 			<?php if ($params->get('show_parent_category') && !empty($this->item->parent_slug)) : ?>
 				<span class="parent-category-name">
@@ -117,17 +116,15 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 
 			<?php if ($params->get('show_publish_date')) : ?>
 				<span class="published">
-					<i class="fa fa-calendar"></i>
 					<time datetime="<?php echo JHtml::_('date', $this->item->publish_up, 'c'); ?>" itemprop="datePublished">
 						<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $this->item->publish_up, JText::_('DATE_FORMAT_LC3'))); ?>
 					</time>
-				</span>&nbsp;|&nbsp;
+				</span>
 			<?php endif; ?>
 
 			<?php if ($info == 0) : ?>
 				<?php if ($params->get('show_modify_date')) : ?>
 					<span class="modified">
-						<i class="fa fa-calendar"></i>
 						<time datetime="<?php echo JHtml::_('date', $this->item->modified, 'c'); ?>" itemprop="dateModified">
 							<?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHtml::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC3'))); ?>
 						</time>
@@ -135,7 +132,6 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 				<?php endif; ?>
 				<?php if ($params->get('show_create_date')) : ?>
 					<span class="create">
-						<i class="fa fa-calendar"></i>
 						<time datetime="<?php echo JHtml::_('date', $this->item->created, 'c'); ?>" itemprop="dateCreated">
 							<?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC3'))); ?>
 						</time>
@@ -144,7 +140,6 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 
 				<?php if ($params->get('show_hits')) : ?>
 					<span class="hits">
-						<i class="fa fa-eye"></i>
 						<meta itemprop="interactionCount" content="UserPageVisits:<?php echo $this->item->hits; ?>" />
 						<?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits); ?>
 					</span>
