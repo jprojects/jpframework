@@ -32,9 +32,9 @@ function modChrome_bottommodule($module, &$params, &$attribs)
 {
 	if (!empty ($module->content)) : ?>
 		<?php if ($module->showtitle) : ?>
-			<h6><?php if($params->get('header_class') != "") : ?><i class="<?php echo $params->get('header_class'); ?>"></i><?php endif; ?> <?php echo $module->title; ?></h6>
+			<h6><?php if($params->get('header_class') != "") : ?><i class="<?= $params->get('header_class'); ?>"></i><?php endif; ?> <?= $module->title; ?></h6>
 		<?php endif; ?>
-		<?php echo $module->content; ?>
+		<?= $module->content; ?>
 	<?php endif;
 }
 
@@ -50,9 +50,9 @@ function modChrome_color($module, &$params, &$attribs)
 		    if(count(explode(' ', $module->title)) > 1) :
 		        $second = substr($module->title, strpos($module->title,' '));
 		        ?>
-		        <h3><?php if($params->get('header_class') != "") : ?><i class="<?php echo $params->get('header_class'); ?>"></i><?php endif; ?> <?php echo $first; ?> <span style="color:<?php echo $hcolor; ?>;"><?php echo $second; ?></span></h3>
+		        <h3><?php if($params->get('header_class') != "") : ?><i class="<?= $params->get('header_class'); ?>"></i><?php endif; ?> <?= $first; ?> <span style="color:<?= $hcolor; ?>;"><?= $second; ?></span></h3>
 		    <?php else: ?>
-		        <h3><?php if($params->get('header_class') != "") : ?><i class="<?php echo $params->get('header_class'); ?>"></i><?php endif; ?> <?php echo $first; ?></h3>
+		        <h3><?php if($params->get('header_class') != "") : ?><i class="<?= $params->get('header_class'); ?>"></i><?php endif; ?> <?= $first; ?></h3>
 		    <?php endif;
 		endif;
 		echo $module->content;
@@ -63,9 +63,9 @@ function modChrome_sidebar($module, &$params, &$attribs)
 {
 	if (!empty ($module->content)) : ?>
 		<?php if ($module->showtitle) : ?>
-            <h3><?php if($params->get('header_class') != "") : ?><i class="<?php echo $params->get('header_class'); ?>"></i><?php endif; ?> <?php echo $module->title; ?></h3>
+            <h3><?php if($params->get('header_class') != "") : ?><i class="<?= $params->get('header_class'); ?>"></i><?php endif; ?> <?= $module->title; ?></h3>
 		<?php endif; ?>
-		<?php echo $module->content; ?>
+		<?= $module->content; ?>
                     
 	<?php endif;
 }
@@ -74,24 +74,24 @@ function modChrome_footer($module, &$params, &$attribs)
 {
     if (!empty ($module->content)) : ?>
 		<?php if ($module->showtitle) : ?>
-            <h4><?php if($params->get('header_class') != "") : ?><i class="<?php echo $params->get('header_class'); ?>"></i><?php endif; ?> <?php echo $module->title; ?></h4>
+            <h4><?php if($params->get('header_class') != "") : ?><i class="<?= $params->get('header_class'); ?>"></i><?php endif; ?> <?= $module->title; ?></h4>
 		<?php endif; ?>
-		<p><?php echo $module->content; ?></p>
+		<p><?= $module->content; ?></p>
                     
 	<?php endif;
 }
 
-function modChrome_panel($module, &$params, &$attribs)
+function modChrome_card($module, &$params, &$attribs)
 {
     if (!empty ($module->content)) : ?>
-        <div class="panel panel-<?php echo $params->get('moduleclass_sfx', 'default'); ?>">
-        <div class="panel-heading">
+        <div class="card">
+  		<div class="card-body <?= $params->get('moduleclass_sfx', 'default'); ?>">
 		<?php if ($module->showtitle) : ?>
-            <h3 class="panel-title"><?php if($params->get('header_class') != "") : ?><i class="<?php echo $params->get('header_class'); ?>"></i><?php endif; ?> <?php echo $module->title; ?></h3>
-            </div>
+        <h5 class="card-title"><?php if($params->get('header_class') != "") : ?><i class="<?= $params->get('header_class'); ?>"></i><?php endif; ?> <?= $module->title; ?></h5>
 		<?php endif; ?>
-		<div class="panel-body"><?php echo $module->content; ?></div>
+		<p class="card-text"><?= $module->content; ?></p>
+		</div>
         </div>           
-	<?php endif;
+		<?php endif;
 }
 ?>
