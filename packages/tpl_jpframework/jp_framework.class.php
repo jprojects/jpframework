@@ -263,29 +263,6 @@ class jpf  extends blocksHelper
     	return implode("\n", $grid);
     }    
     
-    public static function getCarritoCount() 
-    {
-   		$db 	 = JFactory::getDbo();
-   		$session = JFactory::getSession();
-   		$user 	 = JFactory::getUser();
-   		
-   		if($user->guest) { return 0; }
-
-		//check if a comanda exist
-		$db->setQuery('select id from #__botiga_comandes where userid = '.$user->id.' and status = 1');
-		$id = $db->loadResult();
-		if($id > 0) { $session->set('idComanda', $id); }
-		
-		$idComanda = $session->get('idComanda', '');
-		
-		if($idComanda != '') {
-   			$db->setQuery('select sum(qty) from #__botiga_comandesDetall where idComanda = '.$idComanda);
-   			return $db->loadResult();
-   		} else {
-   			return 0;
-   		}
-    }
-    
 }
 
 ?>
