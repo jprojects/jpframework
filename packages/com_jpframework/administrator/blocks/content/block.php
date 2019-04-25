@@ -33,7 +33,7 @@ if($position == 'float-right') {
 
 <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
 
-<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
+<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid, 'block_color', '#fff'); ?>;color:<?= blocksHelper::getBlockParameter($blockid, 'block_font_color', '#000'); ?>">
 
 
 	<div class="container jpfblock">
@@ -44,9 +44,9 @@ if($position == 'float-right') {
 			<hr class="featurette-divider">
 		</header>
 		<?php endif; ?>
-
-		<?php if($position != '') : ?>
+		
 		<div class="row">
+			<?php if($position != '') : ?>
 			<div class="<?= $col; ?>  <?= $pos; ?> <?= $efecte; ?>">
 				<?php if(blocksHelper::getBlockParameter($blockid,'content_video') == '') : ?>
 				<img src="<?= blocksHelper::getBlockParameter($blockid,'content_img', ''); ?>" alt="<?= blocksHelper::getBlockParameter($blockid,'content_alt', ''); ?>" class="featurette-image img-fluid mx-auto">
@@ -54,11 +54,12 @@ if($position == 'float-right') {
 				<div class='embed-container'><iframe src="<?= blocksHelper::getBlockParameter($blockid, 'content_video'); ?>" frameborder="0" allowfullscreen></iframe></div>
 				<?php endif; ?>
 			</div> 
+			<?php endif; ?>
 			<div class="<?= $col2; ?> <?= $pos2; ?>">
 		     	<div class="lead"><?= blocksHelper::getBlockParameter($blockid, 'content_text'); ?></div>
 			</div>
 		</div>
-		<?php endif; ?> 
+		 
 		
 	</div>
 
