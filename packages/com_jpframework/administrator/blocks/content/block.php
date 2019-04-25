@@ -16,12 +16,12 @@ $effect != '' ? $efecte = 'wow '.$effect : $efecte = '';
 $position = blocksHelper::getBlockParameter($blockid, 'content_position', '');
 $heading = blocksHelper::getBlockParameter($blockid, 'content_title');
 
-if($position == 'right') {
+if($position == 'float-right') {
 	$col  = 'col-xs-12 col-md-6';
 	$pos  = 'float-right';
 	$col2 = 'col-xs-12 col-md-6';
 	$pos2 = 'float-left';
-} elseif($position == 'left') {
+} elseif($position == 'float-left') {
 	$col  = 'col-xs-12 col-md-6';
 	$pos2 = 'float-right';
 	$col2 = 'col-xs-12 col-md-6';
