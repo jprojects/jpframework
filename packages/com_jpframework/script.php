@@ -44,6 +44,9 @@ class com_jpframeworkInstallerScript
 		$db->setQuery('UPDATE #__modules SET position = '.$db->quote('jpf-menu').' WHERE id = 1');
 		$db->query();
 		
+		//create pdf directory
+		mkdir(JPATH_ROOT.'/images/pdf');
+		
 		$parent->getParent()->setRedirectURL('index.php?option=com_jpframework');
 	}
 
