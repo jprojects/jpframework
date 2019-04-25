@@ -18,18 +18,20 @@ $heading = blocksHelper::getBlockParameter($blockid, 'content_title');
 
 if($position == 'right') {
 	$col  = 'col-xs-12 col-md-6';
-	$pos  = 'pull-right';
+	$pos  = 'float-right';
 	$col2 = 'col-xs-12 col-md-6';
-	$pos2 = 'pull-left';
+	$pos2 = 'float-left';
 } elseif($position == 'left') {
 	$col  = 'col-xs-12 col-md-6';
-	$pos2 = 'pull-right';
+	$pos2 = 'float-right';
 	$col2 = 'col-xs-12 col-md-6';
-	$pos  = 'pull-left';
+	$pos  = 'float-left';
 } else {
 	$col2 = 12;
 }
 ?>
+
+<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
 
 <section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
 
@@ -44,20 +46,19 @@ if($position == 'right') {
 		<?php endif; ?>
 
 		<?php if($position != '') : ?>
-		<div class="row featurette">
+		<div class="row">
 			<div class="<?= $col; ?>  <?= $pos; ?> <?= $efecte; ?>">
 				<?php if(blocksHelper::getBlockParameter($blockid,'content_video') == '') : ?>
 				<img src="<?= blocksHelper::getBlockParameter($blockid,'content_img', ''); ?>" alt="<?= blocksHelper::getBlockParameter($blockid,'content_alt', ''); ?>" class="featurette-image img-fluid mx-auto">
 				<?php else : ?>
-				<iframe class="col-lg-2 col-md-6 col-sm-12 col-xs-12" src="<?= blocksHelper::getBlockParameter($blockid, 'content_video'); ?>" frameborder="0" allowfullscreen></iframe>
+				<div class='embed-container'><iframe src="<?= blocksHelper::getBlockParameter($blockid, 'content_video'); ?>" frameborder="0" allowfullscreen></iframe></div>
 				<?php endif; ?>
 			</div> 
+			<div class="<?= $col2; ?> <?= $pos2; ?>">
+		     	<div class="lead"><?= blocksHelper::getBlockParameter($blockid, 'content_text'); ?></div>
+			</div>
 		</div>
-		<?php endif; ?>
-		
-		<div class="<?= $col2; ?> <?= $pos2; ?>">
-		     <div class="lead"><?= blocksHelper::getBlockParameter($blockid, 'content_text'); ?></div>
-		</div> 
+		<?php endif; ?> 
 		
 	</div>
 
