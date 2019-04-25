@@ -6,7 +6,8 @@
  * @copyright   Copyright (C) 2015. Todos los derechos reservados.
  * @license     Licencia Pública General GNU versión 2 o posterior. Consulte LICENSE.txt
  * @author      aficat <kim@aficat.com> - http://www.afi.cat
- */
+*/
+
 // No direct access
 defined('_JEXEC') or die;
 
@@ -27,11 +28,10 @@ if($position == 'float-right') {
 	$col2 = 'col-xs-12 col-md-6';
 	$pos  = 'float-left';
 } else {
-	$col2 = 12;
+	$col2 = 'col-12';
+	$pos2 = '';
 }
 ?>
-
-<style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style>
 
 <section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid, 'block_color', '#fff'); ?>;color:<?= blocksHelper::getBlockParameter($blockid, 'block_font_color', '#000'); ?>">
 
