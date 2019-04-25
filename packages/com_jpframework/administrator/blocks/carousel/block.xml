@@ -57,7 +57,7 @@
 		<field 
 			name="carousel_controls" 
 			type="radio" 
-			default="1" 
+			default="0" 
 			label="Carousel controls" 
 			description="Show the carousel controls, arrows to slide left or right" 
 			class="btn-group btn-group-yesno"
@@ -65,6 +65,23 @@
 		<option value="0">JNO</option>
 		<option value="1">JYES</option>
 		</field>
+		<!-- ToDo:: showon not work -->
+		<field 
+			name="carousel_control_left" 
+			type="text" 
+			default="carousel-control-prev-icon" 
+			label="Carousel ctrl left" 
+			description="" 
+			showon="carousel_controls:1"
+		/>
+		<field 
+			name="carousel_control_right" 
+			type="text" 
+			default="carousel-control-next-icon" 
+			label="Carousel ctrl right" 
+			description="" 
+			showon="carousel_controls:1"
+		/>
 		<field 
 			name="carousel_indicators" 
 			type="radio" 
@@ -107,14 +124,45 @@
 					default="" 
 					label="Text" 
 					description="Carousel text" 
-				/>
+				/>				
 				<field 
 					name="carousel_img" 
 					type="media" 
 					directory="" 
-					label="Image" 
-					description="Carousel image"
+					label="Image LG" 
+					description="Carousel image LG"
 				/>
+				<field 
+					name="carousel_img_xs" 
+					type="media" 
+					directory="" 
+					label="Image XS" 
+					description="Carousel image xs"
+				/>
+				<field 
+					name="carousel_img_md" 
+					type="media" 
+					directory="" 
+					label="Image MD" 
+					description="Carousel image md"
+				/>
+				<field 
+					name="carousel_link" 
+					type="menuitem" 
+					default="0" 
+					label="Link" 
+					description="Box link" 
+				/>
+				<field 
+					name="carousel_link_active" 
+					type="list" 
+					default="0" 
+					label="Link Active" 
+					description="Box link active or not" 
+				>
+				<option value="0">JNO</option>
+				<option value="1">JYES</option>
+				</field>
 			</fieldset>
 		</field>
 	</fieldset>

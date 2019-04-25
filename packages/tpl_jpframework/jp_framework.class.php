@@ -57,7 +57,7 @@ class jpf  extends blocksHelper
 		//add stylesheets
     	JFactory::getDocument()->addStylesheet('templates/jpframework/css/jpframework.css');
     	if($icon_font == 'fontawesome') {
-    		JFactory::getDocument()->addStylesheet('https://use.fontawesome.com/releases/v5.5.0/css/all.css');
+    		JFactory::getDocument()->addStylesheet('https://stackpath.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css');
     	}
     	if($icon_font == 'forkawesome') {
     		JFactory::getDocument()->addStylesheet('https://cdn.jsdelivr.net/npm/fork-awesome@1.1.5/css/fork-awesome.min.css');

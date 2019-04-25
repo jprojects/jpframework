@@ -18,7 +18,12 @@
 	display: none;
     min-width: 250px;
     max-width: 250px;
-    background: rgb(225, 216, 213, 0.3);
+    background: rgb(225, 216, 213, 0.5);
+    transition: all 0.3s;
+    position: fixed;
+    z-index: 500;
+    left: 80px;
+    height: 100%;
 }
 
 #sidebar ul li a {

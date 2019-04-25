@@ -38,7 +38,7 @@ jQuery(document).ready(function($) {
 	//Performs a smooth page scroll to an anchor on the same page.
 	jQuery('a[href*=#]:not([href=#])').click(function() {
 		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
-		  //if( jQuery(this).attr("href")=="#carousel-home") return;//This is the exception change the id
+		  //if( jQuery(this).attr("href")=="#bcarousel-home") return;//This is the exception change the id
 		  var target = jQuery(this.hash);
 		  target = target.length ? target : jQuery('[name=' + this.hash.slice(1) +']');
 		  if (target.length) {
