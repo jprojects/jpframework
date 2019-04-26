@@ -14,7 +14,7 @@ jimport('joomla.form.formfield');
 /**
  * Supports an HTML select list of categories
  */
-class JFormFieldClasses extends JFormField
+class JFormFieldScrolleffects extends JFormField
 {
 	/**
 	 * The form field type.
