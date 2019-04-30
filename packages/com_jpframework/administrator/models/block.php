@@ -96,11 +96,7 @@ class JpframeworkModelBlock extends JModelAdmin
 			$html = array();
 			foreach ($fields as $field)
 			{
-				$html[] = '
-				<div class="control-group">
-					<div class="control-label">' . $field->label . '</div>
-					<div class="controls">' . $form->getInput($field->name, '', $params[$field->name]) . '</div>
-				</div>';
+				$html[] = $form->renderField($field->name, '', $params[$field->name]);
 				//$html[] = '<script>jQuery("#'.$field->name.'").val("'.$params[$field->name].'");</script>';
 			}
 			
