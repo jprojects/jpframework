@@ -55,14 +55,12 @@ jQuery(document).ready(function () {
 		<?= jpf::getColumn('jpf-main', 'main'); ?>		
 		<!-- end main row -->
 		<?php endif; ?>
-
-        <div class="container<?php if(jpf::getparameter('fluid', 0) == 1) : ?>-fluid<?php endif;; ?> mainbody">
-				  
-			<?php if(jpf::showComponent()) : ?>
-			<div><jdoc:include type="component" /></div>
-			<?php endif; ?>
-				
+		
+		<?php if(jpf::showComponent()) : ?>
+        <div class="mainbody">
+			<div><jdoc:include type="component" /></div>		
 		</div>
+		<?php endif; ?>
 
 		<?php if(jpf::getparameter('jpf-showcase') != 0) : ?>
 		<!-- start showcase row -->	
