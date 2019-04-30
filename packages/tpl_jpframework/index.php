@@ -34,6 +34,7 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <jdoc:include type="head" />
 <?php jpf::setHead(); ?>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/wow.min.js" type="text/javascript"></script>
 <script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/jpframework.js" type="text/javascript"></script>
