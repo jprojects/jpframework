@@ -38,6 +38,7 @@
     		default="Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information."
     		cols="10"
     		rows="5" 
+    		showon="menu:menu-3"
     	/> 	
         <field 
         	name="layout" 
@@ -356,6 +357,34 @@
 			default="#ffffff" 
 			label="Footer font color" 
 			description="Footer font color" 
+		/>
+		<field 
+			name="primary_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Primary color" 
+			description="Primary color" 
+		/>
+		<field 
+			name="primary_bg" 
+			type="color" 
+			default="#1abc9c" 
+			label="Primary bg" 
+			description="Primary bg" 
+		/>
+		<field 
+			name="secondary_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Secondary color" 
+			description="Secondary color" 
+		/>
+		<field 
+			name="secondary_bg" 
+			type="color" 
+			default="#1abc9c" 
+			label="Secondary bg" 
+			description="Secondary bg" 
 		/>
     </fieldset>
     <fieldset label="COM_JPFRAMEWORK_SOCIAL" name="social">
