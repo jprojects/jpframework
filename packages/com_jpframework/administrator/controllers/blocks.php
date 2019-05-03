@@ -121,7 +121,11 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 		$primary_color 		= $params->get('primary_color');
 		$primary_bg 		= $params->get('primary_bg');
 		$secondary_color 	= $params->get('secondary_color');
-		$secondary_color 	= $params->get('secondary_color');
+		$secondary_bg 		= $params->get('secondary_bg');
+		$success_color 		= $params->get('success_color');
+		$success_bg 		= $params->get('success_bg');
+		$error_color 		= $params->get('error_color');
+		$error_bg 			= $params->get('error_bg');
 		
 		$options 	= array( 'compress'=>true );
 		$parser 	= new Less_Parser($options);
@@ -144,6 +148,10 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 			@primary_bg: ".$primary_bg.";
 			@secondary_color: ".$secondary_color.";
 			@secondary_bg: ".$secondary_bg.";
+			@success_color: ".$success_color.";
+			@success_bg: ".$success_bg.";
+			@error_color: ".$error_color.";
+			@error_bg: ".$error_bg.";
 		");
 		$css = $parser->getCss();
 		file_put_contents(JPATH_ROOT.'/templates/jpframework/css/jpframework.css', $css);

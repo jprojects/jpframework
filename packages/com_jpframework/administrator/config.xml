@@ -386,6 +386,34 @@
 			label="Secondary bg" 
 			description="Secondary bg" 
 		/>
+		<field 
+			name="success_color" 
+			type="color" 
+			default="#155724" 
+			label="Success color" 
+			description="Success color" 
+		/>
+		<field 
+			name="success_bg" 
+			type="color" 
+			default="#7bb088" 
+			label="Success bg" 
+			description="Success bg" 
+		/>
+		<field 
+			name="danger_color" 
+			type="color" 
+			default="#155724" 
+			label="Error color" 
+			description="Error color" 
+		/>
+		<field 
+			name="danger_bg" 
+			type="color" 
+			default="#7bb088" 
+			label="Error bg" 
+			description="Error bg" 
+		/>
     </fieldset>
     <fieldset label="COM_JPFRAMEWORK_SOCIAL" name="social">
     	<field 

@@ -12,6 +12,10 @@
  * @secondary_color
  * @primary_bg
  * @secondary_bg
+ * @success_bg
+ * @error_bg
+ * @success_color
+ * @error_color
 */
 
 @import url('//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css');
@@ -225,18 +229,16 @@ a.pagenav:hover {
     color: #000;  
 }  
 .alert-success {  
-    background-color: #8fce39;  
-    border-color: #8fce39;   
+    background-color: @success_color;  
+    background-color: @success_bg;
+    border-color: @success_bg;
 }  
 .alert-danger,  
 .alert-error {  
-    background-color: #9b1717;  
-    border-color: #9b1717;   
+    background-color: @error_color;  
+    background-color: @error_bg;
+    border-color: @error_bg;  
 }  
-.alert-info {  
-    background-color: #8fce39;  
-    border-color: #8fce39;    
-}
 .alert-primary {
     color: @primary_color;
     background-color: @primary_bg;
