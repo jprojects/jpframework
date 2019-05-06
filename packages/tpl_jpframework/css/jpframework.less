@@ -85,33 +85,53 @@ sub {
 
 /* Blog */
 
-.blog a { color: @link_color; }
-.blog a:hover { text-decoration: none; }
+/* Blog */
 
-.items-row { margin-top: 50px; }
-
+.blog a {
+ 	color:  @primary_bg;
+}
+.blog a:hover {
+ 	text-decoration: none
+}
+.blog .item, .blog .items-leading {
+ 	background: #f2f2f2;
+ 	padding: 0 10px 10px 10px;
+}
+.blog .create {
+ 	color: #fff;
+ 	background:  @primary_bg;
+ 	height: 80px;
+ 	width: 80px;
+ 	line-height: normal;
+ 	padding-top: 18px;
+ 	text-align: center;
+ 	font-size: 14px
+}
+.blog .create span {
+ 	font-size: 20px;
+ 	font-weight: bold
+}
 .article-info {
-	font-size: 80%;
-	font-weight: 400;
-	padding: 10px 0 20px 0;
+ 	font-size: 80%;
+ 	font-weight: 400;
+ 	padding: 10px 0 20px 0
 }
-
-.pagination > li { margin: 0 5px; }
-
+.pagination > li {
+ 	margin: 0 5px
+}
 .pagenav {
-    position: relative;
-    display: block;
-    padding: .5rem .75rem;
-    margin-left: -1px;
-    line-height: 1.25;
-    color: @link_color;
-    background-color: #fff;
-    border: 1px solid @link_color;
+ 	position: relative;
+ 	display: block;
+ 	padding: .5rem .75rem;
+ 	margin-left: -1px;
+ 	line-height: 1.25;
+ 	color:  #00a0c6;
+ 	background-color: #fff;
+ 	border: 1px solid  @primary_bg;
 }
-
 a.pagenav:hover {
-	background: @link_color;
-	color: #fff;
+ 	background:  @primary_bg;
+ 	color: #fff
 }
 
 /* Helper classes from jpframework */
