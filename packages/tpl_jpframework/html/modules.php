@@ -84,11 +84,11 @@ function modChrome_footer($module, &$params, &$attribs)
 function modChrome_card($module, &$params, &$attribs)
 {
     if (!empty ($module->content)) : ?>
-        <div class="card">
-  		<div class="card-body <?= $params->get('moduleclass_sfx', 'default'); ?>">
-		<?php if ($module->showtitle) : ?>
-        <h5 class="card-title"><?php if($params->get('header_class') != "") : ?><i class="<?= $params->get('header_class'); ?>"></i><?php endif; ?> <?= $module->title; ?></h5>
+        <div class="card my-4">
+        <?php if ($module->showtitle) : ?>
+        <h5 class="card-header"><?= $module->title; ?></h5>
 		<?php endif; ?>
+  		<div class="card-body <?= $params->get('moduleclass_sfx', 'default'); ?>">		
 		<p class="card-text"><?= $module->content; ?></p>
 		</div>
         </div>           
