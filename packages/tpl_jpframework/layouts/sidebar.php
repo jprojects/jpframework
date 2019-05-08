@@ -26,15 +26,15 @@ jQuery(document).ready(function () {
     <!-- Sidebar  -->
     <nav id="sidebar">
     	<div class="row">
-			<div class="col-xs-1 mx-auto">
+			<div class="col-xs-1 mx-auto fixbar">
 				<div class="sidebar-header">
-				    <a id="sidebarCollapse"><i class="fa fa-bars fa-2x"></i></a>
+				    <a id="sidebarCollapse"><i class="fa fa-bars fa-2x"></i></a>				    
 				</div>
-		    </div>		    
+		    </div>	    
         </div>
     </nav>
     <nav id="submenu">
-		<jdoc:include type="modules" name="jpf-menu" />
+		<jdoc:include type="modules" name="jpf-menu" />	
 	</nav>
 
     <!-- Page Content  -->
