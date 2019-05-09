@@ -29,6 +29,14 @@ jQuery(document).ready(function($) {
 		);
 	});
 	
+	jQuery('.tos').click(function() {
+		if(jQuery(this).is(':checked')) {  
+            jQuery('.submit').removeAttr('disabled');  
+        } else {  
+            jQuery('.submit').attr('disabled', 'disabled');  
+        } 
+	});
+	
 	setTimeout(function() {
     $('.message-container').fadeOut('fast');
 	}, 8000);
