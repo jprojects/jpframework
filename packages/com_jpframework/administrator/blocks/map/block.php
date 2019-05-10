@@ -11,6 +11,9 @@
 defined('_JEXEC') or die;
 JHtml::_('jquery.framework');
 
+$lang = JFactory::getLanguage();
+$locales = $lang->getLocale();
+
 $blockid  = JRequest::getVar('blockid');
 $heading  = blocksHelper::getBlockParameter($blockid, 'heading');
 $fluid    = blocksHelper::getBlockParameter($blockid, 'fluid', 1);
@@ -28,7 +31,7 @@ $style == 1 ? $customstyles = ",styles: ".$styles : $customstyles = "";
 blocksHelper::getBlockParameter($blockid, 'draggable', 0) == 0 ? $draggable = 'false' : $draggable = 'true';
 blocksHelper::getBlockParameter($blockid, 'scrollable', 0) == 0 ? $scrollable = 'false' : $scrollable = 'true';
 
-blocksHelper::loadJs('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key='.$key);
+blocksHelper::loadJs('https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key='.$key.'&language='.$locales[4]);
 $script = "function initialize() {
         var mapOptions = {
             zoom: ".$zoom.",

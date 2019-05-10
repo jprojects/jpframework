@@ -37,6 +37,14 @@ jQuery(document).ready(function($) {
         } 
 	});
 	
+	jQuery('.cr').click(function() {
+		if(jQuery(this).is(':checked')) {  
+            jQuery('.newsletter').val(1);  
+        } else {  
+            jQuery('.newsletter').val(0);  
+        } 
+	});
+	
 	setTimeout(function() {
     $('.message-container').fadeOut('fast');
 	}, 8000);

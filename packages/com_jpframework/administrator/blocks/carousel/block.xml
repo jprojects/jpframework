@@ -55,6 +55,27 @@
 		<option value="1">JYES</option>
 		</field>
 		<field 
+			name="Position_box" 
+			type="radio" 
+			default="1" 
+			label="Position box" 
+			description="Posició del box" 
+			class="btn-group"
+			showon="carousel_box:1"
+		>
+		<option value="hero_left">Left</option>
+		<option value="hero_center">Center</option>
+		<option value="hero_right">Right</option>
+		</field>
+		<field 
+			name="color_box" 
+			type="text" 
+			default="rgba(0, 0, 0, 0.2);" 
+			label="Color" 
+			description="Color del box" 
+			showon="carousel_box:1"
+		/>
+		<field 
 			name="carousel_controls" 
 			type="radio" 
 			default="0" 
@@ -80,6 +101,22 @@
 			default="carousel-control-next-icon" 
 			label="Carousel ctrl right" 
 			description="" 
+			showon="carousel_controls:1"
+		/>
+		<field 
+			name="carousel_controlImg_left" 
+			type="media" 
+			directory="" 
+			label="Image per les icones" 
+			description="Carousel image per icones"
+			showon="carousel_controls:1"
+		/>
+		<field 
+			name="carousel_controlImg_right" 
+			type="media" 
+			directory="" 
+			label="Image per les icones" 
+			description="Carousel image per icones"
 			showon="carousel_controls:1"
 		/>
 		<field 
