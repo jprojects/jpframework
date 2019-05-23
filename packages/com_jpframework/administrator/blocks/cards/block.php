@@ -17,7 +17,7 @@ blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blo
 $uniqid = blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid);
 
 $cards   = json_decode(blocksHelper::getBlockParameter($blockid, 'list_cards'), true);
-$items   = blocksHelper::group_by_key($items);
+$items   = blocksHelper::group_by_key($cards);
 
 ?>
 
@@ -39,12 +39,12 @@ $items   = blocksHelper::group_by_key($items);
                 <div class="card-content">
                     <div class="card-img">
                         <img src="<?= $b[0]; ?>" alt="<?= $b[1]; ?>">
-                        <span><h4><?= $b[2]; ?></h4></span>
+                        <?php if($b[2] != '') : ?><span><h4><?= $b[2]; ?></h4></span><?php endif; ?>
                     </div>
                     <div class="card-desc">
                         <h3><?= $b[3]; ?></h3>
                         <p><?= $b[4]; ?></p>
-                        <a href="<?= $b[5]; ?>" class="btn-card"><?= $b[6]; ?></a>   
+                        <a href="index.php?Itemid=<?= $b[5]; ?>" class="btn btn-primary"><?= $b[6]; ?></a>   
                     </div>
                 </div>
             	</div>

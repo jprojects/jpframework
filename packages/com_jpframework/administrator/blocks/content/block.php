@@ -16,13 +16,14 @@ $effect  = blocksHelper::getBlockParameter($blockid, 'effect', '');
 $effect != '' ? $efecte = 'wow '.$effect : $efecte = '';
 $position = blocksHelper::getBlockParameter($blockid, 'content_position', '');
 $heading = blocksHelper::getBlockParameter($blockid, 'content_title');
+$video   = blocksHelper::getBlockParameter($blockid,'content_video');
 
-if($position == 'float-right') {
+if($position == 'right') {
 	$col  = 'col-xs-12 col-md-6';
 	$pos  = 'float-right';
 	$col2 = 'col-xs-12 col-md-6';
 	$pos2 = 'float-left';
-} elseif($position == 'float-left') {
+} elseif($position == 'left') {
 	$col  = 'col-xs-12 col-md-6';
 	$pos2 = 'float-right';
 	$col2 = 'col-xs-12 col-md-6';
@@ -48,10 +49,10 @@ if($position == 'float-right') {
 		<div class="row">
 			<?php if($position != '') : ?>
 			<div class="<?= $col; ?>  <?= $pos; ?> <?= $efecte; ?>">
-				<?php if(blocksHelper::getBlockParameter($blockid,'content_video') == '') : ?>
+				<?php if($video == '') : ?>
 				<img src="<?= blocksHelper::getBlockParameter($blockid,'content_img', ''); ?>" alt="<?= blocksHelper::getBlockParameter($blockid,'content_alt', ''); ?>" class="featurette-image img-fluid mx-auto">
 				<?php else : ?>
-				<div class='embed-container'><iframe src="<?= blocksHelper::getBlockParameter($blockid, 'content_video'); ?>" frameborder="0" allowfullscreen></iframe></div>
+				<div class='embed-container'><iframe src="<?= $video; ?>" frameborder="0" allowfullscreen></iframe></div>
 				<?php endif; ?>
 			</div> 
 			<?php endif; ?>
