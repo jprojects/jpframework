@@ -12,6 +12,7 @@ defined('_JEXEC') or die;
 $cparams = JComponentHelper::getParams('com_media');
 
 jimport('joomla.html.html.bootstrap');
+$captcha = 0;
 ?>
 <section id="faq" style="margin:50px 0;">
 
@@ -217,6 +218,18 @@ jimport('joomla.html.html.bootstrap');
 			<div class="form-group">
 			<?php foreach ($this->form->getFieldsets() as $fieldset) : ?>
 			<?php if ($fieldset->name === 'captcha' && $this->captchaEnabled) : ?>
+				<?php $captcha = 1; ?>
+				<script>
+				var resolved = false;
+				function recaptchaCallback() {
+					var resolved = true;
+					if(resolved == true) {  
+						jQuery('.submit').removeAttr('disabled');  
+					} else {  
+						jQuery('.submit').attr('disabled', 'disabled');  
+					}
+				};
+				</script>
 				<?php $fields = $this->form->getFieldset($fieldset->name); ?>
 				<?php if (count($fields)) : ?>
 					<?php if (isset($fieldset->label) && ($legend = trim(JText::_($fieldset->label))) !== '') : ?>
@@ -231,7 +244,7 @@ jimport('joomla.html.html.bootstrap');
 			</div>
 			
 			<div class="form-group">
-                        	<button type="submit" class="btn btn-primary btn-lg btn-block" name="submit"><span class="glyphicon glyphicon-send"></span> <?php echo JText::_('COM_CONTACT_CONTACT_SEND'); ?></button>
+                        	<button type="submit" <?php if($captcha == 1): ?>disabled="disabled"<?php endif; ?> class="btn btn-primary btn-lg btn-block submit" name="submit"><span class="glyphicon glyphicon-send"></span> <?php echo JText::_('COM_CONTACT_CONTACT_SEND'); ?></button>
 			</div>
 		
 			<input type="hidden" name="option" value="com_contact" />
