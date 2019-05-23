@@ -104,7 +104,7 @@
 			<div class="social-icons"> 
 				<?= jpf::getSocial(); ?>  
 			</div>
-			<?=jpf::getSitename(); ?> &copy; <?=date('Y'); ?>
+			<p><?=jpf::getSitename(); ?> &copy; <?=date('Y'); ?></p>
 			<?php if(jpf::getparameter('privacy') != '') : ?>
 			<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('privacy'); ?>"><?=JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
 			&middot;
