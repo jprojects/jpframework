@@ -37,6 +37,9 @@
            -o-transform: translate3d(-50%,-50%,0);
               transform: translate3d(-50%,-50%,0);
 }
+.hero_left { left: 35%; }
+.hero_center { left: 50%; }
+.hero_right { right: 35%; }
 .hero h1 {
     font-size: 6em;    
     font-weight: bold;
