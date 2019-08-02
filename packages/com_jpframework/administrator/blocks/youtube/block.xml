@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="block">
+	<field 
+			name="title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="Block title" 
+		/>
+		<field 
+			name="block_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Background" 
+			description="Background color" 
+		/>
+		<field 
+			name="font_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Font color" 
+			description="Font color" 
+		/>
+		<field 
+			name="uniqid" 
+			type="text" 
+			default="" 
+			label="Uniqid" 
+			description="Uniqid is used as the block section id" 
+		/>
+		<field 
+			name="heading" 
+			type="text" 
+			default="" 
+			label="Block Heading" 
+			description=""
+			filter="raw" 
+		/>
+		<field 
+			name="subheading" 
+			type="textarea" 
+			default="" 
+			label="Block subheading" 
+			description=""
+			cols="10"
+			rows="5" 
+			filter="raw"
+		/>
+		<field 
+			name="channelId" 
+			type="text" 
+			default="" 
+			label="Youtube Id" 
+			description="" 
+		/>
+		<field 
+			name="apikey" 
+			type="text" 
+			default="" 
+			label="Youtube apikey" 
+			description="" 
+		/>
+		<field 
+			name="limit" 
+			type="text" 
+			default="" 
+			label="Max videos" 
+			description="" 
+		/>
+	</fieldset>
+
+</form>
