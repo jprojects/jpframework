@@ -11,6 +11,7 @@
 defined('_JEXEC') or die;
 
 JHtml::_('bootstrap.tooltip');
+JHtml::_('behavior.modal');
 JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
 
@@ -30,6 +31,15 @@ if ($saveOrder)
 }
 ?>
 
+<script type="text/javascript">
+    Joomla.submitbutton = function(task)
+    {
+        if (task == 'jpf.preview') {
+            alert('hola');
+        }
+    }
+</script>
+
 <form action="<?= JRoute::_('index.php?option=com_jpframework&view=jpf'); ?>" method="post" name="adminForm" id="adminForm">
 
 	<div id="j-sidebar-container" class="span2">
@@ -42,7 +52,7 @@ if ($saveOrder)
 			<?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 		</div>
 		
-		<form action="<?= JRoute::_('index.php?option=com_jpframework&view=blocks'); ?>" method="post" name="adminForm" id="adminForm">
+		<form action="<?= JRoute::_('index.php?option=com_jpframework&view=jpf'); ?>" method="post" name="adminForm" id="adminForm">
 			<table class="gridly ui-sortable" id="blocksList">
 				<tbody>
 				<?php 
@@ -54,7 +64,13 @@ if ($saveOrder)
 						<td>
 						<input type="checkbox" class="cb" id="cb<?= $i; ?>" name="cid[]" value="<?= $item->id; ?>" onclick="Joomla.isChecked(this.checked);" />
 						<input type="text" style="display:none" name="order[]" size="5" value="<?= $item->ordering;?>" class="width-20 text-area-order " />
-						<div class="brick-msg"><?= strtoupper($item->type); ?><br><br><?= $item->position != '' ? '('.$item->position.')' : '(No position)'; ?> <img src="<?= JURI::root(); ?>media/mod_languages/images/<?= str_replace('-', '_', strtolower($item->language)); ?>.gif" alt="<?= $item->language; ?>"></div>
+						<div class="brick-msg">
+							<?= strtoupper($item->title); ?><br><br>
+							<?= strtoupper($item->type); ?><br><br>
+							<?= $item->position != '' ? '('.$item->position.')' : '(No position)'; ?><br><br>
+							<?= $item->state == 1 ? 'Published' : 'Unpublished'; ?><br><br>
+							<img src="<?= JURI::root(); ?>media/mod_languages/images/<?= str_replace('-', '_', strtolower($item->language)); ?>.gif" alt="<?= $item->language; ?>">
+						</div>
 						<div class="brick-options">
 							<a href="<?= JURI::root(); ?>administrator/index.php?option=com_jpframework&view=block&layout=edit&id=<?= $item->id; ?>&tmpl=component" data-target="#blockModal" data-toggle="modal">
 								<span class="icon-options hasTip" aria-hidden="true" title="Edit"> </span>
@@ -70,7 +86,10 @@ if ($saveOrder)
 							<a style="padding-top:10px;" href="javascript:void(0);" onclick="return listItemTask('cb<?= $i; ?>','jpf.unpublish')">
 								<span class="icon-unpublish hasTip" aria-hidden="true" title="Unpublish"></span>
 							</a>
-							<?php endif; ?>
+							<a style="padding-top:10px;" class="modal" href="<?= JURI::root().'?Itemid='.$app->input->post('menuitem').'#'.$item->uniqid; ?>" rel="{handler: 'iframe', size: {x: 960, y: 600}}">
+								<span class="icon-eye hasTip" aria-hidden="true" title="Preview"></span>
+							</a>
+							<?php endif; ?>							
 						</div>
 						</td>
 					</tr>					
@@ -93,7 +112,7 @@ if ($saveOrder)
 	
 </form> 
 
-<!-- Modal -->
+<!-- Edit Modal -->
 <div id="blockModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="blockModalLabel" aria-hidden="true">
 	<div class="modal-header">
     	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
