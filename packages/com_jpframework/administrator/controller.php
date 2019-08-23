@@ -24,7 +24,7 @@ class JpframeworkController extends JControllerLegacy {
     public function display($cachable = false, $urlparams = false) {
         require_once JPATH_COMPONENT . '/helpers/jpframework.php';
 
-        $view = JFactory::getApplication()->input->getCmd('view', 'blocks');
+        $view = JFactory::getApplication()->input->getCmd('view', 'jpf');
         JFactory::getApplication()->input->set('view', $view);
 
         parent::display($cachable, $urlparams);

@@ -14,8 +14,8 @@ jimport('joomla.application.component.modellist');
 
 /**
  * Methods supporting a list of Jpframework records.
- */
-class JpframeworkModelBlocks extends JModelList {
+*/
+class JpframeworkModelJpf extends JModelList {
 
     /**
      * Constructor.
@@ -25,6 +25,7 @@ class JpframeworkModelBlocks extends JModelList {
      * @since    1.6
      */
     public function __construct($config = array()) {
+    
         if (empty($config['filter_fields'])) {
             $config['filter_fields'] = array(
                 'id', 'a.id',
@@ -44,27 +45,23 @@ class JpframeworkModelBlocks extends JModelList {
      * Method to auto-populate the model state.
      *
      * Note. Calling getState in this method will result in recursion.
-     */
+    */
     protected function populateState($ordering = null, $direction = null) {
-        // Initialise variables.
+
         $app = JFactory::getApplication('administrator');
 
-        // Load the filter state.
-        $search = $app->getUserStateFromRequest($this->context . '.filter.search', 'filter_search');
-        $this->setState('filter.search', $search);
-
-        $published = $app->getUserStateFromRequest($this->context . '.filter.published', 'filter_published', '', 'string');
-        $this->setState('filter.published', $published);  
+        $menuitem = $app->getUserStateFromRequest($this->context . '.list.menuitem', 'list_menuitem', '', 'int');
+        $this->setState('list.menuitem', $menuitem);  
         
-        $language = $app->getUserStateFromRequest($this->context . '.filter.language', 'filter_language', '', 'string');
-        $this->setState('filter.language', $language);   
+        $language = $app->getUserStateFromRequest($this->context . '.list.language', 'list_language', '', 'string');
+        $this->setState('list.language', $language);   
 
         // Load the parameters.
         $params = JComponentHelper::getParams('com_jpframework');
         $this->setState('params', $params);
 
         // List state information.
-        parent::populateState('a.id', 'asc');
+        parent::populateState('a.ordering', 'ASC');
     }
 
     /**
@@ -77,12 +74,11 @@ class JpframeworkModelBlocks extends JModelList {
      * @param	string		$id	A prefix for the store id.
      * @return	string		A store id.
      * @since	1.6
-     */
+    */
     protected function getStoreId($id = '') {
         // Compile the store id.
-        $id.= ':' . $this->getState('filter.search');
-        $id.= ':' . $this->getState('filter.state');
-        $id.= ':' . $this->getState('filter.language');
+        $id.= ':' . $this->getState('list.menuitem');
+        $id.= ':' . $this->getState('list.language');
 
         return parent::getStoreId($id);
     }
@@ -92,62 +88,68 @@ class JpframeworkModelBlocks extends JModelList {
      *
      * @return	JDatabaseQuery
      * @since	1.6
-     */
+    */
     protected function getListQuery() {
-        // Create a new query object.
+
         $db = $this->getDbo();
         $query = $db->getQuery(true);
 
-        // Select the required fields from the table.
-        $query->select(
-                $this->getState(
-                        'list.select', 'DISTINCT a.*'
-                )
-        );
-        $query->from('`#__jpframework_blocks` AS a');
+        $query->select('a.*');
         
-		// Join over the users for the checked out user
-		$query->select("uc.name AS editor");
-		$query->join("LEFT", "#__users AS uc ON uc.id=a.checked_out");
-		// Join over the user field 'created_by'
-		$query->select('created_by.name AS created_by');
-		$query->join('LEFT', '#__users AS created_by ON created_by.id = a.created_by');        
-
-		// Filter by published state
-		$published = $this->getState('filter.state');
-		if (is_numeric($published)) {
-			$query->where('a.state = ' . (int) $published);
-		} else if ($published === '') {
-			$query->where('(a.state IN (0, 1))');
-		}
+        $query->from('`#__jpframework_blocks` AS a');        
 		
 		// Filter by language
-		$language = $this->getState('filter.language');
+		$language = $this->getState('list.language');
 		if (!empty($language)) {
 			$query->where('a.language = ' . $db->quote($language));
 		}
+		
+		// Filter by menu
+		$menuitem = $this->getState('list.menuitem');
+		if (!empty($menuitem)) {
+			$query->where('(a.menuitem = '.$menuitem.' OR FIND_IN_SET('.$menuitem.', REPLACE(a.menuitem, ";", ",")) > 0)');
+		}
 
-        // Filter by search in title
-        $search = $this->getState('filter.search');
-        if (!empty($search)) {
-            $search = $db->Quote('%' . $db->escape($search, true) . '%'); 
-			$query->where('a.title LIKE '.$search);
-        }
+        $query->order($db->escape('a.ordering ASC'));
 
-        // Add the list ordering clause.
-        $orderCol = $this->state->get('list.ordering');
-        $orderDirn = $this->state->get('list.direction');
-        if ($orderCol && $orderDirn) {
-            $query->order($db->escape($orderCol . ' ' . $orderDirn));
-        }
 		//echo $query;
         return $query;
     }
 
     public function getItems() {
-        $items = parent::getItems();
-        
+    
+        $items = parent::getItems();  
         return $items;
+    }
+    
+    public function getMenuitems() {
+    
+    	$db = JFactory::getDbo();
+    	$db->setQuery('SELECT DISTINCT(menuitem) FROM #__jpframework_blocks WHERE state = 1');
+    	return $db->loadObjectList();
+    }
+    
+    public function getLanguages() {
+    
+    	$db = JFactory::getDbo();
+    	$db->setQuery('SELECT title, lang_code FROM #__languages WHERE published = 1');
+    	return $db->loadObjectList();
+    }
+    
+    public function addEntry($block) {
+    
+    	$db = JFactory::getDbo();
+    	$app = JFactory::getApplication();
+    	
+    	$entry = new stdClass();
+		$entry->uniqid = $block.'-'.uniqid();
+		$entry->state = 0;	
+		$entry->type = $block;	
+		$entry->created_by = JFactory::getUser()->id;
+		$entry->language = $app->getUserStateFromRequest($this->context . '.list.language', 'list_language', '', 'string');
+		$entry->menuitem = $app->getUserStateFromRequest($this->context . '.list.menuitem', 'list_menuitem', '', 'int');
+		
+		$db->insertObject('#__jpframework_blocks', $entry);
     }
 
 }

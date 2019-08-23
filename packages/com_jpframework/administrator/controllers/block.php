@@ -19,7 +19,7 @@ class JpframeworkControllerBlock extends JControllerForm
 {
 
     function __construct() {
-        $this->view_list = 'blocks';
+        $this->view_list = 'jpf';
         parent::__construct();
     }
 
@@ -28,12 +28,11 @@ class JpframeworkControllerBlock extends JControllerForm
 	 *
 	 * @return	void
 	*/
-    	function save()
-	{
-		
+    function save()
+	{		
 		$model  = $this->getModel();
     
-    		if($model->store()) {
+    	if($model->store()) {
 
 			parent::save();
 		}

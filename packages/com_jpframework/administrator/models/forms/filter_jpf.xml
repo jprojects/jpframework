@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+    <fields name="filter">
+
+    </fields>
+    <fields name="list">
+		<field 
+        	name="menuitem"
+        	type="menuitem" 
+        	default="" 
+        	label="Select a menu item" 
+        	description="Select a menu item" 
+        	onchange="this.form.submit();"
+        />
+        <field 
+        	name="language" 
+        	type="language" 
+        	client="site" 
+        	default="en-GB" 
+        	label="Select a language" 
+        	description="" 
+        	onchange="this.form.submit();"
+        />
+    </fields>
+</form>

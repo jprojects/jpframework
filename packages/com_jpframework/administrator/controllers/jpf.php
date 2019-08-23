@@ -5,7 +5,7 @@
  * @copyright   Copyright (C) 2015. Todos los derechos reservados.
  * @license     Licencia Pública General GNU versión 2 o posterior. Consulte LICENSE.txt
  * @author      aficat <kim@aficat.com> - http://www.afi.cat
- */
+*/
 
 // No direct access.
 defined('_JEXEC') or die;
@@ -14,18 +14,48 @@ jimport('joomla.application.component.controlleradmin');
 
 /**
  * Blocks list controller class.
- */
-class JpframeworkControllerBlocks extends JControllerAdmin
+*/
+class JpframeworkControllerJpf extends JControllerAdmin
 {
 	/**
 	 * Proxy for getModel.
 	 * @since	1.6
-	 */
+	*/
 	public function getModel($name = 'block', $prefix = 'JpframeworkModel', $config = array())
 	{
 		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
 		return $model;
 	}
+	
+	/**
+	 * Method to add a new block.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.6
+	*/
+	public function addBlock()
+	{
+		// Check for request forgeries
+		//JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+	
+		$block = $this->input->get('block', '');
+	
+		try
+		{	
+			$model = $this->getModel();
+			
+			$model->addEntry($block);
+			
+			$this->setMessage(JText::_('COM_JPFRAMEWORK_NEW_BLOCK_ADDED'));
+		}
+		catch (Exception $e)
+		{
+			JError::raiseWarning(500, $e->getMessage());
+		}
+	
+		$this->setRedirect('index.php?option=com_jpframework&view=jpf');
+	} 
 	
 	/**
 	 * Method to clone an existing block.
@@ -58,7 +88,7 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 			JError::raiseWarning(500, $e->getMessage());
 		}
 	
-		$this->setRedirect('index.php?option=com_jpframework');
+		$this->setRedirect('index.php?option=com_jpframework&view=jpf');
 	}
     
     
@@ -94,8 +124,38 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 		// Close the application
 		JFactory::getApplication()->close();
 	}
-    
-    
+	
+	/**
+	 * Method to remove a new block.
+	 *
+	 * @return  void
+	 *
+	 * @since   1.6
+	*/
+	public function removeBlock()
+	{
+		// Check for request forgeries
+		//JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+		
+		$db = JFactory::getDbo();
+	
+		$id = $this->input->getInt('id');
+	
+		try
+		{				
+			$db->setQuery('DELETE FROM #__jpframework_blocks WHERE id = '.$id);
+			$db->query();
+			
+			$this->setMessage(JText::_('COM_JPFRAMEWORK_BLOCK_DELETED'));
+		}
+		catch (Exception $e)
+		{
+			JError::raiseWarning(500, $e->getMessage());
+		}
+	
+		$this->setRedirect('index.php?option=com_jpframework&view=jpf');
+	}  
+	
 	/**
 	 * less compiler
 	 * @return  void
@@ -157,7 +217,7 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 		file_put_contents(JPATH_ROOT.'/templates/jpframework/css/jpframework.css', $css);
 		chmod(JPATH_ROOT.'/templates/jpframework/css/jpframework.css', 0777);
 	
-		$this->setRedirect('index.php?option=com_jpframework&view=blocks', 'Less successfully compiled');
-	
+		$this->setRedirect('index.php?option=com_jpframework&view=jpf', 'Less successfully compiled');	
 	}
+
 }

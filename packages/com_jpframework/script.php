@@ -71,7 +71,7 @@ class com_jpframeworkInstallerScript
      */
     public function update($parent) 
     {
-        echo '<p>' . JText::sprintf('COM_JPFRAMEWORK_UPDATE_TEXT', $parent->get('manifest')->version) . '</p>';
+        //echo '<p>' . JText::sprintf('COM_JPFRAMEWORK_UPDATE_TEXT', $parent->get('manifest')->version) . '</p>';
     }
 
     /**
@@ -88,7 +88,7 @@ class com_jpframeworkInstallerScript
      */
     public function preflight($type, $parent) 
     {
-        echo '<p>' . JText::_('COM_JPFRAMEWORK_PREFLIGHT_' . $type . '_TEXT') . '</p>';
+        //echo '<p>' . JText::_('COM_JPFRAMEWORK_PREFLIGHT_' . $type . '_TEXT') . '</p>';
     }
 
     /**
@@ -104,6 +104,6 @@ class com_jpframeworkInstallerScript
      */
     function postflight($type, $parent) 
     {
-        echo '<p>' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_' . $type . '_TEXT') . '</p>';
+        //echo '<p>' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_' . $type . '_TEXT') . '</p>';
     }
 }

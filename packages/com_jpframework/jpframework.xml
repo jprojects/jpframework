@@ -7,7 +7,7 @@
     <author>Afi</author>
     <authorEmail>kim@aficat.com</authorEmail>
     <authorUrl>http://www.afi.cat</authorUrl>
-    <version>3.0.3</version>
+    <version>4.0.0</version>
     <description>JPFramework component</description>
     
     <!-- Runs on install -->  
