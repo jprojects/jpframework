@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @version     1.0.0
  * @package     com_jpframework
@@ -7,220 +8,157 @@
  * @author      aficat <kim@aficat.com> - http://www.afi.cat
 */
 
-// No direct access.
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.controlleradmin');
+jimport('joomla.application.component.modellist');
 
 /**
- * Blocks list controller class.
+ * Methods supporting a list of Jpframework records.
 */
-class JpframeworkControllerJpf extends JControllerAdmin
-{
-	/**
-	 * Proxy for getModel.
-	 * @since	1.6
-	*/
-	public function getModel($name = 'block', $prefix = 'JpframeworkModel', $config = array())
-	{
-		$model = parent::getModel($name, $prefix, array('ignore_request' => true));
-		return $model;
-	}
+class JpframeworkModelJpf extends JModelList {
 
-	/**
-	 * Method to add a new block.
-	 *
-	 * @return  void
-	 *
-	 * @since   1.6
-	*/
-	public function addBlock()
-	{
-		// Check for request forgeries
-		//JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+    /**
+     * Constructor.
+     *
+     * @param    array    An optional associative array of configuration settings.
+     * @see        JController
+     * @since    1.6
+     */
+    public function __construct($config = array()) {
 
-		$block = $this->input->get('block', '');
+        if (empty($config['filter_fields'])) {
+            $config['filter_fields'] = array(
+                'id', 'a.id',
+                'ordering', 'a.ordering',
+                'state', 'a.state',
+                'created_by', 'a.created_by',
+                'type', 'a.type',
+                'position', 'a.position',
+                'language', 'a.language',
+            );
+        }
 
-		try
-		{
-			$model = $this->getModel('jpf');
+        parent::__construct($config);
+    }
 
-			$model->addEntry($block);
+    /**
+     * Method to auto-populate the model state.
+     *
+     * Note. Calling getState in this method will result in recursion.
+    */
+    protected function populateState($ordering = null, $direction = null) {
 
-			$this->setMessage(JText::_('COM_JPFRAMEWORK_NEW_BLOCK_ADDED'));
-		}
-		catch (Exception $e)
-		{
-			JError::raiseWarning(500, $e->getMessage());
-		}
+        $app = JFactory::getApplication('administrator');
 
-		$this->setRedirect('index.php?option=com_jpframework&view=jpf');
-	}
+        $menuitem = $app->getUserStateFromRequest($this->context . '.list.menuitem', 'list_menuitem', '', 'int');
+        $this->setState('list.menuitem', $menuitem);
 
-	/**
-	 * Method to clone an existing block.
-	 *
-	 * @return  void
-	 *
-	 * @since   1.6
-	 */
-	public function duplicate()
-	{
-		// Check for request forgeries
-		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+        $state = $app->getUserStateFromRequest($this->context . '.list.state', 'list_state', '1', 'string');
+        $this->setState('list.state', $state);
 
-		$pks = $this->input->post->get('cid', array(), 'array');
-		JArrayHelper::toInteger($pks);
+        $position = $app->getUserStateFromRequest($this->context . '.list.position', 'list_position', '', 'string');
+        $this->setState('list.position', $position);
 
-		try
-		{
-			if (empty($pks))
-			{
-				throw new Exception(JText::_('COM_JPFRAMEWORK_ERROR_NO_BLOCKS_SELECTED'));
-			}
+        // Load the parameters.
+        $params = JComponentHelper::getParams('com_jpframework');
+        $this->setState('params', $params);
 
-			$model = $this->getModel();
-			$model->duplicate($pks);
-			$this->setMessage(JText::plural('COM_JPFRAMEWORK_N_BLOCKS_DUPLICATED', count($pks)));
-		}
-		catch (Exception $e)
-		{
-			JError::raiseWarning(500, $e->getMessage());
-		}
+        // List state information.
+        parent::populateState('a.ordering', 'ASC');
+    }
 
-		$this->setRedirect('index.php?option=com_jpframework&view=jpf');
-	}
+    /**
+     * Method to get a store id based on model configuration state.
+     *
+     * This is necessary because the model is used by the component and
+     * different modules that might need different sets of data or different
+     * ordering requirements.
+     *
+     * @param	string		$id	A prefix for the store id.
+     * @return	string		A store id.
+     * @since	1.6
+    */
+    protected function getStoreId($id = '') {
+        // Compile the store id.
+        $id.= ':' . $this->getState('list.menuitem');
+        $id.= ':' . $this->getState('list.state');
+        $id.= ':' . $this->getState('list.position');
 
+        return parent::getStoreId($id);
+    }
 
-	/**
-	 * Method to save the submitted ordering values for records via AJAX.
-	 *
-	 * @return  void
-	 *
-	 * @since   3.0
-	 */
-	public function saveOrderAjax()
-	{
-		// Get the input
-		$input = JFactory::getApplication()->input;
-		$pks = $input->post->get('cid', array(), 'array');
-		$order = $input->post->get('order', array(), 'array');
+    /**
+     * Build an SQL query to load the list data.
+     *
+     * @return	JDatabaseQuery
+     * @since	1.6
+    */
+    protected function getListQuery() {
 
-		// Sanitize the input
-		JArrayHelper::toInteger($pks);
-		JArrayHelper::toInteger($order);
+      $db = $this->getDbo();
+      $query = $db->getQuery(true);
 
-		// Get the model
-		$model = $this->getModel();
+      $query->select('a.*');
 
-		// Save the ordering
-		$return = $model->saveorder($pks, $order);
+      $query->from('`#__jpframework_blocks` AS a');
 
-		if ($return)
-		{
-			echo "1";
-		}
+      // Filter by state
+  		$state = $this->getState('list.state');
+  		$query->where('a.state = ' . $state);
 
-		// Close the application
-		JFactory::getApplication()->close();
-	}
+      // Filter by position
+  		$position = $this->getState('list.position');
+  		if (!empty($position)) {
+  			$query->where('a.position = ' . $db->quote($position));
+  		}
 
-	/**
-	 * Method to remove a new block.
-	 *
-	 * @return  void
-	 *
-	 * @since   1.6
-	*/
-	public function removeBlock()
-	{
-		// Check for request forgeries
-		//JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
+  		// Filter by menu
+  		$menuitem = $this->getState('list.menuitem');
+  		if (!empty($menuitem)) {
+  			$query->where('(a.menuitem = '.$menuitem.' OR FIND_IN_SET('.$menuitem.', REPLACE(a.menuitem, ";", ",")) > 0)');
+  		}
 
-		$db = JFactory::getDbo();
+      $query->order($db->escape('a.ordering ASC'));
 
-		$id = $this->input->getInt('id');
+  		//echo $query;
+      return $query;
+    }
 
-		try
-		{
-			$db->setQuery('DELETE FROM `#__jpframework_blocks` WHERE id = '.$id);
-			$db->query();
+    public function getItems() {
 
-			$this->setMessage(JText::_('COM_JPFRAMEWORK_BLOCK_DELETED'));
-		}
-		catch (Exception $e)
-		{
-			JError::raiseWarning(500, $e->getMessage());
-		}
+        $items = parent::getItems();
+        return $items;
+    }
 
-		$this->setRedirect('index.php?option=com_jpframework&view=jpf');
-	}
+    public function getMenuitems() {
 
-	/**
-	 * less compiler
-	 * @return  void
-	 * @since   3.0
-	*/
-	public function lessCompiler()
-	{
-		require_once(JPATH_ROOT.'/templates/jpframework/less/Less.php');
+    	$db = JFactory::getDbo();
+    	$db->setQuery('SELECT DISTINCT(menuitem) FROM #__jpframework_blocks WHERE state = 1');
+    	return $db->loadObjectList();
+    }
 
-		$db = JFactory::getDbo();
+    public function getLanguages() {
 
-		$params = &JComponentHelper::getParams( 'com_jpframework' );
+    	$db = JFactory::getDbo();
+    	$db->setQuery('SELECT title, lang_code FROM #__languages WHERE published = 1');
+    	return $db->loadObjectList();
+    }
 
-		$body_color 			= $params->get('body_color');
-		$body_fontsize 		= $params->get('body_fontsize');
-		$body_font 				= $params->get('body_font');
-		$body_font_type		= $params->get('body_font_type', 'px');
-		$body_fcolor 			= $params->get('body_fcolor');
-		$link_color 			= $params->get('link_color');
-		$linkhover_color 	= $params->get('linkhover_color');
-		$footer_color 		= $params->get('footer_color');
-		$footer_fcolor 		= $params->get('footer_fcolor');
-		$menu 						= $params->get('menu', '-1');
-		$menu_bg 					= $params->get('menu_bg');
-		$primary_color 		= $params->get('primary_color');
-		$primary_bg 			= $params->get('primary_bg');
-		$secondary_color 	= $params->get('secondary_color');
-		$secondary_bg 		= $params->get('secondary_bg');
-		$success_color 		= $params->get('success_color');
-		$success_bg 			= $params->get('success_bg');
-		$error_color 			= $params->get('error_color');
-		$error_bg 				= $params->get('error_bg');
+    public function addEntry($block) {
 
-		$options 	= array( 'compress'=>true );
-		$parser 	= new Less_Parser($options);
-		$parser->parseFile( JPATH_ROOT.'/templates/jpframework/css/jpframework.less' );
-		if($menu != '-1') {
-			$parser->parseFile( JPATH_ROOT.'/templates/jpframework/layouts/menu/'.$menu.'.less' );
-		}
-		$parser->parseFile( JPATH_ROOT.'/templates/jpframework/css/animate.less' );
-		$parser->parse("
-			@body_color: ".$body_color.";
-			@body_fontsize: ".$body_fontsize.$body_font_type.";
-			@body_font:  '".$body_font."';
-			@body_fcolor:  ".$body_fcolor.";
-			@link_color: ".$link_color.";
-			@linkhover_color: ".$linkhover_color.";
-			@footer_color: ".$footer_color.";
-			@footer_fcolor: ".$footer_fcolor.";
-			@menu_background: ".$menu_bg.";
-			@primary_color: ".$primary_color.";
-			@primary_bg: ".$primary_bg.";
-			@secondary_color: ".$secondary_color.";
-			@secondary_bg: ".$secondary_bg.";
-			@success_color: ".$success_color.";
-			@success_bg: ".$success_bg.";
-			@error_color: ".$error_color.";
-			@error_bg: ".$error_bg.";
-		");
+    	$db = JFactory::getDbo();
+    	$app = JFactory::getApplication();
 
-		$css = $parser->getCss();
-		file_put_contents(JPATH_ROOT.'/templates/jpframework/css/jpframework.css', $css);
-		chmod(JPATH_ROOT.'/templates/jpframework/css/jpframework.css', 0777);
+    	$entry              = new stdClass();
+		  $entry->uniqid      = $block.'-'.uniqid();
+		  $entry->state       = 0;
+		  $entry->type        = $block;
+      $entry->position    = 'jpf-top';
+		  $entry->created_by  = JFactory::getUser()->id;
+		  $entry->language    = JFactory::getLanguage()->getDefault();
+		  $entry->menuitem    = $app->getUserStateFromRequest($this->context . '.list.menuitem', 'list_menuitem', '', 'int');
 
-		$this->setRedirect('index.php?option=com_jpframework&view=jpf', 'Less successfully compiled');
-	}
+		  $db->insertObject('#__jpframework_blocks', $entry);
+    }
 
 }
