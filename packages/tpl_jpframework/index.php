@@ -1,32 +1,33 @@
 <?php
 /**
- * @version		index.php $ kim 2014-12-05 15:57
- * @package		JP_Framework
+ * @version	index.php $ kim 2014-12-05 15:57
+ * @package	JP_Framework
  * @copyright   Copyright © 2014 - All rights reserved.
- * @license		GNU/GPL
- * @author		kim
+ * @license	GNU/GPL
+ * @author	kim
  * @author mail kim@aficat.com
- * @website		http://www.afi.cat
+ * @website	http://www.afi.cat
  *
 */
+
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 require_once('jp_framework.class.php');
 JHtml::_('jquery.framework');
-// Report simple running errors
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
+error_reporting(E_ERROR | E_WARNING | E_PARSE); // Report simple running errors
 ?>
+
 <!DOCTYPE html>
 <html lang="<?= $this->language; ?>">
 <head>
 <?php if(jpf::getparameter('ganalytics') != '') : ?>
-<!-- Google analytics -->
+<!-- Start Google analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=<?= jpf::getparameter('ganalytics'); ?>"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments)};
-  gtag('js', new Date());
-  gtag('config', '<?= jpf::getparameter("ganalytics"); ?>');
+	window.dataLayer = window.dataLayer || [];
+  	function gtag(){dataLayer.push(arguments)};
+  	gtag('js', new Date());
+  	gtag('config', '<?= jpf::getparameter("ganalytics"); ?>');
 </script>
 <!-- End Google analytics -->
 <?php endif; ?>
@@ -38,11 +39,6 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/wow.min.js" type="text/javascript"></script>
 <script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/jpframework.js" type="text/javascript"></script>
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
 <link rel="shortcut icon" href="<?= $this->baseurl ?>/templates/<?= $this->template ?>/icon.png" />
 <link rel="stylesheet" href="<?= $this->baseurl.'/templates/'.$this->template; ?>/css/<?= jpf::getparameter('layout', 'clear'); ?>.css" type="text/css" />
 <link rel="stylesheet" href="<?= $this->baseurl.'/templates/'.$this->template; ?>/css/custom.css" type="text/css" />
@@ -52,16 +48,16 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE);
 <script>
 jQuery.noConflict();
 jQuery(document).ready(function () {
-jQuery.cookieCuttr({
-    cookieDeclineButton: false,
-    cookieNotificationLocationBottom: true,
-    cookieWhatAreTheyLink: '<?= jpf::getparameter("cookies_link", ''); ?>',
-    cookieAcceptButtonText: "<?= JText::_('JP_FRAMEWORK_ACCEPT'); ?>",
-    cookieDeclineButtonText: "<?= JText::_('JP_FRAMEWORK_DECLINE'); ?>",
-    cookieWhatAreLinkText: "",
-    cookieAnalyticsMessage: "<?= JText::_('JP_FRAMEWORK_COOKIES_EXPLANATION'); ?>",
-    cookiePolicyLink: false
-    });	
+	jQuery.cookieCuttr({
+	    	cookieDeclineButton: false,
+	    	cookieNotificationLocationBottom: true,
+	    	cookieWhatAreTheyLink: '<?= jpf::getparameter("cookies_link", ''); ?>',
+	    	cookieAcceptButtonText: "<?= JText::_('JP_FRAMEWORK_ACCEPT'); ?>",
+	    	cookieDeclineButtonText: "<?= JText::_('JP_FRAMEWORK_DECLINE'); ?>",
+	    	cookieWhatAreLinkText: "",
+	    	cookieAnalyticsMessage: "<?= JText::_('JP_FRAMEWORK_COOKIES_EXPLANATION'); ?>",
+	    	cookiePolicyLink: false
+    	});	
 });
 </script>
 <?php endif; ?>
@@ -71,7 +67,7 @@ jQuery.cookieCuttr({
 
 <?= jpf::getLayout(jpf::getparameter('layout', 'clear')); ?>
 
-
 </body>
-    <jdoc:include type="modules" name="debug" />
+	<!-- Page load in <?= microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']; ?> seconds -->
+    	<jdoc:include type="modules" name="debug" />
 </html>              

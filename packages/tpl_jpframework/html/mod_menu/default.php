@@ -68,13 +68,14 @@ foreach ($list as $i => &$item)
 	{
 		$class = ' class="' . trim($class) . '"';
 	}
-	
+
 	echo '<li' . $class . '>';
+		$class            = $item->anchor_css;
     $item->anchor_css = 'nav-link ' . $item->anchor_css;
 	if($item->level > $params->get('startLevel')) {
-		$item->anchor_css = 'dropdown-item';
+		$item->anchor_css = 'dropdown-item '. $class;
 	}
-	
+
 	// The next item is deeper.
 	if ($item->deeper)
 	{
@@ -114,4 +115,3 @@ foreach ($list as $i => &$item)
 	}
 }
 ?></ul>
-

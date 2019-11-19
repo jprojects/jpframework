@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
 	<fieldset name="block">
-		<field 
-			name="title" 
-			type="text" 
-			default="" 
-			label="Title" 
-			description="Block title" 
+		<field
+			name="title"
+			type="text"
+			default=""
+			label="Title"
+			description="Block title"
 		/>
-		<field 
-			name="block_color" 
-			type="color" 
-			default="#ffffff" 
-			label="Background" 
-			description="Background color" 
+		<field
+			name="block_color"
+			type="color"
+			default="#ffffff"
+			label="Background"
+			description="Background color"
 		/>
-		<field 
-			name="block_font_color" 
-			type="color" 
-			default="#ffffff" 
-			label="Font color" 
-			description="Font color" 
+		<field
+			name="block_font_color"
+			type="color"
+			default="#ffffff"
+			label="Font color"
+			description="Font color"
 		/>
 		<field
 			name="scroll_effect"
@@ -29,74 +29,92 @@
 			label="Scroll effect"
 			description="Ver demo en https://daneden.github.io/animate.css/"
 		/>
-		<field 
-			name="uniqid" 
-			type="text" 
-			default="" 
-			label="Uniqid" 
-			description="Uniqid is used as the block section id" 
+		<field
+			name="fluid"
+			type="list"
+			default=""
+			label="Fluid"
+			description="Section fluid or not"
+		>
+			<option value="">Full width</option>
+			<option value="container">Not fluid</option>
+			<option value="container-fluid">Fluid</option>
+		</field>
+		<field
+			name="classes"
+			type="text"
+			default=""
+			label="Classes"
+			description="Classes used in this block"
 		/>
-		<field 
-			name="content_title" 
-			type="text" 
-			default="" 
-			label="Title" 
-			description="Content block title" 
+		<field
+			name="uniqid"
+			type="text"
+			default=""
+			label="Uniqid"
+			description="Uniqid is used as the block section id"
 		/>
-		<field 
-			name="content_text" 
-			label="Text" 
-			type="editor" 
-			width="300" 
-			filter="safehtml" 
+		<field
+			name="content_title"
+			type="text"
+			default=""
+			label="Title"
+			description="Content block title"
 		/>
-		<field 
-			name="content_position" 
-			type="list" 
-			default="right" 
-			label="Content position" 
-			description="Content position" 
+		<field
+			name="content_text"
+			label="Text"
+			type="editor"
+			width="300"
+			filter="safehtml"
+		/>
+		<field
+			name="content_position"
+			type="list"
+			default="right"
+			label="Content position"
+			description="Content position"
 		>
 			<option value="">Full width</option>
 			<option value="right">Right</option>
 			<option value="left">Left</option>
 		</field>
-		<field 
-			name="content_img" 
-			type="media" 
-			directory="" 
-			label="Image" 
+		<field
+			name="content_img"
+			type="media"
+			directory=""
+			label="Image"
 		/>
-		<field 
-			name="content_img_alt" 
-			type="text" 
-			default="" 
-			label="Image Alt" 
-			description="Image Alt" 
+		<field
+			name="content_img_alt"
+			type="text"
+			default=""
+			label="Image Alt"
+			description="Image Alt"
 		/>
-		<field 
-			name="content_video" 
-			type="text" 
-			default="" 
-			label="Video" 
-			description="Content video url" 
+		<field
+			name="content_video"
+			type="text"
+			default=""
+			label="Video"
+			description="Content video url"
 		/>
 	</fieldset>
 	<fieldset name="styles">
-		<field 
-			type="spacer" 
-			name="spacer1" 
+		<field
+			type="spacer"
+			name="spacer1"
 			class="text"
 			label="COM_JPFRAMEWORK_SYLES_FIELD"
 		/>
-		<field 
-			name="css" 
-			type="textarea" 
-			default="" 
-			label="Css" 
-			description="Custom css styles" 
-			rows="20" 
-			cols="50" 
+		<field
+			name="css"
+			type="textarea"
+			default=""
+			label="Css"
+			description="Custom css styles"
+			rows="20"
+			cols="50"
 			filter="raw"
 		/>
 	</fieldset>

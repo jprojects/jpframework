@@ -11,12 +11,14 @@
 // No direct access
 defined('_JEXEC') or die;
 
-$blockid = JRequest::getVar('blockid');
-$effect  = blocksHelper::getBlockParameter($blockid, 'effect', '');
-$effect != '' ? $efecte = 'wow '.$effect : $efecte = '';
+$blockid  = JRequest::getVar('blockid');
+$effect   = blocksHelper::getBlockParameter($blockid, 'effect', '');
+$effect  != '' ? $efecte = 'wow '.$effect : $efecte = '';
+$fluid    = blocksHelper::getBlockParameter($blockid, 'fluid', '');
+$classes 	= blocksHelper::getBlockParameter($blockid,'classes');
 $position = blocksHelper::getBlockParameter($blockid, 'content_position', '');
-$heading = blocksHelper::getBlockParameter($blockid, 'content_title');
-$video   = blocksHelper::getBlockParameter($blockid,'content_video');
+$heading  = blocksHelper::getBlockParameter($blockid, 'content_title');
+$video    = blocksHelper::getBlockParameter($blockid,'content_video');
 
 if($position == 'right') {
 	$col  = 'col-xs-12 col-md-6';
@@ -37,7 +39,7 @@ if($position == 'right') {
 <section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid, 'block_color', '#fff'); ?>;color:<?= blocksHelper::getBlockParameter($blockid, 'block_font_color', '#000'); ?>">
 
 
-	<div class="container jpfblock">
+	<div class="<?= $fluid; ?> jpfblock <?= $classes; ?>">
 
 		<?php if($heading != '') : ?>
 		<header>
@@ -45,7 +47,7 @@ if($position == 'right') {
 			<hr class="featurette-divider">
 		</header>
 		<?php endif; ?>
-		
+
 		<div class="row">
 			<?php if($position != '') : ?>
 			<div class="<?= $col; ?>  <?= $pos; ?> <?= $efecte; ?>">
@@ -54,14 +56,14 @@ if($position == 'right') {
 				<?php else : ?>
 				<div class='embed-container'><iframe src="<?= $video; ?>" frameborder="0" allowfullscreen></iframe></div>
 				<?php endif; ?>
-			</div> 
+			</div>
 			<?php endif; ?>
 			<div class="<?= $col2; ?> <?= $pos2; ?>">
 		     	<div class="lead"><?= blocksHelper::getBlockParameter($blockid, 'content_text'); ?></div>
 			</div>
 		</div>
-		 
-		
+
+
 	</div>
 
 </section>

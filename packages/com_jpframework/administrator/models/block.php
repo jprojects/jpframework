@@ -53,14 +53,14 @@ class JpframeworkModelBlock extends JModelAdmin
 
 		// Get the form.
 		$form = $this->loadForm('com_jpframework.block', 'block', array('control' => 'jform', 'load_data' => $loadData));
-        
+
 		if (empty($form)) {
 			return false;
 		}
 
 		return $form;
 	}
-	
+
 	function isMedia($block) {
 		$form = new JForm('block');
 		$form->loadFile(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_jpframework'.DS.'blocks'.DS.$block.DS.'block.xml');
@@ -69,7 +69,7 @@ class JpframeworkModelBlock extends JModelAdmin
 		{
 			if($field->type == 'Media') { return true; }
 		}
-		
+
 		return false;
 	}
 
@@ -81,7 +81,7 @@ class JpframeworkModelBlock extends JModelAdmin
 				$registry = new JRegistry;
 				$registry->loadString($db->loadResult());
 				$params = $registry->toArray();
-			}			
+			}
 			// create new JForm object
 			$form = new JForm('block');
 			//overiide if exists
@@ -99,7 +99,7 @@ class JpframeworkModelBlock extends JModelAdmin
 				$html[] = $form->renderField($field->name, '', $params[$field->name]);
 				//$html[] = '<script>jQuery("#'.$field->name.'").val("'.$params[$field->name].'");</script>';
 			}
-			
+
 			return implode('', $html);
 	}
 
@@ -168,9 +168,9 @@ class JpframeworkModelBlock extends JModelAdmin
 	 * @param boolean
 	*/
     function store()
-	{		
+	{
 		$row =& $this->getTable();
-		
+
 		$post_data  = JRequest::get( 'post' );
    		$data       = $post_data["jform"];
 		$data['id'] = JRequest::getInt('id', 0, 'get');
@@ -178,33 +178,33 @@ class JpframeworkModelBlock extends JModelAdmin
 		if($data['id'] != 0) {
 			$form = new JForm('block');
 			$form->loadFile(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_jpframework'.DS.'blocks'.DS.$data['type'].DS.'block.xml');
-			
+
 			//block fieldset
 			$fields = $form->getFieldset('block');
 			$values = array();
-			foreach($fields as $field) { 
+			foreach($fields as $field) {
 				$values[$field->name] = $_POST[$field->name];
 			}
-			
+
 			//styles fieldset
 			$fields = $form->getFieldset('styles');
-			foreach($fields as $field) { 
+			foreach($fields as $field) {
 				$values[$field->name] = $_POST[$field->name];
 			}
-			
+
 			$registry = new JRegistry;
 	    	$registry->loadArray($values);
 	    	$row->params = (string) $registry;
-	    	
+
 	    	$menuitems = array();
 	    	foreach($data['menuitem'] as $k) {
 	    		$menuitems[] = $k;
 	    	}
-			
+
 	    	$data['menuitem'] = implode(';', $menuitems);
 	    	$row->title    = $_POST['title'];
 	    	$row->uniqid   = $_POST['uniqid'];
-		
+
 			if (!$row->bind( $data )) {
 				return JError::raiseWarning( 500, $row->getError() );
 			}
@@ -216,7 +216,7 @@ class JpframeworkModelBlock extends JModelAdmin
 		return true;
 
 	}
-	
+
 	/**
 	 * Method to duplicate block.
 	 *
@@ -232,21 +232,21 @@ class JpframeworkModelBlock extends JModelAdmin
 		$db = $this->getDbo();
 		foreach($pks as $id) {
 			$db->setQuery('select * from #__jpframework_blocks where id = '.$id);
-			$row = $db->loadObject();
-			$item = new stdClass();
-			$item->title = $row->title;
-			$item->uniqid = $row->uniqid;
-			$item->ordering = $row->ordering;
-			$item->state = 0;
-			$item->checked_out = $row->checked_out;
+			$row 								= $db->loadObject();
+			$item 							= new stdClass();
+			$item->title 				= $row->title;
+			$item->uniqid 			= $row->uniqid;
+			$item->ordering 		= $row->ordering;
+			$item->state 				= 0;
+			$item->checked_out 	= $row->checked_out;
 			$item->checked_out_time = $row->checked_out_time;
-			$item->created_by = $row->created_by;
-			$item->type = $row->type;
-			$item->position = $row->position;
-			$item->language = $row->language;
-			$item->menuitem = $row->menuitem;
-			$item->params = $row->params;
-			$response = $db->insertObject('#__jpframework_blocks', $item, 'id');
+			$item->created_by 	= $row->created_by;
+			$item->type 				= $row->type;
+			$item->position 		= $row->position;
+			$item->language 		= $row->language;
+			$item->menuitem 		= $row->menuitem;
+			$item->params 			= $row->params;
+			$response 					= $db->insertObject('#__jpframework_blocks', $item, 'id');
 		}
 		return $response;
 	}

@@ -26,7 +26,7 @@ class JpframeworkViewJpf extends JViewLegacy {
      * Display the view
     */
     public function display($tpl = null) {
-    
+
         $this->state = $this->get('State');
         $this->items = $this->get('Items');
         $this->pagination = $this->get('Pagination');
@@ -43,7 +43,7 @@ class JpframeworkViewJpf extends JViewLegacy {
         $this->addToolbar();
 
         $this->sidebar = JHtmlSidebar::render();
-        
+
         parent::display($tpl);
     }
 
@@ -53,17 +53,17 @@ class JpframeworkViewJpf extends JViewLegacy {
      * @since	1.6
     */
     protected function addToolbar() {
-    
+
         require_once JPATH_COMPONENT . '/helpers/jpframework.php';
-        
+
         $doc = JFactory::getDocument();
 
-		$doc->addStylesheet('components/com_jpframework/assets/css/jpframework.css');
+		      $doc->addStylesheet('components/com_jpframework/assets/css/jpframework.css');
 
         $canDo = JpframeworkHelper::getActions();
 
         JToolBarHelper::title(JText::_('COM_JPFRAMEWORK_TITLE_BLOCKS'), 'cube');
-        
+
         if ($canDo->get('core.edit.state')) {
 
             if (isset($this->items[0]->state)) {
@@ -77,7 +77,7 @@ class JpframeworkViewJpf extends JViewLegacy {
                 JToolBarHelper::custom('jpf.checkin', 'checkin.png', 'checkin_f2.png', 'JTOOLBAR_CHECKIN', true);
             }
         }
-        
+
         JToolBarHelper::custom('jpf.lessCompiler', 'publish.png', 'publish_f2.png', 'COM_JPFRAMEWORK_PARSE_CSS', false);
 
         //Show trash and delete for components that uses the state field
@@ -99,14 +99,14 @@ class JpframeworkViewJpf extends JViewLegacy {
         JHtmlSidebar::setAction('index.php?option=com_jpframework&view=jpf');
 
         $this->extra_sidebar = '';
-        
+
         foreach(JpframeworkHelper::getBlocks() as $block) {
-        
+
 		    JHtmlSidebar::addEntry(
 
-				$block,
+				'<span class="icon-puzzle"></span>&nbsp;'.$block,
 				'index.php?option=com_jpframework&task=jpf.addBlock&block='.$block.'&'.JSession::getFormToken().'=1',
-				false	
+				false
 
 			);
 		}

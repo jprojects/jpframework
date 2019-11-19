@@ -4,22 +4,43 @@
 
     </fields>
     <fields name="list">
-		<field 
-        	name="menuitem"
-        	type="menuitem" 
-        	default="" 
-        	label="Select a menu item" 
-        	description="Select a menu item" 
-        	onchange="this.form.submit();"
-        />
-        <field 
-        	name="language" 
-        	type="language" 
-        	client="site" 
-        	default="en-GB" 
-        	label="Select a language" 
-        	description="" 
-        	onchange="this.form.submit();"
-        />
+      <field
+        name="menuitem"
+        type="menuitem"
+        default=""
+        label="Select a menu item"
+        description="Select a menu item"
+        published="1"
+        onchange="this.form.submit();"
+      />
+      <field
+          name="position"
+          type="list"
+          label="COM_JPFRAMEWORK_FORM_LBL_BLOCKS_POSITION"
+          description="COM_JPFRAMEWORK_FORM_DESC_BLOCKS_POSITION"
+          default="jpf-top"
+          onchange="this.form.submit();"
+      >
+      <option value="">SELECT_AN_OPTION</option>
+      <option value="jpf-top">jpf-top</option>
+      <option value="jpf-showcase">jpf-showcase</option>
+      <option value="jpf-main">jpf-main</option>
+      <option value="jpf-bottom">jpf-bottom</option>
+      </field>
+      <field
+          name="state"
+          type="list"
+          label="JSTATUS"
+          description="JFIELD_PUBLISHED_DESC"
+          class="inputbox"
+          size="1"
+          default="1"
+          onchange="this.form.submit();"
+        >
+          <option value="1">JPUBLISHED</option>
+          <option value="0">JUNPUBLISHED</option>
+          <option value="2">JARCHIVED</option>
+          <option value="-2">JTRASHED</option>
+      </field>
     </fields>
 </form>

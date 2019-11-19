@@ -23,7 +23,7 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 	|| $params->get('show_hits') || $params->get('show_category') || $params->get('show_parent_category') || $params->get('show_author'));
 
 ?>
-<div class="item-page<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="http://schema.org/Article">
+<div class="item-page <?php echo $this->pageclass_sfx; ?>" itemscope itemtype="http://schema.org/Article">
 	<meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? JFactory::getConfig()->get('language') : $this->item->language; ?>" />
 	<?php if ($this->params->get('show_page_heading', 0)) : ?>
 	<div class="page-header">
@@ -163,26 +163,30 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 	<?php echo $this->loadTemplate('links'); ?>
 	<?php endif; ?>
 	<?php if ($params->get('access-view')):?>
+
+	<div class="row">
 	<?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>
+	<div class="col-12 col-md-4">
 	<?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
-	<div class="pull-<?php echo htmlspecialchars($imgfloat); ?> item-image"> <img
+	<div class="item-image"> <img
 	<?php if ($images->image_fulltext_caption):
 		echo 'class="caption"'.' title="' .htmlspecialchars($images->image_fulltext_caption) . '"';
 	endif; ?>
 	src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>" itemprop="image"/> </div>
+	</div>
 	<?php endif; ?>
 	<?php
 	if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->paginationposition && !$this->item->paginationrelative):
 		echo $this->item->pagination;
 	endif;
 	?>
-	<?php if (isset ($this->item->toc)) :
-		echo $this->item->toc;
-	endif; ?>
-	<div itemprop="articleBody">
+	<?php if (isset ($this->item->toc)) : ?>
+	<?php echo $this->item->toc; ?>
+	<?php endif; ?>
+	<div class="col-12 <?php if (isset($images->image_fulltext) && !empty($images->image_fulltext)) : ?>col-md-8<?php endif; ?>" itemprop="articleBody">
 		<?php echo $this->item->text; ?>
 	</div>
-
+	</div>
 	<?php if ($useDefList && ($info == 1 || $info == 2)) : ?>
 		<div class="article-info muted">
 			<div class="article-info">
@@ -198,7 +202,7 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 						<?php else: ?>
 							<?php echo JText::sprintf('COM_CONTENT_WRITTEN_BY', $author); ?>
 						<?php endif; ?>
-					</span>&nbsp;|&nbsp; 
+					</span>&nbsp;|&nbsp;
 				<?php endif; ?>
 				<?php if ($params->get('show_parent_category') && !empty($this->item->parent_slug)) : ?>
 					<span class="parent-category-name">
@@ -209,7 +213,7 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 						<?php else : ?>
 							<?php echo JText::sprintf('COM_CONTENT_PARENT', '<span itemprop="genre">' . $title . '</span>'); ?>
 						<?php endif; ?>
-					</span>&nbsp;|&nbsp; 
+					</span>&nbsp;|&nbsp;
 				<?php endif; ?>
 				<?php if ($params->get('show_category')) : ?>
 					<span class="category-name">
@@ -220,7 +224,7 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 						<?php else : ?>
 							<?php echo JText::sprintf('COM_CONTENT_CATEGORY', '<span itemprop="genre">' . $title . '</span>'); ?>
 						<?php endif; ?>
-					</span>&nbsp;|&nbsp; 
+					</span>&nbsp;|&nbsp;
 				<?php endif; ?>
 				<?php if ($params->get('show_publish_date')) : ?>
 					<span class="published">
@@ -228,7 +232,7 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 						<time datetime="<?php echo JHtml::_('date', $this->item->publish_up, 'c'); ?>" itemprop="datePublished">
 							<?php echo JText::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', JHtml::_('date', $this->item->publish_up, JText::_('DATE_FORMAT_LC3'))); ?>
 						</time>
-					</span>&nbsp;|&nbsp; 
+					</span>&nbsp;|&nbsp;
 				<?php endif; ?>
 			<?php endif; ?>
 
@@ -238,7 +242,7 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 					<time datetime="<?php echo JHtml::_('date', $this->item->created, 'c'); ?>" itemprop="dateCreated">
 						<?php echo JText::sprintf('COM_CONTENT_CREATED_DATE_ON', JHtml::_('date', $this->item->created, JText::_('DATE_FORMAT_LC3'))); ?>
 					</time>
-				</span>&nbsp;|&nbsp; 
+				</span>&nbsp;|&nbsp;
 			<?php endif; ?>
 			<?php if ($params->get('show_modify_date')) : ?>
 				<span class="modified">
@@ -246,14 +250,14 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
 					<time datetime="<?php echo JHtml::_('date', $this->item->modified, 'c'); ?>" itemprop="dateModified">
 						<?php echo JText::sprintf('COM_CONTENT_LAST_UPDATED', JHtml::_('date', $this->item->modified, JText::_('DATE_FORMAT_LC3'))); ?>
 					</time>
-				</span>&nbsp;|&nbsp; 
+				</span>&nbsp;|&nbsp;
 			<?php endif; ?>
 			<?php if ($params->get('show_hits')) : ?>
 				<span class="hits">
 					<span class="icon-eye-open"></span>
 					<meta itemprop="interactionCount" content="UserPageVisits:<?php echo $this->item->hits; ?>" />
 					<?php echo JText::sprintf('COM_CONTENT_ARTICLE_HITS', $this->item->hits); ?>
-				</span>&nbsp;|&nbsp; 
+				</span>&nbsp;|&nbsp;
 			<?php endif; ?>
 			</div>
 			<?php if ($params->get('show_tags', 1) && !empty($this->item->tags->itemTags)) : ?>

@@ -1,180 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
 <config>
-    <fieldset label="COM_JPFRAMEWORK_GENERAL" name="general">
-    	<field 
-    		name="offline_date" 
-    		type="calendar" 
-    		default="" 
-    		label="Select a date" 
-    		description="" 
-    		format="%Y-%m-%d"    	
+    <fieldset label="COM_JPFRAMEWORK_GENERAL" name="general" addfieldpath="/administrator/components/com_jpframework/models/fields">
+    	<field
+    		name="offline_date"
+    		type="calendar"
+    		default=""
+    		label="Select a date"
+    		description=""
+    		format="%Y-%m-%d"
     	/>
-    	<field 
-    		name="menu" 
-    		type="filelist" 
-    		default="menu-1" 
-    		label="COM_JPFRAMEWORK_TOPMENU_LABEL" 
-    		description="COM_JPFRAMEWORK_TOPMENU_DESC" 
-    		directory="templates/jpframework/layouts/menu"  
-    		filter="\.php" 
-    		exclude="\.html|\.css" 
-    		stripext="true" 
-    		hide_default="true" 
+    	<field
+    		name="menu"
+    		type="filelist"
+    		default="menu-1"
+    		label="COM_JPFRAMEWORK_TOPMENU_LABEL"
+    		description="COM_JPFRAMEWORK_TOPMENU_DESC"
+    		directory="templates/jpframework/layouts/menu"
+    		filter="\.php"
+    		exclude="\.html|\.css"
+    		stripext="true"
+    		hide_default="true"
     	/>
-    	<field 
-    		name="topmenu-logo" 
-    		class="inputbox" 
-    		type="media" 
-    		label="COM_JPFRAMEWORK_LOGO_LABEL" 
-    		description="COM_JPFRAMEWORK_LOGO_DESC" 
-    		directory="images/" 
-    	/> 
-    	<field 
-    		name="topmenu-about" 
-    		class="inputbox" 
-    		type="textarea" 
-    		label="COM_JPFRAMEWORK_ABOUT_LABEL" 
+    	<field
+    		name="topmenu-logo"
+    		class="inputbox"
+    		type="media"
+    		label="COM_JPFRAMEWORK_LOGO_LABEL"
+    		description="COM_JPFRAMEWORK_LOGO_DESC"
+    		directory="images/"
+    	/>
+    	<field
+    		name="topmenu-about"
+    		class="inputbox"
+    		type="textarea"
+    		label="COM_JPFRAMEWORK_ABOUT_LABEL"
     		description="COM_JPFRAMEWORK_ABOUT_DESC"
     		default="Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information."
     		cols="10"
-    		rows="5" 
+    		rows="5"
     		showon="menu:menu-3"
-    	/> 	
-        <field 
-        	name="layout" 
-        	type="filelist" 
-        	default="clear" 
-        	label="COM_JPFRAMEWORK_LAYOUT_LABEL" 
-        	description="COM_JPFRAMEWORK_LAYOUT_DESC" 
-        	directory="templates/jpframework/layouts" 
-        	filter="" 
-        	exclude="index.html" 
-        	stripext="true" 
-        	hide_default="true" 
-        />
-        <field 
-        	name="front_component" 
-        	type="radio" 
-        	default="1" 
-        	label="COM_JPFRAMEWORK_FRONTPAGE_COMPONENT_LABEL" 
-        	description="COM_JPFRAMEWORK_FRONTPAGE_COMPONENT_DESC" 
-        	class="btn-group"
-        >
-            <option value="0">JNO</option>
-            <option value="1">JYES</option>
-         </field>
-         <field 
-			name="itemids" 
-			type="menuitem" 
-			default="0" 
-			multiple="true"
-			label="COM_JPFRAMEWORK_FORM_LBL_BLOCKS_MENUITEM" 
-			published="1" 
-			description="COM_JPFRAMEWORK_FORM_DESC_BLOCKS_MUNITEM"
-		>
-		<option	value="0">JALL</option> 
-		</field>
-        <field 
-        	name="jpf-top" 
-        	type="radio" 
-        	default="1" 
-        	label="COM_JPFRAMEWORK_TOP_LABEL" 
-        	description="COM_JPFRAMEWORK_TOP_DESC" 
-        	class="btn-group"
-        >
-            <option value="0">JNO</option>
-            <option value="1">JYES</option>
-         </field>
-        <field 
-        	name="jpf-main" 
-        	type="radio" 
-        	default="0" 
-        	label="COM_JPFRAMEWORK_MAIN_LABEL"  
-        	description="COM_JPFRAMEWORK_MAIN_DESC" 
-        	class="btn-group"
-        >
-            <option value="0">JNO</option>
-            <option value="1">JYES</option>
-         </field>
-        <field 
-        	name="jpf-showcase" 
-        	type="radio" 
-        	default="0" 
-        	label="COM_JPFRAMEWORK_SHOWCASE_LABEL"  
-        	description="COM_JPFRAMEWORK_SHOWCASE_DESC" 
-        	class="btn-group"
-        >
-            <option value="0">JNO</option>
-            <option value="1">JYES</option>
-         </field>
-        <field 
-        	name="jpf-bottom" 
-        	type="radio" 
-        	default="0"  
-        	label="COM_JPFRAMEWORK_BOTTOM_LABEL"  
-        	description="COM_JPFRAMEWORK_BOTTOM_DESC" 
-        	class="btn-group"
-        >
-            <option value="0">JNO</option>
-            <option value="1">JYES</option>
-         </field>
-        <field 
-        	name="jpf-footer" 
-        	type="radio" 
-        	default="1" 
-        	label="COM_JPFRAMEWORK_FOOTER_LABEL"  
-        	description="COM_JPFRAMEWORK_FOOTER_DESC" 
-        	class="btn-group"
-        >
-            <option value="0">JNO</option>
-            <option value="1">JYES</option>
-         </field>
-        <field name="privacy"
-			type="repeatable"
-			icon="list"
-			description="COM_JPFRAMEWORK_PRIVACY_DESC"
-			label="COM_JPFRAMEWORK_PRIVACY_LABEL"
-			default=''>
+    	/>
+      <field
+      	name="layout"
+      	type="filelist"
+      	default="clear"
+      	label="COM_JPFRAMEWORK_LAYOUT_LABEL"
+      	description="COM_JPFRAMEWORK_LAYOUT_DESC"
+      	directory="templates/jpframework/layouts"
+      	filter=""
+      	exclude="index.html"
+      	stripext="true"
+      	hide_default="true"
+      />
+      <field
+      	name="front_component"
+      	type="radio"
+      	default="1"
+      	label="COM_JPFRAMEWORK_FRONTPAGE_COMPONENT_LABEL"
+      	description="COM_JPFRAMEWORK_FRONTPAGE_COMPONENT_DESC"
+      	class="btn-group"
+      >
+          <option value="0">JNO</option>
+          <option value="1">JYES</option>
+      </field>
+      <field
+  			name="itemids"
+  			type="menuitem"
+  			default="0"
+  			multiple="true"
+  			label="COM_JPFRAMEWORK_FORM_LBL_BLOCKS_MENUITEM"
+  			published="1"
+  			description="COM_JPFRAMEWORK_FORM_DESC_BLOCKS_MUNITEM"
+  		>
+		    <option	value="0">JALL</option>
+		  </field>
+      <field
+      	name="itemids_mind"
+      	type="radio"
+      	default="1"
+      	label="COM_JPFRAMEWORK_ITEMIDS_MIND_LABEL"
+      	description="COM_JPFRAMEWORK_ITEMIDS_MIND_DESC"
+      	class="btn-group"
+      >
+          <option value="0">Not display</option>
+          <option value="1">Display</option>
+      </field>
+      <field
+      	name="jpf-top"
+      	type="radio"
+      	default="1"
+      	label="COM_JPFRAMEWORK_TOP_LABEL"
+      	description="COM_JPFRAMEWORK_TOP_DESC"
+      	class="btn-group"
+      >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+      <field
+      	name="jpf-main"
+      	type="radio"
+      	default="0"
+      	label="COM_JPFRAMEWORK_MAIN_LABEL"
+      	description="COM_JPFRAMEWORK_MAIN_DESC"
+      	class="btn-group"
+      >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+      <field
+      	name="jpf-showcase"
+      	type="radio"
+      	default="0"
+      	label="COM_JPFRAMEWORK_SHOWCASE_LABEL"
+      	description="COM_JPFRAMEWORK_SHOWCASE_DESC"
+      	class="btn-group"
+      >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+      <field
+      	name="jpf-bottom"
+      	type="radio"
+      	default="0"
+      	label="COM_JPFRAMEWORK_BOTTOM_LABEL"
+      	description="COM_JPFRAMEWORK_BOTTOM_DESC"
+      	class="btn-group"
+      >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+      <field
+      	name="jpf-footer"
+      	type="radio"
+      	default="1"
+      	label="COM_JPFRAMEWORK_FOOTER_LABEL"
+      	description="COM_JPFRAMEWORK_FOOTER_DESC"
+      	class="btn-group"
+      >
+        <option value="0">JNO</option>
+        <option value="1">JYES</option>
+      </field>
+      <field name="privacy"
+  			type="repeatable"
+  			icon="list"
+  			description="COM_JPFRAMEWORK_PRIVACY_DESC"
+  			label="COM_JPFRAMEWORK_PRIVACY_LABEL"
+  			default=''
+      >
 			<fieldset hidden="true" name="list_templates_modal" repeat="true">
-				<field 
-					name="language" 
-					type="language" 
-					client="site" 
-					default="" 
-					label="Select a language" 
-					description="" 
+				<field
+					name="language"
+					type="language"
+					client="site"
+					default=""
+					label="Select a language"
+					description=""
 				/>
-				<field 
-					name="article" 
-					type="menuitem" 
-					default="" 
-					label="COM_JPFRAMEWORK_PRIVACY_LABEL" 
-					description="COM_JPFRAMEWORK_PRIVACY_DESC" 
-				/>				
+				<field
+					name="article"
+					type="menuitem"
+					default=""
+					label="COM_JPFRAMEWORK_PRIVACY_LABEL"
+					description="COM_JPFRAMEWORK_PRIVACY_DESC"
+				/>
 			</fieldset>
-		</field>  
+		</field>
 		<field name="terms"
 			type="repeatable"
 			icon="list"
 			description="COM_JPFRAMEWORK_TERMS_DESC"
 			label="COM_JPFRAMEWORK_TERMS_LABEL"
-			default=''>
-			<fieldset hidden="true" name="list_templates_modal" repeat="true">
-				<field 
-					name="language" 
-					type="language" 
-					client="site" 
-					default="" 
-					label="Select a language" 
-					description="" 
-				/>
-				<field 
-					name="article" 
-					type="menuitem" 
-					default="" 
-					label="COM_JPFRAMEWORK_PRIVACY_LABEL" 
-					description="COM_JPFRAMEWORK_PRIVACY_DESC" 
-				/>				
+			default=''
+    >
+		<fieldset hidden="true" name="list_templates_modal" repeat="true">
+			<field
+				name="language"
+				type="language"
+				client="site"
+				default=""
+				label="Select a language"
+				description=""
+			/>
+			<field
+				name="article"
+				type="menuitem"
+				default=""
+				label="COM_JPFRAMEWORK_PRIVACY_LABEL"
+				description="COM_JPFRAMEWORK_PRIVACY_DESC"
+			/>
 			</fieldset>
 		</field>
 		<field name="cookie"
@@ -182,241 +195,227 @@
 			icon="list"
 			description="COM_JPFRAMEWORK_COOKIES_POLICY_DESC"
 			label="COM_JPFRAMEWORK_COOKIES_POLICY_LABEL"
-			default=''>
-			<fieldset hidden="true" name="list_templates_modal" repeat="true">
-				<field 
-					name="language" 
-					type="language" 
-					client="site" 
-					default="" 
-					label="Select a language" 
-					description="" 
-				/>
-				<field 
-					name="article" 
-					type="menuitem" 
-					default="" 
-					label="COM_JPFRAMEWORK_COOKIES_POLICY_LABEL" 
-					description="COM_JPFRAMEWORK_COOKIES_POLICY_DESC" 
-				/>				
+			default=''
+    >
+		<fieldset hidden="true" name="list_templates_modal" repeat="true">
+			<field
+				name="language"
+				type="language"
+				client="site"
+				default=""
+				label="Select a language"
+				description=""
+			/>
+			<field
+				name="article"
+				type="menuitem"
+				default=""
+				label="COM_JPFRAMEWORK_COOKIES_POLICY_LABEL"
+				description="COM_JPFRAMEWORK_COOKIES_POLICY_DESC"
+			/>
 			</fieldset>
 		</field>
-		<field 
-			type="radio" 
-			name="fluid" 
-			default="0" 
-			class="btn-group" 
-			label="COM_JPFRAMEWORK_FLUID_LABEL" 
+		<field
+			type="radio"
+			name="fluid"
+			default="0"
+			class="btn-group"
+			label="COM_JPFRAMEWORK_FLUID_LABEL"
 			description="COM_JPFRAMEWORK_FLUID_DESC"
 		>
-            <option value="0">JNO</option>
-            <option value="1">JYES</option>
-         </field>
-         <field 
-         	type="radio" 
-         	name="cookies" 
-         	default="0" 
-         	class="btn-group" 
-         	label="COM_JPFRAMEWORK_COOKIES_LABEL" 
-         	description="COM_JPFRAMEWORK_COOKIES_DESC"
-         >
-         	<option value="0">JNO</option>
-            <option value="1">JYES</option>
-         </field>
-         <field 
-          	name="cookies_link" 
-          	type="text" 
-          	class="inputbox" 
-          	default="" 
-          	label="JP_FRAMEWORK_COOKIES_LINK_LABEL" 
-          	description="JP_FRAMEWORK_COOKIES_LINK_DESC" 
-          />
-         <field 
-          	name="ganalytics" 
-          	type="text" 
-          	class="inputbox" 
-          	default="" 
-          	label="JP_FRAMEWORK_ANALYTICS_LABEL" 
-          	description="JP_FRAMEWORK_ANALYTICS_DESC" 
-          />
-          <field 
-          	name="register" 
-          	type="text" 
-          	class="inputbox" 
-          	default="" 
-          	label="JP_FRAMEWORK_REGISTER_LABEL" 
-          	description="JP_FRAMEWORK_REGISTER_DESC" 
-          />
-          <field
-          	name="unload"
-          	type="textarea"
-          	label="JP_FRAMEWORK_UNLOAD_LABEL"
-          	description="JP_FRAMEWORK_UNLOAD_DESC"
-          	rows="10" 
-			cols="5" 
-			filter="raw"
-          />
+      <option value="0">JNO</option>
+      <option value="1">JYES</option>
+    </field>
+    <field
+   	  type="radio"
+   	  name="cookies"
+   	  default="0"
+   	  class="btn-group"
+   	  label="COM_JPFRAMEWORK_COOKIES_LABEL"
+   	  description="COM_JPFRAMEWORK_COOKIES_DESC"
+    >
+   	  <option value="0">JNO</option>
+      <option value="1">JYES</option>
+   </field>
+   <field
+    	name="cookies_link"
+    	type="text"
+    	class="inputbox"
+    	default=""
+    	label="JP_FRAMEWORK_COOKIES_LINK_LABEL"
+    	description="JP_FRAMEWORK_COOKIES_LINK_DESC"
+    />
+    <field
+    	name="ganalytics"
+    	type="text"
+    	class="inputbox"
+    	default=""
+    	label="JP_FRAMEWORK_ANALYTICS_LABEL"
+    	description="JP_FRAMEWORK_ANALYTICS_DESC"
+    />
+    <field
+    	name="register"
+    	type="text"
+    	class="inputbox"
+    	default=""
+    	label="JP_FRAMEWORK_REGISTER_LABEL"
+    	description="JP_FRAMEWORK_REGISTER_DESC"
+    />
+    <field
+    	name="unload"
+    	type="textarea"
+    	label="JP_FRAMEWORK_UNLOAD_LABEL"
+    	description="JP_FRAMEWORK_UNLOAD_DESC"
+    	rows="10"
+      cols="5"
+      filter="raw"
+    />
     </fieldset>
-    <fieldset label="COM_JPFRAMEWORK_STYLES" name="styles">
-    	<field type="list" name="body_font" size="15" default="Noto Sans" label="COM_JPFRAMEWORK_BODYFONT_LABEL" description="COM_JPFRAMEWORK_BODYFONT_DESC">
-        	<option value="Cantarell">Cantarell</option>
-            <option value="Cookie">Cookie</option>
-            <option value="Droid Sans">Droid Sans</option>
-            <option value="Droid Sans Mono">Droid Sans Mono</option>
-            <option value="Droid Serif">Droid Serif</option>
-            <option value="Exo">Exo</option>
-            <option value="Lato">Lato</option>
-            <option value="Lobster">Lobster</option>
-            <option value="Lobster Two">Lobster Two</option>
-            <option value="Merriweather">Merriweather</option>
-            <option value="Merriweather Sans">Merriweather Sans</option>
-            <option value="Montserrat">Montserrat</option>
-            <option value="Open Sans">Open Sans</option>
-            <option value="Open Sans Condensed:300">Open Sans Condensed</option>
-            <option value="Oswald">Oswald</option>
-            <option value="PT Mono">PT Mono</option>
-            <option value="PT Sans">PT Sans</option>
-            <option value="Raleway">Raleway</option>
-            <option value="Roboto">Roboto</option>
-            <option value="Roboto Condensed">Roboto Condensed</option>
-            <option value="Roboto Slab">Roboto Slab</option>
-            <option value="Rochester">Rochester</option>
-            <option value="Ubuntu">Ubuntu</option>
-            <option value="Ubuntu Condensed">Ubuntu Condensed</option>
-            <option value="Ubuntu Mono">Ubuntu Mono</option>
-            <option value="Vollkorn">Vollkorn</option>
-        </field>
-        <field type="list" name="icon_font" size="15" default="fontawesome" label="COM_JPFRAMEWORK_ICONFONT_LABEL" description="COM_JPFRAMEWORK_ICONFONT_DESC">
+    <fieldset label="COM_JPFRAMEWORK_STYLES" name="styles" addfieldpath="/administrator/components/com_jpframework/models/fields">
+    	<field
+    		type="fonts"
+    		name="body_font"
+    		default="Arimo"
+    		label="COM_JPFRAMEWORK_BODYFONT_LABEL"
+    		description="COM_JPFRAMEWORK_BODYFONT_DESC"
+    	/>
+        <field
+        	type="list"
+        	name="icon_font"
+        	default="fontawesome"
+        	label="COM_JPFRAMEWORK_ICONFONT_LABEL"
+        	description="COM_JPFRAMEWORK_ICONFONT_DESC"
+        >
         	<option value="fontawesome">Fontawesome</option>
             <option value="forkawesome">Forkawesome</option>
         </field>
-        <field 
-			name="body_fontsize" 
-			type="number" 
-			default="14" 
-			label="Body font size" 
-			description="Body font size" 
+        <field
+			name="body_fontsize"
+			type="number"
+			default="14"
+			label="Body font size"
+			description="Body font size"
 			min="10"
 			max="20"
 		/>
-		<field 
-			name="body_font_type" 
-			type="list" 
-			default="px" 
-			label="Body font type" 
-			description="Body font type" 
+		<field
+			name="body_font_type"
+			type="list"
+			default="px"
+			label="Body font type"
+			description="Body font type"
 		>
 			<option value="px">px</option>
             <option value="em">em</option>
 		</field>
-    	<field 
-			name="body_color" 
-			type="color" 
-			default="#ffffff" 
-			label="Body background" 
-			description="Body background color" 
+    	<field
+			name="body_color"
+			type="color"
+			default="#ffffff"
+			label="Body background"
+			description="Body background color"
 		/>
-		<field 
-			name="body_fcolor" 
-			type="color" 
-			default="#5c778c" 
-			label="Body font color" 
-			description="Body font color" 
+		<field
+			name="body_fcolor"
+			type="color"
+			default="#5c778c"
+			label="Body font color"
+			description="Body font color"
 		/>
-		<field 
-			name="menu_bg" 
-			type="color" 
-			default="#343a40" 
-			label="Menu background" 
-			description="Menu background color" 
+		<field
+			name="menu_bg"
+			type="color"
+			default="#343a40"
+			label="Menu background"
+			description="Menu background color"
 		/>
-        <field 
-			name="link_color" 
-			type="color" 
-			default="#5c778c" 
-			label="Link color" 
-			description="Link color" 
+        <field
+			name="link_color"
+			type="color"
+			default="#5c778c"
+			label="Link color"
+			description="Link color"
 		/>
-		<field 
-			name="linkhover_color" 
-			type="color" 
-			default="#1abc9c" 
-			label="Link hover color" 
-			description="Link hover color" 
+		<field
+			name="linkhover_color"
+			type="color"
+			default="#1abc9c"
+			label="Link hover color"
+			description="Link hover color"
 		/>
-		<field 
-			name="footer_color" 
-			type="color" 
-			default="#343a40" 
-			label="Footer background" 
-			description="Footer background color" 
+		<field
+			name="footer_color"
+			type="color"
+			default="#343a40"
+			label="Footer background"
+			description="Footer background color"
 		/>
-		<field 
-			name="footer_fcolor" 
-			type="color" 
-			default="#ffffff" 
-			label="Footer font color" 
-			description="Footer font color" 
+		<field
+			name="footer_fcolor"
+			type="color"
+			default="#ffffff"
+			label="Footer font color"
+			description="Footer font color"
 		/>
-		<field 
-			name="primary_color" 
-			type="color" 
-			default="#ffffff" 
-			label="Primary color" 
-			description="Primary color" 
+		<field
+			name="primary_color"
+			type="color"
+			default="#ffffff"
+			label="Primary color"
+			description="Primary color"
 		/>
-		<field 
-			name="primary_bg" 
-			type="color" 
-			default="#1abc9c" 
-			label="Primary bg" 
-			description="Primary bg" 
+		<field
+			name="primary_bg"
+			type="color"
+			default="#1abc9c"
+			label="Primary bg"
+			description="Primary bg"
 		/>
-		<field 
-			name="secondary_color" 
-			type="color" 
-			default="#ffffff" 
-			label="Secondary color" 
-			description="Secondary color" 
+		<field
+			name="secondary_color"
+			type="color"
+			default="#ffffff"
+			label="Secondary color"
+			description="Secondary color"
 		/>
-		<field 
-			name="secondary_bg" 
-			type="color" 
-			default="#1abc9c" 
-			label="Secondary bg" 
-			description="Secondary bg" 
+		<field
+			name="secondary_bg"
+			type="color"
+			default="#1abc9c"
+			label="Secondary bg"
+			description="Secondary bg"
 		/>
-		<field 
-			name="success_color" 
-			type="color" 
-			default="#155724" 
-			label="Success color" 
-			description="Success color" 
+		<field
+			name="success_color"
+			type="color"
+			default="#155724"
+			label="Success color"
+			description="Success color"
 		/>
-		<field 
-			name="success_bg" 
-			type="color" 
-			default="#7bb088" 
-			label="Success bg" 
-			description="Success bg" 
+		<field
+			name="success_bg"
+			type="color"
+			default="#7bb088"
+			label="Success bg"
+			description="Success bg"
 		/>
-		<field 
-			name="danger_color" 
-			type="color" 
-			default="#155724" 
-			label="Error color" 
-			description="Error color" 
+		<field
+			name="danger_color"
+			type="color"
+			default="#155724"
+			label="Error color"
+			description="Error color"
 		/>
-		<field 
-			name="danger_bg" 
-			type="color" 
-			default="#7bb088" 
-			label="Error bg" 
-			description="Error bg" 
+		<field
+			name="danger_bg"
+			type="color"
+			default="#7bb088"
+			label="Error bg"
+			description="Error bg"
 		/>
     </fieldset>
-    <fieldset label="COM_JPFRAMEWORK_SOCIAL" name="social">
-    	<field 
+    <fieldset label="COM_JPFRAMEWORK_SOCIAL" name="social" addfieldpath="/administrator/components/com_jpframework/models/fields">
+    	<field
 			name="list_social"
 			type="repeatable"
 			icon="list"
@@ -426,36 +425,36 @@
 				"social_icon":[""],
 				"social_link":[""]}'>
 			<fieldset hidden="true" name="list_images_modal" repeat="true">
-				<field 
-					name="social_name" 
-					type="text" 
-					default="" 
-					label="Social Name" 
-					description="Social name" 
-				/>				
-				<field 
-					name="social_icon" 
-					type="text" 
-					default="" 
-					label="Social icon" 
-					description="Social icon" 
-				/>				
-				<field 
-					name="social_link" 
-					type="text" 
-					default="" 
-					label="Social Link" 
-					description="Social link" 
+				<field
+					name="social_name"
+					type="text"
+					default=""
+					label="Social Name"
+					description="Social name"
+				/>
+				<field
+					name="social_icon"
+					type="text"
+					default=""
+					label="Social icon"
+					description="Social icon"
+				/>
+				<field
+					name="social_link"
+					type="text"
+					default=""
+					label="Social Link"
+					description="Social link"
 				/>
 			</fieldset>
 		</field>
     </fieldset>
-    <fieldset 
+    <fieldset
         name="permissions"
 		description="JCONFIG_PERMISSIONS_DESC"
 		label="JCONFIG_PERMISSIONS_LABEL"
 	>
-		<field 
+		<field
               name="rules" type="rules" component="com_jpframework"
               class="inputbox" filter="rules" validate="rules"
                label="JCONFIG_PERMISSIONS_LABEL"

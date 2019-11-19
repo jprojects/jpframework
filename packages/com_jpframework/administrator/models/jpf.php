@@ -25,7 +25,7 @@ class JpframeworkModelJpf extends JModelList {
      * @since    1.6
      */
     public function __construct($config = array()) {
-    
+
         if (empty($config['filter_fields'])) {
             $config['filter_fields'] = array(
                 'id', 'a.id',
@@ -51,10 +51,13 @@ class JpframeworkModelJpf extends JModelList {
         $app = JFactory::getApplication('administrator');
 
         $menuitem = $app->getUserStateFromRequest($this->context . '.list.menuitem', 'list_menuitem', '', 'int');
-        $this->setState('list.menuitem', $menuitem);  
-        
-        $language = $app->getUserStateFromRequest($this->context . '.list.language', 'list_language', '', 'string');
-        $this->setState('list.language', $language);   
+        $this->setState('list.menuitem', $menuitem);
+
+        $state = $app->getUserStateFromRequest($this->context . '.list.state', 'list_state', '', 'string');
+        $this->setState('list.state', $state);
+
+        $position = $app->getUserStateFromRequest($this->context . '.list.position', 'list_position', '', 'string');
+        $this->setState('list.position', $position);
 
         // Load the parameters.
         $params = JComponentHelper::getParams('com_jpframework');
@@ -78,7 +81,8 @@ class JpframeworkModelJpf extends JModelList {
     protected function getStoreId($id = '') {
         // Compile the store id.
         $id.= ':' . $this->getState('list.menuitem');
-        $id.= ':' . $this->getState('list.language');
+        $id.= ':' . $this->getState('list.state');
+        $id.= ':' . $this->getState('list.position');
 
         return parent::getStoreId($id);
     }
@@ -91,65 +95,70 @@ class JpframeworkModelJpf extends JModelList {
     */
     protected function getListQuery() {
 
-        $db = $this->getDbo();
-        $query = $db->getQuery(true);
+      $db = $this->getDbo();
+      $query = $db->getQuery(true);
 
-        $query->select('a.*');
-        
-        $query->from('`#__jpframework_blocks` AS a');        
-		
-		// Filter by language
-		$language = $this->getState('list.language');
-		if (!empty($language)) {
-			$query->where('a.language = ' . $db->quote($language));
-		}
-		
-		// Filter by menu
-		$menuitem = $this->getState('list.menuitem');
-		if (!empty($menuitem)) {
-			$query->where('(a.menuitem = '.$menuitem.' OR FIND_IN_SET('.$menuitem.', REPLACE(a.menuitem, ";", ",")) > 0)');
-		}
+      $query->select('a.*');
 
-        $query->order($db->escape('a.ordering ASC'));
+      $query->from('`#__jpframework_blocks` AS a');
 
-		//echo $query;
-        return $query;
+      // Filter by state
+  		$state = $this->getState('list.state', 1);
+  		$query->where('a.state = ' . $state);
+
+      // Filter by position
+  		$position = $this->getState('list.position');
+  		if (!empty($position)) {
+  			$query->where('a.position = ' . $db->quote($position));
+  		}
+
+  		// Filter by menu
+  		$menuitem = $this->getState('list.menuitem');
+  		if (!empty($menuitem)) {
+  			$query->where('(a.menuitem = '.$menuitem.' OR FIND_IN_SET('.$menuitem.', REPLACE(a.menuitem, ";", ",")) > 0)');
+  		}
+
+      $query->order($db->escape('a.ordering ASC'));
+
+  		//echo $query;
+      return $query;
     }
 
     public function getItems() {
-    
-        $items = parent::getItems();  
+
+        $items = parent::getItems();
         return $items;
     }
-    
+
     public function getMenuitems() {
-    
+
     	$db = JFactory::getDbo();
     	$db->setQuery('SELECT DISTINCT(menuitem) FROM #__jpframework_blocks WHERE state = 1');
     	return $db->loadObjectList();
     }
-    
+
     public function getLanguages() {
-    
+
     	$db = JFactory::getDbo();
     	$db->setQuery('SELECT title, lang_code FROM #__languages WHERE published = 1');
     	return $db->loadObjectList();
     }
-    
+
     public function addEntry($block) {
-    
+
     	$db = JFactory::getDbo();
     	$app = JFactory::getApplication();
-    	
-    	$entry = new stdClass();
-		$entry->uniqid = $block.'-'.uniqid();
-		$entry->state = 0;	
-		$entry->type = $block;	
-		$entry->created_by = JFactory::getUser()->id;
-		$entry->language = $app->getUserStateFromRequest($this->context . '.list.language', 'list_language', '', 'string');
-		$entry->menuitem = $app->getUserStateFromRequest($this->context . '.list.menuitem', 'list_menuitem', '', 'int');
-		
-		$db->insertObject('#__jpframework_blocks', $entry);
+
+    	$entry              = new stdClass();
+		  $entry->uniqid      = $block.'-'.uniqid();
+		  $entry->state       = 0;
+		  $entry->type        = $block;
+      $entry->position    = 'jpf-top';
+		  $entry->created_by  = JFactory::getUser()->id;
+		  $entry->language    = JFactory::getLanguage()->getDefault();
+		  $entry->menuitem    = $app->getUserStateFromRequest($this->context . '.list.menuitem', 'list_menuitem', '', 'int');
+
+		  $db->insertObject('#__jpframework_blocks', $entry);
     }
 
 }

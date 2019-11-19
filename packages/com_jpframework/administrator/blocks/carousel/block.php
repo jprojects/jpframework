@@ -13,6 +13,7 @@ defined('_JEXEC') or die('Restricted access');
 $blockid 	   	= JRequest::getVar('blockid');
 blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blocks/carousel/assets/css/carousel.css');
 blocksHelper::getBlockParameter($blockid,'carousel_play') == 0 ? $play = "false" : $play = blocksHelper::getBlockParameter($blockid,'carousel_play');
+$fluid    = blocksHelper::getBlockParameter($blockid, 'fluid', '');
 $cid 			    = blocksHelper::getBlockParameter($blockid,'carousel_id');
 $items 		  	= json_decode(blocksHelper::getBlockParameter($blockid, 'list_images'), true);
 $controls 		= blocksHelper::getBlockParameter($blockid, 'carousel_controls', 1);
@@ -29,35 +30,35 @@ $data   	  	= blocksHelper::group_by_key($items);
 ?>
 
 <style>
-<?php 
+<?php
 $i = 0;
 foreach($data as $k => $v):
 if($v[2] == '') break;
 ?>
 .carousel-<?=  $blockid; ?> .slides .slide-<?= $i; ?> {
-  	background-image: url(<?= JURI::root().$v[2]; ?>); 
+  	background-image: url(<?= JURI::root().$v[2]; ?>);
   	height: <?= $height; ?>;
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-attachment: scroll;
+  background-attachment: scroll;
 	background-attachment: fixed;
 }
 <?php if($v[4] != '') : ?>
 @media screen and (max-width: 768px){
 	.carousel-<?=  $blockid; ?> .slides .slide-<?= $i; ?> {
-    	background-image: url(<?= JURI::root().$v[4]; ?>);   
-    } 
+    	background-image: url(<?= JURI::root().$v[4]; ?>);
+    }
 }
 <?php endif; ?>
 <?php if($v[3] != '') : ?>
 @media screen and (max-width: 590px){
 	.carousel-<?=  $blockid; ?> .slides .slide-<?= $i; ?> {
-    	background-image: url(<?= JURI::root().$v[3]; ?>);   
-    } 
+    	background-image: url(<?= JURI::root().$v[3]; ?>);
+    }
 }
 <?php endif; ?>
-<?php 
+<?php
 $i++;
 endforeach; ?>
 .carousel-<?=  $blockid; ?>,
@@ -69,27 +70,27 @@ endforeach; ?>
 <?php endif; ?>
 </style>
 
-<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="padding:0;">
+<section class="<?= $fluid; ?>" id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
 
-	<div class="carousel fade-carousel slide carousel-<?= $blockid; ?> parallax" data-ride="carousel" id="<?= $cid; ?>">
-	  
+	<div class="carousel fade-carousel slide carousel-<?= $blockid; ?> <?= $classes; ?>" data-ride="carousel" id="<?= $cid; ?>">
+
 	  	<?php if(count($data) > 1 && $indicators == 1) : ?>
 		<ol class="carousel-indicators">
-			<?php 
+			<?php
 		  	$i = 0;
 		  	foreach($data as $k => $v):
 			if($v[2] == '') break;
 		  	?>
 			<li data-target="#<?= $cid; ?>" data-slide-to="<?= $i; ?>" <?php if($i == 0) : ?>class="active"<?php endif; ?>></li>
-			<?php 
+			<?php
 			$i++;
 			endforeach; ?>
   		</ol>
   		<?php endif; ?>
-	  	
-	  	<div class="carousel-inner" role="listbox">	  	
-	  
-		  	<?php 
+
+	  	<div class="carousel-inner" role="listbox">
+
+		  	<?php
 		  	$i = 0;
 		  	foreach($data as $k => $v):
 			if($v[2] == '') break;
@@ -102,8 +103,8 @@ endforeach; ?>
 			  		<a href="index.php?Itemid=<?= $v[5]; ?>">
 			  		<?php endif; ?>
 							<hgroup class="box">
-									<h1><?= $v[0]; ?></h1> 
-									<p><?= $v[1]; ?></p>       
+									<h1><?= $v[0]; ?></h1>
+									<p><?= $v[1]; ?></p>
 							</hgroup>
 						<?php if($v[6] == 1) : ?>
 						</a>
@@ -111,12 +112,12 @@ endforeach; ?>
 			  	</div>
 			  	<?php endif; ?>
 			</div>
-			<?php 
+			<?php
 			$i++;
 			endforeach; ?>
-			
-	  	</div> 
-	  
+
+	  	</div>
+
 	  <?php if(count($data) > 1 && $controls == 1) : ?>
 	  <!-- Controls -->
 	  <a class="carousel-control-prev" data-target="#<?= $cid; ?>" data-slide="prev">
@@ -137,7 +138,7 @@ endforeach; ?>
     	<span class="sr-only">Next</span>
 	  </a>
 	  <?php endif; ?>
-		  
+
 	</div>
 
 </section>

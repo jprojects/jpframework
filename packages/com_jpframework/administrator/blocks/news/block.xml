@@ -1,71 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
 	<fieldset name="block">
-	<field 
-			name="title" 
-			type="text" 
-			default="" 
-			label="Title" 
-			description="Block title" 
+	<field
+			name="title"
+			type="text"
+			default=""
+			label="Title"
+			description="Block title"
 		/>
-		<field 
-			name="block_color" 
-			type="color" 
-			default="#ffffff" 
-			label="Background" 
-			description="Background color" 
+		<field
+			name="block_color"
+			type="color"
+			default="#ffffff"
+			label="Background"
+			description="Background color"
 		/>
-		<field 
-			name="block_font_color" 
-			type="color" 
-			default="#ffffff" 
-			label="Font color" 
-			description="Font color" 
+		<field
+			name="block_font_color"
+			type="color"
+			default="#ffffff"
+			label="Font color"
+			description="Font color"
 		/>
-		<field 
-			name="uniqid" 
-			type="text" 
-			default="" 
-			label="Uniqid" 
-			description="Uniqid is used as the block section id" 
+		<field
+			name="fluid"
+			type="list"
+			default=""
+			label="Fluid"
+			description="Section fluid or not"
+		>
+			<option value="">Full width</option>
+			<option value="container">Not fluid</option>
+			<option value="container-fluid">Fluid</option>
+		</field>
+		<field
+			name="classes"
+			type="text"
+			default=""
+			label="Classes"
+			description="Classes used in this block"
 		/>
-		<field 
-			name="tm_title" 
-			type="text" 
-			default="" 
-			label="Title" 
-			description="title" 
+		<field
+			name="uniqid"
+			type="text"
+			default=""
+			label="Uniqid"
+			description="Uniqid is used as the block section id"
 		/>
-		<field 
-        	name="tm_subtitle" 
-        	type="text" 
-        	default="" 
-        	label="Subtitle" 
-        	description="subtitle" 
-        />
-		<field 
-			name="category" 
-			type="category" 
-			extension="com_content" 
-			label="Select a category" 
-			description="" 
+		<field
+			name="tm_title"
+			type="text"
+			default=""
+			label="Title"
+			description="title"
 		/>
+		<field
+    	name="tm_subtitle"
+    	type="text"
+    	default=""
+    	label="Subtitle"
+    	description="subtitle"
+    />
+		<field
+			name="category"
+			type="category"
+			extension="com_content"
+			label="Select a category"
+			description=""
+		/>
+		<field
+			name="itemid"
+			type="menuitem"
+			label="Select a menuitem"
+			description=""
+		/>
+		<field
+			name="limit"
+			type="number"
+			default="3"
+			label="Limit"
+			description=""
+		/>
+		<field
+			name="readmore"
+			type="list"
+			default="1"
+			label="Show Readmore"
+			description="Section readmore button or not"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
 	</fieldset>
 	<fieldset name="styles">
-		<field 
-			type="spacer" 
-			name="spacer1" 
+		<field
+			type="spacer"
+			name="spacer1"
 			class="text"
 			label="COM_JPFRAMEWORK_SYLES_FIELD"
 		/>
-		<field 
-			name="css" 
-			type="textarea" 
-			default="" 
-			label="Css" 
-			description="Custom css styles" 
-			rows="20" 
-			cols="50" 
+		<field
+			name="css"
+			type="textarea"
+			default=""
+			label="Css"
+			description="Custom css styles"
+			rows="20"
+			cols="50"
 			filter="raw"
 		/>
 	</fieldset>

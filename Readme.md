@@ -2,7 +2,7 @@
 
 #Bienvenido JPFramework.
 
-JPFramework es un sistema de desarrollo de contenido Joomla! basado en Bootstrap. El paquete contiene un template y un componente con el que se puede crear todo el contenido.
+JPFramework es un sistema de desarrollo de contenido Joomla! basado en Bootstrap 4. El paquete contiene un template y un componente con el que se puede crear todo el contenido.
 
 #¿Cómo funciona?
 
@@ -12,12 +12,10 @@ El componente gestiona los contenidos como bloques que pueden situarse asignando
 
 Crear bloques es muy sencillo. El componente principal tiene unos cuantos ejemplos.
 
-Si necesitas más bloques puedes mirar mi otro repositorio https://github.com/jprojects/blocks.
-
 #Sobrescribir un bloque
 
 Puedes sobrescribir un bloque creando un directorio con el nombre de tipo de bloque en tu directorio html de la plantilla y añadiendo un archivo block.php. Por ejemplo para sobrescribir el html del carousel puedes crear esta ruta templates/jpframework/html/carousel/block.php
 
 #License
 
-JPFramework es libre amparado bajo la licencia GNU/GPL v3
+JPFramework es software libre escrito bajo la licencia GNU/GPL v3

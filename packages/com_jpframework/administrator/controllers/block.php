@@ -28,13 +28,13 @@ class JpframeworkControllerBlock extends JControllerForm
 	 *
 	 * @return	void
 	*/
-    function save()
-	{		
+  function save()
+	{
 		$model  = $this->getModel();
-    
+
     	if($model->store()) {
 
-			parent::save();
+  			parent::save();
 		}
 	}
 
