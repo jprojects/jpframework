@@ -13,10 +13,39 @@
 defined('_JEXEC') or die;
 if (!isset($this->error)) {
 	$this->error = JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
-	$this->debug = false; 
+	$this->debug = false;
 }
 $app = JFactory::getApplication();
 ?>
+
+<style>
+p, h1, h2, h3, h4, h5 {
+    margin: 0;
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    background: #f3f3f3;
+}
+.error-wrapper {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+.error-wrapper .title {
+    font-size: 4em;
+    font-weight: 700;
+    color: #000;
+}
+.error-wrapper .info {
+    font-size: 2em;
+}
+</style>
 
 <!DOCTYPE HTML>
 <html lang="<?= $this->language; ?>">
@@ -29,13 +58,14 @@ $app = JFactory::getApplication();
 
 	<body>
 
-		<div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
-			<h1 class="mr-3 pr-3 align-top border-right inline-block align-content-center"><?= $this->error->getCode(); ?></h1>
-			<div class="inline-block align-middle">
-				<h2 class="font-weight-normal lead" id="desc"><?= JText::_('JP_FRAMEWORK_ERROR_'.$this->error->getCode()); ?>.</h2>
-			</div>
+		<div class="container">
+	    <div class="error-wrapper">
+	        <img class="img-fluid" src="<?= JURI::root(); ?>templates/jpframework/images/cutebird.png" alt="Bird">
+	        <h3 class="title"><?= $this->error->getCode(); ?></h3>
+	        <p class="info"><?= JText::_('JP_FRAMEWORK_ERROR_'.$this->error->getCode()); ?></p>
+	    </div>
 		</div>
 
 	</body>
-	
+
 </html>
