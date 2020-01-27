@@ -103,7 +103,8 @@ class JpframeworkModelJpf extends JModelList {
       $query->from('`#__jpframework_blocks` AS a');
 
       // Filter by state
-  		$state = $this->getState('list.state', 1);
+  		$state = $this->getState('list.state');
+      if($state == '') $state = 1;
   		$query->where('a.state = ' . $state);
 
       // Filter by position
@@ -149,13 +150,15 @@ class JpframeworkModelJpf extends JModelList {
     	$db = JFactory::getDbo();
     	$app = JFactory::getApplication();
 
-    	$entry              = new stdClass();
+      $entry              = new stdClass();
+      $entry->title       = ucfirst($block);
 		  $entry->uniqid      = $block.'-'.uniqid();
 		  $entry->state       = 0;
 		  $entry->type        = $block;
-      $entry->position    = 'jpf-top';
+      $entry->position    = $app->getUserStateFromRequest($this->context . '.list.position', 'list_position', '', 'string');
+      $entry->checked_out = JFactory::getUser()->id;
 		  $entry->created_by  = JFactory::getUser()->id;
-		  $entry->language    = JFactory::getLanguage()->getDefault();
+		  $entry->language    = JComponentHelper::getParams('com_languages')->get('site');
 		  $entry->menuitem    = $app->getUserStateFromRequest($this->context . '.list.menuitem', 'list_menuitem', '', 'int');
 
 		  $db->insertObject('#__jpframework_blocks', $entry);

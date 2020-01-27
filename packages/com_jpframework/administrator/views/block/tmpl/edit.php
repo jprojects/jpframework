@@ -57,7 +57,7 @@ Joomla.submitbutton = function(task)
 }
 </style>
 
-<form action="<?= JRoute::_('index.php?option=com_jpframework&layout=edit&id=' . (int) $this->item->id); ?>" method="post" name="adminForm" id="block-form" class="form-validate">
+<form action="<?= JRoute::_('index.php?option=com_jpframework&layout=edit&id=' . (int) $this->item->id); ?>&tmpl=component" method="post" name="adminForm" id="block-form" class="form-validate">
 
     <div class="form-horizontal">
         <?= JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
