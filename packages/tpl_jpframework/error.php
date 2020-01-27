@@ -28,7 +28,7 @@ body{
     font-family: 'Roboto', sans-serif;
     font-weight: 400;
     font-size: 12px;
-    background: #f3f3f3;
+    background: #bfebf4 !important;
 }
 .error-wrapper {
     position: absolute;
@@ -52,6 +52,7 @@ body{
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 		<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 		<title><?= $this->error->getCode(); ?> - <?= $this->title; ?></title>
 	</head>
