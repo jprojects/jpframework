@@ -67,19 +67,19 @@ sub {
   	bottom: -0.25em;
 }
 
-.embed-container { 
-	position: relative; 
-	padding-bottom: 56.25%; 
-	height: 0; 
-	overflow: hidden; 
-	max-width: 100%; 
-} 
-.embed-container iframe, .embed-container object, .embed-container embed { 
-	position: absolute; 
-	top: 0; 
-	left: 0; 
-	width: 100%; 
-	height: 100%; 
+.embed-container {
+	position: relative;
+	padding-bottom: 56.25%;
+	height: 0;
+	overflow: hidden;
+	max-width: 100%;
+}
+.embed-container iframe, .embed-container object, .embed-container embed {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }
 
 
@@ -132,6 +132,9 @@ sub {
 .pagination > li {
  	margin: 0 5px
 }
+.pagination > li.active span {
+ 	background:  @primary_bg;
+}
 .pagenav {
  	position: relative;
  	display: block;
@@ -149,12 +152,12 @@ a.pagenav:hover {
 
 /* Helper classes from jpframework */
 
-.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.disabled, .btn-primary:disabled { 
+.btn-primary, .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.disabled, .btn-primary:disabled {
 	color: @primary_color;
 	background-color: @primary_bg;
 	border-color: @primary_bg;
 }
-.btn-secondary, .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active { 
+.btn-secondary, .btn-secondary:hover, .btn-secondary:focus, .btn-secondary:active {
 	color: @secondary_color;
 	background-color: @secondary_bg;
 	border-color: @secondary_bg;
@@ -171,7 +174,7 @@ a.pagenav:hover {
     color: @secondary_color;
     background-color: @secondary_bg;
 }
-	
+
 .jpfblock  {
     padding-bottom: 60px;
     padding-top: 30px;
@@ -241,39 +244,39 @@ a.pagenav:hover {
     margin: 0 5%;
 }
 
-.alert {  
-    padding: 12px 35px 12px 14px;  
-    margin-bottom: 18px;  
-    text-shadow: 0 1px 0 rgba(255,255,255,0.5);  
-    background-color: #ffb321;  
-    border: 1px solid #ffb321;  
-    -webkit-border-radius: 4px;  
-    -moz-border-radius: 4px;  
-    border-radius: 0;  
-    color: #fff;   
-}  
-.alert h4 {  
-    margin: 0;  
-}  
-.alert .close {  
-    position: relative;  
-    top: -2px;  
-    right: -21px;  
-    line-height: 18px;  
+.alert {
+    padding: 12px 35px 12px 14px;
+    margin-bottom: 18px;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+    background-color: #ffb321;
+    border: 1px solid #ffb321;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 0;
+    color: #fff;
+}
+.alert h4 {
+    margin: 0;
+}
+.alert .close {
+    position: relative;
+    top: -2px;
+    right: -21px;
+    line-height: 18px;
     float:right;
-    color: #000;  
-}  
-.alert-success {  
-    background-color: @success_color;  
+    color: #000;
+}
+.alert-success {
+    background-color: @success_color;
     background-color: @success_bg;
     border-color: @success_bg;
-}  
-.alert-danger,  
-.alert-error {  
-    background-color: @error_color;  
+}
+.alert-danger,
+.alert-error {
+    background-color: @error_color;
     background-color: @error_bg;
-    border-color: @error_bg;  
-}  
+    border-color: @error_bg;
+}
 .alert-primary {
     color: @primary_color;
     background-color: @primary_bg;
@@ -283,7 +286,7 @@ a.pagenav:hover {
     color: @secondary_color;
     background-color: @secondary_bg;
     border-color: @secondary_bg;
-}  
+}
 
 /* ===== cookieCuttr by Chris Wharton (http://cookiecuttr.com) ===== */
 

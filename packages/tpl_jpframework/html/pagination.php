@@ -29,7 +29,8 @@ defined('JPATH_PLATFORM') or die;
 
 		foreach ($list['pages'] as $page)
 		{
-			$html .= '<li class="page-item">' . $page['data'] . '</li>';
+			$page['active'] != 1 ? $active = 'active' : $active = '';
+			$html .= '<li class="page-item '.$active.'">' . $page['data'] . '</li>';
 		}
 
 		$html .= '<li class="page-item pagination-next">' . $list['next']['data'] . '</li>';
