@@ -199,7 +199,7 @@ class JpframeworkControllerJpf extends JControllerAdmin
 		$parser->parse("
 			@body_color: ".$body_color.";
 			@body_fontsize: ".$body_fontsize.$body_font_type.";
-			@body_font:  'Roboto';
+			@body_font:  '".$body_font."';
 			@body_fcolor:  ".$body_fcolor.";
 			@link_color: ".$link_color.";
 			@linkhover_color: ".$linkhover_color.";
@@ -220,7 +220,7 @@ class JpframeworkControllerJpf extends JControllerAdmin
 		file_put_contents(JPATH_ROOT.'/templates/jpframework/css/jpframework.css', $css);
 		chmod(JPATH_ROOT.'/templates/jpframework/css/jpframework.css', 0777);
 
-		$this->setRedirect('index.php?option=com_jpframework&view=jpf', 'Less successfully compiled');
+		$this->setRedirect('index.php?option=com_jpframework&view=jpf', JText::_('JP_FRAMEWORK_LESS_COMPILED'));
 	}
 
 }
