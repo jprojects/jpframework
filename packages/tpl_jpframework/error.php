@@ -23,27 +23,28 @@ p, h1, h2, h3, h4, h5 {
     margin: 0;
 }
 body{
-    margin: 0;
-    padding: 0;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 400;
-    font-size: 12px;
-    background: #bfebf4 !important;
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  background-color: #f6fcff;
 }
 .error-wrapper {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 .error-wrapper .title {
-    font-size: 4em;
-    font-weight: 700;
-    color: #000;
+	color: #000;
+	font-size: 13em;
+	text-shadow: 0px 1px 1px #4d4d4d;
+	color: #222;
 }
 .error-wrapper .info {
-    font-size: 2em;
+  font-size: 2em;
 }
 </style>
 
@@ -61,9 +62,9 @@ body{
 
 		<div class="container">
 	    <div class="error-wrapper">
-	        <img class="img-fluid" src="<?= JURI::root(); ?>templates/jpframework/images/cutebird.png" alt="Bird">
 	        <h3 class="title"><?= $this->error->getCode(); ?></h3>
 	        <p class="info"><?= JText::_('JP_FRAMEWORK_ERROR_'.$this->error->getCode()); ?></p>
+					<img class="img-fluid" src="<?= JURI::root(); ?>templates/jpframework/images/tumbleweed.gif" alt="<?= $this->error->getCode(); ?>">
 	    </div>
 		</div>
 
