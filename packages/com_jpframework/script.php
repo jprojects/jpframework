@@ -7,7 +7,7 @@
  * @license     Licencia Pública General GNU versión 2 o posterior. Consulte LICENSE.txt
  * @author      aficat <kim@aficat.com> - http://www.afi.cat
 */
- 
+
 // No direct access
 defined('_JEXEC') or die;
 
@@ -23,11 +23,13 @@ class com_jpframeworkInstallerScript
 	public function install () {
 
 		$db = JFactory::getDbo();
-		
-		//create article base to associate all menú items		
+
+		//create article base to associate all menú items
 		$post = new stdClass();
 		$post->title 	= 'JPFramework';
 		$post->alias 	= 'jpframework';
+    $post->introtext 	= '';
+    $post->fulltext 	= '';
 		$post->state 	= 1;
 		$post->catid 	= 2;
 		$post->created 	= date('Y-m-d H:i:s');
@@ -37,16 +39,16 @@ class com_jpframeworkInstallerScript
 		$post->featured = 0;
 		$post->language = '*';
 		$post->attribs  = '{"article_layout":"","show_title":"0","link_titles":"","show_tags":"","show_intro":"","info_block_position":"","info_block_show_title":"","show_category":"0","link_category":"","show_parent_category":"","link_parent_category":"","show_associations":"","show_author":"0","link_author":"","show_create_date":"0","show_modify_date":"0","show_publish_date":"0","show_item_navigation":"0","show_icons":"0","show_print_icon":"0","show_email_icon":"0","show_vote":"0","show_hits":"0","show_noauth":"","urls_position":"","alternative_readmore":"","article_page_title":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}';
-		
+
 		$db->insertObject('#__content', $post);
-		
+
 		//change menu module position
 		$db->setQuery('UPDATE #__modules SET position = '.$db->quote('jpf-menu').' WHERE id = 1');
 		$db->query();
-		
+
 		//create pdf directory
 		mkdir(JPATH_ROOT.'/images/pdf');
-		
+
 		$parent->getParent()->setRedirectURL('index.php?option=com_jpframework');
 	}
 
@@ -57,7 +59,7 @@ class com_jpframeworkInstallerScript
      *
      * @return void
      */
-    public function uninstall($parent) 
+    public function uninstall($parent)
     {
         echo '<p>' . JText::_('COM_JPFRAMEWORK_UNINSTALL_TEXT') . '</p>';
     }
@@ -69,7 +71,7 @@ class com_jpframeworkInstallerScript
      *
      * @return void
      */
-    public function update($parent) 
+    public function update($parent)
     {
         //echo '<p>' . JText::sprintf('COM_JPFRAMEWORK_UPDATE_TEXT', $parent->get('manifest')->version) . '</p>';
     }
@@ -86,7 +88,7 @@ class com_jpframeworkInstallerScript
      *
      * @return void
      */
-    public function preflight($type, $parent) 
+    public function preflight($type, $parent)
     {
         //echo '<p>' . JText::_('COM_JPFRAMEWORK_PREFLIGHT_' . $type . '_TEXT') . '</p>';
     }
@@ -102,7 +104,7 @@ class com_jpframeworkInstallerScript
      *
      * @return void
      */
-    function postflight($type, $parent) 
+    function postflight($type, $parent)
     {
         //echo '<p>' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_' . $type . '_TEXT') . '</p>';
     }
