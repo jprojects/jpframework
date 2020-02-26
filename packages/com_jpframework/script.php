@@ -38,6 +38,10 @@ class com_jpframeworkInstallerScript
     $post->modified_by = 928;
     $post->checked_out_time 	= date('Y-m-d H:i:s');
     $post->publish_up 	= date('Y-m-d H:i:s');
+    $post->images 	= '';
+    $post->urls 	= '';
+    $post->metakey 	= '';
+    $post->metadesc 	= '';
 		$post->access 	= 1;
 		$post->metadata = '{"robots":"","author":"","rights":"","xreference":""}';
 		$post->featured = 0;
@@ -47,13 +51,26 @@ class com_jpframeworkInstallerScript
 		$db->insertObject('#__content', $post);
 
 		//change menu module position
-		$db->setQuery('UPDATE #__modules SET position = '.$db->quote('jpf-menu').' WHERE id = 1');
-		$db->query();
+    $mod = new stdClass();
+    $mod->id = 1;
+    $mod->position = 'jpf-menu';
+    $mod->published = 1;
 
-		//create pdf directory
-		mkdir(JPATH_ROOT.'/images/pdf');
+		$db->updateObject('#__modules', $mod, 'id');
 
-		$parent->getParent()->setRedirectURL('index.php?option=com_jpframework');
+    //deactivate cassiopea template
+    $tmpl = new stdClass();
+    $mod->id = 11;
+    $mod->home = 0;
+
+		$db->updateObject('#__template_styles', $tmpl, 'id');
+
+    //activate jpframework template
+    $tmpl = new stdClass();
+    $mod->id = 12;
+    $mod->home = 1;
+
+		$db->updateObject('#__template_styles', $tmpl, 'id');
 	}
 
     /**
