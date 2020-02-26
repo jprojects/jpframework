@@ -34,6 +34,10 @@ class com_jpframeworkInstallerScript
 		$post->catid 	= 2;
 		$post->created 	= date('Y-m-d H:i:s');
 		$post->created_by = 928;
+    $post->modified 	= date('Y-m-d H:i:s');
+    $post->modified_by = 928;
+    $post->checked_out_time 	= date('Y-m-d H:i:s');
+    $post->publish_up 	= date('Y-m-d H:i:s');
 		$post->access 	= 1;
 		$post->metadata = '{"robots":"","author":"","rights":"","xreference":""}';
 		$post->featured = 0;
