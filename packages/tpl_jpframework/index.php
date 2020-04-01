@@ -21,15 +21,16 @@ error_reporting(E_ERROR | E_WARNING | E_PARSE); // Report simple running errors
 <html lang="<?= $this->language; ?>">
 <head>
 <?php if(jpf::getparameter('ganalytics') != '') : ?>
-<!-- Start Google analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=<?= jpf::getparameter('ganalytics'); ?>"></script>
+	<!-- Google Analytics -->
 <script>
-	window.dataLayer = window.dataLayer || [];
-  	function gtag(){dataLayer.push(arguments)};
-  	gtag('js', new Date());
-  	gtag('config', '<?= jpf::getparameter("ganalytics"); ?>');
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', '<?= jpf::getparameter("ganalytics"); ?>', 'auto');
+ga('send', 'pageview');
 </script>
-<!-- End Google analytics -->
+<!-- End Google Analytics -->
 <?php endif; ?>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -57,12 +58,12 @@ jQuery(document).ready(function () {
 	    	cookieWhatAreLinkText: "",
 	    	cookieAnalyticsMessage: "<?= JText::_('JP_FRAMEWORK_COOKIES_EXPLANATION'); ?>",
 	    	cookiePolicyLink: false
-    	});	
+    	});
 });
 </script>
 <?php endif; ?>
 </head>
-    
+
 <body>
 
 <?= jpf::getLayout(jpf::getparameter('layout', 'clear')); ?>
@@ -70,4 +71,4 @@ jQuery(document).ready(function () {
 </body>
 	<!-- Page load in <?= microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']; ?> seconds -->
     	<jdoc:include type="modules" name="debug" />
-</html>              
+</html>
