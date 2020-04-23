@@ -43,13 +43,6 @@
 			description=""
 		/>
 		<field
-			name="video_poster"
-			type="media"
-			directory=""
-			label="Video Poster"
-			description=""
-		/>
-		<field
 			name="video_autoplay"
 			type="radio"
 			default="1"
