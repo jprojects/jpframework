@@ -72,7 +72,7 @@ blocksHelper::getBlockParameter($blockid, 'video_loop', 1) ? $video_loop = 'loop
 <header class="videoheader" id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
   <div class="overlay"></div>
   <video playsinline="playsinline" <?= $video_autoplay; ?> <?= $video_muted; ?> <?= $video_loop; ?>>
-    <source src="<?= blocksHelper::getBlockParameter($blockid, 'video', ''); ?>" type="video/mp4">
+    <source src="<?= JURI::root().blocksHelper::getBlockParameter($blockid, 'video', ''); ?>" type="video/mp4">
   </video>
   <?php if($video_header != '') : ?>
   <div class="container h-100">
