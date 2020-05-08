@@ -11,6 +11,7 @@
 */
 
 defined('_JEXEC') or die;
+require_once('jp_framework.class.php');
 if (!isset($this->error)) {
 	$this->error = JError::raiseWarning(404, JText::_('JERROR_ALERTNOAUTHOR'));
 	$this->debug = false;
@@ -59,7 +60,12 @@ body{
 	</head>
 
 	<body>
-
+		<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+			<h5 class="my-0 mr-md-auto font-weight-normal"><img height="70" class="logo-img" src="/images/logo.png" alt="<?= jpf::getSiteName(); ?>"></h5>
+			<nav class="my-2 my-md-0 mr-md-3">
+				<a class="p-2 text-dark" href="index.php">Home</a>
+			</nav>
+		</div>
 		<div class="container">
 	    <div class="error-wrapper">
 	        <h3 class="title"><?= $this->error->getCode(); ?></h3>

@@ -73,60 +73,82 @@ class com_jpframeworkInstallerScript
 		$db->updateObject('#__template_styles', $tmpl, 'id');
 	}
 
-    /**
-     * This method is called after a component is uninstalled.
-     *
-     * @param  \stdClass $parent - Parent object calling this method.
-     *
-     * @return void
-     */
-    public function uninstall($parent)
-    {
-        echo '<p>' . JText::_('COM_JPFRAMEWORK_UNINSTALL_TEXT') . '</p>';
-    }
+  /**
+   * This method is called after a component is uninstalled.
+   *
+   * @param  \stdClass $parent - Parent object calling this method.
+   *
+   * @return void
+   */
+  public function uninstall($parent)
+  {
+      echo '<p>' . JText::_('COM_JPFRAMEWORK_UNINSTALL_TEXT') . '</p>';
+  }
 
-    /**
-     * This method is called after a component is updated.
-     *
-     * @param  \stdClass $parent - Parent object calling object.
-     *
-     * @return void
-     */
-    public function update($parent)
-    {
-        //echo '<p>' . JText::sprintf('COM_JPFRAMEWORK_UPDATE_TEXT', $parent->get('manifest')->version) . '</p>';
-    }
+  /**
+   * This method is called after a component is updated.
+   *
+   * @param  \stdClass $parent - Parent object calling object.
+   *
+   * @return void
+   */
+  public function update($parent)
+  {
+      //echo '<p>' . JText::sprintf('COM_JPFRAMEWORK_UPDATE_TEXT', $parent->get('manifest')->version) . '</p>';
+  }
 
-    /**
-     * Runs just before any installation action is preformed on the component.
-     * Verifications and pre-requisites should run in this function.
-     *
-     * @param  string    $type   - Type of PreFlight action. Possible values are:
-     *                           - * install
-     *                           - * update
-     *                           - * discover_install
-     * @param  \stdClass $parent - Parent object calling object.
-     *
-     * @return void
-     */
-    public function preflight($type, $parent)
-    {
-        //echo '<p>' . JText::_('COM_JPFRAMEWORK_PREFLIGHT_' . $type . '_TEXT') . '</p>';
-    }
+  /**
+   * Runs just before any installation action is preformed on the component.
+   * Verifications and pre-requisites should run in this function.
+   *
+   * @param  string    $type   - Type of PreFlight action. Possible values are:
+   *                           - * install
+   *                           - * update
+   *                           - * discover_install
+   * @param  \stdClass $parent - Parent object calling object.
+   *
+   * @return void
+   */
+  public function preflight($type, $parent)
+  {
+      //echo '<p>' . JText::_('COM_JPFRAMEWORK_PREFLIGHT_' . $type . '_TEXT') . '</p>';
+  }
 
-    /**
-     * Runs right after any installation action is preformed on the component.
-     *
-     * @param  string    $type   - Type of PostFlight action. Possible values are:
-     *                           - * install
-     *                           - * update
-     *                           - * discover_install
-     * @param  \stdClass $parent - Parent object calling object.
-     *
-     * @return void
-     */
-    function postflight($type, $parent)
-    {
-        //echo '<p>' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_' . $type . '_TEXT') . '</p>';
-    }
+  /**
+   * Runs right after any installation action is preformed on the component.
+   *
+   * @param  string    $type   - Type of PostFlight action. Possible values are:
+   *                           - * install
+   *                           - * update
+   *                           - * discover_install
+   * @param  \stdClass $parent - Parent object calling object.
+   *
+   * @return void
+   */
+  public function postflight($type, $parent)
+  {
+      $html = '';
+      $html .= '<p>' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_TEXT') . '</p>';
+      $html .= '<form action="index.php?option=com_jpframework&task=legal" method="post">';
+      $html .= '<div class="form-group">';
+      $html .= '<input type="text" class="form-control" name="nom" placeholder="' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_NAME') . '">';
+      $html .= '</div>';
+    	$html .= '<div class="form-group">';
+    	$html .= '<input type="text" class="form-control" name="empresa" placeholder="' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_COMPANY') . '">';
+    	$html .= '</div>';
+    	$html .= '<div class="form-group">';
+    	$html .= '<input type="text" class="form-control" name="nif" placeholder="NIF">';
+    	$html. = '</div>';
+    	$html. = '<div class="form-group">';
+    	$html. = '<input type="text" class="form-control" name="adreca" placeholder="' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_ADDRESS') . '">';
+    	$html. = '</div>';
+    	$html. = '<div class="form-group">';
+    	$html. = '<input type="text" class="form-control" name="email" placeholder="' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_EMAIL') . '">';
+    	$html. = '</div>
+    	$html. = '<div class="form-group">
+    	$html. = '<input type="text" class="form-control" name="jutjats" placeholder="COM_JPFRAMEWORK_POSTFLIGHT_TOS_EMAIL">
+    	$html. = '</div>
+      $html. = '<button class="btn btn-primary" type="submit">' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_SUBMIT') . '</button>';
+      $html. = '</form>';
+  }
 }
