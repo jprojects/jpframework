@@ -34,7 +34,7 @@
         <menu>COM_JPFRAMEWORK</menu>
         <submenu>
             
-		<menu link="option=com_jpframework&amp;view=blocks" view="blocks">COM_JPFRAMEWORK_TITLE_BLOCKS</menu>
+		<menu link="option=com_jpframework">COM_JPFRAMEWORK_TITLE_BLOCKS</menu>
 
         </submenu>
         <files folder="administrator">
