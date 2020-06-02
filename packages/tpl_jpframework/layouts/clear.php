@@ -84,7 +84,7 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 <!-- FOOTER -->
 <footer>
 	<div class="container">
-	<p class="float-right"><a href="#" class="cd-top">Back to top</a></p>
+	<p class="float-right"><a href="#" rel="nofollow" class="cd-top">Back to top</a></p>
 	<p>
 		<?php if(jpf::getparameter('jpf-footer') != 0) : ?>
 		<!-- start footer row -->	
@@ -108,17 +108,17 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 			</div>
 			<p><?=jpf::getSitename(); ?> &copy; <?=date('Y'); ?></p>
 			<?php if(jpf::getparameter('privacy') != '') : ?>
-			<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('privacy'); ?>"><?=JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
+			<a rel="nofollow" href="index.php?Itemid=<?=jpf::getArticleByLanguage('privacy'); ?>"><?=JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
 			&middot;
 			<?php endif; ?>
 			
 			<?php if(jpf::getparameter('cookie') != '') : ?>
-			<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('cookie'); ?>"><?=JText::_('JP_FRAMEWORK_COOKIES'); ?></a>
+			<a rel="nofollow" href="index.php?Itemid=<?=jpf::getArticleByLanguage('cookie'); ?>"><?=JText::_('JP_FRAMEWORK_COOKIES'); ?></a>
 			&middot;
 			<?php endif; ?>
 		
 			<?php if(jpf::getparameter('terms') != '') : ?>
-			<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('terms'); ?>"><?=JText::_('JP_FRAMEWORK_TERMS'); ?></a>
+			<a rel="nofollow" href="index.php?Itemid=<?=jpf::getArticleByLanguage('terms'); ?>"><?=JText::_('JP_FRAMEWORK_TERMS'); ?></a>
 			<?php endif; ?>
 		</div>
 	</p>
