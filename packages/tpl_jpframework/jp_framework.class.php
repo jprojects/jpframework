@@ -71,7 +71,7 @@ class jpf  extends blocksHelper
       $scripts[] = 'media/jui/js/bootstrap.min.js';
       $scripts[] = '/media/jui/js/jquery.min.js';
       $scripts[] = '/media/jui/js/jquery-noconflict.js';
-      $scripts[] = '/media/jui/js/jquery-migrate.min.js');
+      $scripts[] = '/media/jui/js/jquery-migrate.min.js';
 
 			foreach($scripts as $script) {
 				unset(JFactory::getDocument()->_scripts[JURI::root().$script]);
