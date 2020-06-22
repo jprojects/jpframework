@@ -31,12 +31,9 @@
  	</updateservers>
 
     <administration>
-        <menu>COM_JPFRAMEWORK</menu>
-        <submenu>
-            
-		<menu link="option=com_jpframework">COM_JPFRAMEWORK_TITLE_BLOCKS</menu>
 
-        </submenu>
+        <menu>Blocs!!</menu>
+
         <files folder="administrator">
             <filename>access.xml</filename>
             <filename>config.xml</filename>
