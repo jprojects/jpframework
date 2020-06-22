@@ -13,7 +13,7 @@
 // no direct access
 defined( '_JEXEC' ) or die( 'Restricted access' );
 require_once('jp_framework.class.php');
-JHtml::_('jquery.framework');
+JHtml::_('jquery.framework', false);
 error_reporting(E_ERROR | E_WARNING | E_PARSE); // Report simple running errors
 ?>
 
