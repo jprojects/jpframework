@@ -52,27 +52,26 @@ class jpf  extends blocksHelper
 
     	$body_font 	= $params->get('body_font');
     	$icon_font 	= $params->get('icon_font', 'forkawesome');
-    	$unload 	= $params->get('unload');
+      $unload 	  = $params->get('unload');
+      
+      $doc        = JFactory::getDocument();
 
 		//add stylesheets
-    	JFactory::getDocument()->addStylesheet('templates/jpframework/css/jpframework.css');
+    	$doc->addStylesheet('templates/jpframework/css/jpframework.css');
     	if($icon_font == 'fontawesome') {
-        JFactory::getDocument()->addScript('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js');
-        JFactory::getDocument()->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css');
+        $doc->addScript('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js');
+        $doc->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css');
     	}
     	if($icon_font == 'forkawesome') {
-    		JFactory::getDocument()->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/fork-awesome/1.1.7/css/fork-awesome.min.css');
+    		$doc->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/fork-awesome/1.1.7/css/fork-awesome.min.css');
     	}
     	//ToDo::permitir multiples fuentes a cargar
-    	JFactory::getDocument()->addStylesheet('//fonts.googleapis.com/css?family='.str_replace(' ', '+', $body_font).':300italic,400italic,700italic,400,300,700');
+    	$doc->addStylesheet('//fonts.googleapis.com/css?family='.str_replace(' ', '+', $body_font).':300italic,400italic,700italic,400,300,700');
 
     	//unload scripts from configuration..
     	if($unload != '') {
 			$scripts = implode(',', $params->get('unload'));
       $scripts[] = 'media/jui/js/bootstrap.min.js';
-      $scripts[] = '/media/jui/js/jquery.min.js';
-      $scripts[] = '/media/jui/js/jquery-noconflict.js';
-      $scripts[] = '/media/jui/js/jquery-migrate.min.js';
 
 			foreach($scripts as $script) {
 				unset(JFactory::getDocument()->_scripts[JURI::root().$script]);
@@ -89,8 +88,8 @@ class jpf  extends blocksHelper
     {
         $app = JFactory::getApplication();
         $menu = $app->getMenu();
-	    $lang = JFactory::getLanguage();
-	    if ($menu->getActive() == $menu->getDefault($lang->getTag())) {
+	      $lang = JFactory::getLanguage();
+	      if ($menu->getActive() == $menu->getDefault($lang->getTag())) {
             return true;
         }
         return false;
