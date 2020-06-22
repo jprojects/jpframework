@@ -37,7 +37,7 @@ ga('send', 'pageview');
 <jdoc:include type="head" />
 <?php jpf::setHead(); ?>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" type="text/javascript"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/wow.min.js" type="text/javascript"></script>
 <script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/jpframework.js" type="text/javascript"></script>
 <link rel="shortcut icon" href="<?= $this->baseurl ?>/templates/<?= $this->template ?>/icon.png" />

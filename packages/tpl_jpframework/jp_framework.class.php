@@ -57,10 +57,11 @@ class jpf  extends blocksHelper
 		//add stylesheets
     	JFactory::getDocument()->addStylesheet('templates/jpframework/css/jpframework.css');
     	if($icon_font == 'fontawesome') {
-    		JFactory::getDocument()->addStylesheet('https://stackpath.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css');
+        JFactory::getDocument()->addScript('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js');
+        JFactory::getDocument()->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css');
     	}
     	if($icon_font == 'forkawesome') {
-    		JFactory::getDocument()->addStylesheet('https://cdn.jsdelivr.net/npm/fork-awesome@1.1.5/css/fork-awesome.min.css');
+    		JFactory::getDocument()->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/fork-awesome/1.1.7/css/fork-awesome.min.css');
     	}
     	//ToDo::permitir multiples fuentes a cargar
     	JFactory::getDocument()->addStylesheet('//fonts.googleapis.com/css?family='.str_replace(' ', '+', $body_font).':300italic,400italic,700italic,400,300,700');

@@ -88,7 +88,7 @@ jQuery(document).ready(function($) {
 	$('[data-toggle="tooltip"]').tooltip(); 
 	
 	//Performs a smooth page scroll to an anchor on the same page.
-	jQuery('a[href*=#]:not([href=#])').click(function() {
+	jQuery('a[href*="#"]:not([href="#"])').click(function() {
 		if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
 		  //if( jQuery(this).attr("href")=="#bcarousel-home") return;//This is the exception change the id
 		  var target = jQuery(this.hash);
