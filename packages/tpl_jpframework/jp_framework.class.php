@@ -263,12 +263,11 @@ class jpf  extends blocksHelper
     	$num = parent::getParameter($mod);
     	$grid = array();
 
-    	//$grid[] = '<div class="col-md-12 '.$class.'">';
+    	$jdoc = new JDocumentHTML;
     	if($num != 0) { $grid[] = jpf::getBlock('jpf-'.$name); }
-    	if(JDocumentHTML::countModules('jpf-'.$name)) {
+    	if($jdoc->countModules('jpf-'.$name)) {
     		$grid[] = '<jdoc:include type="modules" name="jpf-'.$name.'" />';
     	}
-    	//$grid[] = '</div>';
 
     	return implode("\n", $grid);
     }
