@@ -29,7 +29,7 @@ body{
   font-family: 'Roboto', sans-serif;
   font-weight: 400;
   font-size: 12px;
-  background-color: #f6fcff;
+  background-color: #f6fcff !important;
 }
 .error-wrapper {
   position: absolute;
