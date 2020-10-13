@@ -138,17 +138,17 @@ class com_jpframeworkInstallerScript
     	$html .= '</div>';
     	$html .= '<div class="form-group">';
     	$html .= '<input type="text" class="form-control" name="nif" placeholder="NIF">';
-    	$html. = '</div>';
-    	$html. = '<div class="form-group">';
-    	$html. = '<input type="text" class="form-control" name="adreca" placeholder="' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_ADDRESS') . '">';
-    	$html. = '</div>';
-    	$html. = '<div class="form-group">';
-    	$html. = '<input type="text" class="form-control" name="email" placeholder="' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_EMAIL') . '">';
-    	$html. = '</div>
-    	$html. = '<div class="form-group">
-    	$html. = '<input type="text" class="form-control" name="jutjats" placeholder="COM_JPFRAMEWORK_POSTFLIGHT_TOS_EMAIL">
-    	$html. = '</div>
-      $html. = '<button class="btn btn-primary" type="submit">' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_SUBMIT') . '</button>';
-      $html. = '</form>';
+    	$html .= '</div>';
+    	$html .= '<div class="form-group">';
+    	$html .= '<input type="text" class="form-control" name="adreca" placeholder="' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_ADDRESS') . '">';
+    	$html .= '</div>';
+    	$html .= '<div class="form-group">';
+    	$html .= '<input type="text" class="form-control" name="email" placeholder="' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_EMAIL') . '">';
+    	$html .= '</div>';
+    	$html .= '<div class="form-group">';
+    	$html .= '<input type="text" class="form-control" name="jutjats" placeholder="COM_JPFRAMEWORK_POSTFLIGHT_TOS_EMAIL">';
+    	$html .= '</div>';
+      $html .= '<button class="btn btn-primary" type="submit">' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_SUBMIT') . '</button>';
+      $html .= '</form>';
   }
 }
