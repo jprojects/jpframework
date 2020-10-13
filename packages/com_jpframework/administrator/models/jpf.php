@@ -159,7 +159,7 @@ class JpframeworkModelJpf extends JModelList {
       $entry->checked_out = JFactory::getUser()->id;
 		  $entry->created_by  = JFactory::getUser()->id;
 		  $entry->language    = JComponentHelper::getParams('com_languages')->get('site');
-		  $entry->menuitem    = $app->getUserStateFromRequest($this->context . '.list.menuitem', 'list_menuitem', '', 'int');
+		  $entry->menuitem    = $app->getUserStateFromRequest($this->context . '.list.menuitem', 'list_menuitem', 101, 'int');
 
 		  $db->insertObject('#__jpframework_blocks', $entry);
     }
