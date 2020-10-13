@@ -25,9 +25,9 @@ jQuery(document).ready(function(){
     jQuery(".nav-toggle").click(function() {
         jQuery(".nav-toggle, .nav-layer, .menu").toggleClass("open");
         if(jQuery(".nav-toggle").hasClass('open')) {
-        	jQuery(".logo").attr("src", "<?= JURI::base(); ?>images/logo_nyam.png");
+        	jQuery(".logo").attr("src", "<?= jpf::getparameter('topmenu-logo'); ?>");
         } else {
-        	jQuery(".logo").attr("src", "<?= JURI::base(); ?>images/logo_nyam.png");
+        	jQuery(".logo").attr("src", "<?= jpf::getparameter('topmenu-logo'); ?>");
         }
     });
     jQuery(window).resize(resizeNav);
@@ -51,7 +51,7 @@ jQuery(document).ready(function(){
                         <jdoc:include type="modules" name="jpf-menu" />
                         
                     </nav>
-                    <img src="images/logo_nyam.png" alt="Nyam" class="img-fluid logo clickable">
+                    <img src="<?= jpf::getparameter('topmenu-logo'); ?>" alt="Nyam" class="img-fluid logo clickable">
                     <a class="nav-toggle">
                         <span></span>
                         <span></span>
