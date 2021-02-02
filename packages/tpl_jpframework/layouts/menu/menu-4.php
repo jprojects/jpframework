@@ -36,7 +36,6 @@ jQuery(function () {
       </button>
 
       <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-          <!-- add class navbar-nav mr-auto -->
          <jdoc:include type="modules" name="jpf-menu" /> 
       </div>
 </nav>

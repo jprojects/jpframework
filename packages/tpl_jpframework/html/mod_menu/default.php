@@ -3,30 +3,41 @@
  * @package     Joomla.Site
  * @subpackage  mod_menu
  *
- * @copyright   Copyright (C) 2005 - 2015 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) 2005 - 2020 Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
-// Note. It is important to remove spaces between elements.
-?>
-<?php // The menu class is deprecated. Use nav instead. ?>
-<ul class="menu <?php echo $class_sfx;?>"<?php
-	$tag = '';
+use Joomla\CMS\Helper\ModuleHelper;
 
-	if ($params->get('tag_id') != null)
-	{
-		$tag = $params->get('tag_id') . '';
-		echo ' id="' . $tag . '"';
-	}
-?>>
-<?php
-foreach ($list as $i => &$item)
+/** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
+$wa = $app->getDocument()->getWebAssetManager();
+$wa->registerAndUseScript('mod_menu', 'mod_menu/menu.min.js', [], ['defer' => true]);
+
+$jp_class = jpf::getMenuClass();
+
+$id = '';
+
+if ($tagId = $params->get('tag_id', ''))
 {
-	$class = 'nav-item item-' . $item->id;
+	$id = ' id="' . $tagId . '"';
+}
 
-	if (($item->id == $active_id) OR ($item->type == 'alias' AND $item->params->get('aliasoptions') == $active_id))
+// The menu class is deprecated. Use mod-menu instead
+?>
+<ul <?php echo $id; ?> class="mod-menu mod-list nav <?= $jp_class; ?> <?php echo $class_sfx; ?>">
+<?php foreach ($list as $i => &$item)
+{
+	$itemParams = $item->getParams();
+	$class      = 'nav-item item-' . $item->id;
+
+	if ($item->id == $default_id)
+	{
+		$class .= ' default';
+	}
+
+	if ($item->id == $active_id || ($item->type === 'alias' && $itemParams->get('aliasoptions') == $active_id))
 	{
 		$class .= ' current';
 	}
@@ -35,9 +46,9 @@ foreach ($list as $i => &$item)
 	{
 		$class .= ' active';
 	}
-	elseif ($item->type == 'alias')
+	elseif ($item->type === 'alias')
 	{
-		$aliasToId = $item->params->get('aliasoptions');
+		$aliasToId = $itemParams->get('aliasoptions');
 
 		if (count($path) > 0 && $aliasToId == $path[count($path) - 1])
 		{
@@ -49,9 +60,9 @@ foreach ($list as $i => &$item)
 		}
 	}
 
-	if ($item->type == 'separator')
+	if ($item->type === 'separator')
 	{
-		$class .= ' dropdown-divider';
+		$class .= ' divider';
 	}
 
 	if ($item->deeper)
@@ -61,56 +72,38 @@ foreach ($list as $i => &$item)
 
 	if ($item->parent)
 	{
-		$class .= ' parent dropdown';
+		$class .= ' parent';
 	}
 
-	if (!empty($class))
-	{
-		$class = ' class="' . trim($class) . '"';
-	}
+	echo '<li class="' . $class . '">';
 
-	echo '<li' . $class . '>';
-		$class            = $item->anchor_css;
-    $item->anchor_css = 'nav-link ' . $item->anchor_css;
-	if($item->level > $params->get('startLevel')) {
-		$item->anchor_css = 'dropdown-item '. $class;
-	}
-
-	// The next item is deeper.
-	if ($item->deeper)
-	{
-		$item->anchor_css .= ' dropdown-toggle';
-		$item->data = 'data-toggle="dropdown"';
-	}
-
-	// Render the menu item.
 	switch ($item->type) :
 		case 'separator':
-		case 'url':
 		case 'component':
 		case 'heading':
-			require JModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
+		case 'url':
+			require ModuleHelper::getLayoutPath('mod_menu', 'default_' . $item->type);
 			break;
 
 		default:
-			require JModuleHelper::getLayoutPath('mod_menu', 'default_url');
+			require ModuleHelper::getLayoutPath('mod_menu', 'default_url');
 			break;
 	endswitch;
 
 	// The next item is deeper.
 	if ($item->deeper)
 	{
-		echo '<ul class="nav-child unstyled dropdown-menu">';
+		echo '<ul class="mod-menu__sub list-unstyled small">';
 	}
+	// The next item is shallower.
 	elseif ($item->shallower)
 	{
-		// The next item is shallower.
 		echo '</li>';
 		echo str_repeat('</ul></li>', $item->level_diff);
 	}
+	// The next item is on the same level.
 	else
 	{
-		// The next item is on the same level.
 		echo '</li>';
 	}
 }

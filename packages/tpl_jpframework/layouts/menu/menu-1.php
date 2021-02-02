@@ -25,7 +25,6 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-        	<!-- add class navbar-nav ml-auto -->
          	<jdoc:include type="modules" name="jpf-menu" />          
         </div>
   </div>

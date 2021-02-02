@@ -40,6 +40,23 @@ class jpf  extends blocksHelper
         return $html;
     }
 
+     /**
+     * Method to retrieve the menu class needed
+     * @access public
+     * @return boolean, return a JP Framework menu class output
+    */
+    public static function getMenuClass()
+    {
+        $params = JComponentHelper::getParams( 'com_jpframework' );
+        $menu 	= $params->get('menu');
+        $html   = "";
+        
+        if($menu == 'menu-1') { $html = 'navbar-nav ml-auto'; }
+        if($menu == 'menu-4') { $html = 'navbar-nav mr-auto'; }
+
+        return $html;
+    }
+
 
    /**
      * css styles
