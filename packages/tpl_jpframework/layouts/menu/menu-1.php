@@ -12,7 +12,8 @@
 
 ?>
 <!-- menu 1 example: http://getbootstrap.com/docs/4.1/examples/carousel/ -->
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-jp">
+<nav class="navbar navbar-expand-xl navbar-dark bg-dark bg-jp">
+  <div class="container-fluid">
         <a class="navbar-brand" href="index.php">
         <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
             <img class="logo-img" src="<?= jpf::getparameter('topmenu-logo'); ?>" alt="<?= jpf::getSitename(); ?>">
@@ -27,5 +28,6 @@
         	<!-- add class navbar-nav ml-auto -->
          	<jdoc:include type="modules" name="jpf-menu" />          
         </div>
+  </div>
 </nav>
 

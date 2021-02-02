@@ -43,7 +43,7 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 	<!-- end main row -->
 	<?php endif; ?>
 
-	<div class="container<?php if(jpf::getparameter('fluid', 0) == 1) : ?>-fluid<?php endif;; ?> mainbody">
+	<div class="container<?php if(jpf::getparameter('fluid', 0) == 1) : ?>-fluid<?php endif; ?> mainbody">
 		<div class="row">
 			<?php if($doc->countModules('jpf-left')) : ?>
 			<div class="<?= $colsl; ?>">
@@ -53,9 +53,9 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 
 			<div class="<?= $colsc; ?>">
 			  
-				<?php if(jpf::showComponent()) : ?>
+				<?php //if(jpf::showComponent()) : ?>
 				<div><jdoc:include type="component" /></div>
-				<?php endif; ?>
+				<?php //endif; ?>
 				
 			</div>
 
@@ -84,19 +84,19 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 <!-- FOOTER -->
 <footer>
 	<div class="container">
-	<p class="float-right"><a href="#" rel="nofollow" class="cd-top">Back to top</a></p>
-	<p>
+		<p class="float-right"><a href="#" class="cd-top">Back to top</a></p>
+	
 		<?php if(jpf::getparameter('jpf-footer') != 0) : ?>
 		<!-- start footer row -->	
 		<div class="row">
 			<div class="col-xs-12 col-md-4">
-			<?= jpf::getColumn('jpf-footer-1', 'footer-1'); ?>	
+				<jdoc:include type="modules" name="jpf-footer-1" />	
 			</div>
 			<div class="col-xs-12 col-md-4">
-			<?= jpf::getColumn('jpf-footer-2', 'footer-2'); ?>	
+			<jdoc:include type="modules" name="jpf-footer-2" />	
 			</div>
 			<div class="col-xs-12 col-md-4">
-			<?= jpf::getColumn('jpf-footer-3', 'footer-3'); ?>	
+				<jdoc:include type="modules" name="jpf-footer-3" />	
 			</div>		
 		</div>
 		<!-- end footer row -->
@@ -108,19 +108,19 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 			</div>
 			<p><?=jpf::getSitename(); ?> &copy; <?=date('Y'); ?></p>
 			<?php if(jpf::getparameter('privacy') != '') : ?>
-			<a rel="nofollow" href="index.php?Itemid=<?=jpf::getArticleByLanguage('privacy'); ?>"><?=JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
+			<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('privacy'); ?>"><?=JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
 			&middot;
 			<?php endif; ?>
 			
 			<?php if(jpf::getparameter('cookie') != '') : ?>
-			<a rel="nofollow" href="index.php?Itemid=<?=jpf::getArticleByLanguage('cookie'); ?>"><?=JText::_('JP_FRAMEWORK_COOKIES'); ?></a>
+			<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('cookie'); ?>"><?=JText::_('JP_FRAMEWORK_COOKIES'); ?></a>
 			&middot;
 			<?php endif; ?>
 		
 			<?php if(jpf::getparameter('terms') != '') : ?>
-			<a rel="nofollow" href="index.php?Itemid=<?=jpf::getArticleByLanguage('terms'); ?>"><?=JText::_('JP_FRAMEWORK_TERMS'); ?></a>
+			<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('terms'); ?>"><?=JText::_('JP_FRAMEWORK_TERMS'); ?></a>
 			<?php endif; ?>
 		</div>
-	</p>
+	
 	</div>
 </footer>

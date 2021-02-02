@@ -51,16 +51,17 @@ class jpf  extends blocksHelper
     	$params = JComponentHelper::getParams( 'com_jpframework' );
 
     	$body_font 	= $params->get('body_font');
-    	$icon_font 	= $params->get('icon_font', 'forkawesome');
+    	$icon_font 	= $params->get('icon_font', 'fontawesome');
       $unload 	  = $params->get('unload');
       
       $doc        = JFactory::getDocument();
 
-		//add stylesheets
+      //add stylesheets
+      $doc->addStylesheet('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css');
     	$doc->addStylesheet('templates/jpframework/css/jpframework.css');
     	if($icon_font == 'fontawesome') {
-        $doc->addScript('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/js/all.min.js');
-        $doc->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css');
+        $doc->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css');
+        $doc->addScript('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js');
     	}
     	if($icon_font == 'forkawesome') {
     		$doc->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/fork-awesome/1.1.7/css/fork-awesome.min.css');
@@ -70,12 +71,10 @@ class jpf  extends blocksHelper
 
     	//unload scripts from configuration..
     	if($unload != '') {
-			$scripts = implode(',', $params->get('unload'));
-      $scripts[] = 'media/jui/js/bootstrap.min.js';
-
-			foreach($scripts as $script) {
-				unset(JFactory::getDocument()->_scripts[JURI::root().$script]);
-			}
+        $scripts = implode(',', $params->get('unload'));
+        foreach($scripts as $script) {
+          unset($doc->_scripts[JURI::root().$script]);
+        }
     	}
     }
 
@@ -126,7 +125,7 @@ class jpf  extends blocksHelper
 	    $active = $menu->getActive();
 	    $itemId = $active->id;
 
-      if($mode = 0) { //mode 0 itemids selected not display the main component
+      if($mode == 0) { //mode 0 itemids selected not display the main component
   	    if (!in_array($itemId, $ids)) {
           return true;
         }
@@ -164,20 +163,20 @@ class jpf  extends blocksHelper
     */
     public static function getArticleByLanguage($type)
     {
-		$lang = JFactory::getLanguage()->getTag();
-		$articles = json_decode(jpf::getparameter($type));
-		foreach ($articles as $art)
-      	{
-			foreach ($art as $k => $v)
-			{
-				$result[$k][] = $v;
-			}
-      	}
+		  $lang = JFactory::getLanguage()->getTag();
+		  $articles = json_decode(jpf::getparameter($type));
+		  foreach ($articles as $art)
+      {
+			  foreach ($art as $k => $v)
+			  { 
+				  $result[$k][] = $v;
+			  }
+      }
 
 	  	foreach ($result as $index=>$value)
-		{
-			if($value[0] == $lang) { return $value[1]; }
-		}
+		  {
+			  if($value[0] == $lang) { return $value[1]; }
+		  }
     }
 
     /**
@@ -187,21 +186,13 @@ class jpf  extends blocksHelper
     */
     public static function getSocial()
     {
-		$items = json_decode(jpf::getparameter('list_social'));
-		$html = array();
+		  $items = (array)jpf::getparameter('list_social');
+		  $html = array();
 
-		foreach ($items as $item)
-      	{
-			foreach ($item as $k => $v)
-			{
-				$result[$k][] = $v;
-			}
-      	}
-
-	  	foreach ($result as $k => $v)
-		{
-			$html[] = '<a class="mx-1" target="_blank" href="'.$v[2].'"><i title="'.$v[0].'" class="fa '.$v[1].'"></i></a>';
-		}
+	  	foreach ($items as $item)
+		  {
+			  $html[] = '<a class="mx-1" target="_blank" href="'.$item->social_link.'"><i title="'.$item->social_name.'" class="'.$item->social_icon.'"></i></a>';
+		  }
 
 		return implode($html);
     }
@@ -212,30 +203,30 @@ class jpf  extends blocksHelper
      * @param $position string module position name
      * @return the layout output
      */
-	public static function getBlock($position)
+	  public static function getBlock($position)
     {
     	$db   = JFactory::getDbo();
     	$lang = JFactory::getLanguage();
-		$app = JFactory::getApplication();
+		  $app = JFactory::getApplication();
     	$db->setQuery(
-    			'select menuitem,id,type '.
-    			'from #__jpframework_blocks '.
-    			'where position = '.$db->quote($position).' '.
-    			'and state = 1 '.
-    			'and language = '.$db->quote($lang->getTag()).' '.
-    			'order by ordering asc'
-		);
+    			'SELECT menuitem,id,type '.
+    			'FROM `#__jpframework_blocks` '.
+    			'WHERE position = '.$db->quote($position).' '.
+    			'AND state = 1 '.
+    			'AND language = '.$db->quote($lang->getTag()).' '.
+    			'ORDER BY ordering ASC'
+		  );
     	$rows = $db->loadObjectList();
-		ob_start();
-		foreach($rows as $row) {
+		  ob_start();
+		  foreach($rows as $row) {
 	    	$itemid = $app->getMenu()->getActive()->id;
 	    	$menuitems = explode(';', $row->menuitem);
 	    	if($row->menuitem == 0 || in_array($itemid, $menuitems)) {
 		    	$html = "";
-		    	JRequest::setVar('blockid', $row->id);
+		    	$app->input->set('blockid', $row->id);
 		    	//override blocks from template
 	    		$path1 = dirname(__FILE__).DS.'html'.DS.'blocks'.DS.$row->type.DS.'block.php';
-				$path2 = JPF_BLOCKS_PATH.DS.$row->type.DS.'block.php';
+				  $path2 = JPF_BLOCKS_PATH.DS.$row->type.DS.'block.php';
 		    	if (is_file($path1)) {
 		    		//tmpl override
 		    		include $path1;
@@ -245,10 +236,10 @@ class jpf  extends blocksHelper
 		    			include $path2;
 		    			$html .= ob_get_contents();
 		    		}
-				}
-			}
+				  }
+			  }
     	}
-		$html = ob_get_clean();
+		  $html = ob_get_clean();
     	return $html;
     }
 
@@ -259,15 +250,10 @@ class jpf  extends blocksHelper
     */
     public static function getColumn($mod, $name, $class="")
     {
-    	jimport( 'joomla.document.html.html' );
     	$num = parent::getParameter($mod);
     	$grid = array();
 
-    	$jdoc = new JDocumentHTML;
     	if($num != 0) { $grid[] = jpf::getBlock('jpf-'.$name); }
-    	if($jdoc->countModules('jpf-'.$name)) {
-    		$grid[] = '<jdoc:include type="modules" name="jpf-'.$name.'" />';
-    	}
 
     	return implode("\n", $grid);
     }
