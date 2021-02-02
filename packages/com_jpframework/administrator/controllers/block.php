@@ -10,8 +10,6 @@
 // No direct access
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.controllerform');
-
 /**
  * Block controller class.
  */
@@ -19,7 +17,7 @@ class JpframeworkControllerBlock extends JControllerForm
 {
 
     function __construct() {
-        $this->view_list = 'jpf';
+        $this->view_list = 'blocks';
         parent::__construct();
     }
 
@@ -28,7 +26,7 @@ class JpframeworkControllerBlock extends JControllerForm
 	 *
 	 * @return	void
 	*/
-  function save()
+  	function save()
 	{
 		$model  = $this->getModel();
 

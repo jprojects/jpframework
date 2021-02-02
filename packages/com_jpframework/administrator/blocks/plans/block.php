@@ -11,7 +11,7 @@
 // No direct access
 defined('_JEXEC') or die;
 
-$blockid = JRequest::getVar('blockid');
+$blockid    = JFactory::getApplication()->input->get('blockid');
 blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blocks/plans/assets/css/plans.css');
 
 $uniqid = blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid);

@@ -10,7 +10,7 @@
 // restricted access
 defined('_JEXEC') or die('Restricted access');
 
-$blockid = JRequest::getVar('blockid');
+$blockid    = JFactory::getApplication()->input->get('blockid');
 $cid 	= blocksHelper::getBlockParameter($blockid,'uniqid');
 $items 	= json_decode(blocksHelper::getBlockParameter($blockid, 'list_features'), true);
 $height = blocksHelper::getBlockParameter($blockid, 'height', '140');

@@ -17,7 +17,7 @@
     		description="COM_JPFRAMEWORK_TOPMENU_DESC"
     		directory="templates/jpframework/layouts/menu"
     		filter="\.php"
-    		exclude="\.html|\.css"
+    		exclude="\.html|\.css|\.less"
     		stripext="true"
     		hide_default="true"
     	/>
@@ -227,33 +227,6 @@
       <option value="1">JYES</option>
     </field>
     <field
-   	  type="radio"
-   	  name="cookies"
-   	  default="0"
-   	  class="btn-group"
-   	  label="COM_JPFRAMEWORK_COOKIES_LABEL"
-   	  description="COM_JPFRAMEWORK_COOKIES_DESC"
-    >
-   	  <option value="0">JNO</option>
-      <option value="1">JYES</option>
-   </field>
-   <field
-    	name="cookies_link"
-    	type="text"
-    	class="inputbox"
-    	default=""
-    	label="JP_FRAMEWORK_COOKIES_LINK_LABEL"
-    	description="JP_FRAMEWORK_COOKIES_LINK_DESC"
-    />
-    <field
-    	name="ganalytics"
-    	type="text"
-    	class="inputbox"
-    	default=""
-    	label="JP_FRAMEWORK_ANALYTICS_LABEL"
-    	description="JP_FRAMEWORK_ANALYTICS_DESC"
-    />
-    <field
     	name="register"
     	type="text"
     	class="inputbox"
@@ -417,14 +390,13 @@
     <fieldset label="COM_JPFRAMEWORK_SOCIAL" name="social" addfieldpath="/administrator/components/com_jpframework/models/fields">
     	<field
 			name="list_social"
-			type="repeatable"
-			icon="list"
+			type="subform"
 			description="Social items"
 			label="Social items"
-			default='{"social_name":[""],
-				"social_icon":[""],
-				"social_link":[""]}'>
-			<fieldset hidden="true" name="list_images_modal" repeat="true">
+			multiple="true"
+			min="1"
+			max="10">
+			<form>
 				<field
 					name="social_name"
 					type="text"
@@ -446,7 +418,7 @@
 					label="Social Link"
 					description="Social link"
 				/>
-			</fieldset>
+			</form>
 		</field>
     </fieldset>
     <fieldset

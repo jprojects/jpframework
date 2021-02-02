@@ -7,34 +7,41 @@
 			type="text" 
 			default="" 
 			label="Title" 
-			description="Block title" 
+			description="A title for this block, only appears on listing not in the frontend." 
 		/>
 		<field 
 			name="block_color" 
 			type="color" 
 			default="#ffffff" 
 			label="Background" 
-			description="Background color" 
+			description="Block background color." 
 		/>
 		<field 
 			name="uniqid" 
 			type="text" 
 			default="" 
 			label="Uniqid" 
-			description="Uniqid is used as the block section id" 
+			description="Uniqid is used as the block section id, useful for anchors or specific css styles." 
+		/>
+		<field 
+			name="classes" 
+			type="text" 
+			default="" 
+			label="Classes" 
+			description="Additional classes to this section block." 
 		/>
 		<field 
 			name="jumbotron-title" 
 			type="text" 
 			default="" 
-			label="Text" 
-			description="Heading text" 
+			label="Heading text" 
+			description="Block heading text" 
 		/>
 		<field 
 			name="jumbotron-text" 
 			type="textarea" 
-			description="" 
-			label="Logo" 
+			description="Block subheading text" 
+			label="Subheading text" 
 			cols="10"
 			rows="5"
 		/>
@@ -42,58 +49,52 @@
 			name="jumbotron-btn1-text" 
 			type="text" 
 			default="" 
-			label="Button 1 text" 
+			label="Button text" 
 			description="Button text" 
 		/>
 		<field 
 			name="jumbotron-btn1-link" 
 			type="text" 
 			default="" 
-			label="Button 1 link" 
+			label="Button link" 
 			description="Button link" 
 		/>
 		<field 
 			name="jumbotron-btn1-class" 
 			type="classes" 
 			default="dark" 
-			label="Button 1 claqss" 
+			label="Button class" 
 			description="Button class" 
 		/>
 		<field 
-			name="jumbotron-btn2-text" 
-			type="text" 
+			name="jumbotron-img" 
+			type="media" 
 			default="" 
-			label="Button 2 text" 
-			description="Button text" 
+			label="Image" 
+			description="Background image, if empty background color is used instead." 
 		/>
 		<field 
-			name="jumbotron-btn2-class" 
-			type="classes" 
-			default="dark" 
-			label="Button 2 claqss" 
-			description="Button class" 
+			name="jumbotron-height" 
+			type="text" 
+			default="100vh" 
+			label="Height" 
+			description="Jumbotron height" 
 		/>
 		<field 
-			name="jumbotron-btn2-link" 
+			name="jumbotron-anchor" 
 			type="text" 
 			default="" 
-			label="Button 2 link" 
-			description="Button link" 
+			label="Anchor" 
+			description="Anchor link to scroll down" 
 		/>
 	</fieldset>
 	<fieldset name="styles">
-		<field 
-			type="spacer" 
-			name="spacer1" 
-			class="text"
-			label="COM_JPFRAMEWORK_SYLES_FIELD"
-		/>
 		<field 
 			name="css" 
 			type="textarea" 
 			default="" 
 			label="Css" 
-			description="Custom css styles" 
+			description="Custom css styles for this block, needs a compilation after save changes." 
 			rows="20" 
 			cols="50" 
 			filter="raw"

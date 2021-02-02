@@ -14,7 +14,7 @@
 			type="color" 
 			default="#ffffff" 
 			label="Background" 
-			description="Background color" 
+			description="Block background color" 
 		/>
 		<field 
 			name="block_font_color" 
@@ -31,6 +31,13 @@
 			description="Uniqid is used as the block section id" 
 		/>
 		<field 
+			name="classes" 
+			type="text" 
+			default="" 
+			label="Classes" 
+			description="Additional classes to this section block." 
+		/>
+		<field 
 			name="counter_heading" 
 			type="text" 
 			default="" 
@@ -44,23 +51,21 @@
 			label="Subheading" 
 			description="Text under heading" 
 		/>
-		<field 
+		<field
 			name="list_counter"
-			type="repeatable"
-			icon="list"
-			description="Counter items"
+			type="subform"
 			label="Counters"
-			default='{
-				"counter_icon":[""],
-				"counter_title":[""],
-				"counter_velocity":[""],
-				"counter_end":[""]}'>
-			<fieldset hidden="true" name="list_counters_modal" repeat="true">
+			description="Counter items"
+			multiple="true"
+			min="1"
+			max="6"
+			>
+			<form>
 				<field 
 					name="counter_icon" 
 					type="text" 
 					label="Icon" 
-					description="font awesome v.4 nomes fa-icon" 
+					description="font awesome v.4" 
 				/>
 				<field 
 					name="counter_title" 
@@ -83,16 +88,10 @@
 					label="End" 
 					description="Limit del contador" 
 				/>
-			</fieldset>
+			</form>
 		</field>
 	</fieldset>
 	<fieldset name="styles">
-		<field 
-			type="spacer" 
-			name="spacer1" 
-			class="text"
-			label="COM_JPFRAMEWORK_SYLES_FIELD"
-		/>
 		<field 
 			name="css" 
 			type="textarea" 

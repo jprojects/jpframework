@@ -9,13 +9,14 @@
 // no direct access
 defined('_JEXEC') or die;
 
-JHtml::addIncludePath(JPATH_COMPONENT . '/helpers/html');
-JHtml::_('behavior.tooltip');
-JHtml::_('jquery.framework');
-JHtml::_('bootstrap.framework');
-JHtml::_('behavior.formvalidation');
-JHtml::_('formbehavior.chosen', 'select');
-JHtml::_('behavior.keepalive');
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Layout\LayoutHelper;
+use Joomla\CMS\Router\Route;
+
+HTMLHelper::_('behavior.formvalidator');
+HTMLHelper::_('behavior.keepalive');
+
 $model = $this->getModel('block');
 
 ?>
@@ -55,10 +56,14 @@ Joomla.submitbutton = function(task)
   background-color: #46b1c9;
   color: #fff;
 }
+select.form-control {
+    background-color: #fff !important;
+}
 </style>
 
-<form action="<?= JRoute::_('index.php?option=com_jpframework&layout=edit&id=' . (int) $this->item->id); ?>&tmpl=component" method="post" name="adminForm" id="block-form" class="form-validate">
-
+<form action="<?= JRoute::_('index.php?option=com_jpframework&view=block&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="block-form" class="form-validate">
+	<input type="hidden" name="jform[id]" value="<?= $this->item->id; ?>" />
+	<input type="hidden" name="jform[ordering]" value="<?= $this->item->ordering; ?>" />
     <div class="form-horizontal">
         <?= JHtml::_('bootstrap.startTabSet', 'myTab', array('active' => 'general')); ?>
 
@@ -66,38 +71,36 @@ Joomla.submitbutton = function(task)
         <div class="row-fluid">
             <div class="span12 form-horizontal">
                 <fieldset class="adminform">
-                  <input type="hidden" name="jform[id]" value="<?= $this->item->id; ?>" />
-					        <input type="hidden" name="jform[ordering]" value="<?= $this->item->ordering; ?>" />
-        					<div class="control-group">
-        						<div class="control-label"><?= $this->form->getLabel('state'); ?></div>
-        						<div class="controls"><?= $this->form->getInput('state'); ?></div>
-        					</div>
-        					<input type="hidden" name="jform[checked_out]" value="<?= $this->item->checked_out; ?>" />
-        					<input type="hidden" name="jform[checked_out_time]" value="<?= $this->item->checked_out_time; ?>" />
+					<div class="control-group">
+						<div class="control-label"><?= $this->form->getLabel('state'); ?></div>
+						<div class="controls"><?= $this->form->getInput('state'); ?></div>
+					</div>
+					<input type="hidden" name="jform[checked_out]" value="<?= $this->item->checked_out; ?>" />
+					<input type="hidden" name="jform[checked_out_time]" value="<?= $this->item->checked_out_time; ?>" />
 
-        					<?php if(empty($this->item->created_by)){ ?>
-        					<input type="hidden" name="jform[created_by]" value="<?= JFactory::getUser()->id; ?>" />
+					<?php if(empty($this->item->created_by)){ ?>
+					<input type="hidden" name="jform[created_by]" value="<?= JFactory::getUser()->id; ?>" />
 
-        					<?php }
-        					else{ ?>
-        					<input type="hidden" name="jform[created_by]" value="<?= $this->item->created_by; ?>" />
-					        <?php } ?>
-                  <div class="control-group">
-          					<div class="control-label"><?= $this->form->getLabel('type'); ?></div>
-          					<div class="controls"><?= $this->form->getInput('type'); ?></div>
-          				</div>
-          				<div class="control-group">
-          					<div class="control-label"><?= $this->form->getLabel('position'); ?></div>
-          					<div class="controls"><?= $this->form->getInput('position'); ?></div>
-          				</div>
-          				<div class="control-group">
-          					<div class="control-label"><?= $this->form->getLabel('language'); ?></div>
-          					<div class="controls"><?= $this->form->getInput('language'); ?></div>
-          				</div>
-          				<div class="control-group">
-          					<div class="control-label"><?= $this->form->getLabel('menuitem'); ?></div>
-          					<div class="controls"><?= $this->form->getInput('menuitem'); ?></div>
-          				</div>
+					<?php }
+					else{ ?>
+					<input type="hidden" name="jform[created_by]" value="<?= $this->item->created_by; ?>" />
+					<?php } ?>
+                  	<div class="control-group">
+						<div class="control-label"><?= $this->form->getLabel('type'); ?></div>
+						<div class="controls"><?= $this->form->getInput('type'); ?></div>
+					</div>
+					<div class="control-group">
+						<div class="control-label"><?= $this->form->getLabel('position'); ?></div>
+						<div class="controls"><?= $this->form->getInput('position'); ?></div>
+					</div>
+					<div class="control-group">
+						<div class="control-label"><?= $this->form->getLabel('language'); ?></div>
+						<div class="controls"><?= $this->form->getInput('language'); ?></div>
+					</div>
+					<div class="control-group">
+						<div class="control-label"><?= $this->form->getLabel('menuitem'); ?></div>
+						<div class="controls"><?= $this->form->getInput('menuitem'); ?></div>
+					</div>
                 </fieldset>
             </div>
         </div>
@@ -117,9 +120,8 @@ Joomla.submitbutton = function(task)
 
         <?= JHtml::_('bootstrap.endTabSet'); ?>
 
-        <input type="hidden" name="task" value="block.apply" />
+        <input type="hidden" name="task" value="block.save" />
         <?= JHtml::_('form.token'); ?>
 
     </div>
-    <button class="btn btn-primary" id="submit" type="submit"><?= JText::_('JTOOLBAR_SAVE'); ?></button>
 </form>

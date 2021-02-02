@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 require_once(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jpframework' . DS . 'helpers' . DS . 'blocks.php');
 blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blocks/timeline/assets/css/timeline.css');
 blocksHelper::loadJs(JURI::root().'administrator/components/com_jpframework/blocks/timeline/assets/js/timeline.js');
-$blockid = JRequest::getVar('blockid');
+$blockid    = JFactory::getApplication()->input->get('blockid');
 
 $parts 	= json_decode(blocksHelper::getBlockParameter($blockid, 'tm_parts'), true);
 $tm   = blocksHelper::group_by_key($parts);

@@ -10,7 +10,10 @@
 // No direct access.
 defined('_JEXEC') or die;
 
-jimport('joomla.application.component.modeladmin');
+use Joomla\CMS\Factory;
+use Joomla\CMS\Form\Form;
+use Joomla\Registry\Registry;
+use Joomla\Utilities\ArrayHelper;
 
 /**
  * Jpframework model.
@@ -49,7 +52,7 @@ class JpframeworkModelBlock extends JModelAdmin
 	public function getForm($data = array(), $loadData = true)
 	{
 		// Initialise variables.
-		$app	= JFactory::getApplication();
+		$app	= Factory::getApplication();
 
 		// Get the form.
 		$form = $this->loadForm('com_jpframework.block', 'block', array('control' => 'jform', 'load_data' => $loadData));
@@ -61,46 +64,35 @@ class JpframeworkModelBlock extends JModelAdmin
 		return $form;
 	}
 
-	function isMedia($block) {
+	function renderFieldSet ($block, $name) 
+	{
+		$id = Factory::getApplication()->input->get('id', 0);
+		$params = '';
+		if($id != 0) {
+			$db = Factory::getDbo();
+			$db->setQuery('SELECT params FROM `#__jpframework_blocks` WHERE id = '.$id);
+			$registry = new JRegistry;
+			$registry->loadString($db->loadResult());
+			$params = $registry->toArray();
+		}
+		// create new JForm object
 		$form = new JForm('block');
-		$form->loadFile(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_jpframework'.DS.'blocks'.DS.$block.DS.'block.xml');
-		$fields = $form->getFieldset('block');
+		//overiide if exists
+		$path1 = JPATH_ROOT.DS.'templates'.DS.'jpframework'.DS.'html'.DS.'blocks'.DS.$block.DS.'block.xml';
+		$path2 = JPATH_ADMINISTRATOR.DS.'components'.DS.'com_jpframework'.DS.'blocks'.DS.$block.DS.'block.xml';
+		if (is_file($path1)) {
+			$form->loadFile($path1);
+		} else {
+			$form->loadFile($path2);
+		}
+		$fields = $form->getFieldset($name);
+		$html = array();
 		foreach ($fields as $field)
 		{
-			if($field->type == 'Media') { return true; }
+			$html[] = $form->renderField($field->name, '', $params[$field->name]);
 		}
 
-		return false;
-	}
-
-	function renderFieldSet ($block, $name) {
-			$id = JRequest::getInt('id', 0, 'get');
-			if($id != 0) {
-				$db = JFactory::getDbo();
-				$db->setQuery('select params from #__jpframework_blocks where id = '.$id);
-				$registry = new JRegistry;
-				$registry->loadString($db->loadResult());
-				$params = $registry->toArray();
-			}
-			// create new JForm object
-			$form = new JForm('block');
-			//overiide if exists
-			$path1 = JPATH_ROOT.DS.'templates'.DS.'jpframework'.DS.'html'.DS.'blocks'.DS.$block.DS.'block.xml';
-			$path2 = JPATH_ADMINISTRATOR.DS.'components'.DS.'com_jpframework'.DS.'blocks'.DS.$block.DS.'block.xml';
-			if (is_file($path1)) {
-				$form->loadFile($path1);
-			} else {
-				$form->loadFile($path2);
-			}
-			$fields = $form->getFieldset($name);
-			$html = array();
-			foreach ($fields as $field)
-			{
-				$html[] = $form->renderField($field->name, '', $params[$field->name]);
-				//$html[] = '<script>jQuery("#'.$field->name.'").val("'.$params[$field->name].'");</script>';
-			}
-
-			return implode('', $html);
+		return implode('', $html);
 	}
 
 	/**
@@ -112,7 +104,8 @@ class JpframeworkModelBlock extends JModelAdmin
 	protected function loadFormData()
 	{
 		// Check the session for previously entered form data.
-		$data = JFactory::getApplication()->getUserState('com_jpframework.edit.block.data', array());
+		$app = Factory::getApplication();
+		$data = $app->getUserState('com_jpframework.edit.block.data', array());
 
 		if (empty($data)) {
 			$data = $this->getItem();
@@ -154,8 +147,8 @@ class JpframeworkModelBlock extends JModelAdmin
 
 			// Set ordering to the last item if not set
 			if (@$table->ordering === '') {
-				$db = JFactory::getDbo();
-				$db->setQuery('SELECT MAX(ordering) FROM #__jpframework_blocks');
+				$db = Factory::getDbo();
+				$db->setQuery('SELECT MAX(ordering) FROM `#__jpframework_blocks`');
 				$max = $db->loadResult();
 				$table->ordering = $max+1;
 			}
@@ -171,48 +164,45 @@ class JpframeworkModelBlock extends JModelAdmin
 	{
 		$row =& $this->getTable();
 
-		$post_data  = JRequest::get( 'post' );
-   		$data       = $post_data["jform"];
-		$data['id'] = JRequest::getInt('id', 0, 'get');
+		$data  = Factory::getApplication()->input->post->get('jform', array(), 'array');
+		
+		$form = new JForm('block');
+		$form->loadFile(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_jpframework'.DS.'blocks'.DS.$data['type'].DS.'block.xml');
 
-		if($data['id'] != 0) {
-			$form = new JForm('block');
-			$form->loadFile(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_jpframework'.DS.'blocks'.DS.$data['type'].DS.'block.xml');
-
-			//block fieldset
-			$fields = $form->getFieldset('block');
-			$values = array();
-			foreach($fields as $field) {
-				$values[$field->name] = $_POST[$field->name];
-			}
-
-			//styles fieldset
-			$fields = $form->getFieldset('styles');
-			foreach($fields as $field) {
-				$values[$field->name] = $_POST[$field->name];
-			}
-
-			$registry = new JRegistry;
-	    	$registry->loadArray($values);
-	    	$row->params = (string) $registry;
-
-	    	$menuitems = array();
-	    	foreach($data['menuitem'] as $k) {
-	    		$menuitems[] = $k;
-	    	}
-
-	    	$data['menuitem'] = implode(';', $menuitems);
-	    	$row->title    = $_POST['title'];
-	    	$row->uniqid   = $_POST['uniqid'];
-
-			if (!$row->bind( $data )) {
-				return JError::raiseWarning( 500, $row->getError() );
-			}
-
-			if (!$row->store()) {
-				return JError::raiseError(500, $row->getError() );
-			}
+		//block fieldset
+		$fields = $form->getFieldset('block');
+		$values = array();
+		foreach($fields as $field) {
+			$values[$field->name] = $_POST[$field->name];
 		}
+
+		//styles fieldset
+		$fields = $form->getFieldset('styles');
+		foreach($fields as $field) {
+			$values[$field->name] = $_POST[$field->name];
+		}
+
+		$registry = new JRegistry;
+		$registry->loadArray($values);
+		$data['params'] = (string) $registry;
+
+		$menuitems = array();
+		foreach($data['menuitem'] as $k) {
+			$menuitems[] = $k;
+		}
+
+		$data['menuitem'] = implode(';', $menuitems);
+
+		if (!$row->bind( $data )) {
+			JFactory::getApplication()->enqueueMessage($row->getError(), 'error');
+			return false;
+		}
+
+		if (!$row->store()) {
+			JFactory::getApplication()->enqueueMessage($row->getError(), 'error');
+			return false;
+		}
+		
 		return true;
 
 	}
@@ -231,22 +221,22 @@ class JpframeworkModelBlock extends JModelAdmin
 	{
 		$db = $this->getDbo();
 		foreach($pks as $id) {
-			$db->setQuery('select * from #__jpframework_blocks where id = '.$id);
-			$row 								= $db->loadObject();
-			$item 							= new stdClass();
-			$item->title 				= $row->title;
+			$db->setQuery('SELECT * FROM `#__jpframework_blocks` WHERE id = '.(int)$id);
+			$row 					= $db->loadObject();
+			$item 					= new stdClass();
+			$item->title 			= $row->title;
 			$item->uniqid 			= $row->uniqid;
 			$item->ordering 		= $row->ordering;
-			$item->state 				= 0;
-			$item->checked_out 	= $row->checked_out;
+			$item->state 			= 0;
+			$item->checked_out 		= $row->checked_out;
 			$item->checked_out_time = $row->checked_out_time;
-			$item->created_by 	= $row->created_by;
-			$item->type 				= $row->type;
+			$item->created_by 		= $row->created_by;
+			$item->type 			= $row->type;
 			$item->position 		= $row->position;
 			$item->language 		= $row->language;
 			$item->menuitem 		= $row->menuitem;
 			$item->params 			= $row->params;
-			$response 					= $db->insertObject('#__jpframework_blocks', $item, 'id');
+			$response 				= $db->insertObject('#__jpframework_blocks', $item, 'id');
 		}
 		return $response;
 	}

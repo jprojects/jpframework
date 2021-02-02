@@ -10,7 +10,7 @@
 // No direct access
 defined('_JEXEC') or die;
 
-$blockid = JRequest::getVar('blockid');
+$blockid    = JFactory::getApplication()->input->get('blockid');
 blocksHelper::getBlockParameter($blockid, 'effect', '') == '' ? $effect = '' : $effect = 'class="wow '.$effect.'"';
 ?>
 

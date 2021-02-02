@@ -10,7 +10,7 @@
 // restricted access
 defined('_JEXEC') or die('Restricted access');
 require_once('helper.php');
-$blockid = JRequest::getVar('blockid');
+$blockid    = JFactory::getApplication()->input->get('blockid');
 blocksHelper::loadCss('https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css');
 blocksHelper::loadCss('https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css');
 blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blocks/news/assets/css/news.css');

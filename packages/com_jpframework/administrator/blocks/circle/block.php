@@ -11,7 +11,7 @@
 // No direct access
 defined('_JEXEC') or die;
 
-$blockid = JRequest::getVar('blockid');
+$blockid    = JFactory::getApplication()->input->get('blockid');
 blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blocks/circle/assets/css/circle.css');
 blocksHelper::loadJs(JURI::root().'administrator/components/com_jpframework/blocks/circle/assets/js/circle.js');
 

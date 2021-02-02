@@ -14,7 +14,7 @@ JHtml::_('jquery.framework');
 $lang = JFactory::getLanguage();
 $locales = $lang->getLocale();
 
-$blockid  = JRequest::getVar('blockid');
+$blockid    = JFactory::getApplication()->input->get('blockid');
 $heading  = blocksHelper::getBlockParameter($blockid, 'heading');
 $fluid    = blocksHelper::getBlockParameter($blockid, 'fluid', 1);
 $zoom     = blocksHelper::getBlockParameter($blockid, 'zoom', '9');

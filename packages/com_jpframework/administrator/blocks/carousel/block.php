@@ -10,10 +10,10 @@
 // restricted access
 defined('_JEXEC') or die('Restricted access');
 
-$blockid 	   	= JRequest::getVar('blockid');
+$blockid    = JFactory::getApplication()->input->get('blockid');
 blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blocks/carousel/assets/css/carousel.css');
-$play         = blocksHelper::getBlockParameter($blockid,'carousel_play', 0);
-$fluid        = blocksHelper::getBlockParameter($blockid, 'fluid', '');
+blocksHelper::getBlockParameter($blockid,'carousel_play') == 0 ? $play = "false" : $play = blocksHelper::getBlockParameter($blockid,'carousel_play');
+$fluid    = blocksHelper::getBlockParameter($blockid, 'fluid', '');
 $cid 			    = blocksHelper::getBlockParameter($blockid,'carousel_id');
 $items 		  	= json_decode(blocksHelper::getBlockParameter($blockid, 'list_images'), true);
 $controls 		= blocksHelper::getBlockParameter($blockid, 'carousel_controls', 1);
@@ -72,7 +72,7 @@ endforeach; ?>
 
 <section class="<?= $fluid; ?>" id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
 
-	<div class="carousel fade-carousel slide carousel-<?= $blockid; ?> <?= $classes; ?>" data-ride="carousel" sata-interval="<?= $play; ?>" id="<?= $cid; ?>">
+	<div class="carousel fade-carousel slide carousel-<?= $blockid; ?> <?= $classes; ?>" data-ride="carousel" id="<?= $cid; ?>">
 
 	  	<?php if(count($data) > 1 && $indicators == 1) : ?>
 		<ol class="carousel-indicators">

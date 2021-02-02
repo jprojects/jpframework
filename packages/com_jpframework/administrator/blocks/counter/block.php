@@ -11,23 +11,23 @@
 // No direct access
 defined('_JEXEC') or die;
 
-$blockid = JRequest::getVar('blockid');
+$blockid    = JFactory::getApplication()->input->get('blockid');
+
+JHtml::_('jquery.framework');
 blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blocks/counter/assets/css/counter.css');
 blocksHelper::loadJs(JURI::root().'administrator/components/com_jpframework/blocks/counter/assets/js/counter.js');
 
 
-$uniqid = blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid);
-$heading = blocksHelper::getBlockParameter($blockid, 'counter_heading', '');
+$uniqid 	= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid);
+$classes 	= blocksHelper::getBlockParameter($blockid, 'classes', '');
+$heading 	= blocksHelper::getBlockParameter($blockid, 'counter_heading', '');
 $subheading = blocksHelper::getBlockParameter($blockid, 'counter_subheading', '');
-
-$counters   = json_decode(blocksHelper::getBlockParameter($blockid, 'list_counter'), true);
-$items   = blocksHelper::group_by_key($counters);
-
+$counters   = (array)blocksHelper::getBlockParameter($blockid, 'list_counter');
 ?>
 
-<section id="<?= $uniqid; ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
+<section id="<?= $uniqid; ?>" class="<?= $classes; ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
 
-	<div class="details-cad my-5">
+	<div class="details-card">
 		<div class="container py-5">
 		
 		   <?php if(!empty($heading)) : ?> 
@@ -41,14 +41,14 @@ $items   = blocksHelper::group_by_key($counters);
 
 			<div class="row text-center">        
 
-            	<?php if(count($items) > 0) :  
-				foreach($items as $k => $v): ?>
+            	<?php if(count($counters) > 0) :  
+				foreach($counters as $counter): ?>
 				<div class="col">
-                <div class="counter">
-      			<i class="fa <?=$v[0]?> fa-2x"></i>
-     		    <h2 class="timer count-title count-number" data-to="<?=$v[3]?>" data-speed="<?=$v[2]?>"></h2>
-   				<p class="count-text "><?=$v[1]?></p>
-    			</div>
+					<div class="counter">
+						<i class="<?= $counter['counter_icon']; ?> fa-2x"></i>
+						<h2 class="timer count-title count-number" data-to="<?= $counter['counter_end']; ?>" data-speed="<?= $counter['counter_velocity']; ?>"></h2>
+						<p class="count-text "><?= $counter['counter_title']; ?></p>
+					</div>
 				</div>
 				<?php 
 				endforeach;

@@ -11,7 +11,7 @@
 // No direct access
 defined('_JEXEC') or die;
 
-$blockid = JRequest::getVar('blockid');
+$blockid    = JFactory::getApplication()->input->get('blockid');
 jHtml::_('jquery.framework');
 blocksHelper::loadJs('https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js');
 $uniqid = blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid);

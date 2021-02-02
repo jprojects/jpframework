@@ -18,7 +18,7 @@ class blocksHelper {
 	public static function getBlockParameter($id, $field, $default="") {
 		
 		$db = JFactory::getDbo();
-		$db->setQuery('select params from #__jpframework_blocks where id = '.$id);
+		$db->setQuery('SELECT params FROM `#__jpframework_blocks` WHERE id = '.$id);
 		$registry = new JRegistry;
 		$registry->loadString($db->loadResult());
 		$params = $registry->toArray();
@@ -42,26 +42,6 @@ class blocksHelper {
 	public static function loadJs($file) {
 		$document = JFactory::getDocument();
 		$document->addScript($file);
-	}
-	
-	/**
-	 * Method to order the repetable fields data
-     * @access public
-     * @param array
-     * @return grouped array
-    */
-    public static function group_by_key($array) 
-	{
-		$result = array();
-
-		foreach ($array as $sub) 
-		{
-		    foreach ($sub as $k => $v) 
-		    {
-		        $result[$k][] = $v;
-		    }
-		}
-		return $result;
 	}
 	
 	/**

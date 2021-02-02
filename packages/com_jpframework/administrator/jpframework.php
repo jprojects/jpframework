@@ -12,7 +12,7 @@
 defined('_JEXEC') or die;
 
 // Report simple running errors
-error_reporting(E_ERROR | E_WARNING | E_PARSE);
+error_reporting(E_ERROR | E_PARSE);
 
 // Access check.
 if (!JFactory::getUser()->authorise('core.manage', 'com_jpframework')) 
@@ -24,6 +24,7 @@ if(!defined('DS')) { define('DS', DIRECTORY_SEPARATOR); }
 
 //import Helper
 require_once(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_jpframework' . DS . 'helpers' . DS . 'blocks.php');
+
 // Include dependancies
 jimport('joomla.application.component.controller');
 

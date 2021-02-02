@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <form>
-
 	<fieldset name="block">
 		<field 
 			name="title" 
@@ -31,6 +30,13 @@
 			description="Uniqid is used as the block section id" 
 		/>
 		<field 
+			name="classes" 
+			type="text" 
+			default="" 
+			label="Classes" 
+			description="Additional classes to this section block." 
+		/>
+		<field 
 			name="cards_heading" 
 			type="text" 
 			default="" 
@@ -57,19 +63,14 @@
 		</field>
 		<field 
 			name="list_cards"
-			type="repeatable"
+			type="subform"
 			icon="list"
 			description="Cards"
 			label="Cards"
-			default='{
-				"card_img":[""],
-				"card_img_alt":[""],
-				"card_img_heading":[""],
-				"card_desc_heading":[""],
-				"card_desc_text":[""],
-				"card_href":[""],
-				"card_href_text":[""]}'>
-			<fieldset hidden="true" name="list_items_modal" repeat="true">
+			multiple="true"
+			min="1"
+			max="12">
+			<form>
 				<field 
 					name="card_img" 
 					type="media" 
@@ -119,16 +120,10 @@
 					label="Card button text" 
 					description="" 
 				/>
-			</fieldset>
+			</form>
 		</field>
 	</fieldset>
 	<fieldset name="styles">
-		<field 
-			type="spacer" 
-			name="spacer1" 
-			class="text"
-			label="COM_JPFRAMEWORK_SYLES_FIELD"
-		/>
 		<field 
 			name="css" 
 			type="textarea" 
