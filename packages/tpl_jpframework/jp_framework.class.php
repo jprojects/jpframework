@@ -75,7 +75,7 @@ class jpf  extends blocksHelper
 
       //add stylesheets
       $doc->addStylesheet('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css');
-    	$doc->addStylesheet('templates/jpframework/css/jpframework.css');
+    	$doc->addStylesheet(JURI::base().'templates/jpframework/css/jpframework.css');
     	if($icon_font == 'fontawesome') {
         $doc->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css');
         $doc->addScript('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/js/all.min.js');
@@ -119,7 +119,7 @@ class jpf  extends blocksHelper
     public static function getSiteName()
     {
         $app = JFactory::getApplication();
-        return $app->getCfg('sitename', 'JP Framework by Afi informàtica');
+        return $app->getCfg('sitename');
     }
 
     /**

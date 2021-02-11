@@ -127,28 +127,6 @@ class com_jpframeworkInstallerScript
    */
   public function postflight($type, $parent)
   {
-      $html = '';
-      $html .= '<p>' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_TEXT') . '</p>';
-      $html .= '<form action="index.php?option=com_jpframework&task=legal" method="post">';
-      $html .= '<div class="form-group">';
-      $html .= '<input type="text" class="form-control" name="nom" placeholder="' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_NAME') . '">';
-      $html .= '</div>';
-    	$html .= '<div class="form-group">';
-    	$html .= '<input type="text" class="form-control" name="empresa" placeholder="' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_COMPANY') . '">';
-    	$html .= '</div>';
-    	$html .= '<div class="form-group">';
-    	$html .= '<input type="text" class="form-control" name="nif" placeholder="NIF">';
-    	$html .= '</div>';
-    	$html .= '<div class="form-group">';
-    	$html .= '<input type="text" class="form-control" name="adreca" placeholder="' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_ADDRESS') . '">';
-    	$html .= '</div>';
-    	$html .= '<div class="form-group">';
-    	$html .= '<input type="text" class="form-control" name="email" placeholder="' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_EMAIL') . '">';
-    	$html .= '</div>';
-    	$html .= '<div class="form-group">';
-    	$html .= '<input type="text" class="form-control" name="jutjats" placeholder="COM_JPFRAMEWORK_POSTFLIGHT_TOS_EMAIL">';
-    	$html .= '</div>';
-      $html .= '<button class="btn btn-primary" type="submit">' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_TOS_SUBMIT') . '</button>';
-      $html .= '</form>';
+
   }
 }
