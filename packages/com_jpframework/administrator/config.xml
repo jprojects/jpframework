@@ -52,6 +52,18 @@
       	stripext="true"
       	hide_default="true"
       />
+	  <field
+      	name="footer"
+      	type="filelist"
+      	default="footer1"
+      	label="COM_JPFRAMEWORK_FOOTER_LABEL"
+      	description="COM_JPFRAMEWORK_FOOTER_DESC"
+      	directory="templates/jpframework/layouts/footer"
+      	filter=""
+      	exclude="index.html"
+      	stripext="true"
+      	hide_default="true"
+      />
       <field
       	name="front_component"
       	type="radio"

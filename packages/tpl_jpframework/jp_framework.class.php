@@ -74,7 +74,7 @@ class jpf  extends blocksHelper
       $doc        = JFactory::getDocument();
 
       //add stylesheets
-      $doc->addStylesheet('https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css');
+      $doc->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap.min.css');
     	$doc->addStylesheet(JURI::base().'templates/jpframework/css/jpframework.css');
     	if($icon_font == 'fontawesome') {
         $doc->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css');
