@@ -33,7 +33,8 @@ error_reporting(E_ERROR | E_PARSE); // Report simple running errors
 
 <?= jpf::getLayout(jpf::getparameter('layout', 'clear')); ?>
 
+<jdoc:include type="modules" name="debug" style="none" />
+
 </body>
 	<!-- Page load in <?= microtime(true) - $_SERVER['REQUEST_TIME_FLOAT']; ?> seconds -->
-    <jdoc:include type="modules" name="debug" style="none" />
 </html>              

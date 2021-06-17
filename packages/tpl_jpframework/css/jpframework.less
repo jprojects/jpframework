@@ -1,5 +1,6 @@
 /* Less vars
  * @body_font
+ * @h_font
  * @body_fontsize
  * @body_fcolor
  * @body_color
@@ -30,6 +31,8 @@ body {
   color: @body_fcolor;
   background-color: @body_color;
 }
+
+h1, h2, h3, h4, h5, h6 { font-family: @h_font, Arial, sans-serif; }
 
 a {
   color: @link_color;
@@ -176,6 +179,13 @@ a.pagenav:hover {
 }
 .jpfblock header {
     margin-bottom: 30px;
+}
+
+/* Modules */
+
+.card-header {
+  background: @link_color;
+  color: #fff;
 }
 
 /* Menu */

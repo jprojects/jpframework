@@ -33,9 +33,9 @@ class com_jpframeworkInstallerScript
 		$post->state 	= 1;
 		$post->catid 	= 2;
 		$post->created 	= date('Y-m-d H:i:s');
-		$post->created_by = 928;
+		//$post->created_by = 928;
     $post->modified 	= date('Y-m-d H:i:s');
-    $post->modified_by = 928;
+    //$post->modified_by = 928;
     $post->checked_out_time 	= date('Y-m-d H:i:s');
     $post->publish_up 	= date('Y-m-d H:i:s');
     $post->images 	= '';
@@ -73,60 +73,60 @@ class com_jpframeworkInstallerScript
 		$db->updateObject('#__template_styles', $tmpl, 'id');
 	}
 
-    /**
-     * This method is called after a component is uninstalled.
-     *
-     * @param  \stdClass $parent - Parent object calling this method.
-     *
-     * @return void
-     */
-    public function uninstall($parent)
-    {
-        echo '<p>' . JText::_('COM_JPFRAMEWORK_UNINSTALL_TEXT') . '</p>';
-    }
+  /**
+   * This method is called after a component is uninstalled.
+   *
+   * @param  \stdClass $parent - Parent object calling this method.
+   *
+   * @return void
+   */
+  public function uninstall($parent)
+  {
+      echo '<p>' . JText::_('COM_JPFRAMEWORK_UNINSTALL_TEXT') . '</p>';
+  }
 
-    /**
-     * This method is called after a component is updated.
-     *
-     * @param  \stdClass $parent - Parent object calling object.
-     *
-     * @return void
-     */
-    public function update($parent)
-    {
-        //echo '<p>' . JText::sprintf('COM_JPFRAMEWORK_UPDATE_TEXT', $parent->get('manifest')->version) . '</p>';
-    }
+  /**
+   * This method is called after a component is updated.
+   *
+   * @param  \stdClass $parent - Parent object calling object.
+   *
+   * @return void
+   */
+  public function update($parent)
+  {
+      //echo '<p>' . JText::sprintf('COM_JPFRAMEWORK_UPDATE_TEXT', $parent->get('manifest')->version) . '</p>';
+  }
 
-    /**
-     * Runs just before any installation action is preformed on the component.
-     * Verifications and pre-requisites should run in this function.
-     *
-     * @param  string    $type   - Type of PreFlight action. Possible values are:
-     *                           - * install
-     *                           - * update
-     *                           - * discover_install
-     * @param  \stdClass $parent - Parent object calling object.
-     *
-     * @return void
-     */
-    public function preflight($type, $parent)
-    {
-        //echo '<p>' . JText::_('COM_JPFRAMEWORK_PREFLIGHT_' . $type . '_TEXT') . '</p>';
-    }
+  /**
+   * Runs just before any installation action is preformed on the component.
+   * Verifications and pre-requisites should run in this function.
+   *
+   * @param  string    $type   - Type of PreFlight action. Possible values are:
+   *                           - * install
+   *                           - * update
+   *                           - * discover_install
+   * @param  \stdClass $parent - Parent object calling object.
+   *
+   * @return void
+   */
+  public function preflight($type, $parent)
+  {
+      //echo '<p>' . JText::_('COM_JPFRAMEWORK_PREFLIGHT_' . $type . '_TEXT') . '</p>';
+  }
 
-    /**
-     * Runs right after any installation action is preformed on the component.
-     *
-     * @param  string    $type   - Type of PostFlight action. Possible values are:
-     *                           - * install
-     *                           - * update
-     *                           - * discover_install
-     * @param  \stdClass $parent - Parent object calling object.
-     *
-     * @return void
-     */
-    function postflight($type, $parent)
-    {
-        //echo '<p>' . JText::_('COM_JPFRAMEWORK_POSTFLIGHT_' . $type . '_TEXT') . '</p>';
-    }
+  /**
+   * Runs right after any installation action is preformed on the component.
+   *
+   * @param  string    $type   - Type of PostFlight action. Possible values are:
+   *                           - * install
+   *                           - * update
+   *                           - * discover_install
+   * @param  \stdClass $parent - Parent object calling object.
+   *
+   * @return void
+   */
+  public function postflight($type, $parent)
+  {
+
+  }
 }

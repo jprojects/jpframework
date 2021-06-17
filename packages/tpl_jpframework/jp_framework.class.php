@@ -33,8 +33,8 @@ class jpf  extends blocksHelper
         }
         if (is_file($path)) {
             ob_start();
-    		include $path;
-			$html = ob_get_clean();
+    		    include $path;
+			      $html = ob_get_clean();
        	}
 
         return $html;
@@ -68,13 +68,15 @@ class jpf  extends blocksHelper
     	$params = JComponentHelper::getParams( 'com_jpframework' );
 
     	$body_font 	= $params->get('body_font');
+      $h_font 	  = $params->get('h_font');
     	$icon_font 	= $params->get('icon_font', 'fontawesome');
       $unload 	  = $params->get('unload');
       
       $doc        = JFactory::getDocument();
 
       //add stylesheets
-      $doc->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap.min.css');
+      $doc->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css');
+      $doc->addScript('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js');
     	$doc->addStylesheet(JURI::base().'templates/jpframework/css/jpframework.css');
     	if($icon_font == 'fontawesome') {
         $doc->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css');
@@ -85,6 +87,7 @@ class jpf  extends blocksHelper
     	}
     	//ToDo::permitir multiples fuentes a cargar
     	$doc->addStylesheet('//fonts.googleapis.com/css?family='.str_replace(' ', '+', $body_font).':300italic,400italic,700italic,400,300,700');
+      $doc->addStylesheet('//fonts.googleapis.com/css?family='.str_replace(' ', '+', $h_font).':300italic,400italic,700italic,400,300,700');
 
     	//unload scripts from configuration..
     	if($unload != '') {
@@ -181,19 +184,11 @@ class jpf  extends blocksHelper
     public static function getArticleByLanguage($type)
     {
 		  $lang = JFactory::getLanguage()->getTag();
-		  $articles = json_decode(jpf::getparameter($type));
+		  $articles = jpf::getparameter($type);
 		  foreach ($articles as $art)
       {
-			  foreach ($art as $k => $v)
-			  { 
-				  $result[$k][] = $v;
-			  }
+			  if($art->language == $lang) { return $art->article; }
       }
-
-	  	foreach ($result as $index=>$value)
-		  {
-			  if($value[0] == $lang) { return $value[1]; }
-		  }
     }
 
     /**
@@ -211,7 +206,7 @@ class jpf  extends blocksHelper
 			  $html[] = '<a class="mx-1" target="_blank" href="'.$item->social_link.'"><i title="'.$item->social_name.'" class="'.$item->social_icon.'"></i></a>';
 		  }
 
-		return implode($html);
+		  return implode($html);
     }
 
     /**
@@ -224,17 +219,20 @@ class jpf  extends blocksHelper
     {
     	$db   = JFactory::getDbo();
     	$lang = JFactory::getLanguage();
-		  $app = JFactory::getApplication();
+		  $app  = JFactory::getApplication();
+
     	$db->setQuery(
-    			'SELECT menuitem,id,type '.
+    			'SELECT `menuitem`, `id`, `type` '.
     			'FROM `#__jpframework_blocks` '.
     			'WHERE position = '.$db->quote($position).' '.
-    			'AND state = 1 '.
-    			'AND language = '.$db->quote($lang->getTag()).' '.
-    			'ORDER BY ordering ASC'
+    			'AND `state` = 1 '.
+    			'AND `language` = '.$db->quote($lang->getTag()).' '.
+    			'ORDER BY `ordering` ASC'
 		  );
     	$rows = $db->loadObjectList();
+
 		  ob_start();
+
 		  foreach($rows as $row) {
 	    	$itemid = $app->getMenu()->getActive()->id;
 	    	$menuitems = explode(';', $row->menuitem);
@@ -256,6 +254,7 @@ class jpf  extends blocksHelper
 				  }
 			  }
     	}
+
 		  $html = ob_get_clean();
     	return $html;
     }

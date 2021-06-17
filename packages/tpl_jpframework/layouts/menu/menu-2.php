@@ -12,17 +12,16 @@
 
 ?>
 
-<!-- menu 2  example: http://getbootstrap.com/docs/4.1/examples/pricing/ -->
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 bg-jp">
-      <div class="my-0 mr-md-auto font-weight-normal">
-      <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
-        <img class="logo-img" src="<?= jpf::getparameter('topmenu-logo'); ?>" alt="<?= jpf::getSitename(); ?>">
+<header class="d-flex flex-wrap justify-content-center py-3">
+    <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
+          <img class="logo-img" src="<?= JURI::root().jpf::getparameter('topmenu-logo'); ?>" alt="<?= jpf::getSitename(); ?>">
         <?php else : ?>
-        <?= jpf::getSitename(); ?>
-       <?php endif; ?>
-      </div>
-      <nav class="my-2 my-md-0 mr-md-3">
-        <jdoc:include type="modules" name="jpf-menu" />
-      </nav>
-      <a class="btn btn-outline-primary" href="#">Sign up</a>
-</div>
+          <?= jpf::getSitename(); ?>
+        <?php endif; ?>
+    </a>
+
+    <ul class="nav nav-pills d-flex align-items-center">
+      <jdoc:include type="modules" name="jpf-menu" />
+    </ul>
+  </header>

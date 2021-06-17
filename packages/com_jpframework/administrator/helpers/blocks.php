@@ -43,6 +43,24 @@ class blocksHelper {
 		$document = JFactory::getDocument();
 		$document->addScript($file);
 	}
+
+	public static function groupByKey($items)
+	{
+		$result = array();
+
+		foreach ($items as $item)
+      		{
+			foreach ($item as $k => $v)
+		    {
+		    	
+		        	$result[$k][] = $v;
+		        
+		    }
+      		}
+
+		return $result;
+
+	}
 	
 	/**
 	 * method to get component parameters

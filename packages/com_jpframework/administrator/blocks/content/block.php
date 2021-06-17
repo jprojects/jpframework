@@ -22,12 +22,12 @@ $video    = blocksHelper::getBlockParameter($blockid,'content_video');
 
 if($position == 'right') {
 	$col  = 'col-xs-12 col-md-6';
-	$pos  = 'float-right';
+	$pos  = 'order-1';
 	$col2 = 'col-xs-12 col-md-6';
 	$pos2 = 'float-left';
 } elseif($position == 'left') {
 	$col  = 'col-xs-12 col-md-6';
-	$pos2 = 'float-right';
+	$pos2 = '';
 	$col2 = 'col-xs-12 col-md-6';
 	$pos  = 'float-left';
 } else {
@@ -52,14 +52,14 @@ if($position == 'right') {
 			<?php if($position != '') : ?>
 			<div class="<?= $col; ?>  <?= $pos; ?> <?= $efecte; ?>">
 				<?php if($video == '') : ?>
-				<img src="<?= blocksHelper::getBlockParameter($blockid,'content_img', ''); ?>" alt="<?= blocksHelper::getBlockParameter($blockid,'content_alt', ''); ?>" class="featurette-image img-fluid mx-auto">
+				<img src="<?= JURI::root().blocksHelper::getBlockParameter($blockid,'content_img', ''); ?>" alt="<?= blocksHelper::getBlockParameter($blockid,'content_alt', ''); ?>" class="featurette-image img-fluid mx-auto">
 				<?php else : ?>
 				<div class='embed-container'><iframe src="<?= $video; ?>" frameborder="0" allowfullscreen></iframe></div>
 				<?php endif; ?>
 			</div>
 			<?php endif; ?>
 			<div class="<?= $col2; ?> <?= $pos2; ?>">
-		     	<div class="lead"><?= blocksHelper::getBlockParameter($blockid, 'content_text'); ?></div>
+		     	<div><?= blocksHelper::getBlockParameter($blockid, 'content_text'); ?></div>
 			</div>
 		</div>
 

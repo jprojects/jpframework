@@ -10,30 +10,48 @@
 // no direct access
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Multilanguage;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Layout\LayoutHelper;
 use Joomla\CMS\Router\Route;
+use Joomla\CMS\Session\Session;
 
-HTMLHelper::_('behavior.formvalidator');
+HTMLHelper::_('behavior.multiselect');
 HTMLHelper::_('behavior.keepalive');
+HTMLHelper::_('bootstrap.framework');
 
 $model  = $this->getModel();
-$app    = JFactory::getApplication();
-$user	= JFactory::getUser();
+$app    = Factory::getApplication();
+$user	= Factory::getUser();
 $userId	= $user->get('id');
 $this->sidebar .= $this->extra_sidebar;
 
-$listOrder	= $this->state->get('list.ordering');
-$listDirn	= $this->state->get('list.direction');
-$canOrder	= $user->authorise('core.edit.state', 'com_jpframework');
-$saveOrder	= $listOrder == 'a.ordering';
-if ($saveOrder)
+$listOrder = $this->escape($this->state->get('list.ordering'));
+$listDirn  = $this->escape($this->state->get('list.direction'));
+$saveOrder = $listOrder == 'a.ordering';
+
+if (!empty($this->items))
 {
-	$saveOrderingUrl = 'index.php?option=com_jpframework&task=jpf.saveOrderAjax&tmpl=component';
-	JHtml::_('sortablelist.sortable', 'blocksList', 'adminForm', strtolower($listDirn), $saveOrderingUrl);
+	$saveOrderingUrl = 'index.php?option=com_jpframework&task=blocks.saveOrderAjax&tmpl=component&' . Session::getFormToken() . '=1';
+	HTMLHelper::_('draggablelist.draggable');
 }
 ?>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(event) { 
+var loader = document.getElementById('loader');
+loader.onclick = function(e) {
+	e.preventDefault();
+	var href   = loader.getAttribute('data-url');
+	var target = loader.getAttribute('data-target');
+	document.getElementById('frame').src = href;
+	var myModal = new bootstrap.Modal(document.getElementById(target));
+	myModal.show();
+}
+});
+</script>
 
 <form action="<?= JRoute::_('index.php?option=com_jpframework&view=blocks'); ?>" method="post" name="adminForm" id="adminForm">
 
@@ -49,19 +67,26 @@ if ($saveOrder)
 		</div>
 
 		
-		<table class="gridly ui-sortable" id="blocksList">
-			<tbody>
+		<table class="gridly" id="blocksList">
+			<tbody class="js-draggable" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="<?php echo strtolower($listDirn); ?>" data-nested="true">
 			<?php
 			if(count($this->items)) :
 			$i = 0;
 			?>
 			<?php foreach($this->items as $item) : ?>
-				<tr class="brick large <?= $item->state == 1 ? 'published' : 'unpublished'; ?>" data-id="<?= $item->id; ?>"  <?php if($i > 0) : ?>style="border-top:#ccc 2px dashed;"<?php endif; ?>>
-					<td>
+				<?php
+				$canCreate  = $user->authorise('core.create',     'com_jpframework');
+				$canEdit    = $user->authorise('core.edit',       'com_jpframework');
+				$canCheckin = $user->authorise('core.manage',     'com_jpframework');
+				$canChange  = $user->authorise('core.edit.state', 'com_jpframework') && $canCheckin;
+				?>
+				<tr class="brick large <?= $item->state == 1 ? 'published' : 'unpublished'; ?>" data-id="<?= $item->id; ?>"  <?php if($i > 0) : ?>style="border-top:#ccc 2px dashed;color:#000;"<?php endif; ?>>
+					<td style="position:relative;">
 					<input type="checkbox" class="cb" id="cb<?= $i; ?>" name="cid[]" value="<?= $item->id; ?>" onclick="Joomla.isChecked(this.checked);" />
 					<input type="text" style="display:none" name="order[]" size="5" value="<?= $item->ordering;?>" class="width-20 text-area-order " />
 					<div class="brick-msg">
-						<?= strtoupper($item->title); ?><br><br>
+						<?php $params = json_decode($item->params); ?>
+						<b><?= strtoupper($params->title); ?></b><br><br>
 						<?= strtoupper($item->type); ?><br><br>
 						<?= $item->position != '' ? '('.$item->position.')' : '(No position)'; ?><br><br>
 						<?= $item->state == 1 ? 'Published' : 'Unpublished'; ?><br><br>
@@ -75,20 +100,20 @@ if ($saveOrder)
 							<span class="icon-delete hasTip" aria-hidden="true" title="Delete"> </span>
 						</a>
 						<?php if($item->state != 1) : ?>
-						<a style="padding-top:10px;" href="javascript:void(0);" onclick="return listItemTask('cb<?= $i; ?>','jpf.publish')">
+						<a style="padding-top:10px;" href="<?= JURI::root(); ?>administrator/index.php?option=com_jpframework&task=blocks.publish&cid[]=<?= $item->id; ?>&<?= JSession::getFormToken(); ?>=1">
 							<span class="icon-lock hasTip" aria-hidden="true" title="Publish"></span>
 						</a>
 						<a style="padding-top:10px;" href="#">
 							<span class="icon-eye-close disabled hasTip" aria-hidden="true" title="Preview"></span>
 						</a>
 						<?php else : ?>
-						<a style="padding-top:10px;" href="javascript:void(0);" onclick="return listItemTask('cb<?= $i; ?>','jpf.unpublish')">
+						<a style="padding-top:10px;" href="<?= JURI::root(); ?>administrator/index.php?option=com_jpframework&task=blocks.unpublish&cid[]=<?= $item->id; ?>&<?= JSession::getFormToken(); ?>=1">
 							<span class="icon-unlock hasTip" aria-hidden="true" title="Unpublish"></span>
 						</a>
 						<?php
 						$language = explode('-', $item->language);
 						?>
-						<a style="padding-top:10px;" href="<?= JURI::root().'?Itemid='.$model->getState('list.menuitem').'&lang='.$language[0].'#'.$item->uniqid; ?>" data-target="#previewModal" data-type="iframe" class="loader">
+						<a style="padding-top:10px;" data-target="previewModal" href="#" data-url="<?= JURI::root().'?Itemid='.$model->getState('list.menuitem').'&lang='.$language[0].'#'.$item->uniqid; ?>" id="loader">
 							<span class="icon-eye hasTip" aria-hidden="true" title="Preview"></span>
 						</a>
 						<?php endif; ?>
@@ -118,19 +143,23 @@ if ($saveOrder)
 </form>
 
 <!-- Preview Modal -->
-<div id="previewModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel" aria-hidden="true">
-	<div class="modal-header">
-    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    	<h3 id="previewModalLabel">Preview block
-    		<a onclick="jQuery('#previewModal').css({'width':'565px', 'left':'70%'});" style="cursor:pointer;margin-left:20px;"><span class="icon-mobile"></span></a>
-    		<a onclick="jQuery('#previewModal').css({'width':'768px', 'left':'70%'});" style="cursor:pointer;margin-left:10px;"><span class="icon-tablet"></span></a>
-    		<a onclick="jQuery('#previewModal').css({'width':'80%', 'left':'50%'});" style="cursor:pointer;margin-left:10px;"><span class="icon-screen"></span></a>
-    	</h3>
-  	</div>
-  	<div class="modal-body">
-    		<iframe width="100%" height="500" class="frame" src=""></iframe>
-  	</div>
-  	<div class="modal-footer">
-    	<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
-  	</div>
+<div id="previewModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-xl mx-auto">
+    	<div class="modal-content" id="modalContent">
+			<div class="modal-header">
+			<h5 class="modal-title" id="previewModalLabel">Preview</h5>
+				<h3 id="previewModalLabel">
+					<a onclick="document.getElementById('modalContent').style.width = '480px';" style="cursor:pointer;margin-left:20px;"><span class="icon-mobile"></span></a>
+					<a onclick="document.getElementById('modalContent').style.width = '768px';" style="cursor:pointer;margin-left:10px;"><span class="icon-tablet"></span></a>
+					<a onclick="document.getElementById('modalContent').style.width = '1200px';" style="cursor:pointer;margin-left:10px;"><span class="icon-screen"></span></a>
+				</h3>
+			</div>
+			<div class="modal-body">
+					<iframe width="100%" height="500" id="frame" src=""></iframe>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-danger" data-bs-dismiss="modal" aria-hidden="true">Close</button>
+			</div>
+	  	</div>
+	</div>
 </div>

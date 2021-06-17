@@ -50,10 +50,10 @@
     	<server type="extension" priority="2" name="JPFramework Template">http://www.aficat.com/updates/jpframework/tpl_jpframework.xml</server>
   </updateservers>
   <languages folder="language">
-		<language tag="en-GB">en-GB/en-GB.tpl_jpframework.ini</language>
-		<language tag="ca-ES">ca-ES/ca-ES.tpl_jpframework.ini</language>
-		<language tag="es-ES">es-ES/es-ES.tpl_jpframework.ini</language>
-		<language tag="fr-FR">fr-FR/fr-FR.tpl_jpframework.ini</language>               
+		<language tag="en-GB">en-GB/tpl_jpframework.ini</language>
+		<language tag="ca-ES">ca-ES/tpl_jpframework.ini</language>
+		<language tag="es-ES">es-ES/tpl_jpframework.ini</language>
+		<language tag="fr-FR">fr-FR/tpl_jpframework.ini</language>               
   </languages>
   <config>
         <fields name="params" addfieldpath="/templates/jpframework/elements">

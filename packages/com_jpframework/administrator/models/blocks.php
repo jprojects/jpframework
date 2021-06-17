@@ -148,17 +148,18 @@ class JpframeworkModelBlocks extends JModelList {
     public function addEntry($block) {
 
     	$db   = $this->getDbo();
+      $app = Factory::getApplication('administrator');
 
       $entry              = new stdClass();
       $entry->title       = ucfirst($block);
 		  $entry->uniqid      = $block.'-'.uniqid();
 		  $entry->state       = 0;
 		  $entry->type        = $block;
-      $entry->position    = $this->getUserStateFromRequest($this->context . '.list.position', 'list_position', '', 'string');
+      $entry->position    = $app->getUserStateFromRequest($this->context . '.list.position', 'list_position', 'jpf-top', 'string');
       $entry->checked_out = Factory::getUser()->id;
 		  $entry->created_by  = Factory::getUser()->id;
 		  $entry->language    = JComponentHelper::getParams('com_languages')->get('site');
-      $entry->menuitem    = $this->getUserStateFromRequest($this->context . '.list.menuitem', 'list_menuitem', '', 'int');
+      $entry->menuitem    = $app->getUserStateFromRequest($this->context . '.list.menuitem', 'list_menuitem', 101, 'int');
       $entry->ordering    = 1;
       $entry->params      = '';
 

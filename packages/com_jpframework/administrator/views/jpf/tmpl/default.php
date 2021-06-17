@@ -32,27 +32,6 @@ if ($saveOrder)
 }
 ?>
 
-<script>
-jQuery(document).ready(function(){
-	jQuery('.loader').click(function(e) {
-		e.preventDefault();
-		var href   = jQuery(this).attr('href');
-		var target = jQuery(this).attr('data-target');
-		var type   = jQuery(this).attr('data-type');
-		if(type == 'modal') {
-	    	jQuery(target + ' .modal-body').load(href, function(result) {
-				jQuery(target).modal({show:true});
-			});
-		}
-		if(type == 'iframe') {
-	    jQuery(target + ' .frame').attr('src', href);
-			jQuery(target).modal({show:true});
-		}
-
-	});
-});
-</script>
-
 <form action="<?= JRoute::_('index.php?option=com_jpframework&view=jpf'); ?>" method="post" name="adminForm" id="adminForm">
 
 	<div id="j-sidebar-container" class="span2">
@@ -74,7 +53,7 @@ jQuery(document).ready(function(){
 				?>
 				<?php foreach($this->items as $item) : ?>
 					<tr class="brick large <?= $item->state == 1 ? 'published' : 'unpublished'; ?>" data-id="<?= $item->id; ?>"  <?php if($i > 0) : ?>style="border-top:#ccc 2px dashed;"<?php endif; ?>>
-						<td>
+						<td style="position:relative;">
 						<input type="checkbox" class="cb" id="cb<?= $i; ?>" name="cid[]" value="<?= $item->id; ?>" onclick="Joomla.isChecked(this.checked);" />
 						<input type="text" style="display:none" name="order[]" size="5" value="<?= $item->ordering;?>" class="width-20 text-area-order " />
 						<div class="brick-msg">
@@ -92,21 +71,24 @@ jQuery(document).ready(function(){
 								<span class="icon-delete hasTip" aria-hidden="true" title="Delete"> </span>
 							</a>
 							<?php if($item->state != 1) : ?>
-							<a style="padding-top:10px;" href="javascript:void(0);" onclick="return listItemTask('cb<?= $i; ?>','jpf.publish')">
+							<a style="padding-top:10px;" href="<?= JURI::root(); ?>administrator/index.php?option=com_jpframework&task=blocks.publish&id=<?= $item->id; ?>">
 								<span class="icon-publish hasTip" aria-hidden="true" title="Publish"></span>
 							</a>
 							<a style="padding-top:10px;" href="#">
 								<span class="icon-eye-close disabled hasTip" aria-hidden="true" title="Preview"></span>
 							</a>
 							<?php else : ?>
-							<a style="padding-top:10px;" href="javascript:void(0);" onclick="return listItemTask('cb<?= $i; ?>','jpf.unpublish')">
+							<a style="padding-top:10px;" href="<?= JURI::root(); ?>administrator/index.php?option=com_jpframework&task=blocks.unpublish&id=<?= $item->id; ?>">
 								<span class="icon-unpublish hasTip" aria-hidden="true" title="Unpublish"></span>
 							</a>
 							<?php
 							$language = explode('-', $item->language);
 							?>
-							<a style="padding-top:10px;" href="<?= JURI::root().'?Itemid='.$model->getState('list.menuitem').'&lang='.$language[0].'#'.$item->uniqid; ?>" data-target="#previewModal" data-type="iframe" class="loader">
+							<a style="padding-top:10px;" href="<?= JURI::root().'?Itemid='.$model->getState('list.menuitem').'&lang='.$language[0].'#'.$item->uniqid; ?>">
 								<span class="icon-eye hasTip" aria-hidden="true" title="Preview"></span>
+								<a class="modal" rel="{handler: 'iframe', size: {x: 580, y:740}}" style="cursor:pointer;margin-left:20px;"><span class="icon-mobile"></span></a>
+    							<a class="modal" rel="{handler: 'iframe', size: {x: 768, y:740}}" style="cursor:pointer;margin-left:10px;"><span class="icon-tablet"></span></a>
+    							<a class="modal" rel="{handler: 'iframe', size: {x: 960, y:740}}" style="cursor:pointer;margin-left:10px;"><span class="icon-screen"></span></a>
 							</a>
 							<?php endif; ?>
 							<a style="padding-top:10px;" href="#" class="sortable-handler">
@@ -133,21 +115,3 @@ jQuery(document).ready(function(){
 	</div>
 
 </form>
-
-<!-- Preview Modal -->
-<div id="previewModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="previewModalLabel" aria-hidden="true">
-	<div class="modal-header">
-    	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    	<h3 id="previewModalLabel">Preview block
-    		<a onclick="jQuery('#previewModal').css({'width':'565px', 'left':'70%'});" style="cursor:pointer;margin-left:20px;"><span class="icon-mobile"></span></a>
-    		<a onclick="jQuery('#previewModal').css({'width':'768px', 'left':'70%'});" style="cursor:pointer;margin-left:10px;"><span class="icon-tablet"></span></a>
-    		<a onclick="jQuery('#previewModal').css({'width':'80%', 'left':'50%'});" style="cursor:pointer;margin-left:10px;"><span class="icon-screen"></span></a>
-    	</h3>
-  	</div>
-  	<div class="modal-body">
-    		<iframe width="100%" height="500" class="frame" src=""></iframe>
-  	</div>
-  	<div class="modal-footer">
-    	<button class="btn btn-danger" data-dismiss="modal" aria-hidden="true">Close</button>
-  	</div>
-</div>

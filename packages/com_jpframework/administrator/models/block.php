@@ -232,9 +232,9 @@ class JpframeworkModelBlock extends JModelAdmin
 			$item->checked_out_time = $row->checked_out_time;
 			$item->created_by 		= $row->created_by;
 			$item->type 			= $row->type;
-			$item->position 		= $row->position;
+			$item->position 		= $row->position == '' ? 'jpf-top' : $row->position;
 			$item->language 		= $row->language;
-			$item->menuitem 		= $row->menuitem;
+			$item->menuitem 		= $row->menuitem == '' ? 101 : $row->menuitem;
 			$item->params 			= $row->params;
 			$response 				= $db->insertObject('#__jpframework_blocks', $item, 'id');
 		}

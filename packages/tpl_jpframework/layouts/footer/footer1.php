@@ -34,7 +34,7 @@
 		<?php endif; ?>
 
 		<div class="text-center">
-			<div class="social-icons"> 
+			<div class="social-icons mb-3"> 
 				<?= jpf::getSocial(); ?>  
 			</div>
 			<p><?=jpf::getSitename(); ?> &copy; <?= date('Y'); ?></p>

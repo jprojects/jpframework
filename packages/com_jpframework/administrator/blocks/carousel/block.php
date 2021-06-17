@@ -10,51 +10,50 @@
 // restricted access
 defined('_JEXEC') or die('Restricted access');
 
-$blockid    = JFactory::getApplication()->input->get('blockid');
+$blockid        = JFactory::getApplication()->input->get('blockid');
 blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blocks/carousel/assets/css/carousel.css');
 blocksHelper::getBlockParameter($blockid,'carousel_play') == 0 ? $play = "false" : $play = blocksHelper::getBlockParameter($blockid,'carousel_play');
-$fluid    = blocksHelper::getBlockParameter($blockid, 'fluid', '');
-$cid 			    = blocksHelper::getBlockParameter($blockid,'carousel_id');
-$items 		  	= json_decode(blocksHelper::getBlockParameter($blockid, 'list_images'), true);
+$fluid          = blocksHelper::getBlockParameter($blockid, 'fluid', '');
+$cid 			= blocksHelper::getBlockParameter($blockid,'carousel_id');
+$items 		  	= blocksHelper::getBlockParameter($blockid, 'list_images');
 $controls 		= blocksHelper::getBlockParameter($blockid, 'carousel_controls', 1);
 $indicators 	= blocksHelper::getBlockParameter($blockid, 'carousel_indicators', 1);
 $nexticon 		= blocksHelper::getBlockParameter($blockid, 'carousel_control_right', 'carousel-control-next-icon');
 $previcon 		= blocksHelper::getBlockParameter($blockid, 'carousel_control_left', 'carousel-control-prev-icon');
-$nextimg 			= blocksHelper::getBlockParameter($blockid, 'carousel_controlImg_right', '');
-$previmg 			= blocksHelper::getBlockParameter($blockid, 'carousel_controlImg_left', '');
-$box 			    = blocksHelper::getBlockParameter($blockid, 'carousel_box', 0);
-$position     = blocksHelper::getBlockParameter($blockid, 'Position_box', 'hero_center');
-$colorbox     = blocksHelper::getBlockParameter($blockid, 'color_box', 'rgba(0, 0, 0, 0.2);');
+$nextimg 		= blocksHelper::getBlockParameter($blockid, 'carousel_controlImg_right', '');
+$previmg 		= blocksHelper::getBlockParameter($blockid, 'carousel_controlImg_left', '');
+$box 			= blocksHelper::getBlockParameter($blockid, 'carousel_box', 0);
+$position       = blocksHelper::getBlockParameter($blockid, 'Position_box', 'hero_center');
+$colorbox       = blocksHelper::getBlockParameter($blockid, 'color_box', 'rgba(0, 0, 0, 0.2);');
 $height 	   	= blocksHelper::getBlockParameter($blockid, 'carousel_height');
-$data   	  	= blocksHelper::group_by_key($items);
+$data           = blocksHelper::groupByKey($items);
 ?>
 
 <style>
 <?php
 $i = 0;
-foreach($data as $k => $v):
-if($v[2] == '') break;
+foreach($data as $v):
+if($data['carousel_img'][$i] == '') break;
 ?>
 .carousel-<?=  $blockid; ?> .slides .slide-<?= $i; ?> {
-  	background-image: url(<?= JURI::root().$v[2]; ?>);
+  	background-image: url(<?= JURI::root().$data['carousel_img'][$i]; ?>);
   	height: <?= $height; ?>;
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
-  background-attachment: scroll;
-	background-attachment: fixed;
+    background-attachment: scroll;
 }
-<?php if($v[4] != '') : ?>
+<?php if($data['carousel_img_md'][$i] != '') : ?>
 @media screen and (max-width: 768px){
 	.carousel-<?=  $blockid; ?> .slides .slide-<?= $i; ?> {
-    	background-image: url(<?= JURI::root().$v[4]; ?>);
+    	background-image: url(<?= JURI::root().$data['carousel_img_md'][$i]; ?>);
     }
 }
 <?php endif; ?>
-<?php if($v[3] != '') : ?>
+<?php if($data['carousel_img_xs'][$i] != '') : ?>
 @media screen and (max-width: 590px){
 	.carousel-<?=  $blockid; ?> .slides .slide-<?= $i; ?> {
-    	background-image: url(<?= JURI::root().$v[3]; ?>);
+    	background-image: url(<?= JURI::root().$data['carousel_img_xs'][$i]; ?>);
     }
 }
 <?php endif; ?>
@@ -72,41 +71,41 @@ endforeach; ?>
 
 <section class="<?= $fluid; ?>" id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
 
-	<div class="carousel fade-carousel slide carousel-<?= $blockid; ?> <?= $classes; ?>" data-ride="carousel" id="<?= $cid; ?>">
+	<div class="carousel fade-carousel slide carousel-<?= $blockid; ?> <?= $classes; ?>" data-bs-ride="carousel" id="<?= $cid; ?>">
 
 	  	<?php if(count($data) > 1 && $indicators == 1) : ?>
-		<ol class="carousel-indicators">
+		<div class="carousel-indicators">
 			<?php
 		  	$i = 0;
-		  	foreach($data as $k => $v):
-			if($v[2] == '') break;
+		  	foreach($data as $v):
+			if($data['carousel_img'][$i] == '') break;
 		  	?>
-			<li data-target="#<?= $cid; ?>" data-slide-to="<?= $i; ?>" <?php if($i == 0) : ?>class="active"<?php endif; ?>></li>
+			<button type="button" data-bs-target="#<?= $cid; ?>" data-bs-slide-to="<?= $i; ?>" <?php if($i == 0) : ?>class="active"<?php endif; ?> aria-current="true" aria-label="Slide <?= $i; ?>"></button>
 			<?php
 			$i++;
 			endforeach; ?>
-  		</ol>
+  		</div>
   		<?php endif; ?>
 
 	  	<div class="carousel-inner" role="listbox">
 
 		  	<?php
 		  	$i = 0;
-		  	foreach($data as $k => $v):
-			if($v[2] == '') break;
+		  	foreach($data as $v):
+			if($data['carousel_img'][$i] == '') break;
 		  	?>
 			<div class="carousel-item slides <?php if($i == 0) : ?>active<?php endif; ?>">
 			  	<div class="slide-<?= $i; ?>"></div>
 			  	<?php if($box == 1) : ?>
 			  	<div class="hero <?=$position?>">
-			  		<?php if($v[6] == 1) : ?>
-			  		<a href="index.php?Itemid=<?= $v[5]; ?>">
+			  		<?php if($data['carousel_link_active'][$i] == 1) : ?>
+			  		<a class="text-light" href="index.php?Itemid=<?= $data['carousel_link'][$i]; ?>">
 			  		<?php endif; ?>
 							<hgroup class="box">
-									<h1><?= $v[0]; ?></h1>
-									<p><?= $v[1]; ?></p>
+									<h1><?= $data['carousel_title'][$i]; ?></h1>
+									<p><?= $data['carousel_text'][$i]; ?></p>
 							</hgroup>
-						<?php if($v[6] == 1) : ?>
+						<?php if($data['carousel_link_active'][$i] == 1) : ?>
 						</a>
 						<?php endif; ?>
 			  	</div>
@@ -120,7 +119,7 @@ endforeach; ?>
 
 	  <?php if(count($data) > 1 && $controls == 1) : ?>
 	  <!-- Controls -->
-	  <a class="carousel-control-prev" data-target="#<?= $cid; ?>" data-slide="prev">
+	  <a class="carousel-control-prev" data-bs-target="#<?= $cid; ?>" data-bs-slide="prev">
 		<?php if(!empty($previmg)) :?>
 		<img src="<?=$previmg?>" alt="prev">
 		<?php else :?>
@@ -129,7 +128,7 @@ endforeach; ?>
     	<span class="sr-only">Previous</span>
 	  </a>
 
-	  <a class="carousel-control-next" data-target="#<?= $cid; ?>" data-slide="next">
+	  <a class="carousel-control-next" data-bs-target="#<?= $cid; ?>" data-bs-slide="next">
 		<?php if(!empty($nextimg)) :?>
 		<img src="<?=$nextimg?>" alt="next">
 		<?php else :?>

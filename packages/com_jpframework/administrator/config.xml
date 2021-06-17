@@ -153,13 +153,14 @@
         <option value="1">JYES</option>
       </field>
       <field name="privacy"
-  			type="repeatable"
-  			icon="list"
+  			type="subform"
   			description="COM_JPFRAMEWORK_PRIVACY_DESC"
   			label="COM_JPFRAMEWORK_PRIVACY_LABEL"
-  			default=''
+  			multiple='true'
+			min="1"
+			max="10"
       >
-			<fieldset hidden="true" name="list_templates_modal" repeat="true">
+			<form>
 				<field
 					name="language"
 					type="language"
@@ -175,16 +176,17 @@
 					label="COM_JPFRAMEWORK_PRIVACY_LABEL"
 					description="COM_JPFRAMEWORK_PRIVACY_DESC"
 				/>
-			</fieldset>
+			</form>
 		</field>
 		<field name="terms"
-			type="repeatable"
-			icon="list"
+			type="subform"
 			description="COM_JPFRAMEWORK_TERMS_DESC"
 			label="COM_JPFRAMEWORK_TERMS_LABEL"
-			default=''
+			multiple='true'
+			min="1"
+			max="10"
     >
-		<fieldset hidden="true" name="list_templates_modal" repeat="true">
+		<form>
 			<field
 				name="language"
 				type="language"
@@ -200,16 +202,17 @@
 				label="COM_JPFRAMEWORK_PRIVACY_LABEL"
 				description="COM_JPFRAMEWORK_PRIVACY_DESC"
 			/>
-			</fieldset>
+			</form>
 		</field>
 		<field name="cookie"
-			type="repeatable"
-			icon="list"
+			type="subform"
 			description="COM_JPFRAMEWORK_COOKIES_POLICY_DESC"
 			label="COM_JPFRAMEWORK_COOKIES_POLICY_LABEL"
-			default=''
+			multiple='true'
+			min="1"
+			max="10"
     >
-		<fieldset hidden="true" name="list_templates_modal" repeat="true">
+		<form>
 			<field
 				name="language"
 				type="language"
@@ -225,7 +228,7 @@
 				label="COM_JPFRAMEWORK_COOKIES_POLICY_LABEL"
 				description="COM_JPFRAMEWORK_COOKIES_POLICY_DESC"
 			/>
-			</fieldset>
+			</form>
 		</field>
 		<field
 			type="radio"
@@ -263,6 +266,13 @@
     		default="Arimo"
     		label="COM_JPFRAMEWORK_BODYFONT_LABEL"
     		description="COM_JPFRAMEWORK_BODYFONT_DESC"
+    	/>
+		<field
+    		type="fonts"
+    		name="h_font"
+    		default="Arimo"
+    		label="COM_JPFRAMEWORK_HFONT_LABEL"
+    		description="COM_JPFRAMEWORK_HFONT_DESC"
     	/>
         <field
         	type="list"

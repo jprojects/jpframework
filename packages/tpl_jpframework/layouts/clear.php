@@ -36,12 +36,6 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 	<?php if(count(JFactory::getApplication()->getMessageQueue())) : ?>  
 	<div class="message-container"><jdoc:include type="message" /></div>
 	<?php endif; ?>
-			
-	<?php if(jpf::getparameter('jpf-main') != 0) : ?>
-	<!-- start main row -->	
-	<?= jpf::getColumn('jpf-main', 'main'); ?>		
-	<!-- end main row -->
-	<?php endif; ?>
 
 	<div class="container<?php if(jpf::getparameter('fluid', 0) == 1) : ?>-fluid<?php endif; ?> mainbody">
 		<div class="row">
@@ -52,15 +46,21 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 			<?php endif; ?>
 
 			<div class="<?= $colsc; ?>">
+
+				<?php if(jpf::getparameter('jpf-main') != 0) : ?>
+				<!-- start main row -->	
+				<?= jpf::getColumn('jpf-main', 'main'); ?>		
+				<!-- end main row -->
+				<?php endif; ?>
 			  
-				<?php //if(jpf::showComponent()) : ?>
+				<?php if(jpf::showComponent()) : ?>
 				<div><jdoc:include type="component" /></div>
-				<?php //endif; ?>
+				<?php endif; ?>
 				
 			</div>
 
 			<?php if($doc->countModules('jpf-right')) : ?>
-			<div class="<?= $colsr; ?>">
+			<div class="<?= $colsr; ?> jpfblock">
 				<jdoc:include type="modules" name="jpf-right" />
 			</div>
 			<?php endif; ?>

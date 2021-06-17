@@ -51,7 +51,7 @@ class JFormFieldFonts extends JFormField
 		$script[] = '	    font = font.split(":");';
 		$script[] = '	    var fontFamily = font[0];';
 		$script[] = '	    var fontWeight = font[1] || 400;';
-		$script[] = '	    jQuery("p.loremipsum").css({fontFamily:fontFamily, fontWeight:fontWeight});';
+		$script[] = '	    jQuery("p.loremipsum'.$this->id.'").css({fontFamily:fontFamily, fontWeight:fontWeight});';
 		$script[] = '	}';
 		$script[] = '	jQuery(function() {';
 		$script[] = '		jQuery("#'.$this->id.'").fontselect({systemFonts: false}).on("change", function() { applyFont(jQuery(this).val()); });';
@@ -64,7 +64,7 @@ class JFormFieldFonts extends JFormField
 		$html	= array();
 
 		$html[] = '<input type="text" id="'.$this->id.'" name="'.$this->name.'" value="'.$this->value.'" />';
-		$html[] = '<p class="loremipsum" style="font-family:Arimo;">Lorem ipsum dolor sit amet consectetur adipiscing elit hendrerit.</p>';
+		$html[] = '<p class="loremipsum'.$this->id.'" style="font-family:Arimo;">Lorem ipsum dolor sit amet consectetur adipiscing elit hendrerit.</p>';
 
 		return implode($html);
 	}

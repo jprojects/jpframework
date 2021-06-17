@@ -67,7 +67,6 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
 		$pks = $this->input->post->get('cid', array(), 'array');
-		JArrayHelper::toInteger($pks);
 
 		try
 		{
@@ -99,13 +98,9 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 	public function saveOrderAjax()
 	{
 		// Get the input
-		$input = JFactory::getApplication()->input;
-		$pks = $input->post->get('cid', array(), 'array');
-		$order = $input->post->get('order', array(), 'array');
-
-		// Sanitize the input
-		JArrayHelper::toInteger($pks);
-		JArrayHelper::toInteger($order);
+		$input 	= JFactory::getApplication()->input;
+		$pks 	= $input->post->get('cid', array(), 'array');
+		$order 	= $input->post->get('order', array(), 'array');
 
 		// Get the model
 		$model = $this->getModel();
@@ -169,6 +164,7 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 		$body_color 		= $params->get('body_color');
 		$body_fontsize 		= $params->get('body_fontsize');
 		$body_font 			= $params->get('body_font');
+		$h_font 			= $params->get('h_font');
 		$body_font_type		= $params->get('body_font_type', 'px');
 		$body_fcolor 		= $params->get('body_fcolor');
 		$link_color 		= $params->get('link_color');
@@ -196,6 +192,7 @@ class JpframeworkControllerBlocks extends JControllerAdmin
 			@body_color: ".$body_color.";
 			@body_fontsize: ".$body_fontsize.$body_font_type.";
 			@body_font:  '".$body_font."';
+			@h_font:  '".$h_font."';
 			@body_fcolor:  ".$body_fcolor.";
 			@link_color: ".$link_color.";
 			@linkhover_color: ".$linkhover_color.";

@@ -36,17 +36,18 @@ if($doc->countModules('jpf-left') && !$doc->countModules('jpf-right')) { $colsc 
 	<?= jpf::getColumn('jpf-top', 'top'); ?>		
 	<!-- end top row -->
 	<?php endif; ?>
-			
-	<?php if(jpf::getparameter('jpf-main') != 0) : ?>
-	<!-- start main row -->	
-	<?= jpf::getColumn('jpf-main', 'main'); ?>		
-	<!-- end main row -->
-	<?php endif; ?>
 
 	<div class="container<?php if(jpf::getparameter('fluid', 0) == 1) : ?>-fluid<?php endif; ?> mainbody">
 		<div class="row">			
 
-			<div class="<?= $colsc; ?>">			  
+			<div class="<?= $colsc; ?>">	
+
+				<?php if(jpf::getparameter('jpf-main') != 0) : ?>
+				<!-- start main row -->	
+				<?= jpf::getColumn('jpf-main', 'main'); ?>		
+				<!-- end main row -->
+				<?php endif; ?>
+
 				<?php if(jpf::showComponent()) : ?>
 				<div><jdoc:include type="component" /></div>
 				<?php endif; ?>				

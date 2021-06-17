@@ -24,7 +24,7 @@
 
 .hero {
     position: absolute;
-    top: 20%;
+    top: 35%;
     left: 50%;
     z-index: 3;
     color: #fff;
@@ -41,12 +41,16 @@
 .hero_center { left: 50%; }
 .hero_right { right: 35%; }
 .hero h1 {
-    font-size: 6em;
+    font-size: 5em;
     font-weight: bold;
     margin: 0;
     padding: 0;
     color: #fff;
     line-height: 80px;
+}
+.hero p {
+    font-size: 2em;
+    font-weight: bold;
 }
 
 .fade-carousel .carousel-inner .carousel-item .hero {
@@ -70,4 +74,11 @@
     .hero { width: 980px; }
 }
 @media screen and (max-width: 640px){
-    .hero h1 { font-size: 4em; }
+    .hero h1 {
+        font-size: 2em;
+        line-height: 50px;
+    }
+    .hero p {
+        font-size: 1em;
+    }
+}

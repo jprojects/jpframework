@@ -74,22 +74,20 @@
 		/>
 		<field
 			name="carousel_parallax"
-			type="radio"
+			type="list"
 			default="1"
 			label="Parallax effect"
 			description="Use parallax effect or not"
-			class="btn-group btn-group-yesno"
 		>
 		<option value="0">JNO</option>
 		<option value="1">JYES</option>
 		</field>
 		<field
 			name="carousel_box"
-			type="radio"
+			type="list"
 			default="1"
 			label="Carousel box"
 			description="Show opacity box with text"
-			class="btn-group btn-group-yesno"
 		>
 		<option value="0">JNO</option>
 		<option value="1">JYES</option>
@@ -109,7 +107,8 @@
 		</field>
 		<field
 			name="color_box"
-			type="text"
+			type="color"
+			format="rgba"
 			default="rgba(0, 0, 0, 0.2);"
 			label="Color"
 			description="Color del box"
@@ -117,11 +116,10 @@
 		/>
 		<field
 			name="carousel_controls"
-			type="radio"
+			type="list"
 			default="0"
 			label="Carousel controls"
 			description="Show the carousel controls, arrows to slide left or right"
-			class="btn-group btn-group-yesno"
 		>
 		<option value="0">JNO</option>
 		<option value="1">JYES</option>
@@ -161,11 +159,10 @@
 		/>
 		<field
 			name="carousel_indicators"
-			type="radio"
+			type="list"
 			default="1"
 			label="Carousel indicators"
 			description="Show the carousel indicators"
-			class="btn-group btn-group-yesno"
 		>
 		<option value="0">JNO</option>
 		<option value="1">JYES</option>
@@ -179,15 +176,14 @@
 		/>
 		<field
 			name="list_images"
-			type="repeatable"
+			type="subform"
 			icon="list"
 			description="Carousel items"
 			label="Carousel items"
-			default='{
-				"carousel_title":[""],
-				"carousel_text":[""],
-				"carousel_img":[""]}'>
-			<fieldset hidden="true" name="list_images_modal" repeat="true">
+			multiple="true"
+			min="1"
+			max="10">
+			<form>
 				<field
 					name="carousel_title"
 					type="text"
@@ -207,21 +203,21 @@
 					type="media"
 					directory=""
 					label="Image LG"
-					description="Carousel image LG"
+					description="Carousel image LG >768"
 				/>
 				<field
 					name="carousel_img_xs"
 					type="media"
 					directory=""
 					label="Image XS"
-					description="Carousel image xs"
+					description="Carousel image XS 580"
 				/>
 				<field
 					name="carousel_img_md"
 					type="media"
 					directory=""
 					label="Image MD"
-					description="Carousel image md"
+					description="Carousel image MD >768"
 				/>
 				<field
 					name="carousel_link"
@@ -240,7 +236,7 @@
 				<option value="0">JNO</option>
 				<option value="1">JYES</option>
 				</field>
-			</fieldset>
+			</form>
 		</field>
 	</fieldset>
 	<fieldset name="styles">

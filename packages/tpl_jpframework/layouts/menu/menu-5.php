@@ -51,7 +51,11 @@ jQuery(document).ready(function(){
                         <jdoc:include type="modules" name="jpf-menu" />
                         
                     </nav>
-                    <img src="images/logo_nyam.png" alt="Nyam" class="img-fluid logo clickable">
+                    <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
+                        <img src="<?= jpf::getparameter('topmenu-logo'); ?>" alt="<?= jpf::getSitename(); ?>" class="img-fluid logo clickable">
+                    <?php else : ?>
+                        <strong><?= jpf::getSitename(); ?></strong>
+                    <?php endif; ?>
                     <a class="nav-toggle">
                         <span></span>
                         <span></span>

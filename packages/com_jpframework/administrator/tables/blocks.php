@@ -37,8 +37,6 @@ class JpframeworkTableblocks extends JTable
 	 */
 	public function bind($array, $ignore = '')
 	{
-
-		
 		$input = JFactory::getApplication()->input;
 		$task = $input->getString('task', '');
 		if(($task == 'save' || $task == 'apply') && (!JFactory::getUser()->authorise('core.edit.state','com_jpframework') && $array['state'] == 1)){
@@ -136,7 +134,6 @@ class JpframeworkTableblocks extends JTable
 		$k = $this->_tbl_key;
 
 		// Sanitize input.
-		JArrayHelper::toInteger($pks);
 		$userId = (int) $userId;
 		$state  = (int) $state;
 
