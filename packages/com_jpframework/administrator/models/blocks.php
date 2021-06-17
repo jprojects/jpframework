@@ -114,7 +114,7 @@ class JpframeworkModelBlocks extends JModelList {
   		}
 
   		// Filter by menu
-  		$menuitem = $this->getState('list.menuitem');
+  		$menuitem = $this->getState('list.menuitem', 101);
   		if (!empty($menuitem)) {
   			$query->where('(a.menuitem = '.$menuitem.' OR FIND_IN_SET('.$menuitem.', REPLACE(a.menuitem, ";", ",")) > 0)');
   		}
@@ -163,7 +163,7 @@ class JpframeworkModelBlocks extends JModelList {
       $entry->ordering    = 1;
       $entry->params      = '';
 
-		  $db->insertObject('#__jpframework_blocks', $entry);
+		  return $db->insertObject('#__jpframework_blocks', $entry);
     }
 
 }
