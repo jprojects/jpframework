@@ -23,7 +23,7 @@ jQuery(function () {
 </script>
 
 <!-- menu 4 example: http://getbootstrap.com/docs/4.1/examples/offcanvas/ -->
-<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg fixed-top">
       <a class="navbar-brand mr-auto mr-lg-0" href="#">
       <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
         <img class="logo-img" src="<?= jpf::getparameter('topmenu-logo'); ?>" alt="<?= jpf::getSitename(); ?>">
@@ -32,10 +32,10 @@ jQuery(function () {
        <?php endif; ?>
       </a>
       <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-        <span class="navbar-toggler-icon"></span>
+        <i class="fas fa-bars"></i>
       </button>
 
-      <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-         <jdoc:include type="modules" name="jpf-menu" /> 
+      <div class="navbar-collapse offcanvas-collapse justify-content-end" id="navbarsExampleDefault">
+          <jdoc:include type="modules" name="jpf-menu" /> 
       </div>
 </nav>

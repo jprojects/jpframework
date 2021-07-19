@@ -20,16 +20,6 @@ HTMLHelper::_('behavior.keepalive');
 $model = $this->getModel('block');
 
 ?>
-<script>
-Joomla.submitbutton = function(task)
-{
-  if(task != 'block.apply' && document.formvalidator.isValid(document.id('block-form'))) {
-    Joomla.submitform(task, document.getElementById('block-form'));
-  } else {
-      alert('<?= $this->escape(JText::_('JGLOBAL_VALIDATION_FORM_FAILED')); ?>');
-  }
-}
-</script>
 
 <form action="<?= JRoute::_('index.php?option=com_jpframework&view=block&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="block-form" class="form-validate">
 	<input type="hidden" name="jform[id]" value="<?= $this->item->id; ?>" />
