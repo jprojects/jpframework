@@ -57,6 +57,7 @@
 			label="Cards columns" 
 			description="" 
 		>
+			<option value="12">1</option>
 			<option value="6">2</option>
 			<option value="4">3</option>
 			<option value="3">4</option>
@@ -96,7 +97,7 @@
 					name="card_desc_heading" 
 					type="text" 
 					default="" 
-					label="Card desc heading" 
+					label="Card title" 
 					description="" 
 				/>
 				<field 
@@ -108,11 +109,13 @@
 				/>
 				<field 
 					name="card_href" 
-					type="text" 
+					type="menuitem" 
 					default="" 
-					label="Href" 
+					label="Link" 
 					description="" 
-				/>
+				>
+				<option	value="">JDEFAULT</option>
+				</field>
 				<field 
 					name="card_href_text" 
 					type="text" 

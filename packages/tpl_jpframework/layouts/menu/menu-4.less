@@ -1,12 +1,22 @@
 /* Less vars
  * @body_font
+ * @h_font
+ * @body_fontsize
  * @body_fcolor
  * @body_color
  * @link_color
  * @linkhover_color
  * @footer_color
  * @footer_fcolor
- * @unicode 
+ * @menu_background
+ * @primary_color
+ * @secondary_color
+ * @primary_bg
+ * @secondary_bg
+ * @success_bg
+ * @error_bg
+ * @success_color
+ * @error_color
 */
 
 html,
@@ -51,6 +61,11 @@ ul.mod-menu > li.deeper:hover > .mod-menu__sub {
 }
 
 .logo-img { max-width: 250px; }
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: @primary_bg;
+}
 
 @media (max-width: 991.98px) {
 

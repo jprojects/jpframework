@@ -17,6 +17,28 @@
 			description="Block background color." 
 		/>
 		<field 
+			name="block_font_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Font color" 
+			description="Font color" 
+		/>
+		<field 
+			name="block_font_size" 
+			type="list" 
+			default="fs-4" 
+			label="Font size" 
+			description="Uniqid is used as the block section id, useful for anchors or specific css styles." 
+		>
+		<option value="">SELECT_AN_OPTION</option>
+		<option value="fs-1">1</option>
+		<option value="fs-2">2</option>
+		<option value="fs-3">3</option>
+		<option value="fs-4">4</option>
+		<option value="fs-5">5</option>
+		<option value="fs-6">6</option>
+		</field>
+		<field 
 			name="uniqid" 
 			type="text" 
 			default="" 
@@ -29,6 +51,13 @@
 			default="" 
 			label="Classes" 
 			description="Additional classes to this section block." 
+		/>
+		<field
+			name="scroll_effect"
+			type="scrolleffects"
+			default=""
+			label="Scroll effect"
+			description="Ver demo en https://daneden.github.io/animate.css/"
 		/>
 		<field 
 			name="jumbotron-title" 

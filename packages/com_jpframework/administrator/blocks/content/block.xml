@@ -78,6 +78,7 @@
 			<option value="">Full width</option>
 			<option value="right">Right</option>
 			<option value="left">Left</option>
+			<option value="center">Center</option>
 		</field>
 		<field
 			name="content_img"
@@ -86,9 +87,19 @@
 			label="Image"
 		/>
 		<field
+			name="img_shadow"
+			type="list"
+			default="1"
+			label="Image shadow"
+			description="Image shadow"
+		>
+			<option value="1">JYES</option>
+			<option value="0">JNO</option>
+		</field>
+		<field
 			name="content_img_alt"
 			type="text"
-			default=""
+			default="..."
 			label="Image Alt"
 			description="Image Alt"
 		/>

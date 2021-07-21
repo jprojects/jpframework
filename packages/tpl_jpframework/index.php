@@ -14,6 +14,7 @@
 defined( '_JEXEC' ) or die( 'Restricted access' );
 require_once('jp_framework.class.php');
 error_reporting(E_ERROR | E_PARSE); // Report simple running errors
+JHtml::_('jquery.framework');
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +28,8 @@ error_reporting(E_ERROR | E_PARSE); // Report simple running errors
 <script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/jpframework.js" type="text/javascript"></script>
 <link rel="stylesheet" href="<?= $this->baseurl.'/templates/'.$this->template; ?>/css/<?= jpf::getparameter('layout', 'clear'); ?>.css" type="text/css" />
 <link rel="stylesheet" href="<?= $this->baseurl.'/templates/'.$this->template; ?>/css/custom.css" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" type="text/css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
 </head>
     
 <body>

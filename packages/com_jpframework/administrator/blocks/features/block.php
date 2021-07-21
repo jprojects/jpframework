@@ -11,14 +11,15 @@
 defined('_JEXEC') or die('Restricted access');
 
 $blockid    = JFactory::getApplication()->input->get('blockid');
-$cid 	= blocksHelper::getBlockParameter($blockid,'uniqid');
-$items 	= json_decode(blocksHelper::getBlockParameter($blockid, 'list_features'), true);
-$height = blocksHelper::getBlockParameter($blockid, 'height', '140');
+$cid 		= blocksHelper::getBlockParameter($blockid,'uniqid');
+$items 		= blocksHelper::getBlockParameter($blockid, 'list_features');
+$height 	= blocksHelper::getBlockParameter($blockid, 'height', '140');
+$columns    = blocksHelper::getBlockParameter($blockid, 'feature_column', 4);
 $subheading = blocksHelper::getBlockParameter($blockid, 'feature_subheading');
-$data   = blocksHelper::group_by_key($items);
+$data   	= blocksHelper::groupByKey($items);
 ?>
 
-<section id="<?= $uniqid; ?>">
+<section id="<?= $uniqid; ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid, 'block_color', '#fff'); ?>;color:<?= blocksHelper::getBlockParameter($blockid, 'block_font_color', '#000'); ?>">
 
 <div class="container marketing jpfblock">
 
@@ -33,15 +34,15 @@ $data   = blocksHelper::group_by_key($items);
 
 		<?php 
 	  	$i = 0;
-	  	foreach($data as $k => $v):
-		if($v[2] == '') break;
+	  	foreach($data as $v):
+		if($data['feat_img'][$i] == '') break;
 	  	?>
-		<div class="col-lg-4">
-		    <img class="rounded-circle" src="<?= $v[2]; ?>" alt="<?= $v[0]; ?>" width="<?= $height; ?>" height="<?= $height; ?>">
-		    <h2><?= $v[0]; ?></h2>
-		    <p><?= $v[1]; ?></p>
-		    <?php if($v[3] != '') : ?>
-		    <p><a class="btn btn-<?= $v[5]; ?>" href="<?= $v[4]; ?>" role="button"><?= $v[3]; ?></a></p>
+		<div class="col-1 col-md-<?= $columns; ?>">
+		    <img src="<?= $data['feat_img'][$i]; ?>" alt="<?= $data['feat_title'][$i]; ?>" width="<?= $height; ?>" height="<?= $height; ?>">
+		    <h2 class="mt-4"><?= $data['feat_title'][$i]; ?></h2>
+		    <p><?= $data['feat_text'][$i]; ?></p>
+		    <?php if($data['feat_btn_text'][$i] != '') : ?>
+		    <p><a class="btn btn-<?= $data['feat-btn-class'][$i]; ?>" href="<?= $data['feat_btn_link'][$i]; ?>" role="button"><?= $data['feat_btn_text'][$i]; ?></a></p>
 		    <?php endif; ?>
 		</div>
 		<?php 
