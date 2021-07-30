@@ -28,8 +28,6 @@ JHtml::_('jquery.framework');
 <script src="<?= $this->baseurl.'/templates/'.$this->template; ?>/js/jpframework.js" type="text/javascript"></script>
 <link rel="stylesheet" href="<?= $this->baseurl.'/templates/'.$this->template; ?>/css/<?= jpf::getparameter('layout', 'clear'); ?>.css" type="text/css" />
 <link rel="stylesheet" href="<?= $this->baseurl.'/templates/'.$this->template; ?>/css/custom.css" type="text/css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" type="text/css" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript"></script>
 </head>
     
 <body>

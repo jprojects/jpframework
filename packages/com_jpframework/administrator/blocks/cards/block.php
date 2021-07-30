@@ -36,7 +36,9 @@ $items   = blocksHelper::groupByKey($cards);
                 
             	<?php if(count($items) > 0) :  
 				$i = 0;
-				foreach($items as $item): ?>
+				foreach($items as $item): 
+				if($items['card_desc_text'][$i] == '') continue;
+				?>
 				<div class="col">
 					<div class="card h-100">
 						<div class="card-content">

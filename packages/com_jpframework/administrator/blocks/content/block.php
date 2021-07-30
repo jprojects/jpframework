@@ -11,15 +11,15 @@
 // No direct access
 defined('_JEXEC') or die;
 
-$blockid  = JFactory::getApplication()->input->get('blockid');
-$effect   = blocksHelper::getBlockParameter($blockid, 'effect', '');
-$effect  != '' ? $efecte = 'wow '.$effect : $efecte = '';
-$fluid    = blocksHelper::getBlockParameter($blockid, 'fluid', '');
-$classes  = blocksHelper::getBlockParameter($blockid,'classes');
-$position = blocksHelper::getBlockParameter($blockid, 'content_position', '');
-$heading  = blocksHelper::getBlockParameter($blockid, 'content_title');
-$video    = blocksHelper::getBlockParameter($blockid,'content_video');
-$shadow   = blocksHelper::getBlockParameter($blockid,'img_shadow', 1);
+$blockid  		= JFactory::getApplication()->input->get('blockid');
+$effect_text   	= blocksHelper::getBlockParameter($blockid, 'scroll_effect_text', '');
+$effect_img   	= blocksHelper::getBlockParameter($blockid, 'scroll_effect_img', '');
+$fluid    		= blocksHelper::getBlockParameter($blockid, 'fluid', '');
+$classes  		= blocksHelper::getBlockParameter($blockid,'classes');
+$position 		= blocksHelper::getBlockParameter($blockid, 'content_position', '');
+$heading  		= blocksHelper::getBlockParameter($blockid, 'content_title');
+$video    		= blocksHelper::getBlockParameter($blockid,'content_video');
+$shadow   		= blocksHelper::getBlockParameter($blockid,'img_shadow', 1);
 
 if($position == 'right') {
 	$col  = 'col-xs-12 col-md-6';
@@ -61,11 +61,11 @@ if($position == 'right') {
 
 		<div class="row">
 
-			<div class="<?= $col2; ?> <?= $pos2; ?>">
+			<div class="<?= $col2; ?> <?= $pos2; ?> wow animate__animated animate__<?= $effect_text; ?>">
 		     	<div><?= blocksHelper::getBlockParameter($blockid, 'content_text'); ?></div>
 			</div>
 			<?php if($position != '') : ?>
-			<div class="<?= $col; ?>  <?= $pos; ?> <?= $efecte; ?>">
+			<div class="<?= $col; ?>  <?= $pos; ?> wow animate__animated animate__<?= $effect_img; ?>">
 				<?php if($video == '') : ?>
 				<img src="<?= JURI::root().blocksHelper::getBlockParameter($blockid,'content_img', ''); ?>" alt="<?= blocksHelper::getBlockParameter($blockid,'content_alt', ''); ?>" class="featurette-image img-fluid mx-auto <?php if($shadow == 1) : ?>boxshadow<?php endif; ?>">
 				<?php else : ?>

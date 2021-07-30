@@ -23,13 +23,6 @@
 			description="Font color"
 		/>
 		<field
-			name="scroll_effect"
-			type="scrolleffects"
-			default=""
-			label="Scroll effect"
-			description="Ver demo en https://daneden.github.io/animate.css/"
-		/>
-		<field
 			name="fluid"
 			type="list"
 			default=""
@@ -69,6 +62,13 @@
 			filter="safehtml"
 		/>
 		<field
+			name="scroll_effect_text"
+			type="scrolleffects"
+			default=""
+			label="Scroll effect Text"
+			description="Ver demo en https://daneden.github.io/animate.css/"
+		/>
+		<field
 			name="content_position"
 			type="list"
 			default="right"
@@ -85,6 +85,13 @@
 			type="media"
 			directory=""
 			label="Image"
+		/>
+		<field
+			name="scroll_effect_img"
+			type="scrolleffects"
+			default=""
+			label="Scroll effect Image"
+			description="Ver demo en https://daneden.github.io/animate.css/"
 		/>
 		<field
 			name="img_shadow"

@@ -24,9 +24,9 @@ jQuery(function () {
 
 <!-- menu 4 example: http://getbootstrap.com/docs/4.1/examples/offcanvas/ -->
 <nav class="navbar navbar-expand-lg fixed-top">
-      <a class="navbar-brand mr-auto mr-lg-0" href="#">
+      <a class="navbar-brand mr-auto mr-lg-0" href="index.php">
       <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
-        <img class="logo-img" src="<?= jpf::getparameter('topmenu-logo'); ?>" alt="<?= jpf::getSitename(); ?>">
+        <img class="logo-img" src="<?= JURI::root().jpf::getparameter('topmenu-logo'); ?>" alt="<?= jpf::getSitename(); ?>">
         <?php else : ?>
         <?= jpf::getSitename(); ?>
        <?php endif; ?>

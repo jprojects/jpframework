@@ -26,6 +26,7 @@ $box 			= blocksHelper::getBlockParameter($blockid, 'carousel_box', 0);
 $position       = blocksHelper::getBlockParameter($blockid, 'Position_box', 'hero_center');
 $colorbox       = blocksHelper::getBlockParameter($blockid, 'color_box', 'rgba(0, 0, 0, 0.2);');
 $height 	   	= blocksHelper::getBlockParameter($blockid, 'carousel_height');
+$parallax       = blocksHelper::getBlockParameter($blockid, 'carousel_parallax', 1);
 $data           = blocksHelper::groupByKey($items);
 ?>
 
@@ -41,7 +42,7 @@ if($data['carousel_img'][$i] == '') break;
 	background-size: cover;
 	background-position: center center;
 	background-repeat: no-repeat;
-    background-attachment: scroll;
+    background-attachment: <?= $parallax == 1 ? 'fixed' : 'scroll'; ?>;
 }
 <?php if($data['carousel_img_md'][$i] != '') : ?>
 @media screen and (max-width: 768px){

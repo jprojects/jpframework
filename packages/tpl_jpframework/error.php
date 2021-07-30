@@ -16,12 +16,13 @@ use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
 
+require_once('jp_framework.class.php');
+error_reporting(E_ERROR | E_PARSE); // Report simple running errors
+
 /** @var JDocumentError $this */
 
 $app = Factory::getApplication();
 $wa  = $this->getWebAssetManager();
-
-require_once('jp_framework.class.php');
 
 if (!isset($this->error)) {
 	$this->error = $app->enqueueMessage(JText::_('JERROR_ALERTNOAUTHOR'));
@@ -62,26 +63,23 @@ body{
 <!DOCTYPE HTML>
 <html lang="<?= $this->language; ?>">
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-		<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta2/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-		<title><?= $this->error->getCode(); ?> - <?= $this->title; ?></title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<jdoc:include type="head" />
+	<?php jpf::setHead(); ?>
+	<link rel="shortcut icon" href="<?= $this->baseurl ?>/templates/<?= $this->template ?>/icon.png" />
 	</head>
 
 	<body>
-		<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-			<h5 class="my-0 mr-md-auto font-weight-normal"><img height="70" class="logo-img" src="/images/logo.png" alt="<?= jpf::getSiteName(); ?>"></h5>
-			<nav class="my-2 my-md-0 mr-md-3">
-				<a class="p-2 text-dark" href="index.php">Home</a>
-			</nav>
-		</div>
+		<header>
+		<?= jpf::getLayout(jpf::getparameter('menu', 'menu-1'), 'menu'); ?>
+		</header>
 		<div class="container">
-	    <div class="error-wrapper">
-	        <h3 class="title"><?= $this->error->getCode(); ?></h3>
-	        <p class="info"><?= JText::_('JP_FRAMEWORK_ERROR_'.$this->error->getCode()); ?></p>
-			<img class="img-fluid" src="<?= Uri::root(); ?>templates/jpframework/images/tumbleweed.gif" alt="<?= $this->error->getCode(); ?>">
-	    </div>
+			<div class="error-wrapper">
+				<h3 class="title">404</h3>
+				<p class="info"><?= JText::_('JP_FRAMEWORK_ERROR_404'); ?></p>
+				<img class="img-fluid" src="<?= Uri::root(); ?>templates/jpframework/images/tumbleweed.gif" alt="404">
+			</div>
 		</div>
 
 	</body>

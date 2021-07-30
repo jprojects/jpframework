@@ -33,7 +33,7 @@ $fontsize   = blocksHelper::getBlockParameter($blockid, 'block_font_size', 'fs-4
    <div class="container-fluid">
       <div class="row  justify-content-center align-items-center d-flex text-center h-100">
         <div class="col-12 col-md-8 h-50 wow <?= $effect; ?> animated" style="color:<?= blocksHelper::getBlockParameter($blockid, 'block_font_color', '#fff'); ?>">
-            <?php if($title != '') : ?><h1 class="display-2 mb-2 mt-5"><strong><?= $title; ?></strong></h1><?php endif; ?>
+            <?php if($title != '') : ?><h1 class="display-2 my-5"><strong><?= $title; ?></strong></h1><?php endif; ?>
             <?php if($txt != '') : ?><p class="<?= $fontsize; ?> mb-2"><?= $txt; ?></p><?php endif; ?>
             <?php if($btn1_text != '') : ?><p><a href="<?= $btn1_link; ?>" class="btn shadow-lg btn-round btn-lg btn-rised" style=background-color:#df5f1b;border-color:#df5f1b;color:#fff;><?= $btn1_text; ?></a></p><?php endif; ?>
 					

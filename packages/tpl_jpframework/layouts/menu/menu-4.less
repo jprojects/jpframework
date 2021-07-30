@@ -97,6 +97,12 @@ ul.mod-menu > li.deeper:hover > .mod-menu__sub {
   .nav-item > a {
     color: @link_color;
   }
+  .nav-pills .nav-link {
+    padding: 10px 15px;
+  }
+  .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    border-radius: 0;
+  }
   .mod-menu__sub {
     display: none;
     position: relative;
@@ -104,6 +110,7 @@ ul.mod-menu > li.deeper:hover > .mod-menu__sub {
     color: #fff;
     min-width: 250px;
     padding: 15px;
+    left: 10px;
   }
   .mod-menu__sub > li { color: @link_color; padding: 10px 0; }
   .mod-menu__sub > li:hover { background-color: transparent }

@@ -50,6 +50,9 @@ class JpframeworkModelBlocks extends JModelList {
 
         $app = Factory::getApplication('administrator');
 
+        $search = $app->getUserStateFromRequest($this->context . '.filter.search', 'filter_search', '', 'int');
+        $this->setState('filter.search', $search);
+
         $menuitem = $app->getUserStateFromRequest($this->context . '.list.menuitem', 'list_menuitem', '', 'int');
         $this->setState('list.menuitem', $menuitem);
 
@@ -83,6 +86,7 @@ class JpframeworkModelBlocks extends JModelList {
         $id.= ':' . $this->getState('list.menuitem');
         $id.= ':' . $this->getState('list.state');
         $id.= ':' . $this->getState('list.position');
+        $id.= ':' . $this->getState('filter.search');
 
         return parent::getStoreId($id);
     }
@@ -101,6 +105,12 @@ class JpframeworkModelBlocks extends JModelList {
       $query->select('a.*');
 
       $query->from('`#__jpframework_blocks` AS a');
+
+      // Filter by text
+  		$search = $this->getState('filter.search');
+  		if (!empty($search) && $search != '*') {
+  			$query->where('a.params LIKE "%' .$search.'%"');
+  		}
 
       // Filter by state
   		$state = $this->getState('list.state');

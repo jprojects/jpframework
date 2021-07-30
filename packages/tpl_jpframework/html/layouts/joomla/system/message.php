@@ -17,9 +17,9 @@ $alert = array('error' => 'alert-error', 'warning' => '', 'notice' => 'alert-inf
 	<?php if (is_array($msgList) && !empty($msgList)) : ?>
 		<div id="system-message">
 			<?php foreach ($msgList as $type => $msgs) : ?>
-				<div class="alert <?php echo isset($alert[$type]) ? $alert[$type] : 'alert-' . $type; ?>">
+				<div class="alert <?php echo isset($alert[$type]) ? $alert[$type] : 'alert-' . $type; ?> alert-dismissible fade show" role="alert">
 					<?php // This requires JS so we should add it trough JS. Progressive enhancement and stuff. ?>
-					<a class="close" data-dismiss="alert">×</a>
+					<a class="close" data-bs-dismiss="alert">×</a>
 
 					<?php if (!empty($msgs)) : ?>
 						<!--<h4 class="alert-heading"><?php echo JText::_($type); ?></h4>-->

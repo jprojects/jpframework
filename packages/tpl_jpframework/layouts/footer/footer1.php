@@ -33,7 +33,7 @@
 		<!-- end footer row -->
 		<?php endif; ?>
 
-		<div class="text-center">
+		<div class="text-center pb-3">
 			<div class="social-icons mb-3"> 
 				<?= jpf::getSocial(); ?>  
 			</div>
