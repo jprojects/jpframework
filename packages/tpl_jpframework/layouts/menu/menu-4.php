@@ -36,6 +36,6 @@ jQuery(function () {
       </button>
 
       <div class="navbar-collapse offcanvas-collapse justify-content-end" id="navbarsExampleDefault">
-          <jdoc:include type="modules" name="jpf-menu" /> 
+          <jdoc:include type="modules" name="jpf-menu" /> <?php if(jpf::getparameter('language_menu', 0) == 1) : ?>| <jdoc:include type="modules" name="jpf-lang" /><?php endif; ?>
       </div>
 </nav>

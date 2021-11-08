@@ -12,73 +12,41 @@ defined('_JEXEC') or die;
 
 $blockid    = JFactory::getApplication()->input->get('blockid');
 blocksHelper::getBlockParameter($blockid, 'effect', '') == '' ? $effect = '' : $effect = 'class="wow '.$effect.'"';
+$heading = blocksHelper::getBlockParameter($blockid, 'heading_title', '');
+$classes = blocksHelper::getBlockParameter($blockid, 'classes', '');
+$images  = blocksHelper::getBlockParameter($blockid, 'list_images');
+$items   = blocksHelper::groupByKey($images);
 ?>
-
-<style>
-.logos img {
-	margin: 10px auto;
-}
-</style>
 
 <section <?= $effect; ?> id="<?php echo blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:#ecf0f1">
 
-		<div class="container">
+		<div class="container <?= $classes; ?>">
 		
+			<?php if($heading != '') : ?>
 			<header class="page-header text-center">
-				<h1><?php echo blocksHelper::getBlockParameter($blockid, 'heading_title'); ?></h1>
-				<p class="lead"><?php echo blocksHelper::getBlockParameter($blockid, 'heading_subtitle'); ?></p>
+				<h1><?= $heading; ?></h1>
+				<p class="lead"><?= blocksHelper::getBlockParameter($blockid, 'heading_subtitle'); ?></p>
 			</header>
+			<?php endif; ?>
 		
-			<div class="row">
-			
-				<div class="col-md-12">
-					
-					<div class="logos">
+			<div class="d-flex justify-content-between align-items-center">
 
-						<div class="col-xs-12 col-sm-12 col-md-2 text-center">
-							<?php if(blocksHelper::getBlockParameter($blockid, 'testimonial_img1') != '') : ?>
-							<a href="<?= blocksHelper::getBlockParameter($blockid, 'link1', '#'); ?>" target="_blank">
-							<img class="img-responsive" src="<?= blocksHelper::getBlockParameter($blockid, 'testimonial_img1'); ?>" alt="">
-							</a>
-							<?php endif; ?>
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-2 text-center">
-							<?php if(blocksHelper::getBlockParameter($blockid, 'testimonial_img2') != '') : ?>
-							<a href="<?= blocksHelper::getBlockParameter($blockid, 'link2', '#'); ?>" target="_blank">
-							<img class="img-responsive" src="<?= blocksHelper::getBlockParameter($blockid, 'testimonial_img2'); ?>" alt="">
-							</a>
-							<?php endif; ?>
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-2 text-center">
-							<?php if(blocksHelper::getBlockParameter($blockid, 'testimonial_img3') != '') : ?>
-							<a href="<?= blocksHelper::getBlockParameter($blockid, 'link3', '#'); ?>" target="_blank">
-							<img class="img-responsive" src="<?= blocksHelper::getBlockParameter($blockid, 'testimonial_img3'); ?>" alt="">
-							</a>
-							<?php endif; ?>
-						</div>
-						<div class="col-xs-12 col-md-2">
-							<?php if(blocksHelper::getBlockParameter($blockid, 'testimonial_img4') != '') : ?>
-							<a href="<?= blocksHelper::getBlockParameter($blockid, 'link4', '#'); ?>" target="_blank">
-							<img class="img-responsive" src="<?= blocksHelper::getBlockParameter($blockid, 'testimonial_img4'); ?>" alt="">
-							</a>
-							<?php endif; ?>
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-2 text-center">
-							<?php if(blocksHelper::getBlockParameter($blockid, 'testimonial_img5') != '') : ?>
-							<a href="<?= blocksHelper::getBlockParameter($blockid, 'link5', '#'); ?>" target="_blank">
-							<img class="img-responsive" src="<?= blocksHelper::getBlockParameter($blockid, 'testimonial_img5'); ?>" alt="">
-							</a>
-							<?php endif; ?>
-						</div>
-						<div class="col-xs-12 col-sm-12 col-md-2 text-center">
-							<?php if(blocksHelper::getBlockParameter($blockid, 'testimonial_img6') != '') : ?>
-							<a href="<?= blocksHelper::getBlockParameter($blockid, 'link6', '#'); ?>" target="_blank">
-							<img class="img-responsive" src="<?= blocksHelper::getBlockParameter($blockid, 'testimonial_img6'); ?>" alt="">
-							</a>
-							<?php endif; ?>
-						</div>
-	
-					</div>
+			<?php if(count($items) > 0) :  
+				$i = 0;
+				foreach($items as $item): 
+				if($items['partners_img'][$i] == '') continue;
+				?>
+				<div>
+					<?php if($items['partners_link'][$i] != '') : ?>
+					<a href="<?= $items['partners_link'][$i]; ?>" target="_blank">
+					<img class="img-fluid" src="<?= $items['partners_img'][$i]; ?>" alt="<?= $items['partners_alt'][$i]; ?>">
+					</a>
+					<?php endif; ?>
+				</div>
+				<?php 
+				$i++;
+				endforeach;
+				endif; ?>
 					
 				</div>
 			</div>

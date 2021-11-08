@@ -12,7 +12,7 @@
 
 ?>
 <!-- menu 1 example: http://getbootstrap.com/docs/4.1/examples/carousel/ -->
-<nav class="navbar navbar-expand-xl navbar-dark bg-dark bg-jp">
+<nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-dark bg-jp">
   <div class="container-fluid">
         <a class="navbar-brand" href="index.php">
         <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
@@ -21,11 +21,11 @@
             <strong><?= jpf::getSitename(); ?></strong>
         <?php endif; ?>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-         	<jdoc:include type="modules" name="jpf-menu" />          
+         	<jdoc:include type="modules" name="jpf-menu" /> <?php if(jpf::getparameter('language_menu', 0) == 1) : ?>| <jdoc:include type="modules" name="jpf-lang" /><?php endif; ?>
         </div>
   </div>
 </nav>

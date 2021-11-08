@@ -15,22 +15,26 @@ abstract class NewsHelper {
 	public static function getArticles($cat, $limit) {
 
 		$db = JFactory::getDbo();
-		$db->setQuery(	"select * from #__content ".
-				"where catid = ".$cat." and state = 1 order by created ".
-				"asc limit ".$limit."");
+		$db->setQuery(	"select * from #__blogger_items ".
+				"where state = 1 order by id ".
+				"desc limit ".$limit."");
 		return $db->loadObjectList();
 	}
 
-	public static function getImage($text) {
-
-		preg_match_all('/<img[^>]+>/i',$text, $result);
-  		return $result[0][0];
-	}
-
-	public static function getText($text) {
-
-		preg_match_all('/<img[^>]+>/i',$text, $result);
-  		$img = $result[0][0];
-  		return str_replace($img, '', $text);
+	/**
+	 * Get intro from full text
+	 *
+	 * @param   string  $text  Article text
+	 *
+	 * @return string
+	 */
+	public static function getIntro($text) 
+	{
+		if(strpos($text, '<hr id="system-readmore" />') !== false) {
+			$txt = explode('<hr id="system-readmore" />', $text);
+			return $txt[0];
+		} else {
+			return $text;
+		}
 	}
 }

@@ -1,5 +1,7 @@
 /* Less vars
  * @body_font
+ * @h_font
+ * @body_fontsize
  * @body_fcolor
  * @body_color
  * @link_color
@@ -7,6 +9,14 @@
  * @footer_color
  * @footer_fcolor
  * @menu_background
+ * @primary_color
+ * @secondary_color
+ * @primary_bg
+ * @secondary_bg
+ * @success_bg
+ * @error_bg
+ * @success_color
+ * @error_color
 */
 
 
@@ -14,3 +24,25 @@
     background-color: @menu_background !important;
 }
 .logo-img { height: 90px; }
+
+.nav-link {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    padding: 20px;
+}
+
+.nav-link::after {
+    content: '';
+    display: block;
+    width: 0;
+    margin-top:5px;
+    height: 2px;
+    background: @primary_bg;
+    transition: width .3s;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+    //transition: width .3s;
+}

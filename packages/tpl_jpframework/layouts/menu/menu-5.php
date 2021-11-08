@@ -48,7 +48,7 @@ jQuery(document).ready(function(){
                     <nav class="menu">
                         <div class="nav-layer"></div>
                         <div id="lang" style="display:none;"><jdoc:include type="modules" name="jpf-lang" /></div>
-                        <jdoc:include type="modules" name="jpf-menu" />
+                        <jdoc:include type="modules" name="jpf-menu" /> <?php if(jpf::getparameter('language_menu', 0) == 1) : ?>| <jdoc:include type="modules" name="jpf-lang" /><?php endif; ?>
                         
                     </nav>
                     <?php if(jpf::getparameter('topmenu-logo') != '') : ?>

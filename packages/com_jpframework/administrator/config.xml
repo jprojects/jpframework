@@ -9,73 +9,42 @@
     		description=""
     		format="%Y-%m-%d"
     	/>
-    	<field
-    		name="menu"
-    		type="filelist"
-    		default="menu-1"
-    		label="COM_JPFRAMEWORK_TOPMENU_LABEL"
-    		description="COM_JPFRAMEWORK_TOPMENU_DESC"
-    		directory="templates/jpframework/layouts/menu"
-    		filter="\.php"
-    		exclude="\.html|\.css|\.less"
-    		stripext="true"
-    		hide_default="true"
-    	/>
-    	<field
-    		name="topmenu-logo"
-    		class="inputbox"
-    		type="media"
-    		label="COM_JPFRAMEWORK_LOGO_LABEL"
-    		description="COM_JPFRAMEWORK_LOGO_DESC"
-    		directory="images/"
-    	/>
-    	<field
-    		name="topmenu-about"
-    		class="inputbox"
-    		type="textarea"
-    		label="COM_JPFRAMEWORK_ABOUT_LABEL"
-    		description="COM_JPFRAMEWORK_ABOUT_DESC"
-    		default="Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information."
-    		cols="10"
-    		rows="5"
-    		showon="menu:menu-3"
-    	/>
-      <field
-      	name="layout"
-      	type="filelist"
-      	default="clear"
-      	label="COM_JPFRAMEWORK_LAYOUT_LABEL"
-      	description="COM_JPFRAMEWORK_LAYOUT_DESC"
-      	directory="templates/jpframework/layouts"
-      	filter=""
-      	exclude="index.html"
-      	stripext="true"
-      	hide_default="true"
-      />
-	  <field
-      	name="footer"
-      	type="filelist"
-      	default="footer1"
-      	label="COM_JPFRAMEWORK_FOOTER_LABEL"
-      	description="COM_JPFRAMEWORK_FOOTER_DESC"
-      	directory="templates/jpframework/layouts/footer"
-      	filter=""
-      	exclude="index.html"
-      	stripext="true"
-      	hide_default="true"
-      />
-      <field
-      	name="front_component"
-      	type="radio"
-      	default="1"
-      	label="COM_JPFRAMEWORK_FRONTPAGE_COMPONENT_LABEL"
-      	description="COM_JPFRAMEWORK_FRONTPAGE_COMPONENT_DESC"
-      	class="btn-group"
-      >
+      	<field
+			name="layout"
+			type="filelist"
+			default="clear"
+			label="COM_JPFRAMEWORK_LAYOUT_LABEL"
+			description="COM_JPFRAMEWORK_LAYOUT_DESC"
+			directory="templates/jpframework/layouts"
+			filter=""
+			exclude="index.html"
+			stripext="true"
+			hide_default="true"
+      	/>
+	  	<field
+			name="footer"
+			type="filelist"
+			default="footer1"
+			label="COM_JPFRAMEWORK_FOOTER_LABEL"
+			description="COM_JPFRAMEWORK_FOOTER_DESC"
+			directory="templates/jpframework/layouts/footer"
+			filter=""
+			exclude="index.html"
+			stripext="true"
+			hide_default="true"
+      	/>
+		<field
+			name="front_component"
+			type="radio"
+			default="1"
+			label="COM_JPFRAMEWORK_FRONTPAGE_COMPONENT_LABEL"
+			description="COM_JPFRAMEWORK_FRONTPAGE_COMPONENT_DESC"
+			class="btn-group"
+		>
           <option value="0">JNO</option>
           <option value="1">JYES</option>
-      </field>
-      <field
+      	</field>
+      	<field
   			name="itemids"
   			type="menuitem"
   			default="0"
@@ -85,78 +54,78 @@
   			description="COM_JPFRAMEWORK_FORM_DESC_BLOCKS_MUNITEM"
   		>
 		    <option	value="0">JALL</option>
-		  </field>
-      <field
-      	name="itemids_mind"
-      	type="radio"
-      	default="1"
-      	label="COM_JPFRAMEWORK_ITEMIDS_MIND_LABEL"
-      	description="COM_JPFRAMEWORK_ITEMIDS_MIND_DESC"
-      	class="btn-group"
-      >
+		</field>
+		<field
+			name="itemids_mind"
+			type="radio"
+			default="1"
+			label="COM_JPFRAMEWORK_ITEMIDS_MIND_LABEL"
+			description="COM_JPFRAMEWORK_ITEMIDS_MIND_DESC"
+			class="btn-group"
+		>
           <option value="0">Not display</option>
           <option value="1">Display</option>
-      </field>
-      <field
-      	name="jpf-top"
-      	type="radio"
-      	default="1"
-      	label="COM_JPFRAMEWORK_TOP_LABEL"
-      	description="COM_JPFRAMEWORK_TOP_DESC"
-      	class="btn-group"
-      >
+		</field>
+		<field
+			name="jpf-top"
+			type="radio"
+			default="1"
+			label="COM_JPFRAMEWORK_TOP_LABEL"
+			description="COM_JPFRAMEWORK_TOP_DESC"
+			class="btn-group"
+		>
         <option value="0">JNO</option>
         <option value="1">JYES</option>
-      </field>
-      <field
-      	name="jpf-main"
-      	type="radio"
-      	default="0"
-      	label="COM_JPFRAMEWORK_MAIN_LABEL"
-      	description="COM_JPFRAMEWORK_MAIN_DESC"
-      	class="btn-group"
-      >
-        <option value="0">JNO</option>
-        <option value="1">JYES</option>
-      </field>
-      <field
-      	name="jpf-showcase"
-      	type="radio"
-      	default="0"
-      	label="COM_JPFRAMEWORK_SHOWCASE_LABEL"
-      	description="COM_JPFRAMEWORK_SHOWCASE_DESC"
-      	class="btn-group"
-      >
-        <option value="0">JNO</option>
-        <option value="1">JYES</option>
-      </field>
-      <field
-      	name="jpf-bottom"
-      	type="radio"
-      	default="0"
-      	label="COM_JPFRAMEWORK_BOTTOM_LABEL"
-      	description="COM_JPFRAMEWORK_BOTTOM_DESC"
-      	class="btn-group"
-      >
-        <option value="0">JNO</option>
-        <option value="1">JYES</option>
-      </field>
-      <field
-      	name="jpf-footer"
-      	type="radio"
-      	default="1"
-      	label="COM_JPFRAMEWORK_FOOTER_LABEL"
-      	description="COM_JPFRAMEWORK_FOOTER_DESC"
-      	class="btn-group"
-      >
-        <option value="0">JNO</option>
-        <option value="1">JYES</option>
-      </field>
+		</field>
+		<field
+			name="jpf-main"
+			type="radio"
+			default="0"
+			label="COM_JPFRAMEWORK_MAIN_LABEL"
+			description="COM_JPFRAMEWORK_MAIN_DESC"
+			class="btn-group"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+			name="jpf-showcase"
+			type="radio"
+			default="0"
+			label="COM_JPFRAMEWORK_SHOWCASE_LABEL"
+			description="COM_JPFRAMEWORK_SHOWCASE_DESC"
+			class="btn-group"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+			name="jpf-bottom"
+			type="radio"
+			default="0"
+			label="COM_JPFRAMEWORK_BOTTOM_LABEL"
+			description="COM_JPFRAMEWORK_BOTTOM_DESC"
+			class="btn-group"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
+		<field
+			name="jpf-footer"
+			type="radio"
+			default="1"
+			label="COM_JPFRAMEWORK_FOOTER_LABEL"
+			description="COM_JPFRAMEWORK_FOOTER_DESC"
+			class="btn-group"
+		>
+			<option value="0">JNO</option>
+			<option value="1">JYES</option>
+		</field>
       <field name="privacy"
   			type="subform"
   			description="COM_JPFRAMEWORK_PRIVACY_DESC"
   			label="COM_JPFRAMEWORK_PRIVACY_LABEL"
-  			multiple="true"
+  			multiple='true'
 			min="1"
 			max="10"
       >
@@ -259,6 +228,40 @@
       filter="raw"
     />
     </fieldset>
+	<fieldset label="COM_JPFRAMEWORK_MENUS" name="menus" addfieldpath="/administrator/components/com_jpframework/models/fields">
+		<field type="spacer" name="myspacer" label="&lt;img class='img-fluid' src='components/com_jpframework/assets/img/menus.png' alt='...'&gt;" />
+		<field
+    		name="menu"
+    		type="filelist"
+    		default="menu-1"
+    		label="COM_JPFRAMEWORK_TOPMENU_LABEL"
+    		description="COM_JPFRAMEWORK_TOPMENU_DESC"
+    		directory="templates/jpframework/layouts/menu"
+    		filter="\.php"
+    		exclude="\.html|\.css|\.less"
+    		stripext="true"
+    		hide_default="true"
+    	/>
+    	<field
+    		name="topmenu-logo"
+    		class="inputbox"
+    		type="media"
+    		label="COM_JPFRAMEWORK_LOGO_LABEL"
+    		description="COM_JPFRAMEWORK_LOGO_DESC"
+    		directory="images/"
+    	/>
+    	<field
+    		name="topmenu-about"
+    		class="inputbox"
+    		type="textarea"
+    		label="COM_JPFRAMEWORK_ABOUT_LABEL"
+    		description="COM_JPFRAMEWORK_ABOUT_DESC"
+    		default="Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information."
+    		cols="10"
+    		rows="5"
+    		showon="menu:menu-3"
+    	/>
+	</fieldset>
     <fieldset label="COM_JPFRAMEWORK_STYLES" name="styles" addfieldpath="/administrator/components/com_jpframework/models/fields">
     	<field
     		type="fonts"

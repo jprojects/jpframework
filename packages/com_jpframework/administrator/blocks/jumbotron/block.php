@@ -25,15 +25,20 @@ $text       = blocksHelper::getBlockParameter($blockid, 'jumbotron-text', '');
 $image      = blocksHelper::getBlockParameter($blockid, 'jumbotron-img', '');
 $anchor     = blocksHelper::getBlockParameter($blockid, 'jumbotron-anchor', '');
 $fontsize   = blocksHelper::getBlockParameter($blockid, 'block_font_size', 'fs-4');
+$pagetitle  = blocksHelper::getBlockParameter($blockid, 'use_page_title', 1);
+$parallax   = blocksHelper::getBlockParameter($blockid, 'jumbotron_parallax', 1);
 ?>
 
 
-<section id="<?= $uniqid; ?>" class="pt-5 pb-5 mt-0 align-items-center d-flex <?= $classes; ?>" style="height:<?= $height; ?>; <?php if($image != '') : ?>background-size: cover;background-image:url('<?= $image; ?>');<?php else: ?>background-color:<?= $bg_color; ?>;<?php endif; ?>">
+<section id="<?= $uniqid; ?>" class="pt-5 pb-5 mt-5 align-items-center d-flex <?= $classes; ?>" style="height:<?= $height; ?>; <?php if($image != '') : ?>background-size: cover;background-image:url('<?= $image; ?>');<?php else: ?>background-color:<?= $bg_color; ?>;<?php endif; ?>background-attachment: <?= $parallax == 1 ? 'fixed' : 'scroll'; ?>;">
   
    <div class="container-fluid">
       <div class="row  justify-content-center align-items-center d-flex text-center h-100">
         <div class="col-12 col-md-8 h-50 wow <?= $effect; ?> animated" style="color:<?= blocksHelper::getBlockParameter($blockid, 'block_font_color', '#fff'); ?>">
-            <?php if($title != '') : ?><h1 class="display-2 my-5"><strong><?= $title; ?></strong></h1><?php endif; ?>
+
+            <?php if($pagetitle == 0 && $title != '') : ?><h1 class="display-2 my-5"><strong><?= $title; ?></strong></h1><?php endif; ?>
+              <?php if($pagetitle == 1) : ?><h1 class="display-2 my-5"><strong><?= JFactory::getApplication()->getMenu()->getActive()->title; ?></strong></h1><?php endif; ?>
+
             <?php if($txt != '') : ?><p class="<?= $fontsize; ?> mb-2"><?= $txt; ?></p><?php endif; ?>
             <?php if($btn1_text != '') : ?><p><a href="<?= $btn1_link; ?>" class="btn shadow-lg btn-round btn-lg btn-rised" style=background-color:#df5f1b;border-color:#df5f1b;color:#fff;><?= $btn1_text; ?></a></p><?php endif; ?>
 					

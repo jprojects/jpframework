@@ -22,6 +22,6 @@
     </a>
 
     <ul class="nav nav-pills d-flex align-items-center">
-      <jdoc:include type="modules" name="jpf-menu" />
+      <jdoc:include type="modules" name="jpf-menu" /> <?php if(jpf::getparameter('language_menu', 0) == 1) : ?>| <jdoc:include type="modules" name="jpf-lang" /><?php endif; ?>
     </ul>
   </header>

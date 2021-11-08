@@ -21,6 +21,7 @@ $model = $this->getModel('block');
 
 ?>
 
+
 <form action="<?= JRoute::_('index.php?option=com_jpframework&view=block&layout=edit&id='.(int) $this->item->id); ?>" method="post" name="adminForm" id="block-form" class="form-validate">
 	<input type="hidden" name="jform[id]" value="<?= $this->item->id; ?>" />
 	<input type="hidden" name="jform[ordering]" value="<?= $this->item->ordering; ?>" />

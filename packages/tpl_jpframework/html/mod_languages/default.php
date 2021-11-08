@@ -11,7 +11,7 @@ defined('_JEXEC') or die;
 
 JHtml::_('stylesheet', 'mod_languages/template.css', array(), true);
 ?>
-<div class="mod-languages<?php echo $moduleclass_sfx ?>">
+<div class="mod-languages <?php echo $moduleclass_sfx ?>">
 <?php if ($headerText) : ?>
 	<div class="pretext"><p><?php echo $headerText; ?></p></div>
 <?php endif; ?>
@@ -26,7 +26,7 @@ JHtml::_('stylesheet', 'mod_languages/template.css', array(), true);
 	</select>
 	</form>
 <?php else : ?>
-	<ul class="<?php echo $params->get('inline', 1) ? 'lang-inline' : 'lang-block';?>">
+	<ul class="<?php echo $params->get('inline', 1) ? 'lang-inline' : 'lang-block';?> mod-menu mod-list nav navbar-nav ml-auto">
 	<?php foreach ($list as $language) : ?>
 		<?php if ($params->get('show_active', 0) || !$language->active):?>
 			<li class="<?php echo $language->active ? 'lang-active' : '';?>" dir="<?php echo JLanguage::getInstance($language->lang_code)->isRTL() ? 'rtl' : 'ltr' ?>">

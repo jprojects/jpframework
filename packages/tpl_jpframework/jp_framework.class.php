@@ -78,7 +78,7 @@ class jpf  extends blocksHelper
       $doc->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/css/bootstrap.min.css');
       $doc->addScript('https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-beta3/js/bootstrap.bundle.min.js');
       $doc->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
-      $doc->addScript('https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" type="text/javascript');
+      $doc->addScript('https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js');
     	$doc->addStylesheet(JURI::base().'templates/jpframework/css/jpframework.css');
     	if($icon_font == 'fontawesome') {
         $doc->addStylesheet('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css');

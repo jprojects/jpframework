@@ -15,12 +15,26 @@
 			label="Background" 
 			description="Background color" 
 		/>
+		<field
+			name="block_font_color"
+			type="color"
+			default="#ffffff"
+			label="Font color"
+			description="Font color"
+		/>
 		<field 
 			name="uniqid" 
 			type="text" 
 			default="" 
 			label="Uniqid" 
 			description="Uniqid is used as the block section id" 
+		/>
+		<field
+			name="classes"
+			type="text"
+			default=""
+			label="Classes"
+			description="Classes used in this block"
 		/>
 		<field 
 			name="video_header" 

@@ -64,7 +64,7 @@
 		<field
 			name="category"
 			type="category"
-			extension="com_content"
+			extension="com_blogger"
 			label="Select a category"
 			description=""
 		/>

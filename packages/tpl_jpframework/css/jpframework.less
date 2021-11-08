@@ -83,6 +83,13 @@ sub {
 	height: 100%; 
 }
 
+.border-top { border-top: 1px solid @primary_bg !important; }
+.border-bottom { border-bottom: 1px solid @primary_bg !important; }
+
+/* Language */
+
+.lang-inline li { display: inline-block; }
+.lang-inline li a { color: #fff; padding: 0 8px; }
 
 /* Forms */
 
@@ -197,6 +204,8 @@ a.pagenav:hover {
 
 /* Menu */
 
+.navbar-toggler-icon { color: @primary_bg; }
+
 .dropdown:hover ul.dropdown-menu {
 	display: block;
 }
@@ -235,6 +244,8 @@ a.pagenav:hover {
     text-decoration: none;
     background-color: @link_color;
 }
+
+.navbar-dark .navbar-nav .nav-link.active, .lang-active a span { color: @primary_bg; }
 
 /* ===== Features ===== */
 

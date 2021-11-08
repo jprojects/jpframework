@@ -10,16 +10,21 @@
 // No direct access
 defined('_JEXEC') or die;
 
-$blockid   = JRequest::getVar('blockid');
+$blockid    = JFactory::getApplication()->input->get('blockid');
 blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blocks/videoheader/assets/css/videoheader.css');
-$video_subheader = blocksHelper::getBlockParameter($blockid, 'video_subheader', '');
-$video_header = blocksHelper::getBlockParameter($blockid, 'video_header', '');
+
+$uniqid           = blocksHelper::getBlockParameter($blockid, 'uniqid');
+$video_subheader  = blocksHelper::getBlockParameter($blockid, 'video_subheader', '');
+$video_header     = blocksHelper::getBlockParameter($blockid, 'video_header', '');
+$bgcolor          = blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid);
+$color            = blocksHelper::getBlockParameter($blockid,'block_font_color');
+$classes          = blocksHelper::getBlockParameter($blockid, 'classes', '');
 blocksHelper::getBlockParameter($blockid, 'video_autoplay', 1) ? $video_autoplay = 'autoplay="autoplay"' : $video_autoplay = '';
 blocksHelper::getBlockParameter($blockid, 'video_muted', 1) ? $video_muted = 'muted="muted"' : $video_muted = '';
 blocksHelper::getBlockParameter($blockid, 'video_loop', 1) ? $video_loop = 'loop="loop"' : $video_loop = '';
 ?>
 
-<header class="videoheader" id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>">
+<header class="videoheader <?= $classes; ?>" id="<?= $uniqid; ?>" style="background-color:<?= $bgcolor; ?>;color:<?= $color; ?>">
   <div class="overlay"></div>
   <video playsinline="playsinline" <?= $video_autoplay; ?> <?= $video_muted; ?> <?= $video_loop; ?>>
     <source src="<?= JURI::root().blocksHelper::getBlockParameter($blockid, 'video_vid', ''); ?>" type="video/mp4">
@@ -37,7 +42,3 @@ blocksHelper::getBlockParameter($blockid, 'video_loop', 1) ? $video_loop = 'loop
   </div>
   <?php endif; ?>
 </header>
-<?php if($pills > 0) : ?>
-<div class="d-flex">
-</div>
-<?php endif; ?>

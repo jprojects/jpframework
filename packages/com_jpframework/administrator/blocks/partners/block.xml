@@ -23,6 +23,13 @@
 			description="Font color" 
 		/>
 		<field 
+			name="classes" 
+			type="text" 
+			default="" 
+			label="Classes" 
+			description="" 
+		/>
+		<field 
 			name="uniqid" 
 			type="text" 
 			default="" 
@@ -172,77 +179,38 @@
 			cols="5" 
 			filter="raw"
 		/>
-		<field 
-			name="testimonial_img1" 
-			type="media" 
-			directory="sampledata/brands" 
-			label="Image 1" 
-		/>
-		<field 
-			name="link1" 
-			type="text" 
-			default="#" 
-			label="Link 1" 
-			description="" 
-		/>
-		<field 
-			name="testimonial_img2" 
-			type="media" 
-			directory="sampledata/brands" 
-			label="Image 2" 
-		/>
-		<field 
-			name="link2" 
-			type="text" 
-			default="#" 
-			label="Link 2" 
-			description="" 
-		/>
-		<field 
-			name="testimonial_img3" 
-			type="media" 
-			directory="sampledata/brands" 
-			label="Image 3" 
-		/>
-		<field 
-			name="link3" 
-			type="text" 
-			default="#" 
-			label="Link 3" 
-			description="" 
-		/>
-		<field 
-			name="testimonial_img4" 
-			type="media" 
-			directory="sampledata/brands" 
-			label="Image 4" 
-		/>
-		<field 
-			name="link4" 
-			type="text" 
-			default="#" 
-			label="Link 4" 
-			description="" 
-		/>
-		<field 
-			name="testimonial_img5" 
-			type="media" 
-			directory="sampledata/brands" 
-			label="Image 5" 
-		/>
-		<field 
-			name="link5" 
-			type="text" 
-			default="#" 
-			label="Link 5" 
-			description="" 
-		/>
-		<field 
-			name="testimonial_img6" 
-			type="media" 
-			directory="sampledata/brands" 
-			label="Image 6" 
-		/>
+		<field
+			name="list_images"
+			type="subform"
+			icon="list"
+			description="Partners items"
+			label="Partners items"
+			multiple="true"
+			min="1"
+			max="10">
+			<form>
+				<field 
+					name="partners_img" 
+					type="media" 
+					directory="" 
+					label="Image" 
+				/>
+				<field 
+					name="partners_link" 
+					type="text" 
+					default="#" 
+					label="Link" 
+					description="" 
+				/>
+				<field 
+					name="partners_alt" 
+					type="text" 
+					default="..." 
+					label="Alt attribute" 
+					description="" 
+				/>
+			</form>
+		</field>
 	</fieldset>
 	<fieldset name="styles">
 		<field 

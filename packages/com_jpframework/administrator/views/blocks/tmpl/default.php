@@ -19,7 +19,6 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\Session\Session;
 
 HTMLHelper::_('behavior.multiselect');
-HTMLHelper::_('behavior.keepalive');
 HTMLHelper::_('bootstrap.framework');
 
 $model  = $this->getModel();
@@ -32,7 +31,7 @@ $listOrder = $this->escape($this->state->get('list.ordering'));
 $listDirn  = $this->escape($this->state->get('list.direction'));
 $saveOrder = $listOrder == 'a.ordering';
 
-if (!empty($this->items))
+if ($saveOrder && !empty($this->items))
 {
 	$saveOrderingUrl = 'index.php?option=com_jpframework&task=blocks.saveOrderAjax&tmpl=component&' . Session::getFormToken() . '=1';
 	HTMLHelper::_('draggablelist.draggable');
@@ -53,7 +52,7 @@ loader.onclick = function(e) {
 });
 </script>
 
-<form action="<?= JRoute::_('index.php?option=com_jpframework&view=blocks'); ?>" method="post" name="adminForm" id="adminForm">
+<form action="<?= Route::_('index.php?option=com_jpframework&view=blocks'); ?>" method="post" name="adminForm" id="adminForm">
 
 <div class="row">
 	<div id="j-sidebar-container" class="col-12 col-md-2">
@@ -63,12 +62,12 @@ loader.onclick = function(e) {
 
     	<div class="jpf-filters">
     		<input id="all" type="checkbox" name="checkall-toggle" value="" title="<?= JText::_('JGLOBAL_CHECK_ALL'); ?>" onclick="Joomla.checkAll(this)" />
-			<?php echo JLayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
+			<?php echo LayoutHelper::render('joomla.searchtools.default', array('view' => $this)); ?>
 		</div>
 
 		
 		<table class="gridly" id="blocksList">
-			<tbody class="js-draggable" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="<?php echo strtolower($listDirn); ?>" data-nested="true">
+			<tbody <?php if ($saveOrder) : ?>class="js-draggable" data-url="<?php echo $saveOrderingUrl; ?>" data-direction="<?php echo strtolower($listDirn); ?>" data-nested="true"<?php endif; ?>>
 			<?php
 			if(count($this->items)) :
 			$i = 0;
@@ -80,10 +79,10 @@ loader.onclick = function(e) {
 				$canCheckin = $user->authorise('core.manage',     'com_jpframework');
 				$canChange  = $user->authorise('core.edit.state', 'com_jpframework') && $canCheckin;
 				?>
-				<tr class="brick large <?= $item->state == 1 ? 'published' : 'unpublished'; ?>" data-id="<?= $item->id; ?>"  <?php if($i > 0) : ?>style="border-top:#ccc 2px dashed;color:#000;"<?php endif; ?>>
+				<tr data-draggable-group="<?= $item->position; ?>" class="brick large <?= $item->state == 1 ? 'published' : 'unpublished'; ?> row<?php echo $i % 2; ?>" data-id="<?= $item->id; ?>"  <?php if($i > 0) : ?>style="border-top:#ccc 2px dashed;color:#000;"<?php endif; ?>>
 					<td style="position:relative;">
 					<input type="checkbox" class="cb" id="cb<?= $i; ?>" name="cid[]" value="<?= $item->id; ?>" onclick="Joomla.isChecked(this.checked);" />
-					<input type="text" style="display:none" name="order[]" size="5" value="<?= $item->ordering;?>" class="width-20 text-area-order " />
+					<input type="text" style="display:none" name="order[]" size="5" value="<?= $item->ordering;?>" class="width-20 text-area-order" />
 					<div class="brick-msg">
 						<?php $params = json_decode($item->params); ?>
 						<b><?= strtoupper($params->title); ?></b><br><br>
@@ -135,9 +134,7 @@ loader.onclick = function(e) {
 
 		<input type="hidden" name="task" value="" />
 		<input type="hidden" name="boxchecked" value="0" />
-		<input type="hidden" name="filter_order" value="<?= $listOrder; ?>" />
-		<input type="hidden" name="filter_order_Dir" value="<?= $listDirn; ?>" />
-		<?= JHtml::_('form.token'); ?>
+		<?= HTMLHelper::_('form.token'); ?>
 	</div>
 </div>
 </form>
