@@ -186,8 +186,9 @@
 			description="Partners items"
 			label="Partners items"
 			multiple="true"
+			layout="joomla.form.field.subform.repeatable-table"
 			min="1"
-			max="10">
+			max="100">
 			<form>
 				<field 
 					name="partners_img" 

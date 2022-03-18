@@ -198,14 +198,14 @@ class jpf  extends blocksHelper
      * @access public
      * @return string
     */
-    public static function getSocial()
+    public static function getSocial($size=2, $color='white')
     {
 		  $items = (array)jpf::getparameter('list_social');
 		  $html = array();
 
 	  	foreach ($items as $item)
 		  {
-			  $html[] = '<a class="mx-1" target="_blank" href="'.$item->social_link.'"><i title="'.$item->social_name.'" class="'.$item->social_icon.'"></i></a>';
+			  $html[] = '<a aria-label="'.$item->social_name.'" title="'.$item->social_name.'" class="mx-1 text-'.$color.'" target="_blank" href="'.$item->social_link.'"><i title="'.$item->social_name.'" class="'.$item->social_icon.' fa-'.$size.'x"></i></a>';
 		  }
 
 		  return implode($html);

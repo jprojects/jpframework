@@ -84,14 +84,6 @@
     text-decoration: none;
 }
 
-.date_pos {
-    top: 0;
-    right: 20px;
-    background-color: #68788f;
-    color: #fff;
-    padding: 10px 20px;
-}
-
 .owl-dots {
     text-align: center;
     position: relative;

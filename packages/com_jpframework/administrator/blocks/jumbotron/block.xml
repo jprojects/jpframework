@@ -52,13 +52,6 @@
 			label="Classes" 
 			description="Additional classes to this section block." 
 		/>
-		<field
-			name="scroll_effect"
-			type="scrolleffects"
-			default=""
-			label="Scroll effect"
-			description="Ver demo en https://daneden.github.io/animate.css/"
-		/>
 		<field 
 			name="use_page_title" 
 			type="list" 
@@ -75,7 +68,7 @@
 			default="" 
 			label="Heading text" 
 			description="Block heading text" 
-			showon="use_page_title:1"
+			showon="use_page_title:0"
 		/>
 		<field 
 			name="jumbotron-text" 
@@ -84,6 +77,13 @@
 			label="Subheading text" 
 			cols="10"
 			rows="5"
+		/>
+		<field
+			name="scroll_effect_text"
+			type="scrolleffects"
+			default=""
+			label="Scroll effect Text"
+			description="Ver demo en https://daneden.github.io/animate.css/"
 		/>
 		<field 
 			name="jumbotron-btn1-text" 
@@ -112,6 +112,13 @@
 			default="" 
 			label="Image" 
 			description="Background image, if empty background color is used instead." 
+		/>
+		<field
+			name="scroll_effect_img"
+			type="scrolleffects"
+			default=""
+			label="Scroll effect Img"
+			description="Ver demo en https://daneden.github.io/animate.css/"
 		/>
 		<field 
 			name="jumbotron-height" 

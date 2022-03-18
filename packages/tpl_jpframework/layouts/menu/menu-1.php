@@ -12,8 +12,8 @@
 
 ?>
 <!-- menu 1 example: http://getbootstrap.com/docs/4.1/examples/carousel/ -->
-<nav class="navbar navbar-expand-xl fixed-top navbar-dark bg-dark bg-jp">
-  <div class="container-fluid">
+<nav class="navbar navbar-expand-xl <?php if(jpf::getparameter('topmenu-fixed') == 1) : ?>fixed-top<?php endif; ?> navbar-dark bg-dark bg-jp">
+  <div class="container<?= jpf::getparameter('topmenu-fluid', 0) == 0 ? '' : '-fluid'; ?>">
         <a class="navbar-brand" href="index.php">
         <?php if(jpf::getparameter('topmenu-logo') != '') : ?>
             <img class="logo-img" src="<?= jpf::getparameter('topmenu-logo'); ?>" alt="<?= jpf::getSitename(); ?>">

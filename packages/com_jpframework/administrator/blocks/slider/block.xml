@@ -41,18 +41,18 @@
 			description="Classes used in this block"
 		/>
 		<field
-			name="img_classes"
-			type="text"
-			default=""
-			label="Classes for image"
-			description="Classes used in the image column"
-		/>
-		<field
 			name="uniqid"
 			type="text"
 			default=""
 			label="Uniqid"
 			description="Uniqid is used as the block section id"
+		/>
+		<field
+			name="slider_id"
+			type="text"
+			default=""
+			label="Uniqid"
+			description="Uniqid is used as the slider"
 		/>
 		<field
 			name="content_title"
@@ -68,17 +68,6 @@
 			label="Title color"
 			description="Title color"
 		/>
-		<field
-			name="heading_pos"
-			type="list"
-			default="left"
-			label="Title position"
-			description="Title position"
-		>
-			<option value="left">Left</option>
-			<option value="over_img">Over image</option>
-			<option value="over_text">Over text</option>
-		</field>
 		<field
 			name="heading_size"
 			type="list"
@@ -119,69 +108,12 @@
 			description="Ver demo en https://daneden.github.io/animate.css/"
 		/>
 		<field
-			name="content_column"
-			type="list"
-			default="6"
-			label="Text column width"
-			description="Text column width"
-		>
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-			<option value="6">6</option>
-			<option value="7">7</option>
-			<option value="8">8</option>
-			<option value="9">9</option>
-			<option value="10">10</option>
-			<option value="11">11</option>
-			<option value="12">12</option>
-		</field>
-		<field
-			name="content_position"
-			type="list"
-			default="right"
-			label="Image position"
-			description="Image position"
-		>
-			<option value="">Full width</option>
-			<option value="right">Right</option>
-			<option value="left">Left</option>
-		</field>
-		<field
-			name="content_img"
-			type="media"
-			directory=""
-			label="Image"
-		/>
-		<field
 			name="scroll_effect_img"
 			type="scrolleffects"
 			default=""
 			label="Scroll effect Image"
 			description="Ver demo en https://daneden.github.io/animate.css/"
 		/>
-		<field
-			name="img_column"
-			type="list"
-			default="6"
-			label="Image column width"
-			description="Image column width"
-		>
-			<option value="1">1</option>
-			<option value="2">2</option>
-			<option value="3">3</option>
-			<option value="4">4</option>
-			<option value="5">5</option>
-			<option value="6">6</option>
-			<option value="7">7</option>
-			<option value="8">8</option>
-			<option value="9">9</option>
-			<option value="10">10</option>
-			<option value="11">11</option>
-			<option value="12">12</option>
-		</field>
 		<field
 			name="content_img_alt"
 			type="text"
@@ -190,22 +122,37 @@
 			description="Image Alt"
 		/>
 		<field
-			name="img_shadow"
-			type="list"
-			default="1"
-			label="Image shadow"
-			description="Image shadow"
-		>
-			<option value="1">JYES</option>
-			<option value="0">JNO</option>
-		</field>
-		<field
-			name="content_video"
-			type="text"
-			default=""
-			label="Video"
-			description="Content video url"
+			name="slider_controlImg_left"
+			type="media"
+			directory=""
+			label="Fletxa esquerra"
+			description="Slider icones"
 		/>
+		<field
+			name="slider_controlImg_right"
+			type="media"
+			directory=""
+			label="Fletxa dreta"
+			description="Slider" />
+		<field
+			name="list_images"
+			type="subform"
+			icon="list"
+			description="Slider images"
+			label="Slider images"
+			multiple="true"
+			min="1"
+			max="10">
+			<form>
+				<field
+					name="slider_img"
+					type="media"
+					directory=""
+					label="Image"
+					description=""
+				/>
+			</form>
+		</field>
 	</fieldset>
 	<fieldset name="styles">
 		<field

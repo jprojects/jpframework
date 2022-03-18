@@ -176,12 +176,6 @@ class JpframeworkModelBlock extends JModelAdmin
 			$values[$field->name] = $_POST[$field->name];
 		}
 
-		//styles fieldset
-		$fields = $form->getFieldset('styles');
-		foreach($fields as $field) {
-			$values[$field->name] = $_POST[$field->name];
-		}
-
 		$registry = new JRegistry;
 		$registry->loadArray($values);
 		$data['params'] = (string) $registry;

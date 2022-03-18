@@ -55,12 +55,12 @@
 			description="title"
 		/>
 		<field
-			name="tm_subtitle"
-			type="text"
-			default=""
-			label="Subtitle"
-			description="subtitle"
-    	/>
+    	name="tm_subtitle"
+    	type="text"
+    	default=""
+    	label="Subtitle"
+    	description="subtitle"
+    />
 		<field
 			name="category"
 			type="category"
@@ -82,23 +82,6 @@
 			description=""
 		/>
 		<field
-			name="date_pos"
-			type="list"
-			default="1"
-			label="Date position"
-			description="Choose the publish up date position"
-		>
-			<option value="0">UP</option>
-			<option value="1">DOWN</option>
-		</field>
-		<field
-			name="date_format"
-			type="text"
-			default="M j"
-			label="Date format"
-			description="Date format see https://www.w3schools.com/php/func_date_date_format.asp"
-    	/>
-		<field
 			name="readmore"
 			type="list"
 			default="1"
@@ -108,37 +91,6 @@
 			<option value="0">JNO</option>
 			<option value="1">JYES</option>
 		</field>
-		<field
-			name="show_image"
-			type="list"
-			default="0"
-			label="Show Image"
-			description="Section image or not"
-		>
-			<option value="0">JNO</option>
-			<option value="1">JYES</option>
-		</field>
-		<field
-			name="nitems_md"
-			type="number"
-			default="5"
-			label="N items MD"
-			description="Number of items in large devices"
-		/>
-		<field
-			name="nitems_sm"
-			type="number"
-			default="3"
-			label="N items SM"
-			description="Number of items in medium devices"
-		/>
-		<field
-			name="nitems_XS"
-			type="number"
-			default="1"
-			label="N items XS"
-			description="Number of items in small devices"
-		/>
 	</fieldset>
 	<fieldset name="styles">
 		<field

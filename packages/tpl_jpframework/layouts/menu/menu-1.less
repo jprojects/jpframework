@@ -19,11 +19,13 @@
  * @error_color
 */
 
-
-.bg-jp {
+.bg-up {
+    background: -prefix-linear-gradient(top, @menu_background, transparent);
+    background: linear-gradient(to bottom, @menu_background, transparent);
+}
+.bg-down {
     background-color: @menu_background !important;
 }
-.logo-img { height: 90px; }
 
 .nav-link {
     display: inline-block;
@@ -45,4 +47,8 @@
 .nav-link:hover::after {
     width: 100%;
     //transition: width .3s;
+}
+
+.navbar-toggler:focus {
+    box-shadow: none;
 }

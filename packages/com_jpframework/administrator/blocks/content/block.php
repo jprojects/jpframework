@@ -16,29 +16,38 @@ $effect_text   	= blocksHelper::getBlockParameter($blockid, 'scroll_effect_text'
 $effect_img   	= blocksHelper::getBlockParameter($blockid, 'scroll_effect_img', '');
 $fluid    		= blocksHelper::getBlockParameter($blockid, 'fluid', '');
 $classes  		= blocksHelper::getBlockParameter($blockid,'classes');
+$img_classes  	= blocksHelper::getBlockParameter($blockid,'img_classes');
 $position 		= blocksHelper::getBlockParameter($blockid, 'content_position', '');
 $heading  		= blocksHelper::getBlockParameter($blockid, 'content_title');
 $video    		= blocksHelper::getBlockParameter($blockid,'content_video');
 $shadow   		= blocksHelper::getBlockParameter($blockid,'img_shadow', 1);
+$text_column   	= blocksHelper::getBlockParameter($blockid,'content_column', 6);
+$img_column   	= blocksHelper::getBlockParameter($blockid,'img_column', 12);
+$divider   		= blocksHelper::getBlockParameter($blockid,'divider', 1);
+$heading_pos  	= blocksHelper::getBlockParameter($blockid,'heading_pos', 'left');
+$heading_size  	= blocksHelper::getBlockParameter($blockid,'heading_size', 'h1');
+$color_title  	= blocksHelper::getBlockParameter($blockid,'color_title', '#000');
 
 if($position == 'right') {
-	$col  = 'col-xs-12 col-md-6';
-	$pos  = 'order-1';
-	$col2 = 'col-xs-12 col-md-6';
-	$pos2 = 'float-left';
+	$col  		= 'col-12 col-lg-'.$img_column;
+	$text_pos  	= 'order-1';
+	$col2 		= 'col-12 col-lg-'.$text_column;
+	$img_pos 	= 'order-2 text-center';
 } elseif($position == 'left') {
-	$col  = 'col-xs-12 col-md-6';
-	$pos2 = '';
-	$col2 = 'col-xs-12 col-md-6';
-	$pos  = 'float-left';
+	$col  		= 'col-12 col-lg-'.$img_column;
+	$text_pos  	= 'order-2';
+	$col2 		= 'col-12 col-lg-'.$text_column;
+	$img_pos 	= 'order-1';
 } elseif($position == 'center') {
-	$col  = 'col-12 text-center';
-	$pos2 = '';
-	$col2 = 'col-12 text-center';
-	$pos  = '';
+	$col  		= 'col-12 text-center';
+	$text_pos  	= '';
+	$col2 		= 'col-12 text-center';
+	$img_pos 	= '';
 } else {
-	$col2 = 'col-12';
-	$pos2 = '';
+	$col  		= 'col-12';
+	$text_pos  	= 'order-1';
+	$col2 		= 'col-12';
+	$img_pos 	= 'order-2';
 }
 ?>
 
@@ -48,31 +57,49 @@ if($position == 'right') {
 }
 </style>
 
-<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid, 'block_color', '#fff'); ?>;color:<?= blocksHelper::getBlockParameter($blockid, 'block_font_color', '#000'); ?>">
+<section class="<?= $classes; ?>" id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" style="background-color:<?= blocksHelper::getBlockParameter($blockid, 'block_color', '#fff'); ?>;color:<?= blocksHelper::getBlockParameter($blockid, 'block_font_color', '#000'); ?>">
 
 	<div class="<?= $fluid; ?> jpfblock <?= $classes; ?>">
 
-		<?php if($heading != '') : ?>
+		<?php if($heading != '' && $heading_pos == 'left') : ?>
 		<header>
-			<h1><?= blocksHelper::getBlockParameter($blockid, 'content_title'); ?></h1>
+			<<?= $heading_size; ?> style="color:<?= $color_title; ?>"><?= blocksHelper::getBlockParameter($blockid, 'content_title'); ?></<?= $heading_size; ?>>
+			<?php if($divider == 1) : ?>
 			<hr class="featurette-divider">
+			<?php endif; ?>
 		</header>
 		<?php endif; ?>
 
 		<div class="row">
 
-			<div class="<?= $col2; ?> <?= $pos2; ?> wow animate__animated animate__<?= $effect_text; ?>">
+			<div class="<?= $col2; ?> <?= $text_pos; ?> wow animate__animated animate__<?= $effect_text; ?>">
+				<?php if($heading != '' && $heading_pos == 'over_text') : ?>
+				<header>
+					<<?= $heading_size; ?> style="color:<?= $color_title; ?>"><?= blocksHelper::getBlockParameter($blockid, 'content_title'); ?></<?= $heading_size; ?>>
+					<?php if($divider == 1) : ?>
+					<hr class="featurette-divider">
+					<?php endif; ?>
+				</header>
+				<?php endif; ?>
 		     	<div><?= blocksHelper::getBlockParameter($blockid, 'content_text'); ?></div>
 			</div>
-			<?php if($position != '') : ?>
-			<div class="<?= $col; ?>  <?= $pos; ?> wow animate__animated animate__<?= $effect_img; ?>">
+			
+			<div class="<?= $col; ?>  <?= $img_pos; ?> wow animate__animated animate__<?= $effect_img; ?>">
+				<?php if($heading != '' && $heading_pos == 'over_img') : ?>
+				<header>
+					<<?= $heading_size; ?> style="color:<?= $color_title; ?>"><?= blocksHelper::getBlockParameter($blockid, 'content_title'); ?></<?= $heading_size; ?>>
+					<?php if($divider == 1) : ?>
+					<hr class="featurette-divider">
+					<?php endif; ?>
+				</header>
+				<?php endif; ?>
 				<?php if($video == '') : ?>
-				<img src="<?= JURI::root().blocksHelper::getBlockParameter($blockid,'content_img', ''); ?>" alt="<?= blocksHelper::getBlockParameter($blockid,'content_alt', ''); ?>" class="featurette-image img-fluid mx-auto <?php if($shadow == 1) : ?>boxshadow<?php endif; ?>">
+				<img src="<?= JURI::root().blocksHelper::getBlockParameter($blockid,'content_img', ''); ?>" alt="<?= blocksHelper::getBlockParameter($blockid,'content_alt', ''); ?>" class="featurette-image mt-4 mt-md-0 img-fluid mx-auto <?= $img_classes; ?> <?php if($shadow == 1) : ?>boxshadow<?php endif; ?>">
 				<?php else : ?>
 				<div class='embed-container'><iframe src="<?= $video; ?>" frameborder="0" allowfullscreen></iframe></div>
 				<?php endif; ?>
 			</div>
-			<?php endif; ?>
+			
 			
 		</div>
 

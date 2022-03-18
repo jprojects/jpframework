@@ -86,9 +86,9 @@ loader.onclick = function(e) {
 					<div class="brick-msg">
 						<?php $params = json_decode($item->params); ?>
 						<b><?= strtoupper($params->title); ?></b><br><br>
-						<?= strtoupper($item->type); ?><br><br>
-						<?= $item->position != '' ? '('.$item->position.')' : '(No position)'; ?><br><br>
-						<?= $item->state == 1 ? 'Published' : 'Unpublished'; ?><br><br>
+						<?= strtoupper($item->type); ?>&nbsp;|&nbsp;
+						<?= $item->position != '' ? $item->position : 'No position'; ?>&nbsp;|&nbsp;
+						<?= $item->state == 1 ? 'Published' : 'Unpublished'; ?>&nbsp;|&nbsp;
 						<img src="<?= JURI::root(); ?>media/mod_languages/images/<?= str_replace('-', '_', strtolower($item->language)); ?>.gif" alt="<?= $item->language; ?>">
 					</div>
 					<div class="brick-options">

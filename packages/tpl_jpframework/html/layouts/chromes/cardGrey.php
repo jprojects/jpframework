@@ -19,15 +19,15 @@ $headerTag   = htmlspecialchars($params->get('header_tag', 'h4'));
 $headerClass = htmlspecialchars($params->get('header_class', ''));
 
 if ($module->content) : ?>
-	<<?php echo $moduleTag; ?> class="<?php echo $modulePos; ?> card card-grey mb-4 <?php echo htmlspecialchars($params->get('moduleclass_sfx')); ?>">
-		<?php if ($module->showtitle and $headerClass !== 'card-title') : ?>
-			<<?php echo $headerTag; ?> class="card-header <?php echo $headerClass; ?>"><?php echo $module->title; ?></<?php echo $headerTag; ?>>
+	<<?= $moduleTag; ?> class="<?= $modulePos; ?> card card-grey mb-4 <?= htmlspecialchars($params->get('moduleclass_sfx')); ?>">
+		<?php if ($module->showtitle && $headerClass !== 'card-title') : ?>
+			<<?= $headerTag; ?> title="<?= $module->title; ?>" aria-label="<?= $module->title; ?>" class="card-header <?= $headerClass; ?>"><?= $module->title; ?></<?= $headerTag; ?>>
 		<?php endif; ?>
 		<div class="card-body">
 			<?php if ($module->showtitle && $headerClass === 'card-title') : ?>
-				<<?php echo $headerTag; ?> class="<?php echo $headerClass; ?>"><?php echo $module->title; ?></<?php echo $headerTag; ?>>
+				<<?= $headerTag; ?> title="<?= $module->title; ?>" aria-label="<?= $module->title; ?>" class="<?= $headerClass; ?>"><?= $module->title; ?></<?= $headerTag; ?>>
 			<?php endif; ?>
-			<?php echo $module->content; ?>
+			<?= $module->content; ?>
 		</div>
-	</<?php echo $moduleTag; ?>>
+	</<?= $moduleTag; ?>>
 <?php endif; ?>

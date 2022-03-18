@@ -21,6 +21,14 @@ abstract class NewsHelper {
 		return $db->loadObjectList();
 	}
 
+	public static function getImage($itemid) {
+
+		$db = JFactory::getDbo();
+		$db->setQuery(	"select intro_img from #__blogger_items ".
+				"where id = $itemid");
+		return $db->loadResult();
+	}
+
 	/**
 	 * Get intro from full text
 	 *

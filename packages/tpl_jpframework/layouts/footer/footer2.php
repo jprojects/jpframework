@@ -55,6 +55,10 @@
             <?php if(jpf::getparameter('terms') != '') : ?>
             <p><a class="nav-link p-0" href="index.php?Itemid=<?=jpf::getArticleByLanguage('terms'); ?>"><?=JText::_('JP_FRAMEWORK_TERMS'); ?></a></p>
             <?php endif; ?>
+
+            <?php if(jpf::getparameter('condicions') != '') : ?>
+            <p><a class="nav-link p-0" href="index.php?Itemid=<?=jpf::getArticleByLanguage('condicions'); ?>"><?=JText::_('JP_FRAMEWORK_CONDITIONS'); ?></a></p>
+            <?php endif; ?>
             </div>
         </div>
     </div>
