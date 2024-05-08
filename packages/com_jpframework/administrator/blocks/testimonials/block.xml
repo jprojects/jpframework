@@ -43,41 +43,52 @@
         	label="Subtitle" 
         	description="subtitle" 
         />
-        <field 
-			name="tm_parts"
-			type="repeatable"
+		<field
+			name="list_testimonials"
+			type="subform"
 			icon="list"
-			description="Timeline parts"
-			label="Timeline"
-			default='{
-				"tm_img":[""],
-				"tm_icon":[""],
-				"tm_text":[""]}'>
-			<fieldset hidden="true" name="tm_parts_modal" repeat="true">				
-				<field 
-					name="tm_img" 
-					type="media" 
-					directory="" 
-					label="Image" 
-					description="Image"
-				/>	
-				<field 
-					name="tm_title" 
-					type="text" 
-					label="Title" 
+			description="Testimonial items"
+			label="Testimonial items"
+			multiple="true"
+			min="1"
+			max="10">
+			<form>
+				<field
+					name="testimonial_title"
+					type="text"
+					default=""
+					label="Title"
+					description="Title"
+				/>
+				<field
+					name="testimonial_text"
+					type="text"
+					default=""
+					label="Text"
 					description=""
 				/>
-				<field 
-					name="tm_text" 
-					type="textarea" 
-					default="" 
-					label="Text" 
-					description="Text" 
-					cols="10"
-					rows="2"
-					filter="raw"
-				/>			
-			</fieldset>
+				<field
+					name="testimonial_date"
+					type="text"
+					default=""
+					label="Testimonial date"
+					description=""
+				/>
+				<field
+					name="testimonial_name"
+					type="text"
+					default=""
+					label="Testimonial name"
+					description=""
+				/>
+				<field
+					name="testimonial_stars"
+					type="text"
+					default="5"
+					label="Testimonial stars"
+					description=""
+				/>
+			</form>
 		</field>
 	</fieldset>
 	<fieldset name="styles">

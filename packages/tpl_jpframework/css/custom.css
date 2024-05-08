@@ -1,1 +1,37 @@
 a.blogger-all { text-decoration: underline !important; }
+
+.icon {
+    width:18px;
+    height:18px;
+    margin-left: 8px;
+}
+
+.bg-light {
+    background-color: #f2f2f2;
+}
+.text-grey {
+    color: #bdbbbb;
+}
+
+.round {
+    border-radius: 20px;
+}
+
+.subfooter img {
+    max-width: 300px;
+}
+
+@media (min-width: 768px) {
+    .px-md-10 {
+        padding-right: 10rem !important;
+        padding-left: 10rem !important;
+    }
+}
+
+.carousel-control-next:focus, .carousel-control-next:hover, .carousel-control-prev:focus, .carousel-control-prev:hover {
+    color: #000;
+}
+
+.carousel-control-next, .carousel-control-prev {
+  color: #000;
+}

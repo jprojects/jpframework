@@ -27,14 +27,10 @@ $items   = blocksHelper::groupByKey($cards);
 	<div class="details-cad my-2 <?= $classes; ?>">
 		<div class="container">
 		
-			<?php if(blocksHelper::getBlockParameter($blockid, 'cards_heading', '') != '') : ?>
 			<header>			
 				<h1 class="lblue"><?= blocksHelper::getBlockParameter($blockid, 'cards_heading'); ?></h1>
-				<?php if(blocksHelper::getBlockParameter($blockid, 'cards_subheading', '') != '') : ?>
-				<div class="lead"><?= blocksHelper::getBlockParameter($blockid, 'cards_subheading'); ?></div>	
-				<?php endif; ?>			
+				<div class="lead"><?= blocksHelper::getBlockParameter($blockid, 'cards_subheading'); ?></div>				
 			</header>
-			<?php endif; ?>
 
 			<div class="row row-cols-1 row-cols-md-<?= $columns; ?> g-4">
                 

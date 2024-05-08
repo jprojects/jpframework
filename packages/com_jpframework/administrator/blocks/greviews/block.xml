@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset name="block">
+	<field 
+			name="title" 
+			type="text" 
+			default="" 
+			label="Title" 
+			description="Block title" 
+		/>
+		<field 
+			name="block_color" 
+			type="color" 
+			default="#ffffff" 
+			label="Background" 
+			description="Background color" 
+		/>
+		<field 
+			name="uniqid" 
+			type="text" 
+			default="" 
+			label="Uniqid" 
+			description="Uniqid is used as the block section id" 
+		/>
+		<field 
+			name="testimonial_txt1" 
+			type="textarea" 
+			default="" 
+			label="Testimonial" 
+			description="Testimonial text" 
+			rows="10" 
+			cols="5" 
+			filter="raw"
+		/>
+		<field 
+			name="testimonial_sign1" 
+			type="text" 
+			default="" 
+			label="Author" 
+			description="Testimonial signature" 
+		/>
+		<field 
+			name="testimonial_img1" 
+			type="media" 
+			directory="" 
+			label="Image 1" 
+		/>
+		<field 
+			name="testimonial_txt2" 
+			type="textarea" 
+			default="" 
+			label="Testimonial" 
+			description="Testimonial text" 
+			rows="10" 
+			cols="5" 
+			filter="raw"
+		/>
+		<field 
+			name="testimonial_sign2" 
+			type="text" 
+			default="" 
+			label="Author" 
+			description="Testimonial signature" 
+		/>
+		<field 
+			name="testimonial_img2" 
+			type="media" 
+			directory="" 
+			label="Image 1" 
+		/>
+		<field 
+			name="testimonial_txt3" 
+			type="textarea" 
+			default="" 
+			label="Testimonial" 
+			description="Testimonial text" 
+			rows="10" 
+			cols="5" 
+			filter="raw"
+		/>
+		<field 
+			name="testimonial_sign3" 
+			type="text" 
+			default="" 
+			label="Author" 
+			description="Testimonial signature" 
+		/>
+		<field 
+			name="testimonial_img3" 
+			type="media" 
+			directory="" 
+			label="Image 1" 
+		/>
+	</fieldset>
+
+</form>

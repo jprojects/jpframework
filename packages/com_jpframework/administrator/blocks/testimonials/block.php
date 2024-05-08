@@ -12,58 +12,70 @@
 defined('_JEXEC') or die;
 
 $blockid    = JFactory::getApplication()->input->get('blockid');
-blocksHelper::loadCss(JURI::root().'administrator/components/com_jpframework/blocks/testimonials/assets/css/testimonials.css');
-blocksHelper::loadJs(JURI::root().'administrator/components/com_jpframework/blocks/testimonials/assets/js/testimonials.js');
 
-$testimonials 	= json_decode(blocksHelper::getBlockParameter($blockid, 'list_testimonials'), true);
-$tm   = blocksHelper::group_by_key($testimonials);
+
+$testimonials 	= blocksHelper::getBlockParameter($blockid, 'list_testimonials');
+$data   = blocksHelper::groupByKey($testimonials);
 ?>
 
-<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" class="testimonial-section2" style="background-color:<?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
+<section id="<?= blocksHelper::getBlockParameter($blockid, 'uniqid', 'block-'.$blockid); ?>" class="my-5" style="background-color:<?= blocksHelper::getBlockParameter($blockid,'block_color'); ?>;color:<?= blocksHelper::getBlockParameter($blockid,'block_font_color'); ?>">
 
-	<?php if(blocksHelper::getBlockParameter($blockid, 'tm_title') != '') : ?>
+	<?php if(blocksHelper::getBlockParameter($blockid, 'tm_title') != '' || blocksHelper::getBlockParameter($blockid, 'tm_subtitle') != '') : ?>
     <div class="page-header timeline-header text-center mb-5">
+        <?php if(blocksHelper::getBlockParameter($blockid, 'tm_title') != '') : ?>
         <h1 id="timeline"><?= blocksHelper::getBlockParameter($blockid, 'tm_title'); ?></h1>
+        <?php endif; ?>
         <?php if(blocksHelper::getBlockParameter($blockid, 'tm_subtitle') != '') : ?>
-        <p><?= blocksHelper::getBlockParameter($blockid, 'tm_subtitle'); ?></p>
+        <p><b><?= blocksHelper::getBlockParameter($blockid, 'tm_subtitle'); ?></b></p>
         <?php endif; ?>
     </div>
     <?php endif; ?>
-        
-   	<div id="testim" class="testim">
 
-        <div class="wrap">
-
-            <span id="right-arrow" class="arrow right fa fa-chevron-right"></span>
-            <span id="left-arrow" class="arrow left fa fa-chevron-left "></span>
-            
-            <ul id="testim-dots" class="dots">
-            	<?php 
-                $i = 0;
-                foreach($tm as $k => $v) : ?> 
-                <li class="dot <?php if($i == 0) : ?>active<?php endif; ?>"></li>
+    <div id="testimonials" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner px-md-10">  
+            <?php 
+            $j = 0;
+            $count = count($data['testimonial_title']);
+            for ($j = 0; $j < $count; $j += 3): 
+            ?> 
+            <div class="carousel-item <?= $j == 0 ? 'active' : ''; ?>">
+                <div class="row">     
                 <?php 
-                $i++;
-                endforeach; ?>
-            </ul>
-            <div id="testim-content" class="cont"> 
-                
-                <?php 
-                $i = 0;
-                foreach($tm as $k => $v) : ?>               
-                <div <?php if($i == 0) : ?>class="active"<?php endif; ?>>
-                    <div class="img"><img src="<?= $v[0]; ?>" alt=""></div>
-                    <div class="h4"><?= $v[1]; ?></div>
-                    <p><?= $v[2]; ?></p>                    
+                for ($i = $j; $i < min($count, $j + 3); $i++): 
+                    if($data['testimonial_title'][$i] == '') break;
+                ?>
+                <div class="col-12 col-md-4">              
+                    <div class="card p-3 bg-light round">
+                        <div><b><?= $data['testimonial_title'][$i]; ?></b></div>
+                        <div class="my-2"><?= $data['testimonial_text'][$i]; ?></div>
+                        <p class="text-end"><b><?= $data['testimonial_name'][$i]; ?></b><br><span class="muted"><?= $data['testimonial_date'][$i]; ?></span></p>   
+                        <div class="text-center">
+                            <?php
+                            for ($k = 1; $k <= 5; $k++) :
+                            if ($k <= $data['testimonial_stars'][$i]) : ?>
+                            <i class="fas fa-star text-warning"></i> 
+                            <?php else : ?>
+                            <i class="fas fa-star text-grey"></i> 
+                            <?php
+                            endif;
+                            endfor; 
+                            ?>
+                        </div>                 
+                    </div>
                 </div>
-                <?php 
-                $i++;
-                endforeach; ?>
-
+                <?php endfor; ?>
+                </div>
             </div>
-            
-       </div>
-       
-   </div>
+            <?php endfor; ?>
+            <button class="carousel-control-prev" type="button" data-bs-target="#testimonials" data-bs-slide="prev">
+                <i class="fas fa-chevron-left"></i>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#testimonials" data-bs-slide="next">
+                <i class="fas fa-chevron-right"></i>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
 
 </section>

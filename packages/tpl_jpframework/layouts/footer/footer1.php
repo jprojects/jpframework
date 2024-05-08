@@ -15,7 +15,8 @@
 
 <footer>
 	<div class="container">
-		<p class="float-right"><a href="#" class="cd-top"><?=JText::_('JP_FRAMEWORK_BACK_TO_TOP'); ?></a></p>
+		
+		<div class="text-center mb-2"><img src="images/Logo_CanTonXic_Blanc.png" class="img-fluid w-25" alt="..."></div>
 	
 		<?php if(jpf::getparameter('jpf-footer') != 0) : ?>
 		<!-- start footer row -->	
@@ -24,38 +25,28 @@
 				<jdoc:include type="modules" name="jpf-footer-1" />	
 			</div>
 			<div class="col-xs-12 col-md-4">
-			    <jdoc:include type="modules" name="jpf-footer-2" />	
+			    <jdoc:include type="modules" name="jpf-menu" />	
 			</div>
 			<div class="col-xs-12 col-md-4">
-				<jdoc:include type="modules" name="jpf-footer-3" />	
+				<div class="social text-center text-md-end mb-2">
+					<img class="icon" src="images/Icona_Telefon_Blanc.png" alt="...">
+					<img class="icon" src="images/Icona_Correu_Blanc.png" alt="...">
+					<img class="icon" src="images/Icona_Whatsapp_Blanc.png" alt="...">
+					<img class="icon" src="images/Icona_Facebook_Blanc.png" alt="...">
+					<img class="icon" src="images/Icona_Ubicacio_Blanc.png" alt="...">
+					<img class="icon" src="images/Icona_Instagram_Blanc.png" alt="...">
+				</div>
+				<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('privacy'); ?>"><?=JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 	
+				<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('cookie'); ?>"><?=JText::_('JP_FRAMEWORK_COOKIES'); ?></a> 
+				<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('terms'); ?>"><?=JText::_('JP_FRAMEWORK_TERMS'); ?></a>
+				<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('condicions'); ?>"><?=JText::_('JP_FRAMEWORK_CONDITIONS'); ?></a>
 			</div>		
 		</div>
 		<!-- end footer row -->
 		<?php endif; ?>
-
-		<div class="text-center pb-3">
-			<div class="social-icons mb-3"> 
-				<?= jpf::getSocial(); ?>  
-			</div>
-			<p><?=jpf::getSitename(); ?> &copy; <?= date('Y'); ?></p>
-			<?php if(jpf::getparameter('privacy') != '') : ?>
-			<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('privacy'); ?>"><?=JText::_('JP_FRAMEWORK_PRIVACY'); ?></a> 
-			&middot;
-			<?php endif; ?>
-			
-			<?php if(jpf::getparameter('cookie') != '') : ?>
-			<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('cookie'); ?>"><?=JText::_('JP_FRAMEWORK_COOKIES'); ?></a>
-			&middot;
-			<?php endif; ?>
-		
-			<?php if(jpf::getparameter('terms') != '') : ?>
-			<a href="index.php?Itemid=<?=jpf::getArticleByLanguage('terms'); ?>"><?=JText::_('JP_FRAMEWORK_TERMS'); ?></a>
-			<?php endif; ?>
-
-			<?php if(jpf::getparameter('condicions') != '') : ?>
-            <p><a class="nav-link p-0" href="index.php?Itemid=<?=jpf::getArticleByLanguage('condicions'); ?>"><?=JText::_('JP_FRAMEWORK_CONDITIONS'); ?></a></p>
-            <?php endif; ?>
-		</div>
 	
 	</div>
 </footer>
+<div class="subfooter text-center py-2">
+	<img class="img-fluid" src="images/logo_footer.png" alt="...">
+</div>

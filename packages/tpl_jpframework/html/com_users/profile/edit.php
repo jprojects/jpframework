@@ -1,136 +1,89 @@
 <?php
+
 /**
  * @package     Joomla.Site
  * @subpackage  com_users
  *
- * @copyright   Copyright (C) 2005 - 2014 Open Source Matters, Inc. All rights reserved.
+ * @copyright   (C) 2009 Open Source Matters, Inc. <https://www.joomla.org>
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
-JHtml::_('behavior.keepalive');
-JHtml::_('behavior.formvalidator');
-JHtml::_('formbehavior.chosen', 'select');
+use Joomla\CMS\Factory;
+use Joomla\CMS\HTML\HTMLHelper;
+use Joomla\CMS\Language\Text;
+use Joomla\CMS\Router\Route;
 
-//load user_profile plugin language
-$lang = JFactory::getLanguage();
+/** @var Joomla\Component\Users\Site\View\Profile\HtmlView $this */
+
+HTMLHelper::_('bootstrap.tooltip', '.hasTooltip');
+
+// Load user_profile plugin language
+$lang = Factory::getLanguage();
 $lang->load('plg_user_profile', JPATH_ADMINISTRATOR);
+
+/** @var Joomla\CMS\WebAsset\WebAssetManager $wa */
+$wa = $this->document->getWebAssetManager();
+$wa->useScript('keepalive')
+    ->useScript('form.validate');
+
 ?>
-<div class="profile-edit<?php echo $this->pageclass_sfx?>">
-	<?php if ($this->params->get('show_page_heading')) : ?>
-		<div class="page-header">
-			<h1><?php echo $this->escape($this->params->get('page_heading')); ?></h1>
-		</div>
-	<?php endif; ?>
+<div class="com-users-profile__edit profile-edit">
+    <?php if ($this->params->get('show_page_heading')) : ?>
+        <div class="page-header">
+            <h1>
+                <?php echo $this->escape($this->params->get('page_heading')); ?>
+            </h1>
+        </div>
+    <?php endif; ?>
 
-	<script type="text/javascript">
-		Joomla.twoFactorMethodChange = function(e)
-		{
-			var selectedPane = 'com_users_twofactor_' + jQuery('#jform_twofactor_method').val();
+    <form id="member-profile" action="<?php echo Route::_('index.php?option=com_users'); ?>" method="post" class="com-users-profile__edit-form form-validate form-horizontal well" enctype="multipart/form-data">
+        <input type="hidden" name="jform[actionlogs][actionlogsNotify]" value="0">
+        <input type="hidden" name="return" value="<?= base64_encode('http://validatech.es/areaprivada/index'); ?>">
+        <?php // Iterate through the form fieldsets and display each one. ?>
+        <?php 
+        $i = 0;
+        foreach ($this->form->getFieldsets() as $group => $fieldset) : ?>
+        <?php if($i == 1) { break; } ?>
+            <?php $fields = $this->form->getFieldset($group); ?>
+            <?php if (count($fields)) : ?>
+                <fieldset>
+                    <?php // If the fieldset has a label set, display it as the legend. ?>
+                    <?php if (isset($fieldset->label)) : ?>
+                        <legend>
+                            <?php echo Text::_($fieldset->label); ?>
+                        </legend>
+                    <?php endif; ?>
+                    <?php if (isset($fieldset->description) && trim($fieldset->description)) : ?>
+                        <p>
+                            <?php echo $this->escape(Text::_($fieldset->description)); ?>
+                        </p>
+                    <?php endif; ?>
+                    <?php // Iterate through the fields in the set and display them. ?>
+                    <?php foreach ($fields as $field) : ?>
+                        <?php echo $field->renderField(); ?>
+                        <?php //if($field->name == 'jform[email]') { break; } ?>
+                    <?php endforeach; ?>
+                </fieldset>
+            <?php endif; ?>
+        <?php 
+    $i++;
+    endforeach; ?>
 
-			jQuery.each(jQuery('#com_users_twofactor_forms_container>div'), function(i, el) {
-				if (el.id != selectedPane)
-				{
-					jQuery('#' + el.id).hide(0);
-				}
-				else
-				{
-					jQuery('#' + el.id).show(0);
-				}
-			});
-		}
-	</script>
-
-	<form id="member-profile" action="<?php echo JRoute::_('index.php?option=com_users&task=profile.save'); ?>" method="post" class="form-validate well" enctype="multipart/form-data">
-	<?php foreach ($this->form->getFieldsets() as $group => $fieldset):// Iterate through the form fieldsets and display each one.?>
-		<?php $fields = $this->form->getFieldset($group);?>
-		<?php if (count($fields)):?>
-		<fieldset>
-			<?php if (isset($fieldset->label)):// If the fieldset has a label set, display it as the legend.?>
-			<legend><?php echo JText::_($fieldset->label); ?></legend>
-			<?php endif;?>
-			<?php foreach ($fields as $field):// Iterate through the fields in the set and display them.?>
-				<?php if ($field->hidden):// If the field is hidden, just display the input.?>
-					<div class="form-group">
-						<div class="controls">
-							<?php echo $field->input;?>
-						</div>
-					</div>
-				<?php else:?>
-					<div class="form-group">
-
-						<?php echo $field->label; ?>
-						<?php if (!$field->required && $field->type != 'Spacer') : ?>
-						<span class="optional"><?php echo JText::_('COM_USERS_OPTIONAL'); ?></span>
-						<?php endif; ?>
-						
-						<?php $field->__set('class', $field->getAttribute('class').' form-control'); ?>
-						<?php echo $field->input; ?>
-
-					</div>
-				<?php endif;?>
-			<?php endforeach;?>
-		</fieldset>
-		<?php endif;?>
-	<?php endforeach;?>
-
-	<?php if (count($this->twofactormethods) > 1): ?>
-		<fieldset>
-			<legend><?php echo JText::_('COM_USERS_PROFILE_TWO_FACTOR_AUTH') ?></legend>
-
-			<div class="form-group">
-
-				<label id="jform_twofactor_method-lbl" for="jform_twofactor_method" class="hasTooltip"
-					   title="<strong><?php echo JText::_('COM_USERS_PROFILE_TWOFACTOR_LABEL') ?></strong><br/><?php echo JText::_('COM_USERS_PROFILE_TWOFACTOR_DESC') ?>">
-					<?php echo JText::_('COM_USERS_PROFILE_TWOFACTOR_LABEL'); ?>
-				</label>
-
-
-				<?php echo JHtml::_('select.genericlist', $this->twofactormethods, 'jform[twofactor][method]', array('onchange' => 'Joomla.twoFactorMethodChange()'), 'value', 'text', $this->otpConfig->method, 'jform_twofactor_method', false) ?>
-
-			</div>
-			
-			<div id="com_users_twofactor_forms_container">
-				<?php foreach($this->twofactorform as $form): ?>
-				<?php $style = $form['method'] == $this->otpConfig->method ? 'display: block' : 'display: none'; ?>
-				<div id="com_users_twofactor_<?php echo $form['method'] ?>" style="<?php echo $style; ?>">
-					<?php echo $form['form'] ?>
-				</div>
-				<?php endforeach; ?>
-			</div>
-		</fieldset>
-
-		<fieldset>
-			<legend>
-				<?php echo JText::_('COM_USERS_PROFILE_OTEPS') ?>
-			</legend>
-			<div class="alert alert-info">
-				<?php echo JText::_('COM_USERS_PROFILE_OTEPS_DESC') ?>
-			</div>
-			<?php if (empty($this->otpConfig->otep)): ?>
-			<div class="alert alert-warning">
-				<?php echo JText::_('COM_USERS_PROFILE_OTEPS_WAIT_DESC') ?>
-			</div>
-			<?php else: ?>
-			<?php foreach ($this->otpConfig->otep as $otep): ?>
-			<span class="col-md-3">
-				<?php echo substr($otep, 0, 4) ?>-<?php echo substr($otep, 4, 4) ?>-<?php echo substr($otep, 8, 4) ?>-<?php echo substr($otep, 12, 4) ?>
-			</span>
-			<?php endforeach; ?>
-			<div class="clearfix"></div>
-			<?php endif; ?>
-		</fieldset>
-	<?php endif; ?>
-
-		<div class="form-group">
-
-			<button type="submit" class="btn btn-primary validate"><span><?php echo JText::_('JSUBMIT'); ?></span></button>
-			<a class="btn" href="<?php echo JRoute::_(''); ?>" title="<?php echo JText::_('JCANCEL'); ?>"><?php echo JText::_('JCANCEL'); ?></a>
-			<input type="hidden" name="option" value="com_users" />
-			<input type="hidden" name="task" value="profile.save" />
-
-		</div>
-		<?php echo JHtml::_('form.token'); ?>
-	</form>
+        <div class="com-users-profile__edit-submit control-group mt-2">
+            <div class="controls">
+                <button type="submit" class="btn btn-primary validate" name="task" value="profile.save">
+                    <span class="icon-check" aria-hidden="true"></span>
+                    <?php echo Text::_('JSAVE'); ?>
+                </button>
+                <button type="submit" class="btn btn-danger" name="task" value="profile.cancel" formnovalidate>
+                    <span class="icon-times" aria-hidden="true"></span>
+                    <?php echo Text::_('JCANCEL'); ?>
+                </button>
+                <input type="hidden" name="option" value="com_users">
+            </div>
+        </div>
+        <?php echo HTMLHelper::_('form.token'); ?>
+    </form>
 </div>

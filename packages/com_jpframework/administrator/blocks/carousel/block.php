@@ -74,20 +74,6 @@ endforeach; ?>
 
 	<div class="carousel fade-carousel slide carousel-<?= $blockid; ?> <?= $classes; ?>" data-bs-ride="carousel" id="<?= $cid; ?>">
 
-	  	<?php if(count($data) > 1 && $indicators == 1) : ?>
-		<div class="carousel-indicators">
-			<?php
-		  	$i = 0;
-		  	foreach($data as $v):
-			if($data['carousel_img'][$i] == '') break;
-		  	?>
-			<button type="button" data-bs-target="#<?= $cid; ?>" data-bs-slide-to="<?= $i; ?>" <?php if($i == 0) : ?>class="active"<?php endif; ?> aria-current="true" aria-label="Slide <?= $i; ?>"></button>
-			<?php
-			$i++;
-			endforeach; ?>
-  		</div>
-  		<?php endif; ?>
-
 	  	<div class="carousel-inner" role="listbox">
 
 		  	<?php
